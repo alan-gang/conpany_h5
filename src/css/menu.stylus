@@ -1,0 +1,2 @@
+.menu-item.active-state:not(.menu-item-dropdown-opened)
+  background-color rgba(0,0,0,.1)

@@ -1,0 +1,9 @@
+.button:active
+  opacity .6
+  
+.tab-link-active
+  .button.color-gray
+    background-color #ff6b22
+
+  
+    

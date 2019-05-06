@@ -1,0 +1,70 @@
+/*overwrite f7-icons*/
+@import './gameicon.stylus'
+urls = {
+    _vip: '~src/assets/home/home_icon_noble',
+    _sign: '~src/assets/home/home_icon_checkin',
+    _load: '~src/assets/home/home_icon_recharge',
+    _withdraw: '~src/assets/home/home_icon_withdraw',
+    _transfer: '~src/assets/home/home_icon_transfer',
+    _hot: '~src/assets/home/home_icon_title',
+
+    _trash: '~src/assets/play/game_icon_delete',
+    _bookcar: '~src/assets/play/game_icon_cart',
+    _bookcar_a: '~src/assets/play/game_icon_addnor',
+    _addcar: '~src/assets/play/game_icon_add',
+    _addcar_a: '~src/assets/play/game_icon_cartnor',
+
+    _vmode01: '~src/assets/home/home_collection_vmode01',
+    _vmode01_a: '~src/assets/home/home_collection_vmode1',
+    _vmode02: '~src/assets/home/home_collection_vmode02',
+    _vmode02_a: '~src/assets/home/home_collection_vmode2',
+
+    _level_1: '~src/assets/me/vipicon/1',
+    _level_2: '~src/assets/me/vipicon/2',
+    _level_3: '~src/assets/me/vipicon/3',
+    _level_4: '~src/assets/me/vipicon/4',
+    _level_5: '~src/assets/me/vipicon/5',
+    _level_6: '~src/assets/me/vipicon/6',
+    _level_7: '~src/assets/me/vipicon/7',
+    _level_8: '~src/assets/me/vipicon/8',
+    _level_9: '~src/assets/me/vipicon/9',
+    _level_10: '~src/assets/me/vipicon/10',
+
+    _settings: '~src/assets/me/profile_icon_set',
+    _xyb: '~src/assets/me/profile_icon_xyb',
+
+    _account_safe: '~src/assets/me/profile_icon_security',
+    __bank_card: '~src/assets/me/profile_icon_bankcards',
+    _lottery_bonus: '~src/assets/me/profile_icon_bonus',
+    _help_center: '~src/assets/me/profile_icon_helpcenter',
+    
+    _sub_game_record: '~src/assets/me/profile_icon_bettingrecord',
+    _sub_fund_record: '~src/assets/me/profile_icon_assetsrecord',
+
+
+  }
+  sizes = {
+    _vip: auto 60%,
+    _trash: auto 60%,
+    _bookcar: auto 60%,
+    _bookcar_a: auto 60%,
+    _addcar: auto 60%,
+    _addcar_a: auto 60%,
+  }
+
+._icon:active
+  opacity .6
+._icon
+  .icon
+    color rgba(0,0,0,0)
+  for k, v in  urls
+    &.{k}
+      .icon
+        bg(v+'@2x.png', sizes[k] || (auto 60%))
+  
+._icon.icon.f7-icons
+  color rgba(0,0,0,0)
+  for k, v in  urls
+    &.{k}
+      bg(v+'@2x.png', sizes[k] || (auto 80%))
+    

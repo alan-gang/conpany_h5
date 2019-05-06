@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2196f3">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>信游娱乐_最受欢迎_自主研发_彩票游戏_真人_棋牌_体育_电竞</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= htmlWebpackPlugin.files.publicPath %>static/favicon.png">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="信游娱乐_最受欢迎_自主研发_彩票游戏_真人_棋牌_体育_电竞">
+    <meta name="msapplication-TileColor" content="#000000">
+    <% for (var chunk of webpack.chunks) {
+        for (var file of chunk.files) {
+          if (file.match(/\.(js|css)$/)) { %>
+    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+    <script>
+        // (function(doc, win) {
+        //     var docEl = doc.documentElement,
+        //       dpx = 1242
+        //       isIOS = navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+        //       dpr = isIOS ? Math.min(win.devicePixelRatio, 3) : 1,
+        //       dpr = window.top === window.self ? dpr : 1, //被iframe引用时，禁止缩放
+        //       // dpr = 1,
+        //       scale = 1 / dpr,
+        //       resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+        //     docEl.dataset.dpr = dpr;
+        //     var metaEl = doc.createElement('meta');
+        //     metaEl.name = 'viewport';
+        //     metaEl.content = 'initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale;
+        //     docEl.firstElementChild.appendChild(metaEl);
+        //     var recalc = function() {
+        //         var width = docEl.clientWidth;
+        //         if (width / dpr > dpx) {
+        //             width = dpx * dpr;
+        //         }
+        //         // 乘以100，px : rem = 100 : 1
+        //         docEl.style.fontSize = 100 * (width / dpx) + 'px';
+        //     };
+        //     recalc()
+        //     if (!doc.addEventListener) return;
+        //     win.addEventListener(resizeEvt, recalc, false);
+        // })(document, window);
+    </script>
+  </head>
+  <body class=" color-theme-deeporange ">
+
+    <noscript>
+      This is your fallback content in case JavaScript fails to load.
+    </noscript>
+    <div id="app"></div>
+    <!-- Todo: only include in production -->
+    <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
+    <!-- built files will be auto injected -->
+  </body>
+</html>

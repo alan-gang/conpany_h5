@@ -1,0 +1,16 @@
+.stepper-button, .stepper-button-minus, .stepper-button-plus
+  width 30px
+  border none
+  background-color #e0e0e0
+  &:before
+  &:after
+    color #999
+
+.stepper-input-wrap, .stepper-value
+  border 0
+  background-color #efefef
+  display inline-block
+  input
+    width 40px
+  
+  

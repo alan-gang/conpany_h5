@@ -1,0 +1,112 @@
+urls = {
+  _mj: '~src/assets/gameicon/cards/game_bg_mj',
+  _ddz: '~src/assets/gameicon/cards/game_bg_ddz',
+  _dz: '~src/assets/gameicon/cards/game_bg_dz',
+  _zjh: '~src/assets/gameicon/cards/game_bg_zjh',
+
+  _qhb: '~src/assets/gameicon/cards/game_special_redenvelop',
+
+  _agbjl: '~src/assets/gameicon/cards/game_livecasino_ag',
+  _bgbjl: '~src/assets/gameicon/cards/game_livecasino_bg',
+  _ptbjl: '~src/assets/gameicon/cards/game_livecasino_pt',
+
+  _ynsd: '~src/assets/gameicon/cards/game_slots_ynsd',
+  _shdyj: '~src/assets/gameicon/cards/game_slots_shdyj',
+  _jqw: '~src/assets/gameicon/cards/game_slots_jqw',
+  _gsglzw: '~src/assets/gameicon/cards/game_slots_gsglzw',
+  _sbhz: '~src/assets/gameicon/cards/game_slots_sbhz',
+  _lll: '~src/assets/gameicon/cards/game_slots_lll',
+  _wlha: '~src/assets/gameicon/cards/game_slots_wlha',
+  _gghz: '~src/assets/gameicon/cards/game_slots_gghz',
+  _zcjb: '~src/assets/gameicon/cards/game_slots_zcjb',
+  _zctz: '~src/assets/gameicon/cards/game_slots_zctz',
+  _bs: '~src/assets/gameicon/cards/game_slots_bs',
+  _hjzl: '~src/assets/gameicon/cards/game_slots_hjzl',
+  _tsl: '~src/assets/gameicon/cards/game_slots_tsl',
+  _hjbs: '~src/assets/gameicon/cards/game_slots_hjbs',
+  _mjlhj: '~src/assets/gameicon/cards/game_slots_mjlhj',
+  _tkmy: '~src/assets/gameicon/cards/game_slots_tkmy',
+  _jlb: '~src/assets/gameicon/cards/game_slots_jlb',
+  _byw3d: '~src/assets/gameicon/cards/game_slots_byw3d',
+  _slwhdrb: '~src/assets/gameicon/cards/game_slots_slwhdrb',
+  _fqzsdrb: '~src/assets/gameicon/cards/game_slots_fqzsdrb',
+  _bcbmdrb: '~src/assets/gameicon/cards/game_slots_bcbmdrb',
+  _djdl: '~src/assets/gameicon/cards/game_slots_djdl',
+  _szss: '~src/assets/gameicon/cards/game_slots_szss',
+  _hjzcm: '~src/assets/gameicon/cards/game_slots_hjzcm',
+  _cjyj: '~src/assets/gameicon/cards/game_slots_cjyj',
+  _zcm: '~src/assets/gameicon/cards/game_slots_zcm',
+  _flbz: '~src/assets/gameicon/cards/game_slots_flbz',
+
+  
+  _lol: '~src/assets/gameicon/cards/game_esport_lol',
+  _wzry: '~src/assets/gameicon/cards/game_esport_pvp',
+  _dota2: '~src/assets/gameicon/cards/game_esport_dota',
+  _csgo: '~src/assets/gameicon/cards/game_esport_csgo',
+
+  _football: '~src/assets/gameicon/cards/game_sport_fb',
+  _basketball: '~src/assets/gameicon/cards/game_sport_bb',
+  _tennisball: '~src/assets/gameicon/cards/game_sport_tb',
+  _otherball: '~src/assets/gameicon/cards/game_sport_ob',
+
+  _agpy: '~src/assets/gameicon/cards/game_fish_01',
+  _bgpy: '~src/assets/gameicon/cards/game_fish_02',
+  _ptpy: '~src/assets/gameicon/cards/game_fish_03',
+
+  _me_wallet: '~src/assets/me/profile_wallet_bg',
+
+}
+labels = {
+  _ly: '~src/assets/gameicon/cards/game_lable_ly',
+  _ky: '~src/assets/gameicon/cards/game_lable_ky',
+  _ag: '~src/assets/gameicon/cards/game_lable_ag',
+  _bg: '~src/assets/gameicon/cards/game_lable_bg',
+  _pt: '~src/assets/gameicon/cards/game_lable_pt',
+  _lg: '~src/assets/gameicon/cards/game_lable_lg',
+  _uw: '~src/assets/gameicon/cards/game_lable_uy',
+  _sb: '~src/assets/gameicon/cards/game_lable_sb',
+  _pb: '~src/assets/gameicon/cards/game_lable_pb',
+}
+sizes = {
+}
+
+.collect_action
+  content ''
+  position absolute
+  right 10%
+  top 0
+  width 28px
+  height 29px
+  z-index 1
+  bg('~src/assets/gameicon/cards/game_icon_uncollection2@2x.png', 100%)
+  &:active
+    opacity .8
+
+.collected.collect_action
+  bg('~src/assets/gameicon/cards/game_icon_uncollection1@2x.png', 100%)
+    
+._bg
+  &:active
+    opacity .8
+  for k, v in  urls
+    &.{k}
+      bg(v+'@2x.png', sizes[k] || 100% 100%)
+
+  for k, v in  labels
+    &.{k}:after
+      bg(v+'@2x.png', 100%)
+  &:after
+    content ''
+    position absolute
+    left 0
+    top 0
+    width 60px
+    height 60px
+  
+  
+    
+    
+    
+  &._notbg:after
+    display none
+    

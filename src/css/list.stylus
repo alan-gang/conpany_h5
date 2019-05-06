@@ -1,0 +1,52 @@
+li.hlh_30
+  .item-content
+  .item-inner
+    min-height 30px
+
+  .item-media .icon
+  .item-media
+  .item-inner
+    line-height 28px
+    padding-top 0
+    padding-bottom 0
+
+li.hlh_28
+  .item-content
+  .item-inner
+    min-height 28px
+  .item-media .icon
+  .item-media
+  .item-inner
+    line-height 25px
+    padding-top 0
+    padding-bottom 0
+    
+li.hlh_25
+  .item-content
+  .item-inner
+    min-height 25px
+  .item-media .icon
+  .item-media
+  .item-inner
+    line-height 23px
+    padding-top 0
+    padding-bottom 0
+
+
+.list.inline-picker
+  display inline-block
+  vertical-align middle
+
+  .item-title
+    display none
+  .item-content
+    padding-left 5px
+  .item-after
+    width auto
+    max-width unset
+  .item-link .item-inner
+    // padding 0
+    padding-right 30px
+    &:before
+      transform rotateZ(90deg)
+  

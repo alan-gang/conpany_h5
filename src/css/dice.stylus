@@ -1,0 +1,47 @@
+/*overwrite f7-icons*/
+@import './gameicon.stylus'
+urls = {
+  dice_11: '~src/assets/play/dice/dice1_2',
+  dice_22: '~src/assets/play/dice/dice2_2',
+  dice_33: '~src/assets/play/dice/dice3_2',
+  dice_44: '~src/assets/play/dice/dice4_2',
+  dice_55: '~src/assets/play/dice/dice5_2',
+  dice_66: '~src/assets/play/dice/dice6_2',
+
+  dice_1: '~src/assets/play/dice/dice1_1',
+  dice_2: '~src/assets/play/dice/dice2_1',
+  dice_3: '~src/assets/play/dice/dice3_1',
+  dice_4: '~src/assets/play/dice/dice4_1',
+  dice_5: '~src/assets/play/dice/dice5_1',
+  dice_6: '~src/assets/play/dice/dice6_1',
+
+  dice_111: '~src/assets/play/dice/dice1_3',
+  dice_222: '~src/assets/play/dice/dice2_3',
+  dice_333: '~src/assets/play/dice/dice3_3',
+  dice_444: '~src/assets/play/dice/dice4_3',
+  dice_555: '~src/assets/play/dice/dice5_3',
+  dice_666: '~src/assets/play/dice/dice6_3',
+
+  dice_123: '~src/assets/play/dice/dice123',
+  dice_234: '~src/assets/play/dice/dice234',
+  dice_345: '~src/assets/play/dice/dice345',
+  dice_456: '~src/assets/play/dice/dice456',
+
+}
+sizes = {
+}
+
+a[class*=dice_]:active
+  opacity .6
+
+// normal
+a[class*=dice_]
+  span
+    display none
+  for k, v in  urls
+    &.{k}
+      bg(v+'@2x.png', sizes[k] || 100%)
+      // active
+      &.s
+        bg(v+'_click@2x.png', sizes[k] || 100%)
+    

@@ -1,0 +1,13 @@
+.with-underline-active
+  &.tab-link-active
+    font-size 24px
+    font-weight bold
+    border-bottom 5px solid var(--f7-tabbar-link-active-color,var(--f7-theme-color))
+    
+.underline_40
+  &.tab-link-active:after
+    content ''
+    bottom 0
+    width 40px
+    height 3px
+    background-color var(--f7-theme-color)

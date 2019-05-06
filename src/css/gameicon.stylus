@@ -1,0 +1,82 @@
+/*overwrite f7-icons*/
+urls = {
+    _txffc: '~src/assets/gameicon/game_icon_txffc',
+    _wb5fc: '~src/assets/gameicon/game_icon_rs5fc',
+    _cqssc: '~src/assets/gameicon/game_icon_cqssc',
+    _xjssc: '~src/assets/gameicon/game_icon_xjssc',
+    _xyft: '~src/assets/gameicon/game_icon_xyft',
+    _hlffc: '~src/assets/gameicon/game_icon_hlffc',
+    _bjpk10: '~src/assets/gameicon/game_icon_bjpk10',
+
+    _ssc: '~src/assets/gameicon/game_icon_cqssc',
+    _115: '~src/assets/gameicon/game_icon_ah11x5',
+    _k3: '~src/assets/gameicon/game_icon_ahk3',
+    _pk10: '~src/assets/gameicon/game_icon_bjpk10',
+    _ssl3d: '~src/assets/gameicon/game_icon_pl35',
+    _ssl: '~src/assets/gameicon/game_icon_pl35',
+    _hc6: '~src/assets/gameicon/game_icon_lhc',
+
+    _gid1: '~src/assets/gameicon/game_icon_hlsx',
+    _gid155: '~src/assets/gameicon/game_icon_cqhjc',
+    _gid29: '~src/assets/gameicon/game_icon_txffc',
+    _gid17: '~src/assets/gameicon/game_icon_hlffc',
+    _gid21: '~src/assets/gameicon/game_icon_xfsfc',
+    _gid150: '~src/assets/gameicon/game_icon_rs5fc',
+    _gid3: '~src/assets/gameicon/game_icon_xjssc',
+    _gid156: '~src/assets/gameicon/game_icon_cqhjc',
+    _gid4: '~src/assets/gameicon/game_icon_tjssc',
+    _gid35: '~src/assets/gameicon/game_icon_hljssc',
+    _gid152: '~src/assets/gameicon/game_icon_tx2fcj',
+    _gid153: '~src/assets/gameicon/game_icon_tx2fco',
+    _gid6: '~src/assets/gameicon/game_icon_11ydj',
+    _gid11: '~src/assets/gameicon/game_icon_dj120',
+    _gid7: '~src/assets/gameicon/game_icon_dlc',
+    _gid8: '~src/assets/gameicon/game_icon_gd11x5',
+    _gid22: '~src/assets/gameicon/game_icon_hb11x5',
+    _gid36: '~src/assets/gameicon/game_icon_js11x5',
+    _gid37: '~src/assets/gameicon/game_icon_sh11x5',
+    _gid38: '~src/assets/gameicon/game_icon_ah11x5',
+    _gid23: '~src/assets/gameicon/game_icon_ahk3',
+    _gid24: '~src/assets/gameicon/game_icon_jsk3',
+    _gid25: '~src/assets/gameicon/game_icon_jlk3',
+    _gid26: '~src/assets/gameicon/game_icon_bjk3',
+    _gid33: '~src/assets/gameicon/game_icon_xfk3',
+    _gid39: '~src/assets/gameicon/game_icon_xyft',
+    _gid13: '~src/assets/gameicon/game_icon_bjpk10',
+    _gid43: '~src/assets/gameicon/game_icon_xysc',
+    _gid151: '~src/assets/gameicon/game_icon_txpk10',
+    _gid9: '~src/assets/gameicon/game_icon_fc3d',
+    _gid32: '~src/assets/gameicon/game_icon_hl3d',
+    _gid5: '~src/assets/gameicon/game_icon_shssl',
+    _gid10: '~src/assets/gameicon/game_icon_pl35',
+    _gid28: '~src/assets/gameicon/game_icon_lhc',
+    _gid27: '~src/assets/gameicon/game_icon_bjkl8',
+    _gid45: '~src/assets/gameicon/game_icon_pcdd',
+
+    _gidzjh: '~src/assets/gameicon/game_icon_zjh',
+    _gidjqw: '~src/assets/gameicon/game_icon_jqw',
+    _gid3dby: '~src/assets/gameicon/game_icon_agby',
+    _gidbjl: '~src/assets/gameicon/game_icon_bjl',
+    _gidnba: '~src/assets/gameicon/game_icon_nba',
+    _gidlol: '~src/assets/gameicon/game_icon_lol',
+
+
+
+  }
+  sizes = {
+  }
+    
+._icon
+  .icon
+    color rgba(0,0,0,0)
+  for k, v in  urls
+    &.{k}
+      .icon
+        bg(v+'@2x.png', sizes[k] || (auto 80%))
+
+._icon.icon
+  color rgba(0,0,0,0)
+  for k, v in  urls
+    &.{k}
+      bg(v+'@2x.png', sizes[k] || (auto 80%))
+  

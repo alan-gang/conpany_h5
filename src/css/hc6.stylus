@@ -1,0 +1,22 @@
+/*overwrite f7-icons*/
+@import './gameicon.stylus'
+urls = {
+  red: '~src/assets/play/hc6/game_lhc_red',
+  blue: '~src/assets/play/hc6/game_lhc_blue',
+  green: '~src/assets/play/hc6/game_lhc_green',
+}
+sizes = {
+}
+
+// normal
+.row_hc6
+  .ball.red
+    color red
+  .ball.blue
+    color blue
+  .ball.green
+    color green
+  for k, v in  urls
+    .ball.{k}
+      bg(v+'@2x.png', sizes[k] || (auto 90%))
+    

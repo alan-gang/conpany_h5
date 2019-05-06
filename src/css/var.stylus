@@ -1,0 +1,14 @@
+// backgrounds
+bg(uri, size=100%)
+  background-image url(uri)
+  background-repeat no-repeat
+  background-position center
+  background-size size
+
+bgg(a=90deg, b, c)
+  background-image linear-gradient(a, b, c)
+
+
+
+
+  

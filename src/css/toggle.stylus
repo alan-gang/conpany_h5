@@ -1,0 +1,12 @@
+.toggle[t1=官]
+  // --f7-toggle-width 60px
+  --f7-toggle-height 30px
+  .toggle-icon
+    &:after
+      font-size 16px
+      color var(--f7-theme-color)
+      content '官'
+      text-align center
+      line-height 25px
+  input:checked + .toggle-icon:after
+    content '快'
