@@ -1,19 +1,19 @@
-let prefix = localStorage.getItem('xy_api') || '/xy49'
+let prefix = localStorage.getItem('xy_api') || '/dscagamesclient'
 localStorage.setItem('xy_api', prefix)
 let api = {
   // 登录
   __getcodeimg: '/login/login.do?method=getVerifyImage',
   __login: '/login/login.do?method=validate',
-  '/xy49/login/login.do?method=validate': {
+  '/dscagamesclient/login/login.do?method=validate': {
     0: {msg: '登录失败', fn: '__setUser', args: {login: false}},
     1: {msg: '登录成功'},
     fn: '__clearform'
   },
-  '/xy49/login/login.do?method=validate&': {
+  '/dscagamesclient/login/login.do?method=validate&': {
     0: {fn: '__setUser', args: {login: false}}
   },
   __tryLogin: '/login/login.do?method=tryLogin',
-  '/xy49/login/login.do?method=tryLogin': {
+  '/dscagamesclient/login/login.do?method=tryLogin': {
     0: {msg: '登录失败'},
     1: {msg: '登录成功'},
     fn: '__clearform',
@@ -21,7 +21,7 @@ let api = {
   getNewEnableLines: '/login/lineTest.do?method=getNewEnableLines',
   getCodeByTag: '/team/createAccount.do?method=getCodeByTag',
   autoRegist: '/team/createAccount.do?method=autoRegist',
-  '/xy49/team/createAccount.do?method=autoRegist': {
+  '/dscagamesclient/team/createAccount.do?method=autoRegist': {
     0: {msg: '注册失败'},
     1: {msg: '注册成功'},
     fn: '__clearform',
@@ -29,12 +29,12 @@ let api = {
   checkUserName: '/login/forgetPwd.do?method=checkUserName',
   getEmail: '/login/forgetPwd.do?method=getEmail',
   sendMail: '/login/forgetPwd.do?method=sendMail',
-  '/xy49/login/forgetPwd.do?method=sendMail': {
+  '/dscagamesclient/login/forgetPwd.do?method=sendMail': {
     fn: '__clearform'
   },
   checkMailVerifyCode: '/login/forgetPwd.do?method=checkMailVerifyCode',
   resetPwd: '/login/forgetPwd.do?method=resetPwd',
-  '/xy49/login/forgetPwd.do?method=resetPwd': {
+  '/dscagamesclient/login/forgetPwd.do?method=resetPwd': {
     1: {msg: '密码重置成功'}
   },
   getMobile: '/login/forgetPwd.do?method=getMobile',
@@ -57,14 +57,14 @@ let api = {
   // 活动
   getAllActivityList: '/activity.do?method=getAllActivityList',
   getAllEnablePrize: '/activity.do?method=getAllEnablePrize',
-  '/xy49/activity.do?method=getAllEnablePrize': {
+  '/dscagamesclient/activity.do?method=getAllEnablePrize': {
     '-1': {fn: [{fn: '__showTab', args: '#activity'}, {fn: '__setGlobal', args: {afterLoginAction: {fn: '__showTab', args: '#gift'}}}]}
   },
   myGetPrize: '/activity.do?method=myGetPrize',
   getCheckInReward: '/activity.do?method=getCheckInReward',
   doCheckIn: '/activity.do?method=doCheckIn',
   queryMygoods: '/ext/bg.do?method=queryMygoods',
-  '/xy49/ext/bg.do?method=queryMygoods': {
+  '/dscagamesclient/ext/bg.do?method=queryMygoods': {
     '-1': {fn: [{fn: '__showTab', args: '#activity'}, {fn: '__setGlobal', args: {afterLoginAction: {fn: '__showTab', args: '#coupon'}}}]}
   },
   getLotteryGoodPrize: '/ext/bg.do?method=getLotteryGoodPrize',
@@ -78,12 +78,12 @@ let api = {
   traceIssueList: '/issue.do?method=traceIssueList',
   myNewPoint: '/userpoint.do?method=myNewPoint',
   orderList: '/report/buyReport.do?method=list',
-  '/xy49/report/buyReport.do?method=list': {
+  '/dscagamesclient/report/buyReport.do?method=list': {
     '-1': {fn: [{fn: '__clearPage'}, {fn: '__setGlobal', args: {afterLoginAction: {fn: '__setTab_2'}}}]}
   },
   OrderDetail: '/report/buyReport.do?method=detail&entireCode=1',
   cancelOrder: '/booking.do?method=cancel',
-  '/xy49/booking.do?method=cancel': {
+  '/dscagamesclient/booking.do?method=cancel': {
     1: {
       msg: '撤单成功'
     }
@@ -92,7 +92,7 @@ let api = {
   followDetail: '/report/taskBuy.do?method=detail',
   followCancel: '/booking.do?method=cancelTask',
   booking: '/booking.do?method=add',
-  '/xy49/booking.do?method=add': {
+  '/dscagamesclient/booking.do?method=add': {
     loading: 10000,
     loadingText: '投注中...',
     1: {
@@ -101,7 +101,7 @@ let api = {
     }
   },
   kqbooking: '/game/fastBet.do?method=doBet',
-  '/xy49/game/fastBet.do?method=doBet': {
+  '/dscagamesclient/game/fastBet.do?method=doBet': {
     loading: 10000,
     loadingText: '投注中...',
     1: {

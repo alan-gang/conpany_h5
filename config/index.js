@@ -30,6 +30,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+        '/dscagamesclient': {
+            target: 'http://192.168.169.49:9901/',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/dscagamesclient': ''
+            }
+        },
         '/xy49': {
             target: 'http://192.168.169.49:9901/',
             changeOrigin: true,

@@ -32,7 +32,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
 
     f7-swiper.b(:params="{slidesPerView: 4, spaceBetween: 15}")
       f7-swiper-slide.ba.t_c(v-for=" (h, i) in hots " :key=" i ")
-        f7-link._icon(:class=" '_gid' + h.id " icon-f7=" home " icon-size="60px" @click=" __go('/game/play/', {props: h}) ") 
+        f7-link._icon(:class=" '_gid' + h.id " icon-f7=" home " icon-size="72px" @click=" __go('/game/play/', {props: h}) ") 
         .c_333 {{ h.n }}
 
   .mb_5.pt_5.pb_5.bg-color-white

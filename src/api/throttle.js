@@ -22,7 +22,7 @@ let THROTTLE = {
 }
 axios.throttle_get = (api, args) => {
   if (THROTTLE[api]) {
-    if (args.$anyway) args.$anyway()
+    if (args && args.$anyway) args.$anyway()
     return THROTTLE.xhr
   } else {
     THROTTLE[api] = true
