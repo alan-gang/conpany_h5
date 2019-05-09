@@ -9,7 +9,7 @@ import axios from 'axios'
 import './api/config'
 
 // import Framework7 from 'framework7/framework7.esm.bundle'
-import 'framework7/css/framework7.bundle.min.css'
+// import 'framework7/css/framework7.bundle.min.css'
 // import Framework7Vue from 'framework7-vue'
 // Framework7.use(Framework7Vue)
 

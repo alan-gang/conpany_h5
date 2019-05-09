@@ -130,5 +130,6 @@ export default {
 </script>
 
 <style lang="stylus">
+@import '~framework7/css/framework7.bundle.min.css'
 @import 'css/common.stylus'
 </style>
