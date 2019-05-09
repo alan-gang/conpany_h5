@@ -8,8 +8,8 @@
         tr
           td.label-cell.t_r.wp_15 期号
           td.label-cell.t_c.wp_50 开奖号码
-          td.label-cell.t_c.wp_35
-            pre.inlb.mg_0(v-if=" ccs " ) 
+          td.label-cell.t_c.wp_35(v-if=" ccs " ) 
+            pre.inlb.mg_0
               span(v-for=" t in  ccs.title ") {{ t }} 
 
   f7-page.bg-color-white(infinite :infinite-distance="50" :infinite-preloader="showPreloader" @infinite="loadMore" ptr :ptr-mousewheel="true" @ptr:refresh="refresh")
@@ -20,13 +20,11 @@
             td.label-cell.t_r.wp_15 {{ r.issue.slice(-6) }}
             td.label-cell.t_c.wp_50
               lucknumbers(:luckn=" r.code.split(',') ")
-            td.label-cell.t_c.wp_35
+            td.label-cell.t_c.wp_35(v-if=" ccs " ) 
               pre.mg_0.cac.inlb(v-if=" codeStyle && row_ccs(r) ")
-                | &nbsp;
                 span(v-if=" row_ccs(r) && !row_ccs(r).value.join ") row_ccs(r).value
 
-                span(v-if=" row_ccs(r) && row_ccs(r).value.join " v-for=" (v, i) in  row_ccs(r).value" v-bind:class=" colorOfV(v) ") {{ ccs.title && v.length < ccs.title[i].length ? v.padStart(ccs.title[i].length, ' ') : v }}
-
+                span(v-if=" row_ccs(r) && row_ccs(r).value.join " v-for=" (v, i) in  row_ccs(r).value" v-bind:class=" colorOfV(v) ") {{ v }} 
 
 
 

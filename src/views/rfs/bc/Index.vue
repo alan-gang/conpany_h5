@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.rf_bc(:page-content="false")
-  f7-toolbar(tabbar navbar top)
+  f7-toolbar(tabbar top)
     .a
       f7-link.wp_80(back)
         f7-icon(color="deeporange" f7="chevron_left")
@@ -11,9 +11,9 @@ f7-page.rf_bc(:page-content="false")
 
   f7-tabs(animated swipeable)
     f7-tab#rf_bc_1(tab-active @tab:show=" tabShow ")
-      B
+      B(:g_="g")
     f7-tab#rf_bc_2(@tab:show=" tabShow ")
-      C
+      C(:g_="g")
         
 </template>
 
@@ -28,11 +28,12 @@ export default {
     C,
   },
   name: 'rf_bc',
-  props: [],
+  props: ['g', 'tabid'],
   data () {
     return {}
   },
-  created () {
+  mounted () {
+    if (this.tabid) this.__setCall({fn: '__showTab', args: this.tabid})
   },
   methods: {
     tabShow (evt) {

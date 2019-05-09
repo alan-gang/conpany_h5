@@ -243,7 +243,7 @@ export default {
       return [
         v.c || {
           // width
-          'w_100 r_5': v.n.length >= 4,
+          'w_90 r_5': v.n.length >= 4,
           'rp_50 w_40': v.n.length < 4,
         },
         {

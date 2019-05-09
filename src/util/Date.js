@@ -34,6 +34,9 @@ window.Date.prototype._toMonthString = function () {
 window.Date.prototype._toDayString = function () {
   return this.getFullYear() + '-' + (this.getMonth() + 1)._padStart(2, 0) + '-' + this.getDate()._padStart(2, 0)
 }
+window.String.prototype._toAllString = function () {
+  return ''
+}
 window.Date.prototype._toAllString = function () {
   return this.getFullYear() + (this.getMonth() + 1)._padStart(2, 0) + this.getDate()._padStart(2, 0) + this.getHours()._padStart(2, 0) + this.getMinutes()._padStart(2, 0) + this.getSeconds()._padStart(2, 0)
 }

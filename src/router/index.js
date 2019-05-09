@@ -43,6 +43,8 @@ import license from '@/views/license'
 
 // 报表
 import bc from '@/views/rfs/bc'
+import bd_ from '@/views/rfs/bc/bd'
+import cd from '@/views/rfs/bc/cd'
 
 let async = url => {
   return (routeTo, routeFrom, resolve, reject) => {
@@ -232,5 +234,16 @@ export default [
   {
     path: '/rfs/bc/',
     component: bc,
+    master: true,
+    detailRoutes: [
+      {
+        path: '/rfs/bc/bd/:id/',
+        component: bd_,
+      },
+      {
+        path: '/rfs/bc/cd/:id/',
+        component: cd,
+      },
+    ]
   },
 ]

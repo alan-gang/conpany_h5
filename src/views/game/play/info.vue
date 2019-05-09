@@ -4,7 +4,7 @@
   .hlh_35.ft_16.pl_15.pr_15.bg-color-white
     span.text-color-gray
       span 第
-      span {{ luck.issue }}
+      span {{ luck.issue.slice(-6) }}
       span 期
     lucknumbers(:luckn=" luckn " :class="t")
     //- span
@@ -13,14 +13,14 @@
   .hlh_25.ft_16.pl_15.pr_15.bg-color-white
     span.text-color-gray
       span 距
-      span {{ issue }}
+      span {{ issue.slice(-6) }}
       span 期截止 
     span.text-color-deeporange {{ timming._toHMS() }}
 
-  .hlh_30.pl_15.pr_15.ft_12.bgc_pc
-    span.mr_10(v-for=" (v, i) in tabs " :key="i" @click=" ti = (ti === i ? -1 : i) ")
+  .hlh_30.pl_15.pr_15.ft_12.bgc_pc.c_6
+    span.mr_10(v-for=" (v, i) in tabs " :key="i" @click=" ti = (ti === i ? -1 : i) " :class=" { 'text-color-deeporange': i === ti } ")
       span {{ v }}
-      f7-icon(:class=" {rz_90: i !== ti, 'rz_-90': i === ti} " f7="play_fill" size="10px" style="width: 16px")
+      f7-icon(:class=" {rz_90: i !== ti, 'rz_-90 color-deeporange': i === ti} " f7="play_fill" size="12px" style="position: relative; top: -2px; left: 2px;")
 
   .ft_12(v-show=" ti >= 0 ")
     .bg-color-white

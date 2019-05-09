@@ -50,7 +50,7 @@ for x in  -30 -20 -10 0 1 2 5 10 15 20 25 30 40 50
     
 
 // height line-height
-for x in  1 2 5 10 15 20 25 28 30 35 40 45 50 55 60 65 70 80 90 100 120 140 150 160 180 200 240 300 320 350 330 360
+for x in  0 1 2 5 10 15 20 25 28 30 35 40 45 50 55 60 65 70 80 90 100 110 105 108 120 140 150 160 180 200 240 300 320 350 330 360
   .h_{x}
     height x * 1px
   .lh_{x}
@@ -71,7 +71,7 @@ colors = {
    s: green,
    e: red,
    g: gray,
-   p: blue,
+   p: #ff9500,
   '0': #000,
   '3': #333,
   '6': #666,
@@ -90,13 +90,15 @@ for k, v in  colors
     background-color v
 
 // width %
-for x in 10 15 20 25 30 35 40 45 50 60 70 80 90 100 33
+for x in 10 15 16 17 18 19 20 25 30 35 40 45 50 60 70 80 90 100 33
   .wp_{x}
     width x + '%'
   .hp_{x}
     height x + '%'
   .o_{x}
     opacity x * 0.01
+  .mvh_{x}
+    max-height x * 1vh
 
 
 // radius
@@ -152,6 +154,8 @@ for x in 1 2 9 10 99 101 500 501 999 1001 5001 8998 8999 9000 9500 9501 9502 999
   align-items center
 .mh_0
   max-height 0
+.w_b
+  word-break break-all
 .t_o
   text-overflow ellipsis
   overflow hidden
@@ -199,3 +203,13 @@ for x in 1 2 9 10 99 101 500 501 999 1001 5001 8998 8999 9000 9500 9501 9502 999
 
 .sheet-modal-top .toolbar-bottom
   position absolute
+
+.dialog-popup.popup
+  height auto
+  left 10px
+  right 10px
+  top 10vh
+  bottom 10vh
+  width auto
+  &.modal-out
+    transform translate3d(0,200%,0)

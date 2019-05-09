@@ -18,13 +18,13 @@
       span(v-if=" dp ") 单注奖金 {{ bonusRange.join('-') }}
       f7-icon(f7=" chevron_right " color="gray" size="16px")
 
-    span.p_a.pack.h_20.w_60.z_1(@click=" sa = !sa " :class=" { up: sa } ")
+    span.p_a.pack.h_20.w_50.z_1(@click=" sa = !sa " :class=" { up: sa } ")
   
-  .hlh_40.t_c.bgc_light_orange.text-color-gray(v-show="n_ && dp")
+  .hlh_40.t_c.bgc_light_orange.text-color-gray.mb_10(v-show="n_ && dp")
     span 最高可中奖
-    span.text-color-deeporange  {{ wnm_ }} 
+    span.text-color-deeporange  {{ wnm_._f3() }} 
     span 元，最高可赢利
-    span.text-color-deeporange  {{ wnp_ }} 
+    span.text-color-deeporange  {{ wnp_._f3() }} 
     span 元
 
   .pl_15.pr_15.pb_15
@@ -119,7 +119,9 @@ export default {
   },
   methods: {
     __setSA (args) {
-      this.sa = args
+      setTimeout(() => {
+        this.sa = args
+      }, 0)
     },
     allin () {
       this.$f7.dialog.confirm('您确定要使用<span class="text-color-deeporange">所有余额</span>来购买此注单？', '', () => {
@@ -145,7 +147,7 @@ urls = {
 .game_bookbar.sa ~ .page-content
   padding-bottom 135px
 .game_bookbar.sa.wn ~ .page-content
-  padding-bottom 175px
+  padding-bottom 185px
 
   
 .game_bookbar
@@ -157,7 +159,7 @@ urls = {
   &.sa
     height 135px
   &.sa.wn
-    height 175px
+    height 185px
 
 .game_bookbar
   .hp_100
@@ -181,6 +183,8 @@ urls = {
     background-position top center
     &.up
       bg(urls.packup + '@2x.png')
+      background-position top center
+      
     &:active
       opacity .6
     

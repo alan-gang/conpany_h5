@@ -7,7 +7,7 @@ export default {
   props: [],
   data () {
     return {
-      stet: [new Date()._setH(0)._setM(0)._setS(0), new Date()._setH(23)._setM(59)._setS(59)]
+      stet: [new Date()._setHMS(), new Date()._setHMS('23:59:59')]
     }
   },
   computed: {

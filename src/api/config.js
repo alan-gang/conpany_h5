@@ -30,7 +30,6 @@ axios.interceptors.request.use((config) => {
 
 axios.interceptors.response.use((response) => {
   window.lstt = (new Date(response.headers.date)).getTime()
-
   let spin = (api[response.config.url] || {}).spin
   if (spin) {
     spin.close()
@@ -107,8 +106,9 @@ axios.interceptors.response.use((response) => {
   // Do something with response error
   // if (spin) spin.remove(() => {})
   // timeout
-  // if (error.code === 'ECONNABORTED ') {
-  //   Promise.resolve(error)
-  // }
+  console.log(error, '??', error.code)
+  if (error.code === 'ECONNABORTED ') {
+    return Promise.resolve(error)
+  }
   return Promise.reject(error)
 })

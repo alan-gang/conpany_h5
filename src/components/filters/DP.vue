@@ -41,26 +41,29 @@ export default {
   },
   computed: {
     st () {
-      return this.cache.stet[0] ? this.cache.stet[0].__toDayString() : ''
+      return this.cache.filters.stet[0] ? this.cache.filters.stet[0].__toDayString() : ''
     },
     et () {
-      return this.cache.stet[1] ? this.cache.stet[1].__toDayString() : ''
+      return this.cache.filters.stet[1] ? this.cache.filters.stet[1].__toDayString() : ''
     },
   },
   created () {
   },
   methods: {
     changeStet (d) {
-      this.change('st', d)
-      this.change('et', d)
+      this.change('st', [d._setHMS()])
+      this.change('et', [d._setHMS('23:59:59')])
       this.close()
     },
     change (t, v) {
-      if (v && v[0]) this.cache.stet[t === 'st' ? 0 : 1] = v[0]
-      this.$emit(t, v)
+      if (v && v[0]) {
+        v[0] = t === 'st' ? v[0]._setHMS() : v[0]._setHMS('23:59:59')
+        this.cache.filters.stet[t === 'st' ? 0 : 1] = v[0]
+      }
+      this.$emit(t, v[0])
     },
     reset () {
-      this.cache.stet = [new Date(), new Date()]
+      this.cache.filters.stet = [new Date()._setHMS(), new Date()._setHMS('23:59:59')]
       this.$refs['st'].f7Calendar.inputEl.value = ''
       this.$refs['et'].f7Calendar.inputEl.value = ''
     },

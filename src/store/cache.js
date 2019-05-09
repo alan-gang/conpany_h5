@@ -14,9 +14,12 @@ export default {
     night: false,
 
     // filters
-    stet: [new Date(), new Date()],
-    gid: '',
-    osid: '',
+    filters: {
+      stet: [new Date()._setHMS(), new Date()._setHMS('23:59:59')],
+      gid: '',
+      osid: '',
+      csid: '',
+    }
   },
   actions: {
     __setCache (cache = {}) {

@@ -248,13 +248,13 @@ export default {
    // '定单双',
   '2033:1' () {
     return [
-      getCommonRow({n: '定单双', struct: '', vs: [{s: false, n: '0单5双', v: '1'}, {s: false, n: '5单0双', v: '2'}, {s: false, n: '1单4双', v: '3'}, {s: false, n: '4单1双', v: '4'}, {s: false, n: '2单3双', v: '5'}, {s: false, n: '3单2双', v: '6'}]})
+      getCommonRow({n: '定单双', struct: '', btns: [], vs: [{s: false, n: '0单5双', v: '1'}, {s: false, n: '5单0双', v: '2'}, {s: false, n: '1单4双', v: '3'}, {s: false, n: '4单1双', v: '4'}, {s: false, n: '2单3双', v: '5'}, {s: false, n: '3单2双', v: '6'}]})
     ]
   },
    // '猜中位',
   '2034:1' () {
     return [
-      getCommonRow({n: '猜中位', min: 3, max: 9, struct: ''})
+      getCommonRow({n: '猜中位', min: 3, max: 9, struct: '', btns: []})
     ]
   },
    // '龙虎',

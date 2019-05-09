@@ -7,10 +7,10 @@
       thead
         tr
           td.label-cell.t_c.wp_15 期号
-          td.label-cell.t_c.wp_35 玩法与内容
-          td.label-cell.t_c.wp_15 投注金额
-          td.label-cell.t_c.wp_15 中奖金额
-          td.label-cell.t_c.wp_10 操作/状态
+          td.label-cell.t_c.wp_30 玩法与内容
+          td.label-cell.t_c 投注金额
+          td.label-cell.t_c 中奖金额
+          td.label-cell.t_c 操作/状态
 
   f7-page.bg-color-white(infinite :infinite-distance="50" :infinite-preloader="showPreloader" @infinite="loadMore" ptr :ptr-mousewheel="true" @ptr:refresh="refresh")
     .data-table
@@ -18,12 +18,12 @@
         tbody
           tr(v-for=" (v, i) in data " :key="i")
             td.o_h.wp_15.label-cell.t_c {{ v.issue.slice(-6) }}
-            td.o_h.wp_35.label-cell.t_c {{ v.methodName + v.code }}
-            td.o_h.wp_15.label-cell.t_c.text-color-red {{ v.totalPrice }}
-            td.o_h.wp_15.label-cell.t_c.text-color-green {{ v.bonus }}
-            td.o_h.wp_10.label-cell
-              f7-button.hlh_20(fill v-if=" v.canCancel " @click=" cancelOrder(v.projectId, v) ") 撤单
-              f7-button.hlh_20(v-else :class=" config.stateClass[config.orderState[v.stat]] ") {{ config.orderState[v.stat] }}
+            td.o_h.wp_30.label-cell.t_c {{ v.methodName + v.code.slice(-6) }}
+            td.o_h.label-cell.t_c.text-color-red {{ v.totalPrice }}
+            td.o_h.label-cell.t_c.text-color-green {{ v.bonus }}
+            td.o_h.label-cell
+              f7-button.pd_0.hlh_20(fill v-if=" v.canCancel " @click=" cancelOrder(v.projectId, v) ") 撤单
+              f7-button.pd_0.hlh_20(v-else :class=" config.stateClass[config.orderState[v.stat]] ") {{ config.orderState[v.stat] }}
 
           tr.no_more
             td.wp_100.t_c.text-color-gray --没有更多了--
@@ -62,7 +62,7 @@ export default {
       this.list()
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
-      this.$.myget(api.orderList, Object.assign({
+      this.$.get(api.orderList, Object.assign({
         lotteryId: this.id,
         scope: 0,
       }, option)).then(({data: {recordList, totalSize}}) => {
@@ -91,7 +91,8 @@ export default {
   &>.page
     .page-content
       padding-top 30px
-      
+  table
+    table-layout fixed
   th, td
     padding 5px
     height 30px !important

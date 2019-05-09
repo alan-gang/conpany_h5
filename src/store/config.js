@@ -35,12 +35,36 @@ export default {
       '处理中': 'c_p',
       '待充值': 'c_p',
     },
+    stateColor: {
+      0: 'orange',
+      1: 'red',
+      2: 'blue',
+      3: 'green',
+    },
     orderState: {
       0: '未开奖',
       1: '已中奖',
       2: '未中奖',
       3: '已撤单',
     },
+    orderStateFilters: [
+      {id: '', n: '全部状态'},
+      {id: 0, n: '未开奖'},
+      {id: 1, n: '已中奖'},
+      {id: 2, n: '未中奖'},
+      {id: 3, n: '已撤单'},
+    ],
+    chaseState: {
+      0: '进行中',
+      1: '已取消',
+      2: '已完成',
+    },
+    chaseStateFilters: [
+      {id: '', n: '全部状态'},
+      {id: 0, n: '进行中'},
+      {id: 1, n: '已取消'},
+      {id: 2, n: '已完成'},
+    ],
     wallets: [
       {n: '主帐户', key: 'availableBalance', pid: 0},
       {n: '特殊帐户', key: 'specialBalance', pid: 1},

@@ -52,10 +52,10 @@ export default {
       return s[this.t][this.mid]() || []
     },
     N () {
-      return n[this.t]
+      return n[this.t] || {}
     },
     WN () {
-      return wn[this.t]
+      return wn[this.t] || {}
     },
     // 号码集的长度集
     vcl () {

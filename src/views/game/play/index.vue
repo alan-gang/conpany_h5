@@ -16,10 +16,10 @@
         .menu-item-content
           i.icon.f7-icons.text-color-deeporange bars
         .menu-dropdown.menu-dropdown-right
-          .menu-dropdown-content
-            a.j_c.menu-dropdown-link.menu-close(href='#')
+          .menu-dropdown-content(style="box-shadow: 0 3px 3px 0px #dedede")
+            a.j_c.menu-dropdown-link.menu-close(@click=" __go('/rfs/bc/', {props: {g: {id: id, n: n}}}) ")
               span 投注记录
-            a.j_c.menu-dropdown-link.menu-close(href='#', style='margin-left: 0px;')
+            a.j_c.menu-dropdown-link.menu-close(@click=" __go('/rfs/bc/', {props: {g: {id: id, n: n}, tabid: '#rf_bc_2'}}) " style='margin-left: 0px;')
               span 追号记录
   
   f7-toolbar(top tabbar scrollable v-show=" local.sr && rps[0]  " style="transform: none")
@@ -73,13 +73,13 @@ export default {
       default: () => cache.state.play.t
     },
     dmid_: {
-      default: () => cache.state.play.dmid_
+      // default: () => cache.state.play.dmid
     },
     up: {
       default: () => 2
     },
     kq: {
-      default: () => cache.state.play.kq
+      // default: () => cache.state.play.kq
     },
   },
   provide: function () {
@@ -195,7 +195,7 @@ export default {
       this.sap = true
     },
     init () {
-      this.mid = this.dmid || this.cps[0].id
+      this.mid = this.dmid || (this.rps[0] || {}).id || this.cps[0].id
       this.myNewPoint()
       if (this.id) this.__setCache({play: {id: this.id, n: this.n, t: this.t, kq: this.kq}})
     },

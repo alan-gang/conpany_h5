@@ -81,12 +81,16 @@ let api = {
   '/xy49/report/buyReport.do?method=list': {
     '-1': {fn: [{fn: '__clearPage'}, {fn: '__setGlobal', args: {afterLoginAction: {fn: '__setTab_2'}}}]}
   },
+  OrderDetail: '/report/buyReport.do?method=detail&entireCode=1',
   cancelOrder: '/booking.do?method=cancel',
   '/xy49/booking.do?method=cancel': {
     1: {
       msg: '撤单成功'
     }
   },
+  followList: '/report/taskBuy.do?method=list',
+  followDetail: '/report/taskBuy.do?method=detail',
+  followCancel: '/booking.do?method=cancelTask',
   booking: '/booking.do?method=add',
   '/xy49/booking.do?method=add': {
     loading: 10000,
@@ -110,6 +114,7 @@ let api = {
 
   // 我的
   getUserIdentity: 'home/userInfo.do?method=getUserIdentity',
+
 }
 
 Object.keys(api).forEach((key) => {

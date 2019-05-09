@@ -1,5 +1,6 @@
 import axios from 'axios'
 import API from './index'
+let timeout = 1500
 let THROTTLE = {
   xhr: {
     defaultArgs: {
@@ -21,12 +22,13 @@ let THROTTLE = {
 }
 axios.throttle_get = (api, args) => {
   if (THROTTLE[api]) {
+    if (args.$anyway) args.$anyway()
     return THROTTLE.xhr
   } else {
     THROTTLE[api] = true
     setTimeout(() => {
       THROTTLE[api] = false
-    }, 1000)
+    }, timeout)
     return axios.myget(api, args)
   }
 }
@@ -37,7 +39,7 @@ axios.throttle_post = (api, args) => {
     THROTTLE[api] = true
     setTimeout(() => {
       THROTTLE[api] = false
-    }, 1000)
+    }, timeout)
     return axios.mypost(api, args)
   }
 }

@@ -56,7 +56,7 @@ f7-page.car
         span {{ v.mido.gn + '_' + v.mido.n }} 
         span.text-color-orange {{ v.count }} 
         span 注 
-        span.text-color-orange {{ v.money }} 
+        span.text-color-orange {{ v.money._f3() }} 
         span 元
       div
         .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
@@ -144,7 +144,7 @@ export default {
         isJoinPool: 0,
         trace: '',
         items: JSON.stringify(this.__$car.map(x => {
-          return Object.assign({}, x, {mido: undefined, dp: undefined, up_: undefined, id: undefined})
+          return Object.assign({}, x, {mido: undefined, dp: undefined, cpoints: undefined, bonuses: undefined, up_: undefined, id: undefined})
         })),
       }
     },

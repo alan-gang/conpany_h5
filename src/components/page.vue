@@ -27,6 +27,8 @@ export default {
       this.currentPage = 1
     },
     loadMore (evt, done, p) {
+      // console.log(done ? 'refresh' : 'loadMore')
+      if (!this.showPreloader && !done) return false
       p = done ? this.fpage : this.currentPage + 1
       typeof this[this.fn] === 'function' && this[this.fn](
         {
@@ -40,6 +42,7 @@ export default {
         },
         (data = []) => {
           if (data.length < this.pageSize) this.showPreloader = false
+          else this.showPreloader = true
           this.currentPage = p
         })
     }

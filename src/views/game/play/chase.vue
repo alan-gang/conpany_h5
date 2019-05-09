@@ -229,7 +229,7 @@ export default {
         isJoinPool: 0,
         trace: JSON.stringify(this._getTrace()),
         items: JSON.stringify(this.local.$car.map(x => {
-          return Object.assign({}, x, {mido: undefined, dp: undefined, up_: undefined, id: undefined})
+          return Object.assign({}, x, {mido: undefined, dp: undefined, cpoints: undefined, bonuses: undefined, up_: undefined, id: undefined})
         })),
       }
     },

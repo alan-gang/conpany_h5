@@ -2,10 +2,8 @@
 .state_pick.o_h
   .pd_10
     f7-row.j_s(no-gap)
-      f7-col(width="33")
-        f7-button.ft_12.pd_0(:class=" {'bg-color-deeporange text-color-white': cache.osid === '', 'bgc_pc text-color-black': cache.osid !== ''  } " @click=" change({n: '全部状态', id: ''}) ") 全部状态
-      f7-col.pd_1(width="33" v-for=" (v, k) in config.orderState " :key="k")
-        f7-button.ft_12.pd_0(:class=" {'bg-color-deeporange text-color-white': cache.osid === k, 'bgc_pc text-color-black': cache.osid !== k  } " @click=" change({n: v, id: k}) ") {{ v }}
+      f7-col.pd_1(width="33" v-for=" (v, i) in config.orderStateFilters " :key="i")
+        f7-button.ft_12.pd_0(:class=" {'bg-color-deeporange text-color-white': cache.filters.osid === v.id, 'bgc_pc text-color-black': cache.filters.osid !== v.id  } " @click=" change(v) ") {{ v.n }}
 
 
 
@@ -27,12 +25,14 @@ export default {
     }
   },
   computed: {
+
   },
   created () {
+    // this.$emit('s', this.config.orderStateFilters.find(x => x.id === this.cache.filters.osid))
   },
   methods: {
     change (v) {
-      this.__setCache({osid: v.id})
+      this.__setCache(Object.assign(this.cache.filters, {osid: v.id}))
       this.$emit('s', v)
       this.close()
     },
