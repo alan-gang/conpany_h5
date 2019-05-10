@@ -12,7 +12,7 @@ f7-page.wallet(:page-content="false")
           f7-link._icon._load(icon-f7=" home " href="/me/load/") 充值
           f7-link._icon._withdraw(icon-f7=" home " href="/me/withdraw/") 提现
           f7-link._icon._transfer(icon-f7=" home " @click="") 一键转回
-          
+
   .page-content.ptr-content(ptr-mousewheel="true" @ptr:refresh=" refresh ")
     .ptr-preloader
       .preloader
@@ -23,7 +23,7 @@ f7-page.wallet(:page-content="false")
         .wp_60.flex(@click=" __setCall({fn: '__getMoreBalance', args: [v]}) ")
           f7-button(color="black") {{ v.n }}
           .flex
-            f7-button.t_r(color="black") 
+            f7-button.t_r(color="black")
               span {{ user[v.key] || '0.000' }}
             f7-icon(f7="refresh" color="gray" size="18")
 
@@ -85,5 +85,5 @@ export default {
   .flex:active
     .icon
       animation Spin .5s linear 1
-  
+
 </style>

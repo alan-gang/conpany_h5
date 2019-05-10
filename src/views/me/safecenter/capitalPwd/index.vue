@@ -1,6 +1,6 @@
 <template>
   <f7-page class="safecenter" :page-content="false">
-    <f7-navbar title="账户安全" back-link></f7-navbar>
+    <f7-navbar title="资金密码设置" back-link></f7-navbar>
     <div class="top">
       <f7-gauge type="circle" value-text="75" :value="0.75" label-text="分" border-bg-color="rgba(255,255,255,0.2)" border-color="#fff" value-text-color="#fff"></f7-gauge>
       <p>当前登录地址：上海市·中国</p>
@@ -12,28 +12,28 @@
             <i class="icon f7-icons"> home </i>
           </a>
           <label>登录密码</label>
-          <a href="/me/safecenter/loginPwd/" class="a">立即修改</a>
+          <a href="/me/load/" class="a">立即修改</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_2 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>登录问候语</label>
-          <a href="/me/safecenter/greetings/" class="a">未设置</a>
+          <a href="/me/load/" class="a">未设置</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_3 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>邮箱绑定</label>
-          <a href="/me/safecenter/emailBind/" class="a">未绑定</a>
+          <a href="/me/load/" class="a">未绑定</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_4 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>安全验证绑定</label>
-          <a href="/me/safecenter/safeVerifyBind/" class="a">未绑定</a>
+          <a href="/me/load/" class="a">未绑定</a>
         </div>
       </div>
       <div class="fr block">
@@ -42,28 +42,28 @@
             <i class="icon f7-icons"> home </i>
           </a>
           <label>资金密码</label>
-          <a href="/me/safecenter/capitalPwd/" class="a">立即修改</a>
+          <a href="/me/load/" class="a">立即修改</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_6 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>安全回答</label>
-          <a href="/me/safecenter/safeanswer/" class="a">未设置</a>
+          <a href="/me/load/" class="a">未设置</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_7 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>设置昵称</label>
-          <a href="/me/safecenter/nickname/" class="a a-1">未绑定</a>
+          <a href="/me/load/" class="a a-1">未绑定</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_8 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>安全验证</label>
-          <a href="/me/safecenter/safeVerify/" class="a">暂未设置</a>
+          <a href="/me/load/" class="a">暂未设置</a>
         </div>
       </div>
     </form>

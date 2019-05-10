@@ -18,7 +18,7 @@
           f7-button(color="gray" outline round href="/settings/")
             f7-icon._icon._settings(f7="home" size="19")
             span 设置
-    
+
     .pl_10.pr_10.bgc_f.c_f
       f7-list.mg_0.no_border._bg._me_wallet.ft_14(no-hairlines)
 
@@ -63,7 +63,7 @@
       ul.bgc_o
         template(v-if=" mycenter ")
 
-          f7-list-item.ft_14.bgc_f.mg_10(title="帐户安全" link="/me/safecenter/")
+          f7-list-item.ft_14.bgc_f.mg_10(title="账户安全" link="/me/safecenter/")
             f7-icon.mr_5._icon._account_safe(slot="media" f7=" home ")
 
           f7-list-item.ft_14.bgc_f.mg_10(title="银行卡" link="/me/bank/")
@@ -126,10 +126,10 @@ export default {
   --f7-list-bg-color rbga(0,0,0,0)
   --f7-list-item-after-text-color #fff
   --f7-list-chevron-icon-color #fff
-    
+
   .list .item-media+.item-inner
     margin-left 0
-      
-      
+
+
 
 </style>
