@@ -6,15 +6,15 @@
     </a>-->
     <form>
       <div class="bgcolor">
-        <label for="password" class="password">当前密码</label>
+        <label for="password">当前密码</label>
         <input type="password" placeholder="请输入当前密码" id="password" maxlength="16" />
       </div>
       <div class="bgcolor">
-        <label for="newPwd" class="password">新密码</label>
+        <label for="newPwd">新密码</label>
         <input type="password" placeholder="请输入新密码" id="newPwd" maxlength="16" />
       </div>
       <div class="bgcolor">
-        <label for="confirmPwd" class="password">确认密码</label>
+        <label for="confirmPwd">确认密码</label>
         <input type="password" placeholder="请重复新密码" id="confirmPwd" maxlength="16" />
       </div>
       <a href="javascript:;">确 认</a>
