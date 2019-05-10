@@ -1,71 +1,20 @@
 <template>
-  <f7-page class="safecenter" :page-content="false">
+  <f7-page class="loginPwd" :page-content="false">
     <f7-navbar title="安全验证绑定" back-link></f7-navbar>
-    <div class="top">
-      <f7-gauge type="circle" value-text="75" :value="0.75" label-text="分" border-bg-color="rgba(255,255,255,0.2)" border-color="#fff" value-text-color="#fff"></f7-gauge>
-      <p>当前登录地址：上海市·中国</p>
-    </div>
-    <form class="clearfix">
-      <div class="fl block">
-        <div>
-          <a href="javascript:;" class="_icon _safeicon_1 link color-black">
-            <i class="icon f7-icons"> home </i>
-          </a>
-          <label>登录密码</label>
-          <a href="/me/load/" class="a">立即修改</a>
-        </div>
-        <div>
-          <a href="javascript:;" class="_icon _safeicon_2 link color-black">
-            <i class="icon f7-icons"> home </i>
-          </a>
-          <label>登录问候语</label>
-          <a href="/me/load/" class="a">未设置</a>
-        </div>
-        <div>
-          <a href="javascript:;" class="_icon _safeicon_3 link color-black">
-            <i class="icon f7-icons"> home </i>
-          </a>
-          <label>邮箱绑定</label>
-          <a href="/me/load/" class="a">未绑定</a>
-        </div>
-        <div>
-          <a href="javascript:;" class="_icon _safeicon_4 link color-black">
-            <i class="icon f7-icons"> home </i>
-          </a>
-          <label>安全验证绑定</label>
-          <a href="/me/load/" class="a">未绑定</a>
-        </div>
+    <!--<a href="javascript:;" class="_icon _safeicon_3 link color-black">
+      <i class="icon f7-icons"> home </i>
+    </a>-->
+    <form>
+      <div class="bgcolor">
+        <label for="key">密钥</label>
+        <input type="text" placeholder="请输入密钥" id="key" />
+        <span>复制</span>
       </div>
-      <div class="fr block">
-        <div>
-          <a href="javascript:;" class="_icon _safeicon_5 link color-black">
-            <i class="icon f7-icons"> home </i>
-          </a>
-          <label>资金密码</label>
-          <a href="/me/load/" class="a">立即修改</a>
-        </div>
-        <div>
-          <a href="javascript:;" class="_icon _safeicon_6 link color-black">
-            <i class="icon f7-icons"> home </i>
-          </a>
-          <label>安全回答</label>
-          <a href="/me/load/" class="a">未设置</a>
-        </div>
-        <div>
-          <a href="javascript:;" class="_icon _safeicon_7 link color-black">
-            <i class="icon f7-icons"> home </i>
-          </a>
-          <label>设置昵称</label>
-          <a href="/me/load/" class="a a-1">未绑定</a>
-        </div>
-        <div>
-          <a href="javascript:;" class="_icon _safeicon_8 link color-black">
-            <i class="icon f7-icons"> home </i>
-          </a>
-          <label>安全验证</label>
-          <a href="/me/load/" class="a">暂未设置</a>
-        </div>
+      <div class="bgcolor">
+        <label for="code">验证码</label>
+        <input type="text" placeholder="请输入畅博安全验证码" id="code" maxlength="6" />
       </div>
+      <a href="javascript:;">确 认</a>
     </form>
   </f7-page>
 </template>
@@ -77,51 +26,47 @@
 <style lang="stylus">
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
-  .safecenter
-    .top
-      margin-top 0.8rem
-      height 6.5rem
-      background linear-gradient(to right, #ff8131, #ff5429);
-      color #fff
-      text-align center
-      .gauge
-        position relative
-        margin-top 0.5rem
-      .gauge-value-text
-        font-size 0.91rem
-        font-weight bold
-      .gauge-label-text
-        font-size 0.22rem
-      p
-        font-size 0.22rem
+  .loginPwd
     form
-      width 7.06rem
-      height 7.72rem
-      margin -1rem auto 0
-      background-color #fff
-      border-radius 0.1rem
-      .block
-        width 45%
-        padding-left 5%
-        div
-          margin-bottom 0.55rem
-          ._icon
-            position relative
-            top 0.1rem
-          label
-            font-size 0.27rem
-            color #333
-          .a
-            display inline-block
-            margin 0.1rem 0 0 0.63rem
-            font-size 0.22rem
-            color #b0b0b0
-            &.a-1
-              display inline-block
-              width 0.97rem
-              height 0.32rem
-              color #ff5429
-              background-color #ffeae5
-              border-radius 0.16rem
-              text-align center
+      margin-top 1rem
+      font-size 0.27rem
+      .bgcolor
+        position relative
+        height 0.92rem
+        line-height 0.92rem
+        margin-bottom 0.18rem
+        background-color #fff
+        label
+          display inline-block
+          color #666
+          width 1.6rem
+          padding-left 0.2rem
+        input
+          display inline-block
+          color #3d3d3d
+          &::-webkit-input-placeholder { color: #c5c5c5; }
+          &:-moz-placeholder { color: #c5c5c5; }
+          &::-moz-placeholder { color: #c5c5c5; }
+          &:-ms-input-placeholder { color: #c5c5c5; }
+        span
+          position absolute
+          top 0.18rem
+          right 0.33rem
+          width 1.1rem
+          height 0.55rem
+          line-height 0.55rem
+          color #fff
+          background-color #ff5429
+          border-radius 0.28rem
+          text-align center
+      a
+        display block
+        width 7.07rem
+        height 0.82rem
+        line-height 0.82rem
+        margin 1.38rem auto 0
+        color #fff
+        background linear-gradient(to right, #fe8f48, #ff5429)
+        border-radius 0.05rem
+        text-align center
 </style>
