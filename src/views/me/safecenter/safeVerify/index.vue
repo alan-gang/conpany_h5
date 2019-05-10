@@ -71,38 +71,7 @@
 </template>
 
 <script>
-  import config from '@/config'
-  import page from '@/components/page'
-  export default {
-    mixins: [config, page],
-    components: {
-    },
-    name: 'safecenter',
-    props: [],
-    data () {
-      return {}
-    },
-    computed: {
-      totalBalance () {
-        return this.config.wallets.reduce((p, x, i) => {
-          p += Number(this.user[x.key]) || 0
-          return p
-        }, 0)
-      }
-    },
-    created () {
-      this.init()
-    },
-    methods: {
-      init () {
-        this.__setCall({fn: '__getAllBalance'})
-      },
-      refresh (evt, done = evt.detail) {
-        this.init()
-        setTimeout(done, 1000)
-      }
-    }
-  }
+
 </script>
 
 <style lang="stylus">

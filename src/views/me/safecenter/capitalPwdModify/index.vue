@@ -32,8 +32,8 @@
   .loginPwd
     form
       margin-top 1rem
+      font-size 0.27rem
       .bgcolor
-        font-size 0.27rem
         height 0.92rem
         line-height 0.92rem
         margin-bottom 0.18rem
@@ -56,7 +56,6 @@
         height 0.82rem
         line-height 0.82rem
         margin 1.75rem auto 0
-        font-size 0.27rem
         color #fff
         background linear-gradient(to right, #fe8f48, #ff5429)
         border-radius 0.05rem
