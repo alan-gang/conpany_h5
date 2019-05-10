@@ -41,6 +41,14 @@ urls = {
     _sub_game_record: '~src/assets/me/profile_icon_bettingrecord',
     _sub_fund_record: '~src/assets/me/profile_icon_assetsrecord',
 
+    _safeicon_1: '~src/assets/me/safecenter/security_icon_pin',
+    _safeicon_2: '~src/assets/me/safecenter/security_icon_greeting',
+    _safeicon_3: '~src/assets/me/safecenter/security_icon_mail',
+    _safeicon_4: '~src/assets/me/safecenter/security_icon_authenticatos',
+    _safeicon_5: '~src/assets/me/safecenter/security_icon_deposit',
+    _safeicon_6: '~src/assets/me/safecenter/security_icon_qaq',
+    _safeicon_7: '~src/assets/me/safecenter/security_icon_nickname',
+    _safeicon_8: '~src/assets/me/safecenter/security_icon_verify',
 
   }
   sizes = {

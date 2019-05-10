@@ -33,6 +33,10 @@ import load from '@/views/me/load'
 import withdraw from '@/views/me/withdraw'
 import transfer from '@/views/me/transfer'
 import wallet from '@/views/me/wallet'
+import safecenter from '@/views/me/safecenter'
+import bank from '@/views/me/bank'
+import bonus from '@/views/me/bonus'
+import help from '@/views/me/help'
 
 // 设置
 import settings from '@/views/settings'
@@ -153,6 +157,30 @@ export default [
   {
     path: '/me/wallet/',
     component: wallet,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/',
+    component: safecenter,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/bank/',
+    component: bank,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/bonus/',
+    component: bonus,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/help/',
+    component: help,
     beforeEnter: checkAuth,
     rl: true
   },

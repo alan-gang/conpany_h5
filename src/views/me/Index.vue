@@ -63,16 +63,16 @@
       ul.bgc_o
         template(v-if=" mycenter ")
 
-          f7-list-item.ft_14.bgc_f.mg_10(title="帐户安全" link="#")
+          f7-list-item.ft_14.bgc_f.mg_10(title="帐户安全" link="/me/safecenter/")
             f7-icon.mr_5._icon._account_safe(slot="media" f7=" home ")
 
-          f7-list-item.ft_14.bgc_f.mg_10(title="银行卡" link="#")
+          f7-list-item.ft_14.bgc_f.mg_10(title="银行卡" link="/me/bank/")
             f7-icon.mr_5._icon.__bank_card(slot="media" f7=" home ")
 
-          f7-list-item.ft_14.bgc_f.mg_10(title="彩票奖金" link="#")
+          f7-list-item.ft_14.bgc_f.mg_10(title="彩票奖金" link="/me/bonus/")
             f7-icon.mr_5._icon._lottery_bonus(slot="media" f7=" home ")
 
-          f7-list-item.ft_14.bgc_f.mg_10(title="帮助中心" link="#")
+          f7-list-item.ft_14.bgc_f.mg_10(title="帮助中心" link="/me/help/")
             f7-icon.mr_5._icon._help_center(slot="media" f7=" home ")
 
         template(v-else)
