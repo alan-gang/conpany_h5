@@ -5,31 +5,31 @@
       <i class="icon f7-icons"> home </i>
     </a>
     <form>
-      <div class="bgcolor">
+      <div class="section">
         <label>资金密码验证</label>
         <a href="javascript:;" class="_icon _gou_gray link color-black">
           <i class="icon f7-icons"> home </i>
         </a>
       </div>
-      <div class="bgcolor">
+      <div class="section">
         <label>邮箱验证</label>
         <a href="javascript:;" class="_icon _gou link color-black">
           <i class="icon f7-icons"> home </i>
         </a>
       </div>
-      <div class="bgcolor cellphoneVerify">
+      <div class="section cellphoneVerify">
         <label>手机验证</label>
         <a href="javascript:;" class="_icon _gou link color-black hide">
           <i class="icon f7-icons"> home </i>
         </a>
       </div>
-      <div class="bgcolor">
+      <div class="section">
         <label>安全码验证</label>
         <a href="javascript:;" class="_icon _gou link color-black hide">
           <i class="icon f7-icons"> home </i>
         </a>
       </div>
-      <div class="bgcolor">
+      <div class="section">
         <label for="code">验证码</label>
         <input type="text" placeholder="请输入验证码" id="code" maxlength="6" />
         <span>获取验证码</span>
@@ -56,7 +56,7 @@
     form
       margin-top 1.9rem
       font-size 0.27rem
-      .bgcolor
+      .section
         position relative
         height 0.92rem
         line-height 0.92rem

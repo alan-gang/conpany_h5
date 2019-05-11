@@ -5,12 +5,12 @@
       <img src="" alt="二维码" />
     </div>
     <form>
-      <div class="bgcolor">
+      <div class="section">
         <label>密钥</label>
         <input type="text" readonly />
         <span>复制</span>
       </div>
-      <div class="bgcolor">
+      <div class="section">
         <label for="code">验证码</label>
         <input type="text" placeholder="请输入畅博安全验证码" id="code" maxlength="6" />
       </div>
@@ -33,7 +33,7 @@
     form
       margin-top 0.2rem
       font-size 0.27rem
-      .bgcolor
+      .section
         position relative
         height 0.92rem
         line-height 0.92rem

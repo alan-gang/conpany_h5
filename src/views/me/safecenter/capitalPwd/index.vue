@@ -5,11 +5,11 @@
       <i class="icon f7-icons"> home </i>
     </a>
     <form>
-      <div class="bgcolor">
+      <div class="section">
         <label for="newPwd">新密码</label>
         <input type="password" placeholder="请输入新密码" id="newPwd" maxlength="16" />
       </div>
-      <div class="bgcolor">
+      <div class="section">
         <label for="confirmPwd">确认密码</label>
         <input type="password" placeholder="请重复新密码" id="confirmPwd" maxlength="16" />
       </div>
@@ -35,7 +35,7 @@
     form
       margin-top 1.9rem
       font-size 0.27rem
-      .bgcolor
+      .section
         height 0.92rem
         line-height 0.92rem
         margin-bottom 0.18rem

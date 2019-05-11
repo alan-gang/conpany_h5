@@ -5,7 +5,7 @@
       <i class="icon f7-icons"> home </i>
     </a>
     <form>
-      <div class="bgcolor">
+      <div class="section">
         <label for="birthday">生日</label>
         <input type="text" placeholder="请输入生日" id="birthday" />
       </div>
@@ -31,7 +31,7 @@
     form
       margin-top 1.9rem
       font-size 0.27rem
-      .bgcolor
+      .section
         height 0.92rem
         line-height 0.92rem
         margin-bottom 0.18rem

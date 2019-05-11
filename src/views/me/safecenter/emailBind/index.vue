@@ -5,11 +5,11 @@
       <i class="icon f7-icons"> home </i>
     </a>
     <form>
-      <div class="bgcolor">
+      <div class="section">
         <label for="email">邮箱</label>
         <input type="text" placeholder="请输入邮箱地址" id="email" />
       </div>
-      <div class="bgcolor">
+      <div class="section">
         <label for="code">验证码</label>
         <input type="text" placeholder="请输入验证码" id="code" maxlength="6" />
         <span>获取验证码</span>
@@ -36,7 +36,7 @@
     form
       margin-top 1.9rem
       font-size 0.27rem
-      .bgcolor
+      .section
         position relative
         height 0.92rem
         line-height 0.92rem
