@@ -121,7 +121,7 @@
 
                 
 
-  f7-row(no-gap v-if=" row.btns ")
+  f7-row.mt_5(no-gap v-if=" row.btns ")
     f7-col.pr_2(v-for=" (v, i) in row.btns " :key="i")
       f7-button(color="gray" fill @click=" btnclick(v) ") {{ v }}
 

@@ -45,6 +45,8 @@ import license from '@/views/license'
 import bc from '@/views/rfs/bc'
 import bd_ from '@/views/rfs/bc/bd'
 import cd from '@/views/rfs/bc/cd'
+// 资金记录
+import cr from '@/views/rfs/cr'
 
 let async = url => {
   return (routeTo, routeFrom, resolve, reject) => {
@@ -246,4 +248,8 @@ export default [
       },
     ]
   },
+  {
+    path: '/rfs/cr/',
+    component: cr,
+  }
 ]

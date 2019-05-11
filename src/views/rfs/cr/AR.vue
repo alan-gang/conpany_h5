@@ -1,30 +1,24 @@
 <template lang="pug">
 
-f7-page.rf_bc_1(:page-content="false")
+f7-page.rf_cr_1(:page-content="false")
 
   f7-toolbar.z_9502.ft_14(top)
 
-    f7-link(color="gray" @click=" sd === 1 ? __setCall({fn: '__closeSD'}) : sd = 1 ") 
-      span {{ g.n }}
-      f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 1 } ")
     
-    .v_line.hp_50.w_1.bg-color-gray.o_30
-
-    f7-link(color="gray" @click=" sd === 2 ? __setCall({fn: '__closeSD'}) : sd = 2 ") 
+    f7-link.wp_45.t_c(color="gray" @click=" sd === 2 ? __setCall({fn: '__closeSD'}) : sd = 2 ") 
       span {{ __stetn.join(' 至 ') }}
 
       f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 2 } ")
 
     .v_line.hp_50.w_1.bg-color-gray.o_30
 
-    f7-link(color="gray" @click=" sd === 3 ? __setCall({fn: '__closeSD'}) : sd = 3 ") 
+    f7-link.wp_45.t_c(color="gray" @click=" sd === 3 ? __setCall({fn: '__closeSD'}) : sd = 3 ") 
       span {{ s.n }}
       f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 3 } ") 
 
   filters(v-if=" sd " @sd=" sd = $event ")
-    GP(v-if=" sd === 1 " @g=" g = $event " @done=" __setCall({fn: '__closeSD'}) ")
-    DP(v-else-if=" sd === 2 " @st=" $set(stet, 0, $event || '') " @et=" $set(stet, 1, $event || '') "  @done=" __setCall({fn: '__closeSD'}) ")
-    OSP(v-else=" sd === 3 " @s=" s = $event "  @done=" __setCall({fn: '__closeSD'}) ")
+    DP(v-if=" sd === 2 " @st=" $set(stet, 0, $event || '') " @et=" $set(stet, 1, $event || '') "  @done=" __setCall({fn: '__closeSD'}) ")
+    ASP(v-else=" sd === 3 " @s=" s = $event "  @done=" __setCall({fn: '__closeSD'}) ")
 
   .page-content.ptr-content.infinite-scroll-content(ptr-mousewheel="true" @ptr:refresh=" refresh " @infinite="loadMore" :infinite-distance="50")
 
@@ -64,7 +58,7 @@ import page from '@/components/page'
 import filters from '@/components/filters'
 import GP from '@/components/filters/GP'
 import DP from '@/components/filters/DP'
-import OSP from '@/components/filters/OSP'
+import ASP from '@/components/filters/ASP'
 import stet from '@/components/stet'
 export default {
   mixins: [config, stet, page],
@@ -72,9 +66,9 @@ export default {
     filters,
     GP,
     DP,
-    OSP,
+    ASP,
   },
-  name: 'rf_bc_1',
+  name: 'rf_cr_1',
   props: ['g_'],
   data () {
     return {
@@ -93,13 +87,10 @@ export default {
     this.init()
   },
   methods: {
-    __init_rf_bc_1 () {
+    __init_rf_cr_1 () {
       this.init()
     },
     init () {
-      this.list()
-    },
-    __orderlist () {
       this.list()
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
@@ -122,13 +113,13 @@ export default {
 <style lang="stylus">
 @import '~src/css/var.stylus'
 // 建议不添加scoped， 所有样式最多嵌套2层
-.rf_bc_1
+.rf_cr_1
   top var(--f7-toolbar-height)
   height calc(100% - var(--f7-toolbar-height))
   .infinite-scroll-preloader + .nomore
     display none
 .navbar-hidden ~ .page
-  .rf_bc_1 .page-content
+  .rf_cr_1 .page-content
     padding-top var(--f7-toolbar-height)
   
 </style>

@@ -33,7 +33,7 @@ export default {
       }
     },
     __query () {
-      return JSON.parse(('{' + window.location.search.replace('?', '').replace(/&*(\w+)=(\w+)&*/g, '"$1":"$2",') + '}').replace(',}', '}'))
+      return JSON.parse(decodeURIComponent('{' + window.location.search.replace('?', '').replace(/&*(\w+)=([^&]+)&*/g, '"$1":"$2",') + '}').replace(',}', '}'))
     },
     __go () {
       return this.$f7.views.main.router.navigate.bind(this.$f7.views.main.router)

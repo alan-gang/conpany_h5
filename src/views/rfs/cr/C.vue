@@ -1,6 +1,6 @@
 <template lang="pug">
 
-f7-page.rf_bc_1(:page-content="false")
+f7-page.rf_bc_2(:page-content="false")
 
   f7-toolbar.z_9502.ft_14(top)
 
@@ -24,7 +24,7 @@ f7-page.rf_bc_1(:page-content="false")
   filters(v-if=" sd " @sd=" sd = $event ")
     GP(v-if=" sd === 1 " @g=" g = $event " @done=" __setCall({fn: '__closeSD'}) ")
     DP(v-else-if=" sd === 2 " @st=" $set(stet, 0, $event || '') " @et=" $set(stet, 1, $event || '') "  @done=" __setCall({fn: '__closeSD'}) ")
-    OSP(v-else=" sd === 3 " @s=" s = $event "  @done=" __setCall({fn: '__closeSD'}) ")
+    CSP(v-else=" sd === 3 " @s=" s = $event "  @done=" __setCall({fn: '__closeSD'}) ")
 
   .page-content.ptr-content.infinite-scroll-content(ptr-mousewheel="true" @ptr:refresh=" refresh " @infinite="loadMore" :infinite-distance="50")
 
@@ -34,19 +34,23 @@ f7-page.rf_bc_1(:page-content="false")
 
     f7-card(v-for=" (v, i) in data " :key="i")
       f7-card-header
-        span.ft_14.text-color-gray {{ v.issue }}期
-        span.ft_14.text-color-gray {{ v.writeTime }}
+        span.ft_14.text-color-gray {{ v.beginTime }}
+        f7-button.inlb(small round fill :color=" config.stateColor[v.status] " :href=" '/rfs/bc/cd/' + v.taskId + '/'") {{ config.chaseState[v.status] }}
+
       f7-card-content
         .flex
           .a
             .hlh_20
               span {{ v.lotteryName }} - {{ v.methodName }}
-              span.text-color-deeporange  ({{ v.codeType === '1' ? '复式' : '单式' }})
-            .hlh_20
-              span.c_9 投注：
-              span {{ v.totalPrice }}元
+              span.text-color-deeporange  ({{ v.codeType === 1 ? '复式' : '单式' }})
+              span 追
+              span.text-color-deeporange {{ v.issuecount }}
+              span 期
+            .lh_20.c_9.ft_12
+              span 已完成：{{ v.finishedcount }}期，共{{ v.taskprice }}元，中奖{{ v.winCount }}期，共
+              span.text-color-deeporange {{ v.winprize }}
+              span 元
           .b
-            f7-button.inlb(small round fill :color=" config.stateColor[v.stat] " :href=" '/rfs/bc/bd/' + v.projectId + '/'") {{ config.orderState[v.stat] }}
             .inlb.w_5
             f7-icon(f7="chevron_right" size="12px")
 
@@ -64,7 +68,7 @@ import page from '@/components/page'
 import filters from '@/components/filters'
 import GP from '@/components/filters/GP'
 import DP from '@/components/filters/DP'
-import OSP from '@/components/filters/OSP'
+import CSP from '@/components/filters/CSP'
 import stet from '@/components/stet'
 export default {
   mixins: [config, stet, page],
@@ -72,9 +76,9 @@ export default {
     filters,
     GP,
     DP,
-    OSP,
+    CSP,
   },
-  name: 'rf_bc_1',
+  name: 'rf_bc_2',
   props: ['g_'],
   data () {
     return {
@@ -87,32 +91,30 @@ export default {
   watch: {
     sd (n) {
       if (!n) this.init()
-    }
+    },
   },
   created () {
-    this.init()
   },
   methods: {
-    __init_rf_bc_1 () {
+    __init_rf_bc_2 () {
       this.init()
     },
     init () {
       this.list()
     },
-    __orderlist () {
-      this.list()
-    },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
-      this.$.get(api.orderList, Object.assign({
+      this.$.post(api.followList, Object.assign({
         lotteryId: this.g.id,
         stat: this.s.id,
         beginDate: this.stet[0]._toAllString(),
         endDate: this.stet[1]._toAllString(),
         scope: 0,
-      }, option)).then(({data: {recordList, totalSize}}) => {
-        this.data = [...(option.page > this.fpage ? this.data : []), ...recordList]
+        projectId: '',
+        userName: '',
+      }, option)).then(({data: {taskList, totalSize}}) => {
+        this.data = [...(option.page > this.fpage ? this.data : []), ...taskList]
         this.total = totalSize
-        cb && cb(recordList)
+        cb && cb(taskList)
       })
     },
   }
@@ -122,13 +124,13 @@ export default {
 <style lang="stylus">
 @import '~src/css/var.stylus'
 // 建议不添加scoped， 所有样式最多嵌套2层
-.rf_bc_1
+.rf_bc_2
   top var(--f7-toolbar-height)
   height calc(100% - var(--f7-toolbar-height))
   .infinite-scroll-preloader + .nomore
     display none
 .navbar-hidden ~ .page
-  .rf_bc_1 .page-content
+  .rf_bc_2 .page-content
     padding-top var(--f7-toolbar-height)
   
 </style>
