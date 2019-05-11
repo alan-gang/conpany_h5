@@ -33,6 +33,20 @@ import load from '@/views/me/load'
 import withdraw from '@/views/me/withdraw'
 import transfer from '@/views/me/transfer'
 import wallet from '@/views/me/wallet'
+import safecenter from '@/views/me/safecenter'
+import loginPwd from '@/views/me/safecenter/loginPwd'
+import capitalPwd from '@/views/me/safecenter/capitalPwd'
+import capitalPwdModify from '@/views/me/safecenter/capitalPwdModify'
+import greetings from '@/views/me/safecenter/greetings'
+import safeanswer from '@/views/me/safecenter/safeanswer'
+import emailBind from '@/views/me/safecenter/emailBind'
+import nickname from '@/views/me/safecenter/nickname'
+import safeVerifyBind from '@/views/me/safecenter/safeVerifyBind'
+import safeVerify from '@/views/me/safecenter/safeVerify'
+import birthday from '@/views/me/safecenter/birthday'
+import bank from '@/views/me/bank'
+import bonus from '@/views/me/bonus'
+import help from '@/views/me/help'
 
 // 设置
 import settings from '@/views/settings'
@@ -155,6 +169,90 @@ export default [
   {
     path: '/me/wallet/',
     component: wallet,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/',
+    component: safecenter,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/loginPwd/',
+    component: loginPwd,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/capitalPwd/',
+    component: capitalPwd,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/capitalPwdModify/',
+    component: capitalPwdModify,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/greetings/',
+    component: greetings,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/safeanswer/',
+    component: safeanswer,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/emailBind/',
+    component: emailBind,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/nickname/',
+    component: nickname,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/safeVerifyBind/',
+    component: safeVerifyBind,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/safeVerify/',
+    component: safeVerify,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/birthday/',
+    component: birthday,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/bank/',
+    component: bank,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/bonus/',
+    component: bonus,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/help/',
+    component: help,
     beforeEnter: checkAuth,
     rl: true
   },
