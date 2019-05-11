@@ -5,13 +5,32 @@
       <i class="icon f7-icons"> home </i>
     </a>
     <form>
-      <div class="section">
-        <label for="newPwd">新密码</label>
-        <input type="password" placeholder="请输入新密码" id="newPwd" maxlength="16" />
+      <div class="section section-1">
+        <label>问题一</label>
+        <select>
+          <option class="option">请选择问题一</option>
+          <option>小明的爸爸是谁？</option>
+          <option>小明的爸爸的爸爸叫什么？</option>
+          <option>小明是垃圾堆里捡来的么？</option>
+          <option>为什么小明管隔壁老王叫叔叔？</option>
+        </select>
       </div>
       <div class="section">
-        <label for="confirmPwd">确认密码</label>
-        <input type="password" placeholder="请重复新密码" id="confirmPwd" maxlength="16" />
+        <label for="answer-1">答案</label>
+        <input type="text" placeholder="请输入问题答案" id="answer-1" />
+      </div>
+      <div class="section section-1">
+        <label>问题二</label>
+        <select>
+          <option class="option">请选择问题二</option>
+          <option>小明的爸爸的爸爸叫什么？</option>
+          <option>小明是垃圾堆里捡来的么？</option>
+          <option>为什么小明管隔壁老王叫叔叔？</option>
+        </select>
+      </div>
+      <div class="section">
+        <label for="answer-2">答案</label>
+        <input type="text" placeholder="请输入问题答案" id="answer-2" />
       </div>
       <a href="javascript:;" class="confirm">确 认</a>
     </form>
@@ -40,11 +59,21 @@
         line-height 0.92rem
         margin-bottom 0.18rem
         background-color #fff
+        &.section-1
+          margin-bottom 0
+          border-bottom 1px solid #f8f8f8
         label
           display inline-block
           color #666
-          width 1.6rem
+          width 1.15rem
           padding-left 0.2rem
+        select
+          width 6.35rem
+          margin -0.65rem 0 0 1.15rem
+          padding-left 0.25rem
+          option
+            &.option
+              color #c5c5c5
         input
           display inline-block
           color #3d3d3d
