@@ -1,13 +1,13 @@
 <template>
   <f7-page class="loginPwd" :page-content="false">
-    <f7-navbar title="登陆问候语设置" back-link></f7-navbar>
-    <a href="javascript:;" class="logo _icon _safeicon_9 link color-black">
+    <f7-navbar title="生日设置" back-link></f7-navbar>
+    <a href="javascript:;" class="logo _icon _safeicon_13 link color-black">
       <i class="icon f7-icons"> home </i>
     </a>
     <form>
       <div class="bgcolor">
-        <label for="greetings">登录问候语</label>
-        <input type="text" placeholder="请输入登陆问候语" id="greetings" />
+        <label for="birthday">生日</label>
+        <input type="text" placeholder="请输入生日" id="birthday" />
       </div>
       <a href="javascript:;" class="confirm">确 认</a>
     </form>

@@ -35,6 +35,13 @@
           <label>安全验证绑定</label>
           <a href="/me/safecenter/safeVerifyBind/" class="a">未绑定</a>
         </div>
+        <div>
+          <a href="javascript:;" class="_icon _safeicon_12 link color-black">
+            <i class="icon f7-icons"> home </i>
+          </a>
+          <label>生日</label><br />
+          <a href="/me/safecenter/birthday/" class="a">未设置</a>
+        </div>
       </div>
       <div class="fr block">
         <div>
@@ -135,7 +142,7 @@
         width 45%
         padding-left 5%
         div
-          margin-bottom 0.55rem
+          margin-bottom 0.35rem
           ._icon
             position relative
             top 0.1rem

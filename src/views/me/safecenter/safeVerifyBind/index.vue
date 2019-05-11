@@ -1,20 +1,20 @@
 <template>
   <f7-page class="loginPwd" :page-content="false">
     <f7-navbar title="安全验证绑定" back-link></f7-navbar>
-    <!--<a href="javascript:;" class="_icon _safeicon_3 link color-black">
-      <i class="icon f7-icons"> home </i>
-    </a>-->
+    <div class="top">
+      <img src="" alt="二维码" />
+    </div>
     <form>
       <div class="bgcolor">
-        <label for="key">密钥</label>
-        <input type="text" placeholder="请输入密钥" id="key" />
+        <label>密钥</label>
+        <input type="text" readonly />
         <span>复制</span>
       </div>
       <div class="bgcolor">
         <label for="code">验证码</label>
         <input type="text" placeholder="请输入畅博安全验证码" id="code" maxlength="6" />
       </div>
-      <a href="javascript:;">确 认</a>
+      <a href="javascript:;" class="confirm">确 认</a>
     </form>
   </f7-page>
 </template>
@@ -27,8 +27,11 @@
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
   .loginPwd
+    .top
+      height 3.2rem
+      background linear-gradient(to right, #ff8131, #ff5429)
     form
-      margin-top 1rem
+      margin-top 0.2rem
       font-size 0.27rem
       .bgcolor
         position relative
@@ -59,7 +62,7 @@
           background-color #ff5429
           border-radius 0.28rem
           text-align center
-      a
+      .confirm
         display block
         width 7.07rem
         height 0.82rem

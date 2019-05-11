@@ -1,9 +1,9 @@
 <template>
   <f7-page class="loginPwd" :page-content="false">
     <f7-navbar title="资金密码设置" back-link></f7-navbar>
-    <!--<a href="javascript:;" class="_icon _safeicon_3 link color-black">
+    <a href="javascript:;" class="logo _icon _safeicon_10 link color-black">
       <i class="icon f7-icons"> home </i>
-    </a>-->
+    </a>
     <form>
       <div class="bgcolor">
         <label for="newPwd">新密码</label>
@@ -13,7 +13,7 @@
         <label for="confirmPwd">确认密码</label>
         <input type="password" placeholder="请重复新密码" id="confirmPwd" maxlength="16" />
       </div>
-      <a href="javascript:;">确 认</a>
+      <a href="javascript:;" class="confirm">确 认</a>
     </form>
   </f7-page>
 </template>
@@ -26,8 +26,14 @@
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
   .loginPwd
+    .logo
+      position absolute
+      top 1.08rem
+      left 50%
+      margin-left -0.28rem
+      transform scale(1.77)
     form
-      margin-top 1rem
+      margin-top 1.9rem
       font-size 0.27rem
       .bgcolor
         height 0.92rem
@@ -46,7 +52,7 @@
           &:-moz-placeholder { color: #c5c5c5; }
           &::-moz-placeholder { color: #c5c5c5; }
           &:-ms-input-placeholder { color: #c5c5c5; }
-      a
+      .confirm
         display block
         width 7.07rem
         height 0.82rem

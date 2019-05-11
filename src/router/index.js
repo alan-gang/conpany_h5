@@ -43,6 +43,7 @@ import emailBind from '@/views/me/safecenter/emailBind'
 import nickname from '@/views/me/safecenter/nickname'
 import safeVerifyBind from '@/views/me/safecenter/safeVerifyBind'
 import safeVerify from '@/views/me/safecenter/safeVerify'
+import birthday from '@/views/me/safecenter/birthday'
 import bank from '@/views/me/bank'
 import bonus from '@/views/me/bonus'
 import help from '@/views/me/help'
@@ -226,6 +227,12 @@ export default [
   {
     path: '/me/safecenter/safeVerify/',
     component: safeVerify,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/birthday/',
+    component: birthday,
     beforeEnter: checkAuth,
     rl: true
   },

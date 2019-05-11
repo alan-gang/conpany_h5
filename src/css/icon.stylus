@@ -49,6 +49,11 @@ urls = {
     _safeicon_6: '~src/assets/me/safecenter/security_icon_qaq',
     _safeicon_7: '~src/assets/me/safecenter/security_icon_nickname',
     _safeicon_8: '~src/assets/me/safecenter/security_icon_verify',
+    _safeicon_9: '~src/assets/me/safecenter/securityset_icon_greeting',
+    _safeicon_10: '~src/assets/me/safecenter/securityset_icon_deposit',
+    _safeicon_11: '~src/assets/me/safecenter/securityset_icon_qaq',
+    _safeicon_12: '~src/assets/me/safecenter/security_icon_sr',
+    _safeicon_13: '~src/assets/me/safecenter/securityset_icon_sr',
     _gou_gray: '~src/assets/me/safecenter/common_icon_unseleted',
     _gou: '~src/assets/me/safecenter/common_icon_seleted',
 
