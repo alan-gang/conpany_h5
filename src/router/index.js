@@ -45,6 +45,8 @@ import safeVerifyBind from '@/views/me/safecenter/safeVerifyBind'
 import safeVerify from '@/views/me/safecenter/safeVerify'
 import birthday from '@/views/me/safecenter/birthday'
 import bank from '@/views/me/bank'
+import unbind from '@/views/me/bank/unbind'
+import lock from '@/views/me/bank/lock'
 import bonus from '@/views/me/bonus'
 import help from '@/views/me/help'
 
@@ -239,6 +241,18 @@ export default [
   {
     path: '/me/bank/',
     component: bank,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/bank/unbind/',
+    component: unbind,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/bank/lock/',
+    component: lock,
     beforeEnter: checkAuth,
     rl: true
   },
