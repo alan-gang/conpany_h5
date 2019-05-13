@@ -203,7 +203,7 @@ export default {
       this.$.get(api.myNewPoint, {gameid: this.id}).then(({data: {items}}) => {
         this.points = items
         // 没有奖金信息则隐藏该玩法
-        // this.m.forEach(x => (x.show = !!items[x.id.split(':')[0]]))
+        this.m.forEach(x => (x.show = !!items[x.id.split(':')[0]]))
         // 如果当前默认的玩法关闭了 重新选择一个默认的玩法
         this.$nextTick(() => {
           this.__setCall({fn: '__generateOdd'})
@@ -216,7 +216,7 @@ export default {
           }
         })
       })
-    }
+    },
   }
 }
 </script>

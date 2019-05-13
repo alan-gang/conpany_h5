@@ -47,43 +47,53 @@ f7-page.car
   //- f7-swipeout-actions(right='')
       f7-swipeout-button(delete='') Delete
 
-  f7-card(v-for=" (v, i) in __$car " :key="i" )
-    
-    f7-card-content
-      p 
-        span {{ v.codes }}
-      p 
-        span {{ v.mido.gn + '_' + v.mido.n }} 
-        span.text-color-orange {{ v.count }} 
-        span 注 
-        span.text-color-orange {{ v.money._f3() }} 
-        span 元
-      div
-        .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
-          .stepper-button-minus
-          .stepper-input-wrap
-            input.inlb.v_m(type='number' v-model=" v.times " min='1', max='10000', step='1' @change=" update(v) ")
-          span.inlb.hp_100 倍
-          .stepper-button-plus
-        span.pd_5
-        f7-list.inline-picker.border-gray
-          f7-list-item.hlh_25(title="模式" smart-select :smart-select-params="{openIn: 'popover'}")
-            select(v-model=" v.mode " @change=" update(v) ")
-              option(:value=1) 元
-              option(:value=2) 角
-              option(:value=3) 分
-              option(:value=4) 厘
 
-        span.pd_5
-        span.v_m(@click=" sap = dp = v" v-if=" v.dp && (Number(v.dp.maxpoint) > Number(v.dp.minpoint)) ")
-          span 返点 
-          span.border-gray.inlb.hlh_25.pl_10.pr_10.text-color-gray {{ (v.userpoint * 100)._f1() }} %
-            span.pl_5
-            f7-icon(f7=" chevron_down " color="gray" size="18px" style="opacity: .7")
-
+  f7-list.mg_10.no_border(no-hairlines v-for=" (v, i) in __$car " :key=" '' + i + v.methodid + v.count + v.codes.slice(0, 6) ")
+    li.swipeout.mg_0(@swipeout:delete=" onDeleteCarItem(v) ")
+      
+  
+      //- f7-card(v-for=" (v, i) in __$car " :key="i" )
+      .swipeout-content
+        f7-card.mg_0
           
-          point(v-for=" (x, j) in v.cpoints " :key="j" v-bind=" {dp: x, i: j, mid: v.mid, $p: v.userpoint} " @update=" $set(v.bonuses, j, $event) ")
+          f7-card-content
+            p 
+              f7-button.t_l.pd_0(color="black") {{ v.codes }}
+            p 
+              span {{ v.mido.gn + '_' + v.mido.n }} 
+              span.text-color-orange {{ v.count }} 
+              span 注 
+              span.text-color-orange {{ v.money._f3() }} 
+              span 元
+            div
+              .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
+                .stepper-button-minus
+                .stepper-input-wrap
+                  input.inlb.v_m(type='number' v-model=" v.times " min='1', max='10000', step='1' @change=" update(v) ")
+                span.inlb.hp_100 倍
+                .stepper-button-plus
+              span.pd_5
+              .list.inline-picker.border-gray
+                ul(style="padding-left: 0")
+                  f7-list-item.hlh_25(title="模式" smart-select :smart-select-params="{openIn: 'popover'}")
+                    select(v-model=" v.mode " @change=" update(v) ")
+                      option(:value=1) 元
+                      option(:value=2) 角
+                      option(:value=3) 分
+                      option(:value=4) 厘
 
+              span.pd_5
+              span.v_m(@click=" sap = dp = v" v-if=" v.dp && (Number(v.dp.maxpoint) > Number(v.dp.minpoint)) ")
+                span 返点 
+                span.border-gray.inlb.hlh_25.pl_10.pr_10.text-color-gray {{ (v.userpoint * 100)._f1() }} %
+                  span.pl_5
+                  f7-icon(f7=" chevron_down " color="gray" size="18px" style="opacity: .7")
+
+                
+                point(v-for=" (x, j) in v.cpoints " :key="j" v-bind=" {dp: x, i: j, mid: v.mid, $p: v.userpoint} " @update=" $set(v.bonuses, j, $event) ")
+      
+      f7-swipeout-actions(right)
+        f7-swipeout-button(delete) 删除
 
   
 
@@ -154,6 +164,9 @@ export default {
     clear () {
       this.__setLocal({$car: []})
       this.__back()
+    },
+    onDeleteCarItem (v) {
+      this.local.$car.splice(this.local.$car.findIndex(x => x === v), 1)
     }
   }
 }

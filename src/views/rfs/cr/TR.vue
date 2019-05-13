@@ -22,8 +22,7 @@ f7-page.rf_bc_1(:page-content="false")
       f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 3 } ") 
 
   filters(v-if=" sd " @sd=" sd = $event ")
-    GP(v-if=" sd === 1 " @g=" g = $event " @done=" __setCall({fn: '__closeSD'}) ")
-    DP(v-else-if=" sd === 2 " @st=" $set(stet, 0, $event || '') " @et=" $set(stet, 1, $event || '') "  @done=" __setCall({fn: '__closeSD'}) ")
+    DP(v-if=" sd === 2 " @st=" $set(stet, 0, $event || '') " @et=" $set(stet, 1, $event || '') "  @done=" __setCall({fn: '__closeSD'}) ")
     OSP(v-else=" sd === 3 " @s=" s = $event "  @done=" __setCall({fn: '__closeSD'}) ")
 
   .page-content.ptr-content.infinite-scroll-content(ptr-mousewheel="true" @ptr:refresh=" refresh " @infinite="loadMore" :infinite-distance="50")
@@ -97,9 +96,6 @@ export default {
       this.init()
     },
     init () {
-      this.list()
-    },
-    __orderlist () {
       this.list()
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {

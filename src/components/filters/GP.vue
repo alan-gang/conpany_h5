@@ -5,7 +5,7 @@
       .hlh_30.pl_10.pt_10.text-color-gray(:key="gn") {{ gn }}
       f7-row.j_s(no-gap)
         f7-col.pd_1(width="25" v-for=" (v, i) in g.filter(x => x.gn === gn) " :key="i")
-          f7-button.ft_12.pd_0(:class=" {'bg-color-deeporange text-color-white': cache.gid === v.id, 'bgc_pc text-color-black': cache.gid !== v.id  } " @click=" change(v) ") {{ v.n }}
+          f7-button.ft_12.pd_0(:class=" {'bg-color-deeporange text-color-white': cache.filters.gid === v.id, 'bgc_pc text-color-black': cache.filters.gid !== v.id  } " @click=" change(v) ") {{ v.n }}
     .h_10
 
   .p_a.z_1.pd_10.bg-color-white
@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     change (v) {
-      this.__setCache({gid: v.id})
+      this.__setCache(Object.assign(this.cache.filters, {gid: v.id}))
       this.$emit('g', v)
       this.close()
     },

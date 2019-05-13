@@ -1,6 +1,13 @@
 let prefix = localStorage.getItem('xy_api') || '/dscagamesclient'
 localStorage.setItem('xy_api', prefix)
 let api = {
+  // 配置信息config
+  // 1. 权限
+  getUserPrefence: '/home/userMenus.do?method=getUserPrefence',
+  // 2. 帐变类型
+  getOrderType: '/report/OrderReport.do?method=getOrderType',
+  // 3. socket通知
+  getCfgInfo: '/login/login.do?method=getCfgInfo',
   // 登录
   __getcodeimg: '/login/login.do?method=getVerifyImage',
   __login: '/login/login.do?method=validate',
@@ -48,7 +55,7 @@ let api = {
 
   // 首页
   getActivityBanner: '/activity.do?method=getActivityBanner',
-  getCheckToday: 'activity.do?method=getCheckToday',
+  getCheckToday: '/activity.do?method=getCheckToday',
   sysNotices: '/home/notices.do?method=sysNotices',
   rewardInfo: '/home/notices.do?method=rewardInfo',
   recomPlats: '/recomGame.do?method=list',
@@ -115,6 +122,8 @@ let api = {
   // 我的
   getUserIdentity: 'home/userInfo.do?method=getUserIdentity',
 
+  // 报表
+  // 资金记录
 }
 
 Object.keys(api).forEach((key) => {

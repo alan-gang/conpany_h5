@@ -13,7 +13,7 @@
     
     .rps
       f7-row.j_s(v-if="rps[0]")
-        f7-col(width='33' v-for=" (v, i) in rps " :key="i" @click=" $emit('mid', v.id) && $emit('sm', false) ")
+        f7-col.pr_5(width='33' v-for=" (v, i) in rps " :key="i" @click=" $emit('mid', v.id) && $emit('sm', false) ")
           f7-button.mt_2.mb_2(fill round :color=" mid !== v.id ? 'gray' : 'deeporange'  " :class=" mid !== v.id ? 'text-color-black' : 'text-color-white'  ") {{ v.n }}
 
       .pd_5.text-color-gray.ft_12.t_c.no_more.p_r 暂无近期玩法
@@ -29,7 +29,7 @@
             template(v-for=" (l, j) in clns ")
               p.t_l.text-color-gray {{ l }}
               f7-row.j_s(v-if=" cgnps.filter(x => x.ln === l) ")
-                f7-col.pr_2(width='33' :key="k" v-for=" (n, k) in cgnps.filter(x => x.ln === l) " @click=" $emit('mid', n.id) && $emit('sm', false) ")
+                f7-col.pr_5.pl_5(width='33' :key="k" v-for=" (n, k) in cgnps.filter(x => x.ln === l) " @click=" $emit('mid', n.id) && $emit('sm', false) ")
                   f7-button.mt_2.mb_2(fill round :color=" mid !== n.id ? 'white' : 'deeporange'  " :class=" mid !== n.id ? 'text-color-black' : 'text-color-white'  ") {{ n.n }}
             .pt_15
 

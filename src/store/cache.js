@@ -19,7 +19,8 @@ export default {
       gid: '',
       osid: '',
       csid: '',
-    }
+      asid: '',
+    },
   },
   actions: {
     __setCache (cache = {}) {

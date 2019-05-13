@@ -49,11 +49,14 @@ export default {
       return p
     }, {})
     return {
-      g: g,
+      // g: g,
       gns: gns,
     }
   },
   computed: {
+    g () {
+      return g.filter(x => !x.hide)
+    }
   },
   created () {
   },

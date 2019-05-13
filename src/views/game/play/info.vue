@@ -94,6 +94,9 @@ export default {
     clearTimeout(this.tt)
   },
   methods: {
+    __openWinCode () {
+      this.recentlyCode()
+    },
     init () {
       this.recentlyCode()
       this.current()

@@ -41,6 +41,7 @@ import config from '@/config'
 import api from '@/api'
 import oi from '@/components/oi'
 import Socket from './socket'
+import g from '@/gm/g'
 export default {
   mixins: [config, oi],
   components: {
@@ -79,19 +80,94 @@ export default {
   },
   created () {
     this.__login({isAuto: 1})
+    this.getCfgInfo()
   },
   mounted () {
     if (this.__query.tag) this.$f7.popup.open('#register') && this.__getcodeimg()
     if (this.__query.popup) this.$f7.popup.open('#' + this.__query.popup) && this.__getcodeimg()
   },
   methods: {
+    message (msg) {
+      if (!msg || !msg.type) return
+      let titles = {
+        // openWinCode: '开奖信息',
+        prizeNotice: '中奖信息',
+        saveSucc: '到账信息',
+        drawSucc: '提款信息',
+      }
+      let content = ''
+      switch (msg.type) {
+        case 'openWinCode':
+          break
+        case 'prizeNotice':
+          content = msg.content.reduce((p, x, i) => {
+            p += '<div style="text-align: left">恭喜您在<span>' + x.lottName + x.issue + '</span>期中奖了<span class="c_orange">' + x.amt + '</span>元</div>'
+            return p
+          }, '')
+          this.__setCall({fn: '__orderlist'})
+          break
+        case 'saveSucc':
+          content = msg.content.reduce((p, x, i) => {
+            p += '<div style="text-align: left">您通过<span>' + x.bankName + '</span>充值<span class="c_orange">' + x.amt + '</span>元已到账，请注意查收</div>'
+            return p
+          }, '')
+          break
+        case 'drawSucc':
+          content = msg.content.reduce((p, x, i) => {
+            p += '<div style="text-align: left">您申请提款<span>' + x.amt + '</span>元<span class="' + ['', 'c_orange', 'c_s'][x.succ] + '">' + ['', '失败', '成功'][x.succ] + '</span>，请注意查看</div>'
+            return p
+          }, '')
+          break
+      }
+      if (this.__route.path.match(/play|car|chase/) && msg.content[0].lottId === String(this.cache.play.id)) {
+        titles.openWinCode = '开奖信息'
+        content = msg.content[0].lottName + msg.content[0].issue + '期开奖号码：' + msg.content[0].code
+        this.__setCall({fn: '__openWinCode'})
+      }
+      // Create toast
+      titles[msg.type] && this.$f7.notification.create({
+        icon: '<i class="icon f7-icons color-deeporange">alarm_fill</i>',
+        // title: '信游娱乐',
+        title: titles[msg.type],
+        titleRightText: '现在',
+        // subtitle: titles[msg.type],
+        text: content,
+        closeTimeout: 3000,
+      }).open()
+    },
+    getCfgInfo () {
+      this.$.get(api.getCfgInfo).then(({data: {broadcaseWSUrl}}) => {
+        !Socket.sockets.user && Socket.connect(broadcaseWSUrl, 'user', this.connected)
+        Socket.notify.messages.push(this.message)
+      })
+    },
+    connected () {
+      setTimeout(() => {
+        Socket.sockets.user && Socket.sockets.user.send(JSON.stringify(Object.assign({action: 'noauth'}, this.user.login ? {
+          parameter: {
+            userId: this.user.userId,
+            app: 'web'
+          },
+          action: 'auth',
+        } : {})))
+      }, 3000)
+    },
+    __getUserPrefence () {
+      this.$.get(api.getUserPrefence).then(({data: {menuList}}) => {
+        if (menuList[0]) {
+          g.forEach(x => {
+            x.hide = menuList.indexOf(x.mid) === -1
+          })
+        }
+      })
+    },
     __getcodeimg () {
       this.$.get(api.__getcodeimg).then(({data: {data}}) => {
         this.__setUser({codeimg: 'data:image/png;base64,' + data})
       })
     },
     __login ({un, pwd, code, cb, isAuto}) {
-      this.$.get(api.__login + (isAuto ? '&' : ''), {userName: un, userPwd: pwd, verifyCode: code, channelType: this.local.pf, isAuto: isAuto}).then(({data}) => {
+      this.$.get(api.__login + (isAuto ? '&' : ''), {userName: un, userPwd: pwd, verifyCode: code, channelType: this.local.pf, isAuto: isAuto, $anyway: this.__getUserPrefence}).then(({data}) => {
         this.__setUser(Object.assign(data, {login: true}))
         this.__getBalance()
         cb && cb()
