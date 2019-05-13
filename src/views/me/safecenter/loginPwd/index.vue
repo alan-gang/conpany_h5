@@ -1,5 +1,5 @@
 <template>
-  <f7-page class="loginPwd" :page-content="false">
+  <f7-page class="loginPwd">
     <f7-navbar title="登录密码修改" back-link></f7-navbar>
     <a href="javascript:;" class="logo _icon _safeicon_1 link color-black">
       <i class="icon f7-icons"> home </i>
@@ -37,7 +37,7 @@
       margin-left -0.28rem
       transform scale(1.77)
     form
-      margin-top 1.9rem
+      margin-top 1rem
       font-size 0.27rem
       .section
         height 0.92rem

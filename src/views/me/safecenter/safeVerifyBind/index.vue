@@ -1,8 +1,8 @@
 <template>
-  <f7-page class="loginPwd" :page-content="false">
+  <f7-page class="safeVerifyBind">
     <f7-navbar title="安全验证绑定" back-link></f7-navbar>
     <div class="top">
-      <img src="" alt="二维码" />
+      <img src="/src/assets/me/safecenter/scan@2x.png" alt="二维码" />
     </div>
     <form>
       <div class="section">
@@ -26,7 +26,7 @@
 <style lang="stylus">
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
-  .loginPwd
+  .safeVerifyBind
     .top
       height 3.2rem
       background linear-gradient(to right, #ff8131, #ff5429)

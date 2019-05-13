@@ -1,5 +1,5 @@
 <template>
-  <f7-page class="loginPwd" :page-content="false">
+  <f7-page class="birthday">
     <f7-navbar title="生日设置" back-link></f7-navbar>
     <a href="javascript:;" class="logo _icon _safeicon_13 link color-black">
       <i class="icon f7-icons"> home </i>
@@ -21,7 +21,7 @@
 <style lang="stylus">
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
-  .loginPwd
+  .birthday
     .logo
       position absolute
       top 1.08rem
@@ -29,7 +29,7 @@
       margin-left -0.28rem
       transform scale(1.77)
     form
-      margin-top 1.9rem
+      margin-top 1rem
       font-size 0.27rem
       .section
         height 0.92rem
