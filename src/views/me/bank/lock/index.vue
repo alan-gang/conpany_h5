@@ -1,6 +1,7 @@
 <template>
   <f7-page class="lock">
     <f7-navbar title="锁定银行卡" back-link></f7-navbar>
+
     <a href="javascript:;" class="logo _icon _bankicon_5 link color-black">
       <i class="icon f7-icons"> home </i>
     </a>
@@ -9,7 +10,7 @@
         <label for="capitalPwd">资金密码</label>
         <input type="password" placeholder="请输入资金密码" id="capitalPwd" maxlength="6" />
       </div>
-      <a href="javascript:;" class="confirm">确 认</a>
+      <a href="javascript:;" class="confirm" @click="locked">确 认</a>
     </form>
   </f7-page>
 </template>
@@ -28,6 +29,9 @@
     created () {
     },
     methods: {
+      locked () {
+        this.__go('/me/bank/locked/')
+      }
     }
   }
 </script>

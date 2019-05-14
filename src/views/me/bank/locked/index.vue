@@ -1,9 +1,14 @@
 <template>
   <f7-page class="bank">
     <f7-navbar title="银行卡" back-link></f7-navbar>
+    <div class="top">
+      <a href="javascript:;" class="logo _icon _bankicon_6 link color-black">
+        <i class="icon f7-icons"> home </i>
+      </a>
+    </div>
     <div class="list">
       <ul>
-        <li class="swipeout" @swipeout:deleted="unbind">
+        <li class="swipeout">
           <div class="swipeout-content section branch">
             <div>
               <a href="javascript:;" class="_icon _bankicon_1 link color-black">
@@ -14,11 +19,8 @@
             </div>
             <span class="date">2016/10/15</span>
           </div>
-          <div class="swipeout-actions-right">
-            <a href="#" data-confirm="银行卡解绑后，不能再绑定到其它帐号上！" data-confirm-title="温馨提示" class="swipeout-delete">删除</a>
-          </div>
         </li>
-        <li class="swipeout" @swipeout:deleted="unbind">
+        <li class="swipeout">
           <div class="swipeout-content section branch">
             <div>
               <a href="javascript:;" class="_icon _bankicon_2 link color-black">
@@ -29,11 +31,8 @@
             </div>
             <span class="date">2016/10/15</span>
           </div>
-          <div class="swipeout-actions-right">
-            <a href="#" data-confirm="银行卡解绑后，不能再绑定到其它帐号上！" data-confirm-title="温馨提示" class="swipeout-delete">删除</a>
-          </div>
         </li>
-        <li class="swipeout" @swipeout:deleted="lock">
+        <li class="swipeout">
           <div class="swipeout-content section branch">
             <div>
               <a href="javascript:;" class="_icon _bankicon_3 link color-black">
@@ -44,19 +43,11 @@
             </div>
             <span class="date">2016/10/15</span>
           </div>
-          <div class="swipeout-actions-right">
-            <a href="#" data-confirm="银行卡锁定后，不能新增或删除银行卡，客服亦无权限操作，请谨慎操作银行卡锁定后，不能新增或删除银行卡，客服亦无权限操作，请谨慎操作！" data-confirm-title="温馨提示" class="swipeout-delete">锁定</a>
-          </div>
-        </li>
-        <li>
-          <div class="section add" @click="add">
-            <a href="javascript:;" class="_icon _plus link color-black">
-              <i class="icon f7-icons"> home </i>
-            </a><br />
-            <span>添加银行卡</span>
-          </div>
         </li>
       </ul>
+      <a href="javascript:;" class="logo _icon _bankicon_7 link color-black">
+        <i class="icon f7-icons"> home </i>
+      </a>
     </div>
   </f7-page>
 </template>
@@ -75,15 +66,6 @@
     created () {
     },
     methods: {
-      add () {
-        this.__go('/me/bank/add/')
-      },
-      unbind () {
-        this.__go('/me/bank/unbind/')
-      },
-      lock () {
-        this.__go('/me/bank/lock/')
-      }
     }
   }
 </script>
@@ -92,8 +74,19 @@
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
   .bank
+    .logo
+      position absolute
+      top 50%
+      left 50%
+      transform scale(10)
+    .top
+      height 3.5rem
+      background linear-gradient(to right, #ff8131, #ff5429);
+      ._bankicon_6
+        margin -5.8rem 0 0 -0.3rem
     .list
-      margin-top 0
+      position relative
+      margin-top -1.1rem
       ul
         background transparent
         &:before, &:after
@@ -133,4 +126,6 @@
           width 1.5rem
           top 0.22rem
           height 1.82rem
+      ._bankicon_7
+        margin -0.25rem 0 0 -0.4rem
 </style>

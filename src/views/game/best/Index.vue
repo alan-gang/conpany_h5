@@ -5,7 +5,7 @@ f7-page.game_best
     .toolbar-inner.justify-content-flex-end
       f7-icon._icon(:class=" { _vmode01: list, _vmode01_a: !list } " f7="home_fill" @click.native=" list = !list ")
       f7-icon._icon(:class=" { _vmode02_a: list, _vmode02: !list } " f7="data_fill" @click.native=" list = !list ")
-  
+
   f7-row(no-gap)
     f7-col.pd_0(:width=" list ? 100 : 33 " v-for=" (v, i) in data " :key=" i ")
       f7-card.cli_a.mg_5
@@ -61,6 +61,6 @@ export default {
 <style lang="stylus">
 @import '~src/css/var.stylus'
 // 建议不添加scoped， 所有样式最多嵌套2层
-    
-    
+
+
 </style>
