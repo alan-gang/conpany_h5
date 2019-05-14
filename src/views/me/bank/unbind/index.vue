@@ -48,7 +48,7 @@
       position absolute
       top 1.08rem
       left 50%
-      margin-left -0.28rem
+      margin-left -0.3rem
       transform scale(1.77)
     form
       margin-top 1rem

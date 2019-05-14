@@ -2,7 +2,7 @@
   <f7-page class="safecenter">
     <f7-navbar title="账户安全" back-link></f7-navbar>
     <div class="top">
-      <f7-gauge type="circle" value-text="75" :value="0.75" label-text="分" border-bg-color="rgba(255,255,255,0.2)" border-color="#fff" value-text-color="#fff"></f7-gauge>
+      <f7-gauge type="circle" value-text="75" value-text-color="#fff" :value="0.75" label-text="分" border-bg-color="rgba(255,255,255,0.2)" border-color="#fff"></f7-gauge>
       <p>当前登录地址：上海市·中国</p>
     </div>
     <form class="clearfix">
@@ -117,7 +117,6 @@
   // 建议不添加scoped， 所有样式最多嵌套2层
   .safecenter
     .top
-      margin-top 0.8rem
       height 6.5rem
       background linear-gradient(to right, #ff8131, #ff5429);
       color #fff
