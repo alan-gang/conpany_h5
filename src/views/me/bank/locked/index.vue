@@ -1,6 +1,6 @@
 <template>
-  <f7-page class="bank">
-    <f7-navbar title="银行卡" back-link></f7-navbar>
+  <f7-page class="locked">
+    <f7-navbar title="锁定银行卡" back-link></f7-navbar>
     <div class="top">
       <a href="javascript:;" class="logo _icon _bankicon_6 link color-black">
         <i class="icon f7-icons"> home </i>
@@ -58,7 +58,7 @@
     mixins: [config],
     components: {
     },
-    name: 'bank',
+    name: 'locked',
     props: [],
     data () {
       return {}
@@ -73,7 +73,7 @@
 <style lang="stylus">
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
-  .bank
+  .locked
     .logo
       position absolute
       top 50%
