@@ -66,6 +66,8 @@ urls = {
     _bankicon_6: '~src/assets/me/bank/bankcard_img_bankcard',
     _bankicon_7: '~src/assets/me/bank/bankcard_icon_locked',
 
+    _bonusicon: '~src/assets/me/safecenter/team_icon_userhead',
+
   }
   sizes = {
     _vip: auto 60%,
