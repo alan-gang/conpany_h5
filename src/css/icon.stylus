@@ -37,10 +37,13 @@ urls = {
     __bank_card: '~src/assets/me/profile_icon_bankcards',
     _lottery_bonus: '~src/assets/me/profile_icon_bonus',
     _help_center: '~src/assets/me/profile_icon_helpcenter',
-    
+
     _sub_game_record: '~src/assets/me/profile_icon_bettingrecord',
     _sub_fund_record: '~src/assets/me/profile_icon_assetsrecord',
 
+    _play_intro: '~src/assets/me/help_icon_games',
+    _function_intro: '~src/assets/me/help_icon_function',
+    _faq: '~src/assets/me/help_icon_faq',
 
   }
   sizes = {
@@ -61,10 +64,10 @@ urls = {
     &.{k}
       .icon
         bg(v+'@2x.png', sizes[k] || (auto 60%))
-  
+
 ._icon.icon.f7-icons
   color rgba(0,0,0,0)
   for k, v in  urls
     &.{k}
       bg(v+'@2x.png', sizes[k] || (auto 80%))
-    
+

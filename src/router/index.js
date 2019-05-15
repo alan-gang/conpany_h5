@@ -33,7 +33,13 @@ import load from '@/views/me/load'
 import withdraw from '@/views/me/withdraw'
 import transfer from '@/views/me/transfer'
 import wallet from '@/views/me/wallet'
+import help from '@/views/me/help'
 
+// 帮助中心
+import howtoplay from '@/views/me/help/howtoplay'
+import functionintro from '@/views/me/help/functionintro'
+import faq from '@/views/me/help/faq'
+import detailpage from '@/views/me/help/detailpage'
 // 设置
 import settings from '@/views/settings'
 // 关于我们
@@ -152,6 +158,31 @@ export default [
     path: '/me/wallet/',
     component: wallet,
     beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/help/',
+    component: help,
+    rl: true
+  },
+  {
+    path: '/me/help/howtoplay/',
+    component: howtoplay,
+    rl: true
+  },
+  {
+    path: '/me/help/functionintro/',
+    component: functionintro,
+    rl: true
+  },
+  {
+    path: '/me/help/faq/',
+    component: faq,
+    rl: true
+  },
+  {
+    path: '/me/help/detailpage/',
+    component: detailpage,
     rl: true
   },
   {

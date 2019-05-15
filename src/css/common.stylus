@@ -28,7 +28,7 @@ for x in  -30 -20 -10 0 1 2 5 10 15 20 25 30 40 50
     padding x * 1px
   .mg_{x}
     margin x * 1px
-    
+
   .mt_{x}
     margin-top x * 1px
   .mb_{x}
@@ -37,7 +37,7 @@ for x in  -30 -20 -10 0 1 2 5 10 15 20 25 30 40 50
     margin-left x * 1px
   .mr_{x}
     margin-right x * 1px
-  
+
   .pt_{x}
     padding-top x * 1px
   .pb_{x}
@@ -46,8 +46,8 @@ for x in  -30 -20 -10 0 1 2 5 10 15 20 25 30 40 50
     padding-left x * 1px
   .pr_{x}
     padding-right x * 1px
-  
-    
+
+
 
 // height line-height
 for x in  1 2 5 10 15 20 25 28 30 35 40 45 50 55 60 65 70 80 90 100 120 140 150 160 180 200 240 300 320 350 330 360
@@ -64,7 +64,7 @@ for x in  1 2 5 10 15 20 25 28 30 35 40 45 50 55 60 65 70 80 90 100 120 140 150 
     width x * 1px
   .minw_{x}
     min-width x * 1px
-  
+
 
 // colors
 colors = {
@@ -82,6 +82,7 @@ colors = {
   'o': rgba(0,0,0, 0),
   'pc': #efeff4,
   'ccc': #ccc,
+  'f7': #f7f7f7,
 }
 for k, v in  colors
   .c_{k}
@@ -114,11 +115,11 @@ for x in 90 -90
 
 
 // z-index
-for x in 1 2 9 10 99 101 500 501 999 1001 5001 8998 8999 9000 9500 9501 9502 9999 9998 9997 
+for x in 1 2 9 10 99 101 500 501 999 1001 5001 8998 8999 9000 9500 9501 9502 9999 9998 9997
   .z_{x}
     z-index x
 
-    
+
 .h_o
   opacity 0
 .o_h
@@ -157,7 +158,7 @@ for x in 1 2 9 10 99 101 500 501 999 1001 5001 8998 8999 9000 9500 9501 9502 999
   overflow hidden
   display -webkit-box
   -webkit-line-clamp 3
-  -webkit-box-orient vertical 
+  -webkit-box-orient vertical
 .cli_a
   &:active
     opacity .6

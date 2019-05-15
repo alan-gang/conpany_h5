@@ -110,6 +110,10 @@ let api = {
 
   // 我的
   getUserIdentity: 'home/userInfo.do?method=getUserIdentity',
+
+  // 帮助中心
+  getHelpTag: '/help.do?method=getHelpTag',
+  getHelpContent: '/help.do?method=getHelpContent',
 }
 
 Object.keys(api).forEach((key) => {
