@@ -7,7 +7,7 @@
     <form>
       <div class="section">
         <label for="birthday">生日</label>
-        <input type="text" placeholder="请输入生日" id="birthday" />
+        <input type="text" :value="birthday" readonly="readonly" placeholder="请输入生日" id="birthday" :disabled="bool" @click="date" />
       </div>
       <a href="javascript:;" class="confirm">确 认</a>
     </form>
@@ -15,7 +15,43 @@
 </template>
 
 <script>
-
+  import config from '@/config'
+  import page from '@/components/page'
+  import api from '@/api'
+  export default {
+    mixins: [config, page],
+    components: {
+    },
+    name: 'birthday',
+    props: [],
+    data () {
+      return {
+        birthday: '',
+        bool: false,
+      }
+    },
+    created () {
+      setTimeout(() => {
+        this.acctSecureInfo()
+      }, 700)
+    },
+    methods: {
+      acctSecureInfo () {
+        this.$.get(api.acctSecureInfo).then((res) => {
+          const data = res.data
+          if (data.birthday !== '') {
+            this.birthday = data.birthday
+            this.bool = true
+          }
+        })
+      },
+      date () {
+        this.$f7.calendar.create({
+          inputEl: '#birthday',
+        })
+      }
+    }
+  }
 </script>
 
 <style lang="stylus">
@@ -43,6 +79,7 @@
           padding-left 0.2rem
         input
           display inline-block
+          width 5.5rem
           color #3d3d3d
           &::-webkit-input-placeholder { color: #c5c5c5; }
           &:-moz-placeholder { color: #c5c5c5; }
