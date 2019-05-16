@@ -49,6 +49,13 @@
           this.$.get(api.changLoginPwd, {
             password: this.password,
             newPwd: this.newPwd,
+          }).then((res) => {
+            if (res.status === 200) {
+              this.__toast('登录密码修改成功，请重新登录')
+              setTimeout(() => {
+                this.__go('/login')
+              }, 2000)
+            }
           })
         }
       }

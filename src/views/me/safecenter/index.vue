@@ -49,7 +49,7 @@
             <i class="icon f7-icons"> home </i>
           </a>
           <label>资金密码</label><br />
-          <a href="/me/safecenter/capitalPwd/" class="a">{{ capitalPwd }}</a>
+          <a href="javascript:;" class="a" @click="securityPwd">{{ capitalPwd }}</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_6 link color-black">
@@ -158,6 +158,13 @@
             this.birthday = '生日只能设置一次'
           }
         })
+      },
+      securityPwd () {
+        if (this.user.hasSecurityPwd === 1) { // ===
+          this.__go('/me/safecenter/capitalPwdModify/')
+        } else {
+          this.__go('/me/safecenter/capitalPwd/')
+        }
       }
     }
   }

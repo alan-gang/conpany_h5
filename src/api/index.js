@@ -124,6 +124,7 @@ let api = {
   acctSecureInfo: '/person/accountSecur.do?method=acctSecureInfo',
   setBirthday: '/person/accountSecur.do?method=setBirthday',
   changLoginPwd: '/person/accountSecur.do?method=changLoginPwd',
+  changSecurePwd: '/person/accountSecur.do?method=changSecurePwd',
 
   // 报表
   // 资金记录
