@@ -12,7 +12,7 @@
             <i class="icon f7-icons"> home </i>
           </a>
           <label>登录密码</label><br />
-          <a href="/me/safecenter/loginPwd/" class="a">{{ hasLogPwd }}</a>
+          <a href="/me/safecenter/loginPwd/" class="a">立即修改</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_2 link color-black">
@@ -49,7 +49,7 @@
             <i class="icon f7-icons"> home </i>
           </a>
           <label>资金密码</label><br />
-          <a href="javascript:;" class="a" @click="securityPwd">{{ capitalPwd }}</a>
+          <a href="javascript:;" class="a" @click="securityPwd">{{ this.user.hasSecurityPwd ? '立即修改' : '未设置' }}</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_6 link color-black">
@@ -91,8 +91,6 @@
       return {
         location: '',
         accountPoint: '',
-        hasLogPwd: '',
-        capitalPwd: '',
         greetMsg: '',
         isSetSafeQuest: '',
         email: '',
@@ -104,17 +102,6 @@
     },
     created () {
       this.acctSecureInfo()
-      const user = this.user
-      if (user.hasLogPwd === 1) {
-        this.hasLogPwd = '立即修改'
-      } else {
-        this.hasLogPwd = '未设置'
-      }
-      if (user.hasSecurityPwd === 1) {
-        this.capitalPwd = '立即修改'
-      } else {
-        this.capitalPwd = '未设置'
-      }
     },
     methods: {
       acctSecureInfo () {
@@ -160,7 +147,7 @@
         })
       },
       securityPwd () {
-        if (this.user.hasSecurityPwd === 1) { // ===
+        if (this.user.hasSecurityPwd === 1) {
           this.__go('/me/safecenter/capitalPwdModify/')
         } else {
           this.__go('/me/safecenter/capitalPwd/')
