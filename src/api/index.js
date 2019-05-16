@@ -123,6 +123,7 @@ let api = {
   getUserIdentity: 'home/userInfo.do?method=getUserIdentity',
   acctSecureInfo: '/person/accountSecur.do?method=acctSecureInfo',
   setBirthday: '/person/accountSecur.do?method=setBirthday',
+  changLoginPwd: '/person/accountSecur.do?method=changLoginPwd',
 
   // 报表
   // 资金记录

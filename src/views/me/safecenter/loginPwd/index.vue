@@ -7,23 +7,55 @@
     <form>
       <div class="section">
         <label for="password">当前密码</label>
-        <input type="password" placeholder="请输入当前密码" id="password" maxlength="16" />
+        <input type="password" v-model="password" placeholder="请输入当前密码" id="password" maxlength="16" />
       </div>
       <div class="section">
         <label for="newPwd">新密码</label>
-        <input type="password" placeholder="请输入新密码" id="newPwd" maxlength="16" />
+        <input type="password" v-model="newPwd" placeholder="请输入新密码" id="newPwd" maxlength="16" />
       </div>
       <div class="section">
         <label for="confirmPwd">确认密码</label>
-        <input type="password" placeholder="请重复新密码" id="confirmPwd" maxlength="16" />
+        <input type="password" v-model="confirmPwd" placeholder="请重复新密码" id="confirmPwd" maxlength="16" />
       </div>
-      <a href="javascript:;" class="confirm">确 认</a>
+      <a href="javascript:;" class="confirm" @click="confirm">确 认</a>
     </form>
   </f7-page>
 </template>
 
 <script>
-
+  import config from '@/config'
+  import page from '@/components/page'
+  import api from '@/api'
+  export default {
+    mixins: [config, page],
+    components: {
+    },
+    name: 'loginPwd',
+    props: [],
+    data () {
+      return {
+        password: '',
+        newPwd: '',
+        confirmPwd: '',
+      }
+    },
+    created () {
+    },
+    methods: {
+      confirm () {
+        console.log(this.newPwd)
+        console.log(this.confirmPwd)
+        if (this.newPwd !== this.confirmPwd) {
+          this.$f7.dialog.alert('新密码和确认密码必须相同', '')
+        } else {
+          this.$.get(api.changLoginPwd, {
+            password: this.password,
+            newPwd: this.newPwd,
+          })
+        }
+      }
+    }
+  }
 </script>
 
 <style lang="stylus">
