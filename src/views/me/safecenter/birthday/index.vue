@@ -7,9 +7,9 @@
     <form>
       <div class="section">
         <label for="birthday">生日</label>
-        <input type="text" :value="birthday" readonly="readonly" placeholder="请输入生日" id="birthday" :disabled="bool" @click="date" />
+        <input type="text" v-model.lazy="birthday" readonly="readonly" placeholder="请输入生日" id="birthday" :disabled="bool" @click="date" />
       </div>
-      <a href="javascript:;" class="confirm">确 认</a>
+      <a href="javascript:;" class="confirm" :class="{ gray: bool }" @click="confirm">确 认</a>
     </form>
   </f7-page>
 </template>
@@ -39,7 +39,9 @@
       acctSecureInfo () {
         this.$.get(api.acctSecureInfo).then((res) => {
           const data = res.data
-          if (data.birthday !== '') {
+          if (data.birthday === '') {
+            this.bool = false
+          } else {
             this.birthday = data.birthday
             this.bool = true
           }
@@ -49,6 +51,13 @@
         this.$f7.calendar.create({
           inputEl: '#birthday',
         })
+      },
+      confirm () {
+        if (this.bool === false) {
+          this.$.get(api.setBirthday + '&date=' + this.birthday).then(() => {
+            this.__go('/me/safecenter/')
+          })
+        }
       }
     }
   }
@@ -95,4 +104,6 @@
         background linear-gradient(to right, #fe8f48, #ff5429)
         border-radius 0.05rem
         text-align center
+        &.gray
+          background #999
 </style>

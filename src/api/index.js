@@ -122,6 +122,7 @@ let api = {
   // 我的
   getUserIdentity: 'home/userInfo.do?method=getUserIdentity',
   acctSecureInfo: '/person/accountSecur.do?method=acctSecureInfo',
+  setBirthday: '/person/accountSecur.do?method=setBirthday',
 
   // 报表
   // 资金记录
