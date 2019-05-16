@@ -43,8 +43,6 @@
     },
     methods: {
       confirm () {
-        console.log(this.newPwd)
-        console.log(this.confirmPwd)
         if (this.newPwd !== this.confirmPwd) {
           this.$f7.dialog.alert('新密码和确认密码必须相同', '')
         } else {
