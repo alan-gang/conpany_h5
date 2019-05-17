@@ -7,15 +7,38 @@
     <form>
       <div class="section">
         <label for="greetings">登录问候语</label>
-        <input type="text" placeholder="请输入登陆问候语" id="greetings" />
+        <input type="text" v-model="greetings" placeholder="请输入登陆问候语" id="greetings" />
       </div>
-      <a href="javascript:;" class="confirm">确 认</a>
+      <a href="javascript:;" class="confirm" @click="confirm">确 认</a>
     </form>
   </f7-page>
 </template>
 
 <script>
-
+  import config from '@/config'
+  import page from '@/components/page'
+  import api from '@/api'
+  export default {
+    mixins: [config, page],
+    components: {
+    },
+    name: 'greetings',
+    props: [],
+    data () {
+      return {
+        greetings: '',
+      }
+    },
+    created () {
+    },
+    methods: {
+      confirm () {
+        this.$.get(api.setGreetMsg + '&greetMsg=' + this.greetings).then(() => {
+          this.__go('/me/safecenter/')
+        })
+      }
+    }
+  }
 </script>
 
 <style lang="stylus">
