@@ -47,6 +47,7 @@
             if (res.status === 200) {
               this.__toast('资金密码设置成功')
               setTimeout(() => {
+                this.__setUser({ hasSecurityPwd: 1 })
                 this.__go('/me/safecenter/')
               }, 2000)
             }
