@@ -49,7 +49,7 @@
             <i class="icon f7-icons"> home </i>
           </a>
           <label>资金密码</label><br />
-          <a href="javascript:;" class="a" @click="securityPwd">{{ this.user.hasSecurityPwd ? '立即修改' : '未设置' }}</a>
+          <a href="javascript:;" class="a" @click="securityPwd">{{ capitalPwd }}</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_6 link color-black">
@@ -91,6 +91,7 @@
       return {
         location: '',
         accountPoint: '',
+        capitalPwd: '',
         greetMsg: '',
         isSetSafeQuest: '',
         email: '',
@@ -102,6 +103,11 @@
     },
     created () {
       this.acctSecureInfo()
+      if (this.user.hasSecurityPwd === 1) {
+        this.capitalPwd = '立即修改'
+      } else {
+        this.capitalPwd = '未设置'
+      }
     },
     methods: {
       acctSecureInfo () {
