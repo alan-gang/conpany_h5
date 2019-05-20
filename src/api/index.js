@@ -12,12 +12,12 @@ let api = {
   __getcodeimg: '/login/login.do?method=getVerifyImage',
   __login: '/login/login.do?method=validate',
   '/dscagamesclient/login/login.do?method=validate': {
-    0: {msg: '登录失败', fn: '__setUser', args: {login: false}},
+    0: {msg: '登录失败', fn: [{fn: '__setUser', args: {login: false}}]},
     1: {msg: '登录成功'},
     fn: '__clearform'
   },
   '/dscagamesclient/login/login.do?method=validate&': {
-    0: {fn: '__setUser', args: {login: false}}
+    0: {fn: [{fn: '__setUser', args: {login: false}}]}
   },
   __tryLogin: '/login/login.do?method=tryLogin',
   '/dscagamesclient/login/login.do?method=tryLogin': {
@@ -121,9 +121,18 @@ let api = {
 
   // 我的
   getUserIdentity: 'home/userInfo.do?method=getUserIdentity',
+  getLotteryPrinzeInfo: '/person/lotteryPrize.do?method=getLotteryPrinzeInfo',
 
   // 报表
   // 资金记录
+  acreport: '/report/OrderReport.do?method=list',
+  qryRecharge: '/person/recharge.do?method=qryRecharge',
+  trrecord: '/ext/bg.do?method=queryBalanceTransferPage',
+  wrrecord: '/person/withDraw.do?method=queryWithdraw',
+  // 盈亏
+  plreport: '/report/personalReportAction.do?method=recentTotalReport',
+  pld: '/report/personalProfit.do?method=sumDetail',
+  pldl: '/report/personalProfit.do?method=dailyDetail',
 }
 
 Object.keys(api).forEach((key) => {

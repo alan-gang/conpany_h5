@@ -16,11 +16,15 @@
 @import './hc6.stylus'
 @import './toggle.stylus'
 @import './cards.stylus'
+@import './modal.stylus'
+@import './stripe.stylus'
 
 //font-size
-for x in  12 14 16 18 20 24 30 36 40 50
+for x in  12 13 14 15 16 18 20 22 24 25 26 28 30 32 35 36 38 40 42 45 46 48 50
   .ft_{x}
     font-size x * 1px
+.ft_b
+  font-weight bold
 
 // margin padding
 for x in  -30 -20 -10 0 1 2 5 10 15 20 25 30 40 50
@@ -90,7 +94,7 @@ for k, v in  colors
     background-color v
 
 // width %
-for x in 10 15 16 17 18 19 20 25 30 35 40 45 50 60 70 80 90 100 33
+for x in 10 15 16 17 18 19 20 25 30 35 40 45 50 55 60 65 70 80 90 100 33
   .wp_{x}
     width x + '%'
   .hp_{x}
@@ -120,7 +124,8 @@ for x in 1 2 9 10 99 101 500 501 999 1001 5001 8998 8999 9000 9500 9501 9502 999
   .z_{x}
     z-index x
 
-
+.b_s
+  box-sizing border-box
 .h_o
   opacity 0
 .o_h
@@ -197,23 +202,6 @@ for x in 1 2 9 10 99 101 500 501 999 1001 5001 8998 8999 9000 9500 9501 9502 999
   justify-content center
   align-items center
 
-.sheet-modal-top
-  bottom auto
-  top var(--f7-statusbar-height)
-  transform translate3d(0,calc(-100% - var(--f7-statusbar-height)),0)
 
-.sheet-modal-top.modal-out
-    transform translate3d(0,calc(-100% - var(--f7-statusbar-height)),0)
 
-.sheet-modal-top .toolbar-bottom
-  position absolute
 
-.dialog-popup.popup
-  height auto
-  left 10px
-  right 10px
-  top 10vh
-  bottom 10vh
-  width auto
-  &.modal-out
-    transform translate3d(0,200%,0)

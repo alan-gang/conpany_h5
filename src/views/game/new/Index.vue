@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.game_new
-  f7-card(expandable v-for=" (v, i) in cache.plats ")
+  f7-card(expandable v-for=" (v, i) in cache.plats " :key="i")
     f7-card-content.pd_0
       //- ._bg._notbg.h_350(:class=" '_bgid' + v.id ")
       img.h_300.wp_100(:src=" v.picUrl "  )

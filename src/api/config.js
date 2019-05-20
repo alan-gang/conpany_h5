@@ -73,31 +73,23 @@ axios.interceptors.response.use((response) => {
   }
   delete response.data.msg
 
+  // follow actions to call
+  let config = api[response.config.url]
+  config && (config = config[response.data.success])
+  if (config) {
+    let fn = config.fn || []
+    fn.forEach(x => {
+      axios.$root.$children[0].__setCall(x)
+    })
+  }
+  // 0
   // -1
   if (response.data.success === -1) {
     $f7.popup.open('#login')
-    // follow actions to call
-    let config = api[response.config.url]
-    config && (config = config[-1])
-    if (config) {
-      let fn = config.fn || []
-      fn.forEach(x => {
-        axios.$root.$children[0].__setCall(x)
-      })
-    }
   }
 
   // delete success
   if (response.data.success > 0) {
-    // follow actions to call
-    let config = api[response.config.url]
-    config && (config = config[1])
-    if (config) {
-      let fn = config.fn || []
-      fn.forEach(x => {
-        axios.$root.$children[0].__setCall(x)
-      })
-    }
     delete response.data.success
     return response
   }
@@ -106,7 +98,6 @@ axios.interceptors.response.use((response) => {
   // Do something with response error
   // if (spin) spin.remove(() => {})
   // timeout
-  console.log(error, '??', error.code)
   if (error.code === 'ECONNABORTED ') {
     return Promise.resolve(error)
   }

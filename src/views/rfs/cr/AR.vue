@@ -13,7 +13,7 @@ f7-page.rf_cr_1(:page-content="false")
     .v_line.hp_50.w_1.bg-color-gray.o_30
 
     f7-link.wp_45.t_c(color="gray" @click=" sd === 3 ? __setCall({fn: '__closeSD'}) : sd = 3 ") 
-      span {{ s.n }}
+      span.ellipsis {{ s.n }}
       f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 3 } ") 
 
   filters(v-if=" sd " @sd=" sd = $event ")
@@ -28,25 +28,22 @@ f7-page.rf_cr_1(:page-content="false")
 
     f7-card(v-for=" (v, i) in data " :key="i")
       f7-card-header
-        span.ft_14.text-color-gray {{ v.issue }}期
-        span.ft_14.text-color-gray {{ v.writeTime }}
+        span.ft_13.text-color-gray {{ v.times }}
+        span.ft_13 账变编号：{{ v.entry }}
       f7-card-content
-        .flex
+        .flex.ft_13
           .a
-            .hlh_20
-              span {{ v.lotteryName }} - {{ v.methodName }}
-              span.text-color-deeporange  ({{ v.codeType === '1' ? '复式' : '单式' }})
-            .hlh_20
-              span.c_9 投注：
-              span {{ v.totalPrice }}元
-          .b
-            f7-button.inlb(small round fill :color=" config.stateColor[v.stat] " :href=" '/rfs/bc/bd/' + v.projectId + '/'") {{ config.orderState[v.stat] }}
-            .inlb.w_5
-            f7-icon(f7="chevron_right" size="12px")
+            .hlh_30.ft_15 {{ v.orderType }} 
+              span(:class=" v.inout._o0() ? 'c_s' : 'c_e' ") {{ v.inout._o0() ? '+' : '' }}{{ v.inout._f3() }}
+            .lh_20 {{ v.lotteryName }} ({{ v.issue }}期)
+
+          .b.t_r.wp_55
+            .lh_20 主余额：{{ v.balance._f3() }}元
+            .lh_20 特殊余额：{{ v.speBalance._f3() }}元
 
     .preloader.infinite-scroll-preloader(v-if="showPreloader")
 
-    .t_c.text-color-gray.pd_15.nomore --没有更多了--
+    .t_c.text-color-gray.pb_15.nomore --没有更多了--
 
 
 </template>
@@ -56,7 +53,6 @@ import config from '@/config'
 import api from '@/api'
 import page from '@/components/page'
 import filters from '@/components/filters'
-import GP from '@/components/filters/GP'
 import DP from '@/components/filters/DP'
 import ASP from '@/components/filters/ASP'
 import stet from '@/components/stet'
@@ -64,7 +60,6 @@ export default {
   mixins: [config, stet, page],
   components: {
     filters,
-    GP,
     DP,
     ASP,
   },
@@ -73,8 +68,7 @@ export default {
   data () {
     return {
       sd: false,
-      g: this.g_ || {n: '全部游戏', id: ''},
-      s: {n: '全部状态', id: ''},
+      s: {n: '全部类型', id: ''},
       data: []
     }
   },
@@ -94,16 +88,14 @@ export default {
       this.list()
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
-      this.$.get(api.orderList, Object.assign({
-        lotteryId: this.g.id,
-        stat: this.s.id,
+      this.$.get(api.acreport, Object.assign({
+        orderId: this.s.id,
         beginDate: this.stet[0]._toAllString(),
         endDate: this.stet[1]._toAllString(),
-        scope: 0,
-      }, option)).then(({data: {recordList, totalSize}}) => {
-        this.data = [...(option.page > this.fpage ? this.data : []), ...recordList]
+      }, option)).then(({data: {orderRecordList, totalSize}}) => {
+        this.data = [...(option.page > this.fpage ? this.data : []), ...orderRecordList]
         this.total = totalSize
-        cb && cb(recordList)
+        cb && cb(orderRecordList)
       })
     },
   }

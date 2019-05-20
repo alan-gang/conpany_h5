@@ -37,11 +37,11 @@ window.Number.prototype._toHMS = function () {
   return hour + ':' + min + ':' + sec
 }
 
-window.Number.prototype._f1 = function () {
-  return this.toFixed(1)
+window.Number.prototype._f1 = window.String.prototype._f1 = function () {
+  return Number(this).toFixed(1)
 }
-window.Number.prototype._f3 = function () {
-  return this.toFixed(3)
+window.Number.prototype._f3 = window.String.prototype._f3 = function () {
+  return Number(this).toFixed(3)
 }
 
 // need change every year

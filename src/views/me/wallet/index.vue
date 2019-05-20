@@ -18,7 +18,7 @@ f7-page.wallet(:page-content="false")
       .preloader
       .ptr-arrow
 
-    f7-card.no-shadow(v-for=" (v, i) in config.wallets ")
+    f7-card.no-shadow(v-for=" (v, i) in config.wallets " :key="i")
       f7-card-header
         .wp_60.flex(@click=" __setCall({fn: '__getMoreBalance', args: [v]}) ")
           f7-button(color="black") {{ v.n }}

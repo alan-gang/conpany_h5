@@ -20,6 +20,9 @@ export default {
       osid: '',
       csid: '',
       asid: '',
+      lsid: '',
+      tsid: '',
+      wsid: '',
     },
   },
   actions: {

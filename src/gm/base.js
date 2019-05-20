@@ -79,6 +79,7 @@ N: 一注的长度
 r: 最大相同数字的长度
 l: 一个号码的长度 如12345有5个号码, 010203有3个号码, 号码长度为2
  */
+// 重复号码 === r
 let N = (value, N, r, l, max, min) => empty(value) ? [] : value.split(' ').filter(n => n.length === N).filter(n => {
   return (typeof r !== 'number') || r === Object.values(n.match(new RegExp('\\d{' + (l || 1) + '}', 'g')).reduce((p, na) => {
     if (p[na] !== undefined) p[na] += 1

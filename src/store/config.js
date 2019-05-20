@@ -65,6 +65,27 @@ export default {
       {id: 1, n: '已取消'},
       {id: 2, n: '已完成'},
     ],
+    loadStateFilters: [
+      {id: '', n: '全部状态'},
+      {id: 1, n: '待充值'},
+      {id: 2, n: '待确认'},
+      {id: 3, n: '第三方已到账'},
+      {id: 4, n: '充值成功'},
+    ],
+    transferStateFilters: [
+      {id: '', n: '全部状态'},
+      {id: 0, n: '失败'},
+      {id: 1, n: '成功'},
+      {id: 2, n: '处理中'},
+    ],
+    withdrawStateFilters: [
+      {id: '', n: '全部状态'},
+      {id: 1, n: '待审核'},
+      {id: 2, n: '审核失败'},
+      {id: 3, n: '出款中'},
+      {id: 4, n: '出款成功'},
+      {id: 5, n: '出款失败'},
+    ],
     wallets: [
       {n: '主帐户', key: 'availableBalance', pid: 0},
       {n: '特殊帐户', key: 'specialBalance', pid: 1},

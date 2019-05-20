@@ -6,7 +6,8 @@
   template(v-if="s[0]")
     selectionrow(v-for=" (v, i) in s " :key="i" v-bind="{row: v, rowIndex: i}" v-on:row=" update ")
   template(v-else)
-    textarea.bg-color-white.pd_5(v-model=" value_ " placeholder="每一注号码之间请用一个 空格[ ]、逗号[,] 或者 分号[;] 隔开")
+    textarea.bg-color-white.pd_5(v-model=" value_ " placeholder="每一注号码之间请用一个 空格[ ]、逗号[,] 或者 分号[;] 隔开" @dblclick="__random")
+    f7-button.o_50(fill @click="__random") 机选
   
 </template>
 
@@ -124,6 +125,7 @@ export default {
     mid () {
       this.__setCall({fn: '__initSelectionRow'})
       this.__setCall({fn: '__initSelectionPS'})
+      this.__clearSelection()
     }
   },
   created () {

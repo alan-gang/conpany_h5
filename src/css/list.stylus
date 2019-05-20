@@ -49,4 +49,3 @@ li.hlh_25
     padding-right 30px
     &:before
       transform rotateZ(90deg)
-  

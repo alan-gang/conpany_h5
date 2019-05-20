@@ -61,6 +61,12 @@ import bd_ from '@/views/rfs/bc/bd'
 import cd from '@/views/rfs/bc/cd'
 // 资金记录
 import cr from '@/views/rfs/cr'
+import LRD from '@/views/rfs/cr/LRD'
+import WRD from '@/views/rfs/cr/WRD'
+// 盈亏报表
+import pl from '@/views/rfs/pl'
+import PLD from '@/views/rfs/pl/PLD'
+import PLDL from '@/views/rfs/pl/PLDL'
 
 let async = url => {
   return (routeTo, routeFrom, resolve, reject) => {
@@ -349,5 +355,31 @@ export default [
   {
     path: '/rfs/cr/',
     component: cr,
+    master: true,
+    detailRoutes: [
+      {
+        path: '/rfs/cr/lrd/',
+        component: LRD,
+      },
+      {
+        path: '/rfs/cr/wrd/',
+        component: WRD,
+      },
+    ]
+  },
+  {
+    path: '/rfs/pl/',
+    component: pl,
+    master: true,
+    detailRoutes: [
+      {
+        path: '/rfs/pl/pld/',
+        component: PLD,
+      },
+      {
+        path: '/rfs/pl/pld/pldl/',
+        component: PLDL,
+      },
+    ]
   }
 ]

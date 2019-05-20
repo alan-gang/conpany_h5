@@ -57,6 +57,9 @@ urls = {
     _gou_gray: '~src/assets/me/safecenter/common_icon_unseleted',
     _gou: '~src/assets/me/safecenter/common_icon_seleted',
 
+    // rfs
+    _date: '~src/assets/rfs/profile_date',
+
   }
   sizes = {
     _vip: auto 60%,

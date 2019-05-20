@@ -48,7 +48,7 @@
           f7-col(width="33")
             f7-button(bg-color="white" color="black" href="/rfs/cr/") 资金记录
           f7-col(width="33")
-            f7-button(bg-color="white" color="black" href="/rfs/plr/") 盈亏报表
+            f7-button(bg-color="white" color="black" href="/rfs/pl/") 盈亏报表
         template(v-else)
           f7-col(width="33")
             f7-button(bg-color="white" color="black") 开户管理
