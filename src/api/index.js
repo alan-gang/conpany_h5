@@ -129,6 +129,10 @@ let api = {
 
   // 报表
   // 资金记录
+  // 帮助中心
+  getHelpTag: '/help.do?method=getHelpTag',
+  getHelpContent: '/help.do?method=getHelpContent',
+
 }
 
 Object.keys(api).forEach((key) => {
