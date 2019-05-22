@@ -1,5 +1,5 @@
 <template>
-  <f7-page class="loginPwd" :page-content="false">
+  <f7-page class="nickname">
     <f7-navbar title="设置昵称" back-link></f7-navbar>
     <a href="javascript:;" class="logo _icon _safeicon_7 link color-black">
       <i class="icon f7-icons"> home </i>
@@ -21,15 +21,15 @@
 <style lang="stylus">
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
-  .loginPwd
+  .nickname
     .logo
       position absolute
       top 1.08rem
       left 50%
-      margin-left -0.28rem
+      margin-left -0.3rem
       transform scale(1.77)
     form
-      margin-top 1.9rem
+      margin-top 1rem
       font-size 0.27rem
       .section
         height 0.92rem

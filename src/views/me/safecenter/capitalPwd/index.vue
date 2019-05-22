@@ -1,5 +1,5 @@
 <template>
-  <f7-page class="loginPwd" :page-content="false">
+  <f7-page class="capitalPwd">
     <f7-navbar title="资金密码设置" back-link></f7-navbar>
     <a href="javascript:;" class="logo _icon _safeicon_10 link color-black">
       <i class="icon f7-icons"> home </i>
@@ -7,33 +7,69 @@
     <form>
       <div class="section">
         <label for="newPwd">新密码</label>
-        <input type="password" placeholder="请输入新密码" id="newPwd" maxlength="16" />
+        <input type="password" v-model="newPwd" placeholder="请输入新密码" id="newPwd" maxlength="16" />
       </div>
       <div class="section">
         <label for="confirmPwd">确认密码</label>
-        <input type="password" placeholder="请重复新密码" id="confirmPwd" maxlength="16" />
+        <input type="password" v-model="confirmPwd" placeholder="请重复新密码" id="confirmPwd" maxlength="16" />
       </div>
-      <a href="javascript:;" class="confirm">确 认</a>
+      <a href="javascript:;" class="confirm" @click="confirm">确 认</a>
     </form>
   </f7-page>
 </template>
 
 <script>
-
+  import config from '@/config'
+  import page from '@/components/page'
+  import api from '@/api'
+  export default {
+    mixins: [config, page],
+    components: {
+    },
+    name: 'capitalPwdModify',
+    props: [],
+    data () {
+      return {
+        newPwd: '',
+        confirmPwd: '',
+      }
+    },
+    created () {
+    },
+    methods: {
+      confirm () {
+        if (this.newPwd !== this.confirmPwd) {
+          this.$f7.dialog.alert('新密码和确认密码必须相同', '')
+        } else {
+          this.$.get(api.changSecurePwd, {
+            newPwd: this.newPwd,
+          }).then((res) => {
+            if (res.status === 200) {
+              this.__toast('资金密码设置成功')
+              setTimeout(() => {
+                this.__setUser({ hasSecurityPwd: 1 })
+                this.__go('/me/safecenter/')
+              }, 2000)
+            }
+          })
+        }
+      }
+    }
+  }
 </script>
 
 <style lang="stylus">
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
-  .loginPwd
+  .capitalPwd
     .logo
       position absolute
       top 1.08rem
       left 50%
-      margin-left -0.28rem
+      margin-left -0.3rem
       transform scale(1.77)
     form
-      margin-top 1.9rem
+      margin-top 1rem
       font-size 0.27rem
       .section
         height 0.92rem

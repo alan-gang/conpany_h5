@@ -12,7 +12,6 @@ let defaultUser = {
   isOpenKey: '',
   isTest: '',
   isTry: '',
-  lockCard: '',
   nickName: '',
   platId: '',
   platUrl: '',
@@ -51,6 +50,9 @@ let defaultUser = {
   diffExp: 0,
   nexMinExp: 0,
   subLevel: '',
+  // bankcard
+  lockCard: 0,
+  userBankCards: [],
 }
 export default {
   state: defaultUser,

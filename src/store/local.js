@@ -24,6 +24,8 @@ export default {
     $stopWhenUwin: localStorage.getItem('$stopWhenUwin') === 'true',
     // collect games
     cgs: localStorage.getItem('cgs') || '',
+    // loadway
+    loadway: localStorage.getItem('loadway') || '',
   },
   actions: {
     __setLocal (local = {}) {

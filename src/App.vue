@@ -186,6 +186,7 @@ export default {
       })
     },
     __getMoreBalance (a = this.config.wallets.slice(2)) {
+      if (a[0].pid < 2) return this.__getBalance()
       a.forEach(x => {
         this.$.myget(api.getBalanceByPID, {platId: x.pid}).then(({data: {bal}}) => {
           let b = {}
@@ -197,6 +198,16 @@ export default {
     __getAllBalance () {
       this.__getBalance()
       this.__getMoreBalance()
+    },
+    __getUserBankCards () {
+      this.$.get(api.__getUserBankCards).then(({data}) => {
+        if (!data.userBankCards.length) {
+          this.$f7.dialog.confirm('立即前往绑定银行卡', '', () => {
+            this.__go('/bank/bind/')
+          })
+        }
+        this.__setUser(data)
+      })
     },
     __showTab (id) {
       this.$f7.tab.show(id)

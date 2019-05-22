@@ -1,142 +1,118 @@
-<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black-translucent><meta name=theme-color content=#2196f3><meta http-equiv=Content-Security-Policy content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:"><meta http-equiv=X-UA-Compatible content="IE=edge"><title>信游娱乐_最受欢迎_自主研发_彩票游戏_真人_棋牌_体育_电竞</title><link rel=icon type=image/png sizes=16x16 href=/static/favicon.png><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content=信游娱乐_最受欢迎_自主研发_彩票游戏_真人_棋牌_体育_电竞><meta name=msapplication-TileColor content=#000000><link rel=prefetch href=/static/js/0.9d81881aacac9ec7de13.js as=script><link rel=prefetch href=/static/js/1.901dec49e86ee393402a.js as=script><link rel=prefetch href=/static/js/2.47c405df0dc7a4e1612f.js as=script><link rel=prefetch href=/static/js/3.c4d477402c5d0b36d7ae.js as=script><link rel=preload href=/static/js/vendor.68ef5fe7ab0c08503134.js as=script><link rel=preload href=/static/js/app.75443a3221f838987b8b.js as=script><link rel=preload href=/static/css/app.e5fc2e52477ac5433277bb85c3b88c8d.css as=style><link rel=preload href=/static/js/manifest.817677a70747eb235c77.js as=script><script>// (function(doc, win) {
-        //     var docEl = doc.documentElement,
-        //         isIOS = navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
-        //         dpr = isIOS ? Math.min(win.devicePixelRatio, 3) : 1,
-        //         dpr = window.top === window.self ? dpr : 1, //被iframe引用时，禁止缩放
-        //         dpr = 1,
-        //         scale = 1 / dpr,
-        //         resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
-        //     docEl.dataset.dpr = dpr;
-        //     var metaEl = doc.createElement('meta');
-        //     metaEl.name = 'viewport';
-        //     metaEl.content = 'initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale;
-        //     docEl.firstElementChild.appendChild(metaEl);
-        //     var recalc = function() {
-        //         var width = docEl.clientWidth;
-        //         if (width / dpr > 750) {
-        //             width = 750 * dpr;
-        //         }
-        //         // 乘以100，px : rem = 100 : 1
-        //         docEl.style.fontSize = 100 * (width / 750) + 'px';
-        //     };
-        //     recalc()
-        //     if (!doc.addEventListener) return;
-        //     win.addEventListener(resizeEvt, recalc, false);
-        // })(document, window);
+<!DOCTYPE html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black-translucent><meta name=theme-color content=#2196f3><meta http-equiv=Content-Security-Policy content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap:"><meta http-equiv=X-UA-Compatible content="IE=edge"><title>信游娱乐_最受欢迎_自主研发_彩票游戏_真人_棋牌_体育_电竞</title><link rel=icon type=image/png sizes=16x16 href=/static/favicon.png><meta name=apple-mobile-web-app-capable content=yes><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-title content=信游娱乐_最受欢迎_自主研发_彩票游戏_真人_棋牌_体育_电竞><meta name=msapplication-TileColor content=#000000><link rel=prefetch href=/static/js/0.3b36fa6c0c919d9067a1.js as=script><link rel=prefetch href=/static/js/1.2163f967a383f0938752.js as=script><link rel=prefetch href=/static/js/2.1dda4eaf7a8c33749a23.js as=script><link rel=prefetch href=/static/js/3.8fa4a97381277304e341.js as=script><link rel=preload href=/static/js/vendor.aa6db508925ae24a326d.js as=script><link rel=preload href=/static/js/app.197093926fe554622ff6.js as=script><link rel=preload href=/static/css/app.d064a04d80ef4a8e51014d043997f716.css as=style><link rel=preload href=/static/js/manifest.ed46971f6f4388c9d85e.js as=script><script>// 移动端适配
         (function(win, lib) {
-            var doc = win.document;
-            var docEl = doc.documentElement;
-            var metaEl = doc.querySelector('meta[name="viewport"]');
-            var flexibleEl = doc.querySelector('meta[name="flexible"]');
-            var dpr = 0;
-            var scale = 0;
-            var tid;
-            var flexible = lib.flexible || (lib.flexible = {});
+          var doc = win.document;
+          var docEl = doc.documentElement;
+          var metaEl = doc.querySelector('meta[name="viewport"]');
+          var flexibleEl = doc.querySelector('meta[name="flexible"]');
+          var dpr = 0;
+          var scale = 0;
+          var tid;
+          var flexible = lib.flexible || (lib.flexible = {});
 
-            if (metaEl) {
-                var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
-                if (match) {
-                    scale = parseFloat(match[1]);
-                    dpr = parseInt(1 / scale);
-                }
-            } else if (flexibleEl) {
-                var content = flexibleEl.getAttribute('content');
-                if (content) {
-                    var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
-                    var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
-                    if (initialDpr) {
-                        dpr = parseFloat(initialDpr[1]);
-                        scale = parseFloat((1 / dpr).toFixed(2));
-                    }
-                    if (maximumDpr) {
-                        dpr = parseFloat(maximumDpr[1]);
-                        scale = parseFloat((1 / dpr).toFixed(2));
-                    }
-                }
+          if (metaEl) {
+            var match = metaEl.getAttribute('content').match(/initial\-scale=([\d\.]+)/);
+            if (match) {
+              scale = parseFloat(match[1]);
+              dpr = parseInt(1 / scale);
             }
-
-            if (!dpr && !scale) {
-                var isAndroid = win.navigator.appVersion.match(/android/gi);
-                var isIPhone = win.navigator.appVersion.match(/iphone/gi);
-                var devicePixelRatio = win.devicePixelRatio;
-                if (isIPhone) {
-                    // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
-                    if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
-                        dpr = 3;
-                    } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)) {
-                        dpr = 2;
-                    } else {
-                        dpr = 1;
-                    }
-                } else {
-                    // 其他设备下，仍旧使用1倍的方案
-                    dpr = 1;
-                }
-                scale = 1 / dpr;
+          } else if (flexibleEl) {
+            var content = flexibleEl.getAttribute('content');
+            if (content) {
+              var initialDpr = content.match(/initial\-dpr=([\d\.]+)/);
+              var maximumDpr = content.match(/maximum\-dpr=([\d\.]+)/);
+              if (initialDpr) {
+                dpr = parseFloat(initialDpr[1]);
+                scale = parseFloat((1 / dpr).toFixed(2));
+              }
+              if (maximumDpr) {
+                dpr = parseFloat(maximumDpr[1]);
+                scale = parseFloat((1 / dpr).toFixed(2));
+              }
             }
+          }
 
-            docEl.setAttribute('data-dpr', dpr);
-            if (!metaEl) {
-                metaEl = doc.createElement('meta');
-                metaEl.setAttribute('name', 'viewport');
-                metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-                if (docEl.firstElementChild) {
-                    docEl.firstElementChild.appendChild(metaEl);
-                } else {
-                    var wrap = doc.createElement('div');
-                    wrap.appendChild(metaEl);
-                    doc.write(wrap.innerHTML);
-                }
-            }
-
-            function refreshRem() {
-                var width = docEl.getBoundingClientRect().width
-                // 适配平板
-                if (width / dpr > 750) {
-                  width = 750 * dpr
-                }
-                var rem = 100 * (width / 750)
-                docEl.style.fontSize = rem + 'px'
-                flexible.rem = win.rem = rem;
-            }
-
-            win.addEventListener('resize', function() {
-                clearTimeout(tid);
-                tid = setTimeout(refreshRem, 300);
-            }, false);
-            win.addEventListener('pageshow', function(e) {
-                if (e.persisted) {
-                    clearTimeout(tid);
-                    tid = setTimeout(refreshRem, 300);
-                }
-            }, false);
-
-            if (doc.readyState === 'complete') {
-                doc.body.style.fontSize = 14 * dpr + 'px';
+          if (!dpr && !scale) {
+            var isAndroid = win.navigator.appVersion.match(/android/gi);
+            var isIPhone = win.navigator.appVersion.match(/iphone/gi);
+            var devicePixelRatio = win.devicePixelRatio;
+            if (isIPhone) {
+              // iOS下，对于2和3的屏，用2倍的方案，其余的用1倍方案
+              if (devicePixelRatio >= 3 && (!dpr || dpr >= 3)) {
+                dpr = 3;
+              } else if (devicePixelRatio >= 2 && (!dpr || dpr >= 2)) {
+                dpr = 2;
+              } else {
+                dpr = 1;
+              }
             } else {
-                doc.addEventListener('DOMContentLoaded', function(e) {
-                    doc.body.style.fontSize = 14 * dpr + 'px';
-                }, false);
+              // 其他设备下，仍旧使用1倍的方案
+              dpr = 1;
             }
+            scale = 1 / dpr;
+          }
 
-
-            refreshRem();
-
-            flexible.dpr = win.dpr = dpr;
-            flexible.refreshRem = refreshRem;
-            flexible.rem2px = function(d) {
-                var val = parseFloat(d) * this.rem;
-                if (typeof d === 'string' && d.match(/rem$/)) {
-                    val += 'px';
-                }
-                return val;
+          docEl.setAttribute('data-dpr', dpr);
+          if (!metaEl) {
+            metaEl = doc.createElement('meta');
+            metaEl.setAttribute('name', 'viewport');
+            metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+            if (docEl.firstElementChild) {
+              docEl.firstElementChild.appendChild(metaEl);
+            } else {
+              var wrap = doc.createElement('div');
+              wrap.appendChild(metaEl);
+              doc.write(wrap.innerHTML);
             }
-            flexible.px2rem = function(d) {
-                var val = parseFloat(d) / this.rem;
-                if (typeof d === 'string' && d.match(/px$/)) {
-                    val += 'rem';
-                }
-                return val;
-            }
+          }
 
-        })(window, window['lib'] || (window['lib'] = {}));</script><link href=/static/css/app.e5fc2e52477ac5433277bb85c3b88c8d.css rel=stylesheet></head><body class=color-theme-deeporange><noscript>This is your fallback content in case JavaScript fails to load.</noscript><div id=app></div><script>!function(){"use strict";var o=Boolean("localhost"===window.location.hostname||"[::1]"===window.location.hostname||window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));window.addEventListener("load",function(){"serviceWorker"in navigator&&("https:"===window.location.protocol||o)&&navigator.serviceWorker.register("service-worker.js").then(function(o){o.onupdatefound=function(){if(navigator.serviceWorker.controller){var n=o.installing;n.onstatechange=function(){switch(n.state){case"installed":break;case"redundant":throw new Error("The installing service worker became redundant.")}}}}}).catch(function(o){console.error("Error during service worker registration:",o)})})}();</script><script type=text/javascript src=/static/js/manifest.817677a70747eb235c77.js></script><script type=text/javascript src=/static/js/vendor.68ef5fe7ab0c08503134.js></script><script type=text/javascript src=/static/js/app.75443a3221f838987b8b.js></script></body></html>
+          function refreshRem() {
+            var width = docEl.getBoundingClientRect().width
+            // 适配平板
+            if (width / dpr > 750) {
+              width = 750 * dpr
+            }
+            var rem = 100 * (width / 750)
+            docEl.style.fontSize = rem + 'px'
+            flexible.rem = win.rem = rem;
+          }
+
+          win.addEventListener('resize', function() {
+            clearTimeout(tid);
+            tid = setTimeout(refreshRem, 300);
+          }, false);
+          win.addEventListener('pageshow', function(e) {
+            if (e.persisted) {
+              clearTimeout(tid);
+              tid = setTimeout(refreshRem, 300);
+            }
+          }, false);
+
+          if (doc.readyState === 'complete') {
+            doc.body.style.fontSize = 14 * dpr + 'px';
+          } else {
+            doc.addEventListener('DOMContentLoaded', function(e) {
+              doc.body.style.fontSize = 14 * dpr + 'px';
+            }, false);
+          }
+
+
+          refreshRem();
+
+          flexible.dpr = win.dpr = dpr;
+          flexible.refreshRem = refreshRem;
+          flexible.rem2px = function(d) {
+            var val = parseFloat(d) * this.rem;
+            if (typeof d === 'string' && d.match(/rem$/)) {
+              val += 'px';
+            }
+            return val;
+          }
+          flexible.px2rem = function(d) {
+            var val = parseFloat(d) / this.rem;
+            if (typeof d === 'string' && d.match(/px$/)) {
+              val += 'rem';
+            }
+            return val;
+          }
+
+        })(window, window['lib'] || (window['lib'] = {}));</script><link href=/static/css/app.d064a04d80ef4a8e51014d043997f716.css rel=stylesheet></head><body class=color-theme-deeporange><noscript>This is your fallback content in case JavaScript fails to load.</noscript><div id=app></div><script type=text/javascript src=/static/js/manifest.ed46971f6f4388c9d85e.js></script><script type=text/javascript src=/static/js/vendor.aa6db508925ae24a326d.js></script><script type=text/javascript src=/static/js/app.197093926fe554622ff6.js></script></body></html>

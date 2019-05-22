@@ -122,6 +122,27 @@ let api = {
   // 我的
   getUserIdentity: 'home/userInfo.do?method=getUserIdentity',
   getLotteryPrinzeInfo: '/person/lotteryPrize.do?method=getLotteryPrinzeInfo',
+  acctSecureInfo: '/person/accountSecur.do?method=acctSecureInfo',
+  setBirthday: '/person/accountSecur.do?method=setBirthday',
+  changLoginPwd: '/person/accountSecur.do?method=changLoginPwd',
+  changSecurePwd: '/person/accountSecur.do?method=changSecurePwd',
+  setGreetMsg: '/person/accountSecur.do?method=setGreetMsg',
+
+  // 充值
+  saveRangesNew: '/person/recharge.do?method=saveRangesNew',
+  commitNew: '/person/recharge.do?method=commitNew',
+  updateBillNew: '/person/recharge.do?method=updateBillNew',
+
+  // 提现
+  __getUserBankCards: '/person/bankcard.do?method=getUserBankCards',
+  withdrawTimes: '/person/withDraw.do?method=withdrawTimes',
+  getWithdrawByApi: '/person/bankcard.do?method=getWithdrawByApi',
+  doWithDraw: '/person/withDraw.do?method=doWithDraw',
+  '/dscagamesclient/person/withDraw.do?method=doWithDraw': {
+    0: {msg: '提现失败'},
+    1: {msg: '提现成功'},
+    fn: '__clearform',
+  },
 
   // 报表
   // 资金记录

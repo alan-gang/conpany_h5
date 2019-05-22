@@ -1,5 +1,5 @@
 <template>
-  <f7-page class="loginPwd" :page-content="false">
+  <f7-page class="safeVerify">
     <f7-navbar title="安全验证" back-link></f7-navbar>
     <a href="javascript:;" class="logo _icon _safeicon_8 link color-black">
       <i class="icon f7-icons"> home </i>
@@ -11,24 +11,11 @@
           <i class="icon f7-icons"> home </i>
         </a>
       </div>
-      <div class="section">
-        <label>邮箱验证</label>
-        <a href="javascript:;" class="_icon _gou link color-black">
-          <i class="icon f7-icons"> home </i>
-        </a>
-      </div>
-      <div class="section cellphoneVerify">
-        <label>手机验证</label>
-        <a href="javascript:;" class="_icon _gou link color-black hide">
-          <i class="icon f7-icons"> home </i>
-        </a>
-      </div>
-      <div class="section">
-        <label>安全码验证</label>
-        <a href="javascript:;" class="_icon _gou link color-black hide">
-          <i class="icon f7-icons"> home </i>
-        </a>
-      </div>
+      <f7-list>
+        <f7-list-item radio title="邮箱验证" name="demo-radio" checked></f7-list-item>
+        <f7-list-item radio title="手机验证" name="demo-radio"></f7-list-item>
+        <f7-list-item radio title="安全码验证" name="demo-radio"></f7-list-item>
+      </f7-list>
       <div class="section">
         <label for="code">验证码</label>
         <input type="text" placeholder="请输入验证码" id="code" maxlength="6" />
@@ -46,15 +33,15 @@
 <style lang="stylus">
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
-  .loginPwd
+  .safeVerify
     .logo
       position absolute
       top 1.08rem
       left 50%
-      margin-left -0.28rem
+      margin-left -0.3rem
       transform scale(1.77)
     form
-      margin-top 1.9rem
+      margin-top 1rem
       font-size 0.27rem
       .section
         position relative
@@ -62,10 +49,6 @@
         line-height 0.92rem
         margin-bottom 0.18rem
         background-color #fff
-        &.cellphoneVerify
-          border-top: 1px solid #f7f7f7
-          border-bottom: 1px solid #f7f7f7
-          margin -0.18rem 0 0
         label
           display inline-block
           color #666
@@ -93,6 +76,21 @@
           background-color #ff5429
           border-radius 0.28rem
           text-align center
+      .list
+        margin 0 0 0.18rem
+        ul
+          &:before, &:after
+            height 0
+          li
+            border-bottom 1px solid #f7f7f7
+            .item-content
+              padding-left 0.2rem
+              .item-inner
+                &:after
+                  height 0
+                .item-title
+                  font-size 0.27rem
+                  color #666
       .confirm
         display block
         width 7.07rem

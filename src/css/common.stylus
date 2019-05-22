@@ -132,6 +132,8 @@ for x in 1 2 9 10 99 101 500 501 999 1001 5001 8998 8999 9000 9500 9501 9502 999
   overflow hidden
 .o_y
   overflow-y auto
+li
+  list-style-type none
 .hide
   display none
 .f_r, .fr

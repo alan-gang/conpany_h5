@@ -1,9 +1,9 @@
 <template>
-  <f7-page class="safecenter" :page-content="false">
+  <f7-page class="safecenter">
     <f7-navbar title="账户安全" back-link></f7-navbar>
     <div class="top">
-      <f7-gauge type="circle" value-text="75" :value="0.75" label-text="分" border-bg-color="rgba(255,255,255,0.2)" border-color="#fff" value-text-color="#fff"></f7-gauge>
-      <p>当前登录地址：上海市·中国</p>
+      <f7-gauge type="circle" :value-text="accountPoint" value-text-color="#fff" :value="accountPoint/100" label-text="分" border-bg-color="rgba(255,255,255,0.2)" border-color="#fff"></f7-gauge>
+      <p>当前登录地址：{{ location }}</p>
     </div>
     <form class="clearfix">
       <div class="fl section">
@@ -19,28 +19,28 @@
             <i class="icon f7-icons"> home </i>
           </a>
           <label>登录问候语</label><br />
-          <a href="/me/safecenter/greetings/" class="a">未设置</a>
+          <a href="/me/safecenter/greetings/" class="a">{{ greetMsg }}</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_3 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>邮箱绑定</label><br />
-          <a href="/me/safecenter/emailBind/" class="a">未绑定</a>
+          <a href="/me/safecenter/emailBind/" class="a">{{ email }}</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_4 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>安全验证绑定</label><br />
-          <a href="/me/safecenter/safeVerifyBind/" class="a">未绑定</a>
+          <a href="/me/safecenter/safeVerifyBind/" class="a">{{ isOpenKey }}</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_12 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>生日</label><br />
-          <a href="/me/safecenter/birthday/" class="a">未设置</a>
+          <a href="/me/safecenter/birthday/" class="a">{{ birthday }}</a>
         </div>
       </div>
       <div class="fr section">
@@ -49,28 +49,28 @@
             <i class="icon f7-icons"> home </i>
           </a>
           <label>资金密码</label><br />
-          <a href="/me/safecenter/capitalPwd/" class="a">立即修改</a>
+          <a href="javascript:;" class="a" @click="securityPwd">{{ capitalPwd }}</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_6 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>安全回答</label><br />
-          <a href="/me/safecenter/safeanswer/" class="a">未设置</a>
+          <a href="/me/safecenter/safeanswer/" class="a">{{ isSetSafeQuest }}</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_7 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>设置昵称</label><br />
-          <a href="/me/safecenter/nickname/" class="a a-1">未绑定</a>
+          <a href="/me/safecenter/nickname/" class="a a-1">{{ nickName }}</a>
         </div>
         <div>
           <a href="javascript:;" class="_icon _safeicon_8 link color-black">
             <i class="icon f7-icons"> home </i>
           </a>
           <label>安全验证</label><br />
-          <a href="/me/safecenter/safeVerify/" class="a">暂未设置</a>
+          <a href="/me/safecenter/safeVerify/" class="a">{{ isSetVerifytype }}</a>
         </div>
       </div>
     </form>
@@ -80,6 +80,7 @@
 <script>
   import config from '@/config'
   import page from '@/components/page'
+  import api from '@/api'
   export default {
     mixins: [config, page],
     components: {
@@ -87,26 +88,76 @@
     name: 'safecenter',
     props: [],
     data () {
-      return {}
-    },
-    computed: {
-      totalBalance () {
-        return this.config.wallets.reduce((p, x, i) => {
-          p += Number(this.user[x.key]) || 0
-          return p
-        }, 0)
+      return {
+        location: '',
+        accountPoint: '',
+        capitalPwd: '',
+        greetMsg: '',
+        isSetSafeQuest: '',
+        email: '',
+        nickName: '',
+        isOpenKey: '',
+        isSetVerifytype: '',
+        birthday: '',
       }
     },
     created () {
-      this.init()
+      this.acctSecureInfo()
+      if (this.user.hasSecurityPwd === 1) {
+        this.capitalPwd = '立即修改'
+      } else {
+        this.capitalPwd = '未设置'
+      }
     },
     methods: {
-      init () {
-        this.__setCall({fn: '__getAllBalance'})
+      acctSecureInfo () {
+        this.$.get(api.acctSecureInfo).then((res) => {
+          const data = res.data
+          this.location = data.location
+          this.accountPoint = data.accountPoint
+          if (data.greetMsg === '') {
+            this.greetMsg = '未设置'
+          } else {
+            this.greetMsg = '立即修改'
+          }
+          if (data.isSetSafeQuest === true) {
+            this.isSetSafeQuest = '立即修改'
+          } else {
+            this.isSetSafeQuest = '未设置'
+          }
+          if (data.email === '') {
+            this.email = '未绑定'
+          } else {
+            this.email = '立即修改'
+          }
+          if (data.nickName === '') {
+            this.nickName = '未绑定'
+          } else {
+            this.nickName = '立即修改'
+          }
+          if (data.isOpenKey === 0) {
+            this.isOpenKey = '未绑定'
+          } else {
+            this.isOpenKey = '立即修改'
+          }
+          if (data.isSetVerifytype === 0) {
+            this.isSetVerifytype = '未设置'
+          } else {
+            this.isSetVerifytype = '立即修改'
+          }
+          if (data.birthday === '') {
+            this.birthday = '未设置'
+          } else {
+            this.birthday = '生日只能设置一次'
+          }
+        })
       },
-      refresh (evt, done = evt.detail) {
-        this.init()
-        setTimeout(done, 1000)
+      securityPwd () {
+        if (this.user.hasSecurityPwd === 1) {
+          this.__go('/me/safecenter/capitalPwdModify/')
+        } else {
+          this.__go('/me/safecenter/capitalPwd/')
+        }
       }
     }
   }
@@ -117,7 +168,6 @@
   // 建议不添加scoped， 所有样式最多嵌套2层
   .safecenter
     .top
-      margin-top 0.8rem
       height 6.5rem
       background linear-gradient(to right, #ff8131, #ff5429);
       color #fff
@@ -155,10 +205,10 @@
             color #b0b0b0
             &.a-1
               display inline-block
-              width 0.97rem
               height 0.32rem
+              line-height 0.32rem
+              padding 0 0.18rem 0 0.12rem
               color #ff5429
               background-color #ffeae5
               border-radius 0.16rem
-              text-align center
 </style>

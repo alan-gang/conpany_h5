@@ -78,7 +78,7 @@ export default {
     __clearform (t = 500) {
       setTimeout(() => {
         Object.entries(this.form || {}).forEach(([k, v]) => {
-          (this.form || {})[k] = undefined
+          (this.form || {})[k] = typeof v === 'string' ? '' : typeof v === 'number' ? 0 : undefined
         })
       }, t)
     }
