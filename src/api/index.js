@@ -154,6 +154,9 @@ let api = {
   plreport: '/report/personalReportAction.do?method=recentTotalReport',
   pld: '/report/personalProfit.do?method=sumDetail',
   pldl: '/report/personalProfit.do?method=dailyDetail',
+  // 帮助中心
+  getHelpTag: '/help.do?method=getHelpTag',
+  getHelpContent: '/help.do?method=getHelpContent',
 }
 
 Object.keys(api).forEach((key) => {

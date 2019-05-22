@@ -86,6 +86,7 @@ colors = {
   'o': rgba(0,0,0, 0),
   'pc': #efeff4,
   'ccc': #ccc,
+  'f7': #f7f7f7,
 }
 for k, v in  colors
   .c_{k}
