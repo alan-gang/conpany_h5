@@ -154,6 +154,14 @@ let api = {
   plreport: '/report/personalReportAction.do?method=recentTotalReport',
   pld: '/report/personalProfit.do?method=sumDetail',
   pldl: '/report/personalProfit.do?method=dailyDetail',
+  // 银行卡
+  getUserBankCards: '/person/bankcard.do?method=getUserBankCards',
+  lockBankCard: '/person/bankcard.do?method=lockBankCard',
+  getBankList: '/person/bankcard.do?method=getBankList',
+  getProvices: '/person/bankcard.do?method=getProvices',
+  bindBankCard: '/person/bankcard.do?method=bindBankCard',
+  unbindCheck: '/person/bankcard.do?method=unbindCheck',
+  unbindBankCard: '/person/bankcard.do?method=unbindBankCard',
   // 帮助中心
   getHelpTag: '/help.do?method=getHelpTag',
   getHelpContent: '/help.do?method=getHelpContent',
