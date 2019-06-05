@@ -98,7 +98,7 @@ export default {
       return (g.find(x => x.id === this.v.lotteryId) || {}).t_
     },
     g () {
-      return Object.assign({}, g.find(x => x.id === this.v.lotteryId) || {}, {dmid_: this.v.methodId + ':1'})
+      return Object.assign({}, g.find(x => x.id === this.v.lotteryId) || {}, {dmid_: this.v.methodId + ':' + this.v.codeType})
     },
   },
   created () {

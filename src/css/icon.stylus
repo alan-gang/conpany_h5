@@ -83,6 +83,10 @@ urls = {
     _withdraw_main: '~src/assets/withdraw/account_icon_main',
     _withdraw_special: '~src/assets/withdraw/account_icon_special',
 
+    // transfer
+    _swap: '~src/assets/transfer/account_icon_switch',
+    _swap_disabled: '~src/assets/transfer/account_icon_unswitch',
+
     // rfs
     _date: '~src/assets/rfs/profile_date',
 

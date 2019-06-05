@@ -27,8 +27,8 @@ f7-page.wallet(:page-content="false")
               span {{ user[v.key] || '0.000' }}
             f7-icon(f7="refresh" color="gray" size="18")
 
-        f7-button(fill color="orange") 转入
-        f7-button(fill color="deeporange") 转出
+        f7-button(fill color="orange" @click="__go('/me/transfer/', {props: { j: i }})" v-show=" i !== 1 ") 转入
+        f7-button(fill color="deeporange" @click="__go('/me/transfer/', {props: { i: i }})") 转出
 
 
 

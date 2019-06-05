@@ -127,7 +127,10 @@ let api = {
   changLoginPwd: '/person/accountSecur.do?method=changLoginPwd',
   changSecurePwd: '/person/accountSecur.do?method=changSecurePwd',
   setGreetMsg: '/person/accountSecur.do?method=setGreetMsg',
-
+  // xyb
+  p2pBuyProduct: '/p2p/product.do?method=buyProduct',
+  p2pAccount: '/p2p/product.do?method=productAccount',
+  p2pList: '/p2p/product.do?method=list',
   // 充值
   saveRangesNew: '/person/recharge.do?method=saveRangesNew',
   commitNew: '/person/recharge.do?method=commitNew',
@@ -138,10 +141,41 @@ let api = {
   withdrawTimes: '/person/withDraw.do?method=withdrawTimes',
   getWithdrawByApi: '/person/bankcard.do?method=getWithdrawByApi',
   doWithDraw: '/person/withDraw.do?method=doWithDraw',
+  checkSecurityPwd: '/person/withDraw.do?method=checkSecurityPwd',
+  showWithDraw: '/person/withDraw.do?method=showWithDraw',
   '/dscagamesclient/person/withDraw.do?method=doWithDraw': {
     0: {msg: '提现失败'},
     1: {msg: '提现成功'},
     fn: '__clearform',
+  },
+  // 转账
+  ato: '/ext/bg.do?method=transferToBG',
+  '/dscagamesclient/ext/bg.do?method=transferToBG': {
+    1: {
+      msg: '转帐成功',
+      fn: [{fn: '__getBalance'}],
+    }
+  },
+  sta: '/person/recharge.do?method=transAmount',
+  '/dscagamesclient/person/recharge.do?method=transAmount': {
+    1: {
+      msg: '转帐成功',
+      fn: [{fn: '__getBalance'}],
+    }
+  },
+  ota: '/ext/bg.do?method=withdrawFromBG',
+  '/dscagamesclient/ext/bg.do?method=withdrawFromBG': {
+    1: {
+      msg: '转帐成功',
+      fn: [{fn: '__getBalance'}],
+    }
+  },
+  ata: '/ext/bg.do?method=withdrawAll',
+  '/dscagamesclient/ext/bg.do?method=withdrawAll': {
+    1: {
+      msg: '转帐成功',
+      fn: [{fn: '__getAllBalance'}],
+    }
   },
 
   // 报表
