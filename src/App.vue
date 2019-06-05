@@ -58,6 +58,7 @@ export default {
           title: '',
           buttonOk: '确定',
           buttonCancel: '取消',
+          passwordPlaceholder: '请输入密码',
         },
         theme: 'ios',
         routes,

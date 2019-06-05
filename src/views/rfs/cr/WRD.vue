@@ -12,7 +12,7 @@ f7-page.withdraw_record_detail
           .timeline-item-time(v-show=" v['step' + (i + 1) + 'Time'] && v['step' + (i + 1) + 'Time'] !== '0000-0-00 00:00:00' ") {{ v['step' + (i + 1) + 'Time'] }}
           .timeline-item-text {{ v.description }}
 
-  f7-button.mg_10(fill large) 再次提现
+  f7-button.mg_10(fill large href="/me/withdraw/") 再次提现
 
   
 </template>

@@ -34,6 +34,7 @@ axios.throttle_get = (api, args) => {
 }
 axios.throttle_post = (api, args) => {
   if (THROTTLE[api]) {
+    if (args && args.$anyway) args.$anyway()
     return THROTTLE.xhr
   } else {
     THROTTLE[api] = true

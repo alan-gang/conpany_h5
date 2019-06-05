@@ -33,6 +33,7 @@ import load from '@/views/me/load'
 import withdraw from '@/views/me/withdraw'
 import transfer from '@/views/me/transfer'
 import wallet from '@/views/me/wallet'
+import xyb from '@/views/me/xyb'
 import safecenter from '@/views/me/safecenter'
 import loginPwd from '@/views/me/safecenter/loginPwd'
 import capitalPwd from '@/views/me/safecenter/capitalPwd'
@@ -178,6 +179,12 @@ export default [
   {
     path: '/me/transfer/',
     component: transfer,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/xyb/',
+    component: xyb,
     beforeEnter: checkAuth,
     rl: true
   },

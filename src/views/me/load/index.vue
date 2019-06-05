@@ -86,14 +86,6 @@ f7-page.load
         .hlh_20.ft_12.t_c 请扫描下方二维码付款
         img.w_200.h_200(:src="  'data:image/png;base64,' +  result ")
 
-      //- .pd_10
-        f7-button.mb_5(popup-close=".load_result_popup" large fill @click=" updateBillNew(1) ") 已完成付款
-        f7-button.mb_5(popup-close=".load_result_popup" large outline @click=" updateBillNew(2) ") 付款失败
-        f7-button.mb_5(popup-close=".load_result_popup" large outline @click=" updateBillNew(3) ") 已取消付款 
-
-
-    
-
 
 </template>
 
