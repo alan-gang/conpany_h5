@@ -51,6 +51,7 @@ import unbind from '@/views/me/bank/unbind'
 import lock from '@/views/me/bank/lock'
 import locked from '@/views/me/bank/locked'
 import bonus from '@/views/me/bonus'
+import openAccountMgr from '@/views/me/agent/openAccountMgr'
 
 // 帮助中心
 import help from '@/views/me/help'
@@ -319,6 +320,11 @@ export default [
   {
     path: '/me/help/detailpage/',
     component: detailpage,
+    rl: true
+  },
+  {
+    path: '/agent/openAccountMgr',
+    component: openAccountMgr,
     rl: true
   },
   {

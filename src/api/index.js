@@ -188,6 +188,13 @@ let api = {
   plreport: '/report/personalReportAction.do?method=recentTotalReport',
   pld: '/report/personalProfit.do?method=sumDetail',
   pldl: '/report/personalProfit.do?method=dailyDetail',
+
+  // ***代理中心***
+  // 获取开户返点信息
+  showRegistUser: '/team/createAccount.do?method=showRegistUser',
+  // 开户
+  registUser: '/team/createAccount.do?method=registUser',
+
   // 银行卡
   getUserBankCards: '/person/bankcard.do?method=getUserBankCards',
   lockBankCard: '/person/bankcard.do?method=lockBankCard',
