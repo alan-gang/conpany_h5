@@ -41,19 +41,27 @@ urls = {
     _sub_game_record: '~src/assets/me/profile_icon_bettingrecord',
     _sub_fund_record: '~src/assets/me/profile_icon_assetsrecord',
 
-    _safeicon_1: '~src/assets/me/safecenter/security_icon_pin',
-    _safeicon_2: '~src/assets/me/safecenter/security_icon_greeting',
-    _safeicon_3: '~src/assets/me/safecenter/security_icon_mail',
-    _safeicon_4: '~src/assets/me/safecenter/security_icon_authenticatos',
-    _safeicon_5: '~src/assets/me/safecenter/security_icon_deposit',
-    _safeicon_6: '~src/assets/me/safecenter/security_icon_qaq',
-    _safeicon_7: '~src/assets/me/safecenter/security_icon_nickname',
-    _safeicon_8: '~src/assets/me/safecenter/security_icon_verify',
-    _safeicon_9: '~src/assets/me/safecenter/securityset_icon_greeting',
-    _safeicon_10: '~src/assets/me/safecenter/securityset_icon_deposit',
-    _safeicon_11: '~src/assets/me/safecenter/securityset_icon_qaq',
-    _safeicon_12: '~src/assets/me/safecenter/security_icon_sr',
-    _safeicon_13: '~src/assets/me/safecenter/securityset_icon_sr',
+    _safeicon_phone: '~src/assets/me/safecenter/security_icon_mobile',
+    _safeicon_pwd: '~src/assets/me/safecenter/security_icon_pin',
+    _safeicon_msg: '~src/assets/me/safecenter/security_icon_greeting',
+    _safeicon_email: '~src/assets/me/safecenter/security_icon_mail',
+    _safeicon_bd: '~src/assets/me/safecenter/security_icon_authenticatos',
+    _safeicon_cpwd: '~src/assets/me/safecenter/security_icon_deposit',
+    _safeicon_qa: '~src/assets/me/safecenter/security_icon_qaq',
+    _safeicon_nn: '~src/assets/me/safecenter/security_icon_nickname',
+    _safeicon_sb: '~src/assets/me/safecenter/security_icon_verify',
+    _safeicon_birthday: '~src/assets/me/safecenter/security_icon_sr',
+    
+    _safeicon_email_big: '~src/assets/me/safecenter/securityset_icon_mail',
+    _safeicon_sb_big: '~src/assets/me/safecenter/securityset_icon_verify',
+    _safeicon_pwd_big: '~src/assets/me/safecenter/securityset_icon_pin',
+    _safeicon_cpwd_big: '~src/assets/me/safecenter/securityset_icon_deposit',
+    _safeicon_nn_big: '~src/assets/me/safecenter/securityset_icon_nickname',
+    _safeicon_phone_big: '~src/assets/me/safecenter/security_icon_mobile',
+
+    _safeicon_msg_big: '~src/assets/me/safecenter/securityset_icon_greeting',
+    _safeicon_qa_big: '~src/assets/me/safecenter/securityset_icon_qaq',
+    _safeicon_birthday_big: '~src/assets/me/safecenter/securityset_icon_sr',
     _gou_gray: '~src/assets/me/safecenter/common_icon_unseleted',
     _gou: '~src/assets/me/safecenter/common_icon_seleted',
 
@@ -92,10 +100,10 @@ urls = {
 
     // bank
     _plus: '~src/assets/me/bank/bankcard_icon_add',
-    _bankicon_4: '~src/assets/me/bank/bankcard_icon_delete',
-    _bankicon_5: '~src/assets/me/bank/bankcard_icon_lock',
-    _bankicon_6: '~src/assets/me/bank/bankcard_img_bankcard',
-    _bankicon_7: '~src/assets/me/bank/bankcard_icon_locked',
+    _bankicon_unbind_card: '~src/assets/me/bank/bankcard_icon_delete',
+    _bankicon_lock_card: '~src/assets/me/bank/bankcard_icon_lock',
+    _bankicon_card: '~src/assets/me/bank/bankcard_img_bankcard',
+    _bankicon_lock: '~src/assets/me/bank/bankcard_icon_locked',
     _bonusicon: '~src/assets/me/safecenter/team_icon_userhead',
 
     _bankicon_icbc: '~src/assets/me/bank/bank_icon_gongshang',
@@ -144,6 +152,8 @@ urls = {
 
     _withdraw_main: auto 80%,
     _withdraw_special: auto 100%,
+
+    _safeicon_birthday: auto 60%,
   }
 
 ._icon:active

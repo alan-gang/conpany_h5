@@ -30,8 +30,6 @@ f7-app(:params=" f7Params ")
   f7-popup#register(@popup:opened=" __getcodeimg ")
     f7-view(url="/register")
 
-  f7-popup#gamemenu.bgc_o
-    f7-view(url="/game/play/gamemenu")
 
 </template>
 
@@ -50,6 +48,9 @@ export default {
   data () {
     return {
       f7Params: {
+        picker: {
+          toolbarCloseText: '完成',
+        },
         smartSelect: {
           popupCloseLinkText: '完成',
           sheetCloseLinkText: '完成',
@@ -212,6 +213,16 @@ export default {
     },
     __showTab (id) {
       this.$f7.tab.show(id)
+    },
+    __acctSecureInfo () {
+      this.$.get(api.acctSecureInfo).then(({data}) => {
+        this.__setUser(data)
+      })
+    },
+    __cpwd (cb = function () {}) {
+      this.$f7.dialog.password('请输入资金密码', '', (cpwd) => {
+        this.$.get(api.checkSecurityPwd, {password: cpwd}).then(() => { cb(cpwd) })
+      }).el.querySelector('input').focus()
     }
   }
 }

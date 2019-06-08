@@ -24,6 +24,10 @@ export default {
       tsid: '',
       wsid: '',
     },
+
+    // static
+    allProvinces: [],
+    allBankData: [],
   },
   actions: {
     __setCache (cache = {}) {

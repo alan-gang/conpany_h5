@@ -43,7 +43,7 @@ f7-page.withdraw
     span.text-color-deeporange  {{ times }} 
     span 次
   f7-block
-    f7-button(fill large @click="checkSecurityPwd") 提交
+    f7-button(fill large @click=" __setCall({fn: '__cpwd', doWithDraw}) ") 提交
 
 
 
@@ -89,18 +89,12 @@ export default {
       this.$f7.dialog.password('请输入资金密码', '', (cpwd) => {
         this.$.get(api.checkSecurityPwd, {password: cpwd}).then(r => {
           this.doWithDraw()
-          // this.$.get(api.showWithDraw, {userBankId: this.user.userBankCards[this.form.i].entry, amount: this.form.m, isSpe: this.key === 'availableBalance' ? 0 : 1}).then(({data: {}}) => {
-          // })
         })
       })
     },
     doWithDraw () {
       this.$.post(api.doWithDraw, {userBankId: this.user.userBankCards[this.form.i].entry, amount: this.form.m, isSpe: this.key === 'availableBalance' ? 0 : 1})
     }
-    // getWithdrawByApi () {
-    //   this.$.get(api.getWithdrawByApi).then(({data: { data }}) => {
-    //   })
-    // }
   }
 }
 </script>

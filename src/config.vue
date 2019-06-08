@@ -1,5 +1,6 @@
 <script>
 import {call, user, config, global, local, cache} from '@/store'
+import R from '@/util/R'
 export default {
   data () {
     return {
@@ -10,6 +11,7 @@ export default {
       global: global.state,
       local: local.state,
       cache: cache.state,
+      R: R,
     }
   },
   created () {
@@ -62,6 +64,10 @@ export default {
     __$car () {
       return this.local.$car.filter(x => x.id === this.id)
     },
+    // form
+    __form () {
+      return this.$refs[this._form_n || '_form'].$el || this.$refs[this._form_n || '_form']
+    }
   },
   mounted () {
     // if reload
@@ -81,7 +87,11 @@ export default {
           (this.form || {})[k] = typeof v === 'string' ? '' : typeof v === 'number' ? 0 : undefined
         })
       }, t)
+    },
+    __validateform (cb) {
+      this.$f7.input.validateInputs(this.__form)
+      if (!this.__form.querySelector('.input-invalid')) cb()
     }
-  }
+  },
 }
 </script>
