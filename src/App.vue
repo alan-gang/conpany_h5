@@ -48,6 +48,9 @@ export default {
   data () {
     return {
       f7Params: {
+        picker: {
+          toolbarCloseText: '完成',
+        },
         smartSelect: {
           popupCloseLinkText: '完成',
           sheetCloseLinkText: '完成',
@@ -218,8 +221,8 @@ export default {
     },
     __cpwd (cb = function () {}) {
       this.$f7.dialog.password('请输入资金密码', '', (cpwd) => {
-        this.$.get(api.checkSecurityPwd, {password: cpwd}).then(cb)
-      })
+        this.$.get(api.checkSecurityPwd, {password: cpwd}).then(() => { cb(cpwd) })
+      }).el.querySelector('input').focus()
     }
   }
 }

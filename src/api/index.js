@@ -338,13 +338,30 @@ let api = {
   pld: '/report/personalProfit.do?method=sumDetail',
   pldl: '/report/personalProfit.do?method=dailyDetail',
   // 银行卡
-  getUserBankCards: '/person/bankcard.do?method=getUserBankCards',
   lockBankCard: '/person/bankcard.do?method=lockBankCard',
+  '/dscagamesclient/person/bankcard.do?method=lockBankCard': {
+    1: {
+      msg: '锁定成功',
+      fn: [{fn: '__getUserBankCards'}],
+    }
+  },
   getBankList: '/person/bankcard.do?method=getBankList',
   getProvices: '/person/bankcard.do?method=getProvices',
   bindBankCard: '/person/bankcard.do?method=bindBankCard',
+  '/dscagamesclient/person/bankcard.do?method=bindBankCard': {
+    1: {
+      msg: '恭喜您成功绑定一张银行卡',
+      fn: [{fn: '__getUserBankCards'}],
+    },
+    fn: '__clearform'
+  },
   unbindCheck: '/person/bankcard.do?method=unbindCheck',
   unbindBankCard: '/person/bankcard.do?method=unbindBankCard',
+  '/person/bankcard.do?method=unbindBankCard': {
+    1: {
+      msg: '解绑成功'
+    }
+  },
   // 帮助中心
   getHelpTag: '/help.do?method=getHelpTag',
   getHelpContent: '/help.do?method=getHelpContent',

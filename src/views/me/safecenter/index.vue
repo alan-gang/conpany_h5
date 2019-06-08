@@ -44,7 +44,7 @@
     computed: {
       data () {
         return this.data_.map(v => {
-          v = Object.assign(v, { txtclss: !this.user[v.key] ? 'c_s' : '', txt: !this.user[v.key] ? v.at || '设置' : v._at || '修改', t: this.user[v.key] })
+          v = Object.assign(v, { txtclss: !this.user[v.key] ? 'c_e' : '', txt: !this.user[v.key] ? v.at || '设置' : v._at || '修改', t: this.user[v.key] })
           return v
         })
       }

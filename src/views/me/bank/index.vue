@@ -1,54 +1,48 @@
 <template lang="pug">
   f7-page.bank
     f7-navbar(title="银行卡" back-link)
-    div.list
-      ul
-        li.swipeout(v-for=" u in userBankCards " :id=" u.entry " @swipeout:deleted="unbind")
-          div.swipeout-content.section.branch
-            div
-              a._icon.link.color-black(href="javascript:;" :class="'_bankicon_' + u.apiName")
-                i.icon.f7-icons home
-              span.type.c_3.ft_16 {{ u.bankName }}
-              em.ft_20.hlh_24 {{ u.cardNo }}
-            span.date.c_9.lh_40.ft_14 {{ u.addTime.split(' ')[0] }}
-          div.swipeout-actions-right
-            a.swipeout-delete(href="#" data-confirm="银行卡解绑后，不能再绑定到其它帐号上！" data-confirm-title="温馨提示") 删除
-        //- <li class="swipeout" @swipeout:deleted="unbind">
-        //-   <div class="swipeout-content section branch">
-        //-     <div>
-        //-       <a href="javascript:;" class="_icon _bankicon_2 link color-black">
-        //-         <i class="icon f7-icons"> home </i>
-        //-       </a>
-        //-       <span class="type">农业银行储蓄卡</span>
-        //-       <em>● ● ● ● 4113</em>
-        //-     </div>
-        //-     <span class="date">2016/10/15</span>
-        //-   </div>
-        //-   <div class="swipeout-actions-right">
-        //-     <a href="#" data-confirm="银行卡解绑后，不能再绑定到其它帐号上！" data-confirm-title="温馨提示" class="swipeout-delete">删除</a>
-        //-   </div>
-        //- </li>
-        //- <li class="swipeout" @swipeout:deleted="lock">
-        //-   <div class="swipeout-content section branch">
-        //-     <div>
-        //-       <a href="javascript:;" class="_icon _bankicon_3 link color-black">
-        //-         <i class="icon f7-icons"> home </i>
-        //-       </a>
-        //-       <span class="type">招商银行储蓄卡</span>
-        //-       <em>● ● ● ● 4113</em>
-        //-     </div>
-        //-     <span class="date">2016/10/15</span>
-        //-   </div>
-        //-   <div class="swipeout-actions-right">
-        //-     <a href="#" data-confirm="银行卡锁定后，不能新增或删除银行卡，客服亦无权限操作，请谨慎操作银行卡锁定后，不能新增或删除银行卡，客服亦无权限操作，请谨慎操作！" data-confirm-title="温馨提示" class="swipeout-delete">锁定</a>
-        //-   </div>
-        //- </li>
-        li
-          div.section.add(@click="add")
-            a._icon._plus.link.color-black(href="javascript:;")
-              i.icon.f7-icons home
-            br
-            span 添加银行卡
+      f7-nav-right
+        .menu-item.menu-item-dropdown.icon-only.bgc_o
+          .menu-item-content
+            i.icon.f7-icons.text-color-deeporange more_fill
+          .menu-dropdown.menu-dropdown-right
+            .menu-dropdown-content(style="box-shadow: 0 3px 3px 0px #dedede")
+              a.j_c.menu-dropdown-link.menu-close(@click=" __go('/me/bank/note/') ")
+                span 绑卡说明
+              a.j_c.menu-dropdown-link.menu-close(@click=" locking " style='margin-left: 0px;')
+                span 锁定银行卡
+    
+    .bgc_orange.t_c.h_180.o_h
+        f7-icon._icon._bankicon_card(f7="home" size="220")
+
+    .mt_-40.ml_10.mr_10.p_r
+      .z_2.p_a.wp_100.hp_100.t_c(v-if=" user.lockCard ")
+        .bgc_f.o_45.p_a.wp_100.hp_100
+        f7-icon._icon._bankicon_lock(f7="home" size="150")
+
+      f7-list.mb_10.mt_0(v-for=" (v, i) in user.userBankCards " :key="i")
+        ul.r_5
+          li.swipeout(@swipeout:delete=" __go('/me/bank/unbind/', {props: { v }}) ")
+            .swipeout-content.pd_20.r_5
+              .flex.pt_10
+                .a
+                  f7-icon._icon(:class="'_bankicon_' + v.apiName" f7="home")
+                  span.ft_16 {{ v.bankName }}
+                  
+                span.ft_20.c_orange(style="letter-spacing: 3px")
+                  span.pr_5.ft_25 • • • •
+                  span {{ v.cardNo.slice(-4) }}
+
+              .c_9.t_r.ft_12.pt_10 {{ v.addTime.split(' ')[0] }}
+
+            f7-swipeout-actions(right)
+              f7-swipeout-button(delete confirm-text="银行卡解绑后，不能再绑定到其它账号上", confirm-title="温馨提示") 解绑
+
+      f7-button.mb_10.bgc_f.pd_10.h_60.lh_20(href="/me/bank/bind/")
+        f7-icon._icon._plus(f7="home" size="20")
+        .ft_14 绑定银行卡
+
+
 </template>
 
 <script>
@@ -62,31 +56,20 @@
     props: [],
     data () {
       return {
-        userBankCards: [],
-        bankCardNum: 0,
-        lockCrad: 0
       }
     },
     created () {
-      this.getUserBankCards()
+      this.__setCall({fn: '__getUserBankCards'})
     },
     methods: {
-      getUserBankCards () {
-        this.$.get(api.getUserBankCards).then(({data}) => {
-          // console.log(data.userBankCards)
-          this.userBankCards = data.userBankCards
-          // console.log(this.userBankCards)
+      locking () {
+        this.$f7.dialog.confirm('银行卡锁定后，不能绑定或解绑银行卡，客服亦无权限解锁，请谨慎操作', '温馨提示', () => {
+          this.__setCall({fn: '__cpwd', args: this.lockBankCard})
         })
       },
-      add () {
-        this.__go('/me/bank/add/')
+      lockBankCard (cpwd) {
+        this.$.get(api.lockBankCard)
       },
-      unbind () {
-        this.__go('/me/bank/unbind/')
-      },
-      lock () {
-        this.__go('/me/bank/lock/')
-      }
     }
   }
 </script>
@@ -94,43 +77,6 @@
 <style lang="stylus">
   @import '~src/css/var.stylus'
   // 建议不添加scoped， 所有样式最多嵌套2层
-  .bank
-    .list
-      margin-top 0
-      ul
-        background transparent
-        &:before, &:after
-          background transparent
-        .section
-          height 1.42rem
-          padding-top 0.4rem
-          margin 0.2rem auto 0
-          color #ff5429
-          background-color #fff
-          border-radius 0.06rem
-          &.add
-            width 7.07rem
-            text-align center
-            span
-              font-size 0.27rem
-          &.branch
-            position relative
-            width 6.47rem
-            padding-left 0.6rem
-            .type
-              position relative
-              top -0.06rem
-            em
-              position absolute
-              right 0.4rem
-              font-style normal
-            .date
-              position absolute
-              right 0.4rem
-        .swipeout-actions-left, .swipeout-actions-right
-          width 1.5rem
-          top 0.22rem
-          height 1.82rem
-.bank .list .icon
-  background-size auto 80%
+  // .bank
+
 </style>

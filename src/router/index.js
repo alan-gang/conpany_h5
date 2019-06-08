@@ -49,10 +49,10 @@ import bdb from '@/views/me/safecenter/bdb'
 import sb from '@/views/me/safecenter/sb'
 
 import bank from '@/views/me/bank'
-import add from '@/views/me/bank/add'
-import unbind from '@/views/me/bank/unbind'
-import lock from '@/views/me/bank/lock'
-import locked from '@/views/me/bank/locked'
+import note from '@/views/me/bank/note'
+import bind from '@/views/me/bank/bind'
+import unbind from '@/views/me/bank/unbind.vue'
+
 import bonus from '@/views/me/bonus'
 
 // 帮助中心
@@ -275,26 +275,18 @@ export default [
     rl: true
   },
   {
-    path: '/me/bank/add/',
-    component: add,
+    path: '/me/bank/note/',
+    component: note,
+  },
+  {
+    path: '/me/bank/bind/',
+    component: bind,
     beforeEnter: checkAuth,
     rl: true
   },
   {
     path: '/me/bank/unbind/',
     component: unbind,
-    beforeEnter: checkAuth,
-    rl: true
-  },
-  {
-    path: '/me/bank/lock/',
-    component: lock,
-    beforeEnter: checkAuth,
-    rl: true
-  },
-  {
-    path: '/me/bank/locked/',
-    component: locked,
     beforeEnter: checkAuth,
     rl: true
   },

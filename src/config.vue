@@ -92,6 +92,6 @@ export default {
       this.$f7.input.validateInputs(this.__form)
       if (!this.__form.querySelector('.input-invalid')) cb()
     }
-  }
+  },
 }
 </script>
