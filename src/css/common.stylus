@@ -27,7 +27,7 @@ for x in  12 13 14 15 16 18 20 22 24 25 26 28 30 32 35 36 38 40 42 45 46 48 50
   font-weight bold
 
 // margin padding
-for x in  -30 -20 -10 -5 0 1 2 5 10 15 20 25 30 40 50
+for x in  -100 -80 -50 -30 -20 -10 -5 0 1 2 5 10 15 20 25 30 40 50
   .pd_{x}
     padding x * 1px
   .mg_{x}
@@ -137,12 +137,10 @@ li
   list-style-type none
 .hide
   display none
-.f_r, .fr
+.f_r
   float right
-.f_l, .fl
+.f_l
   float left
-.clearfix:after{ clear:both; height:0; display:block; visibility:hidden; content:".";}
-.clearfix{ *zoom:1}
 .t_c
   text-align center
 .t_l
@@ -153,6 +151,8 @@ li
   display inline-block
 .v_m
   vertical-align middle
+.v_t
+  vertical-align top
 .p_r
   position relative
 .p_a

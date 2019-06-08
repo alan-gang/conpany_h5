@@ -78,7 +78,7 @@ axios.interceptors.response.use((response) => {
   config && (config = config[response.data.success])
   if (config) {
     let fn = config.fn || []
-    fn.forEach(x => {
+    fn.forEach((x) => {
       axios.$root.$children[0].__setCall(x)
     })
   }

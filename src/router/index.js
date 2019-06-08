@@ -34,17 +34,20 @@ import withdraw from '@/views/me/withdraw'
 import transfer from '@/views/me/transfer'
 import wallet from '@/views/me/wallet'
 import xyb from '@/views/me/xyb'
+import xybio from '@/views/me/xyb/io'
+
 import safecenter from '@/views/me/safecenter'
-import loginPwd from '@/views/me/safecenter/loginPwd'
-import capitalPwd from '@/views/me/safecenter/capitalPwd'
-import capitalPwdModify from '@/views/me/safecenter/capitalPwdModify'
-import greetings from '@/views/me/safecenter/greetings'
-import safeanswer from '@/views/me/safecenter/safeanswer'
-import emailBind from '@/views/me/safecenter/emailBind'
-import nickname from '@/views/me/safecenter/nickname'
-import safeVerifyBind from '@/views/me/safecenter/safeVerifyBind'
-import safeVerify from '@/views/me/safecenter/safeVerify'
-import birthday from '@/views/me/safecenter/birthday'
+import pwd from '@/views/me/safecenter/pwd'
+import cpwd from '@/views/me/safecenter/cpwd'
+import nn from '@/views/me/safecenter/nn'
+import birthday from '@/views/me/safecenter/birthday.vue'
+import msg from '@/views/me/safecenter/msg'
+import phoneb from '@/views/me/safecenter/phoneb'
+import emailb from '@/views/me/safecenter/emailb'
+import qa from '@/views/me/safecenter/qa'
+import bdb from '@/views/me/safecenter/bdb'
+import sb from '@/views/me/safecenter/sb'
+
 import bank from '@/views/me/bank'
 import add from '@/views/me/bank/add'
 import unbind from '@/views/me/bank/unbind'
@@ -186,7 +189,11 @@ export default [
     path: '/me/xyb/',
     component: xyb,
     beforeEnter: checkAuth,
-    rl: true
+    rl: true,
+  },
+  {
+    path: '/me/xyb/io/',
+    component: xybio,
   },
   {
     path: '/me/wallet/',
@@ -201,56 +208,20 @@ export default [
     rl: true
   },
   {
-    path: '/me/safecenter/loginPwd/',
-    component: loginPwd,
+    path: '/me/safecenter/pwd/',
+    component: pwd,
     beforeEnter: checkAuth,
     rl: true
   },
   {
-    path: '/me/safecenter/capitalPwd/',
-    component: capitalPwd,
+    path: '/me/safecenter/cpwd/',
+    component: cpwd,
     beforeEnter: checkAuth,
     rl: true
   },
   {
-    path: '/me/safecenter/capitalPwdModify/',
-    component: capitalPwdModify,
-    beforeEnter: checkAuth,
-    rl: true
-  },
-  {
-    path: '/me/safecenter/greetings/',
-    component: greetings,
-    beforeEnter: checkAuth,
-    rl: true
-  },
-  {
-    path: '/me/safecenter/safeanswer/',
-    component: safeanswer,
-    beforeEnter: checkAuth,
-    rl: true
-  },
-  {
-    path: '/me/safecenter/emailBind/',
-    component: emailBind,
-    beforeEnter: checkAuth,
-    rl: true
-  },
-  {
-    path: '/me/safecenter/nickname/',
-    component: nickname,
-    beforeEnter: checkAuth,
-    rl: true
-  },
-  {
-    path: '/me/safecenter/safeVerifyBind/',
-    component: safeVerifyBind,
-    beforeEnter: checkAuth,
-    rl: true
-  },
-  {
-    path: '/me/safecenter/safeVerify/',
-    component: safeVerify,
+    path: '/me/safecenter/nn/',
+    component: nn,
     beforeEnter: checkAuth,
     rl: true
   },
@@ -260,6 +231,43 @@ export default [
     beforeEnter: checkAuth,
     rl: true
   },
+  {
+    path: '/me/safecenter/msg/',
+    component: msg,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/phoneb/',
+    component: phoneb,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/emailb/',
+    component: emailb,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/qa/',
+    component: qa,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/bdb/',
+    component: bdb,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+  {
+    path: '/me/safecenter/sb/',
+    component: sb,
+    beforeEnter: checkAuth,
+    rl: true
+  },
+
   {
     path: '/me/bank/',
     component: bank,

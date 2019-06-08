@@ -12,7 +12,6 @@ let defaultUser = {
   isOpenKey: '',
   isTest: '',
   isTry: '',
-  nickName: '',
   platId: '',
   platUrl: '',
   roleId: '',
@@ -31,6 +30,7 @@ let defaultUser = {
   rewardPoint: '',
   availableBalance: '',
   specialBalance: '',
+  $xyb: '',
   $bg: '',
   $tcg: '',
   $ky: '',
@@ -53,6 +53,17 @@ let defaultUser = {
   // bankcard
   lockCard: 0,
   userBankCards: [],
+  // 安全中心
+  location: '',
+  accountPoint: '',
+  birthday: '',
+  email: '',
+  mobile: '',
+  greetMsg: '',
+  isSetLoginPwd: '',
+  isSetSafeQuest: '',
+  isSetSecurityPwd: '',
+  isSetVerifytyp: '',
 }
 export default {
   state: defaultUser,

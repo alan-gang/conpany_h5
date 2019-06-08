@@ -122,15 +122,18 @@ let api = {
   // 我的
   getUserIdentity: 'home/userInfo.do?method=getUserIdentity',
   getLotteryPrinzeInfo: '/person/lotteryPrize.do?method=getLotteryPrinzeInfo',
-  acctSecureInfo: '/person/accountSecur.do?method=acctSecureInfo',
-  setBirthday: '/person/accountSecur.do?method=setBirthday',
-  changLoginPwd: '/person/accountSecur.do?method=changLoginPwd',
-  changSecurePwd: '/person/accountSecur.do?method=changSecurePwd',
-  setGreetMsg: '/person/accountSecur.do?method=setGreetMsg',
   // xyb
   p2pBuyProduct: '/p2p/product.do?method=buyProduct',
+  '/dscagamesclient/p2p/product.do?method=buyProduct': {
+    1: {
+      msg: '操作成功',
+      fn: [{fn: '__getBalance'}, {fn: '__p2pAccount'}]
+    },
+    fn: '__clearform',
+  },
   p2pAccount: '/p2p/product.do?method=productAccount',
   p2pList: '/p2p/product.do?method=list',
+  selectAccountChange: '/p2p/product.do?method=selectAccountChange',
   // 充值
   saveRangesNew: '/person/recharge.do?method=saveRangesNew',
   commitNew: '/person/recharge.do?method=commitNew',
@@ -142,6 +145,11 @@ let api = {
   getWithdrawByApi: '/person/bankcard.do?method=getWithdrawByApi',
   doWithDraw: '/person/withDraw.do?method=doWithDraw',
   checkSecurityPwd: '/person/withDraw.do?method=checkSecurityPwd',
+  '/dscagamesclient/person/withDraw.do?method=checkSecurityPwd': {
+    1: {
+      msg: '资金密码验证成功',
+    }
+  },
   showWithDraw: '/person/withDraw.do?method=showWithDraw',
   '/dscagamesclient/person/withDraw.do?method=doWithDraw': {
     0: {msg: '提现失败'},
@@ -176,6 +184,147 @@ let api = {
       msg: '转帐成功',
       fn: [{fn: '__getAllBalance'}],
     }
+  },
+  // 安全中心
+  acctSecureInfo: '/person/accountSecur.do?method=acctSecureInfo',
+  changLoginPwd: '/person/accountSecur.do?method=changLoginPwd',
+  '/dscagamesclient/person/accountSecur.do?method=changLoginPwd': {
+    1: {
+      msg: '登录密码修改成功，请重新登录',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  // 修改资金密码
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=changSecurePwd&password=123456&newPwd=000000
+  changSecurePwd: '/person/accountSecur.do?method=changSecurePwd',
+  '/dscagamesclient/person/accountSecur.do?method=changSecurePwd': {
+    1: {
+      msg: '资金登录密码修改成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  // 修改昵称
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=changNickName&nickName=zhangsan
+  changNickName: '/person/accountSecur.do?method=changNickName',
+  '/dscagamesclient/person/accountSecur.do?method=changNickName': {
+    1: {
+      msg: '昵称设置成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  setBirthday: '/person/accountSecur.do?method=setBirthday',
+  '/dscagamesclient/person/accountSecur.do?method=setBirthday': {
+    1: {
+      msg: '生日设置成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  // 设置问候
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=setGreetMsg&greetMsg=have u lunch
+  setGreetMsg: '/person/accountSecur.do?method=setGreetMsg',
+  '/dscagamesclient/person/accountSecur.do?method=setGreetMsg': {
+    1: {
+      msg: '登录问候语修改成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  // 发送手机短信
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=sendSms&mobile=18952000000
+  person_sendSms: '/person/accountSecur.do?method=sendSms',
+  // 发送邮件
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=sendMail&email=1@qq.com
+  person_sendMail: '/person/accountSecur.do?method=sendMail',
+  // 验证短信验证
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=checkSmsVerifyCode&verifyCode=4511
+  person_checkSmsVerifyCode: '/person/accountSecur.do?method=checkSmsVerifyCode',
+  // 验证邮件验证
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=checkMailVerifyCode&verifyCode=2664
+  person_checkMailVerifyCode: '/person/accountSecur.do?method=checkMailVerifyCode',
+  // 绑定手机
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=bindMobil&mobile=18952000000&type=0
+  bindMobile: '/person/accountSecur.do?method=bindMobile',
+  '/dscagamesclient/person/accountSecur.do?method=bindMobile': {
+    1: {
+      msg: '手机绑定成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  unbindMobile: '/person/accountSecur.do?method=unbindMobile',
+  '/dscagamesclient/person/accountSecur.do?method=unbindMobile': {
+    1: {
+      msg: '手机解绑成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  // 绑定邮箱
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=bindEmail&email=a1@qq.com&type=0
+  bindEmail: '/person/accountSecur.do?method=bindEmail&type=0',
+  '/dscagamesclient/person/accountSecur.do?method=bindEmail&type=0': {
+    1: {
+      msg: '邮箱绑定成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  unbindEmail: '/person/accountSecur.do?method=bindEmail&type=1',
+  '/dscagamesclient/person/accountSecur.do?method=bindEmail&type=1': {
+    1: {
+      msg: '邮箱解绑成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  // 开启关闭
+  // http://192.168.169.161:8080/cagamesclient/person/accountSecur.do?method=swithGoogAuth& verifyCode=123456&type=1
+  switchGoogleAuth: '/person/accountSecur.do?method=swithGoogAuth',
+  '/dscagamesclient/person/accountSecur.do?method=swithGoogAuth&type=1': {
+    1: {
+      msg: '信游安全绑定成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  '/dscagamesclient/person/accountSecur.do?method=swithGoogAuth&type=0': {
+    1: {
+      msg: '信游安全解绑成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  // http://192.168.169.161:8080/cagamesclient/person/accountSecur.do?method=createAuthQr
+  createCBqr: '/person/accountSecur.do?method=createAuthQr',
+  // 校验安全验证二维码
+  // http://192.168.169.161:8080/cagamesclient/person/accountSecur.do?method=checkAuthKey&verifyCode=905420
+  checkGoogleAuth: '/person/accountSecur.do?method=checkAuthKey',
+  // 获取所有安全问答
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=safeQuestionList
+  safeQuestionList: '/person/accountSecur.do?method=safeQuestionList',
+  // 设置安全问答
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=setSafeQuestion&question1=abc&question2=def&answer1=ghi&answer2=jkl
+  setSafeQuestion: '/person/accountSecur.do?method=setSafeQuestion',
+  '/person/accountSecur.do?method=setSafeQuestion': {
+    1: {
+      msg: '安全问答设置成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
+  },
+  // 设置安全验证方式
+  // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=setsecurityCheck&checkType=1&verifyCode=2444
+  setsecurityCheck: '/person/accountSecur.do?method=setsecurityCheck',
+  '/person/accountSecur.do?method=setsecurityCheck': {
+    1: {
+      msg: '安全验证设置成功',
+      fn: [{fn: '__acctSecureInfo'}],
+    },
+    fn: '__clearform',
   },
 
   // 报表

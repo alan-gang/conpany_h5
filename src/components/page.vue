@@ -22,7 +22,7 @@ export default {
     refresh (evt, done = evt.detail) {
       this.loadMore(evt, done)
     },
-    defaultListCb (data) {
+    defaultListCb (data = []) {
       if (data.length < this.pageSize) this.showPreloader = false
       this.currentPage = 1
     },
