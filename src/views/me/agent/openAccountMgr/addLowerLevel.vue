@@ -13,7 +13,7 @@
     f7-row.set-header(v-show="isShowRebateLs")
       f7-col(width="50") 返点/返水设置
       f7-col(width="50")
-        f7-button.ft_14(fill large @click="openUseAlreadySetDialog") 使用已有下级的设置
+        f7-button.ft_14(fill large @click="openUseAlreadySetDialog" @click.native="popupOpened = true") 使用已有下级的设置
 
     f7-list.rebate-ls(v-show="isShowRebateLs")
       f7-list-item(v-for="(item, i) in rebateRates" :key="i")
@@ -25,20 +25,28 @@
             span(class="c_orange") {{item.$ || 0.00}}% 
             span.c_g &nbsp;({{item.unitTxt}}{{item.$ || 0.00}})
         .rebate-swiper-wp
-          .left-r
-          f7-swiper.rebate-swiper(:params="{speed:500, slidesPerView: 5, spaceBetween: 2}" v-show="item.$s" click="rebateItemHandler()")
+          .left-r(@click="swiperLeft(i)")
+          f7-swiper.rebate-swiper(:params="swiperParams" v-show="item.$s" :ref="'rebateSwiper' + i")
             f7-swiper-slide(v-for="(rate, j) in item.$s" :key="j" @click.native="rebateItemHandler(rate, i, j)" :class="{active: (rate * 0.1).toFixed(1) === item.$}") {{(rate * 0.1).toFixed(1)}}%
-          .right-r
+          .right-r(@click="swiperRight(i)")
 
     f7-button.mg_10(fill large @click="openAccount") 开户
+
+    f7-popup.search-lower-level-dialog.dialog-popup(:opened="popupOpened" @popup:closed="popupOpened = false")
+      SearchLowerLeverDialog(@rebate-data="rebateDataCB")
+
 </template>
 
 <script>
 import api from '@/api'
 import config from '@/config'
+import SearchLowerLeverDialog from './SearchLowerLeverDialog'
 export default {
   name: 'addLowerLevel',
   mixins: [config],
+  components: {
+    SearchLowerLeverDialog
+  },
   data () {
     return {
       userName: '',
@@ -46,7 +54,15 @@ export default {
       defaultPwd: '123456a',
       keepPoint: '',
       rebateRates: [],
-      isShowRebateLs: false
+      isShowRebateLs: false,
+      swiperParams: {
+        speed: 500,
+        slidesPerView: 5,
+        spaceBetween: 2,
+        allowSlidePrev: true,
+        allowSlideNext: true
+      },
+      popupOpened: false
     }
   },
   mounted () {
@@ -56,13 +72,22 @@ export default {
     openAccount () {
       let params = {
         userName: this.userName,
-        password: this.password,
-        keepPoint: this.keepPoint
+        password: this.password || this.defaultPwd,
+        keepPoint: (this.rebateRates[0].backwater - parseFloat(this.rebateRates[0].$)).toFixed(1),
+        pointArr: JSON.stringify({
+          myBack: this.rebateRates.slice(1).map(x => {
+            return {
+              groupid: x.groupid,
+              groupname: x.groupname,
+              backwater: parseFloat(x.$) / 1000
+            }
+          })
+        }),
+        proxyType: '',
+        type: 1
       }
       this.$.post(api.registUser, params).then(({success, msg}) => {
-        this.__toast(msg || '开户成功！')
-        this.userName = ''
-        this.password = ''
+        this.__alert(msg || `下级（${this.userName}）开户成功！`)
       }).catch(e => {})
     },
     getShowRegistUser () {
@@ -96,6 +121,27 @@ export default {
     },
     rebateItemHandler (rate, i, j) {
       this.rebateRates[i].$ = (rate * 0.1).toFixed(1)
+    },
+    swiperLeft (i) {
+      this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slideNext()
+    },
+    swiperRight (i) {
+      this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slidePrev()
+    },
+    rebateDataCB (data = []) {
+      console.log(data)
+      this.popupOpened = false
+      if (data.length < 1) return
+      this.rebateRates = this.rebateRates.map((item, j) => {
+        for (let i = 0; i < data.length; i++) {
+          if (item.groupid === data[i].groupId) {
+            item.$ = (data[i].backWater * 1000).toFixed(1)
+            this.$refs['rebateSwiper' + j] && this.$refs['rebateSwiper' + j][0].swiper.slideTo(data[i].backWater * 1000 / 0.1, 0)
+            break
+          }
+        }
+        return item
+      })
     },
     openUseAlreadySetDialog () {}
   }

@@ -9,8 +9,6 @@
         f7-link.underline_40(tab-link tab-link-active href="#rf_bc_1") 新增下级
         f7-link.underline_40(tab-link href="#rf_bc_2") 推广链接
 
-    //- .add-lower-level-pg-c
-    //- .markiting-link-pg-c
     f7-tabs(animated swipeable)
       f7-tab#rf_bc_1(tab-active @tab:show=" tabShow ")
         addLowerLevel

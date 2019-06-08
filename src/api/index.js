@@ -194,7 +194,13 @@ let api = {
   showRegistUser: '/team/createAccount.do?method=showRegistUser',
   // 开户
   registUser: '/team/createAccount.do?method=registUser',
-
+  getUserList: '/team/useList.do?method=getUserList',
+  setBackWater: '/team/setBackWater.do?method=setBackWater',
+  getBackWater: '/team/useList.do?method=getBackWater',
+  // 二维码
+  createQr: '/team/createAccount.do?method=createQr',
+  // 生成推广链接地址
+  showSpreadLinks: '/team/createAccount.do?method=showSpreadLinks',
   // 银行卡
   getUserBankCards: '/person/bankcard.do?method=getUserBankCards',
   lockBankCard: '/person/bankcard.do?method=lockBankCard',

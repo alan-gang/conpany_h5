@@ -58,6 +58,14 @@ export default {
         this.__setCall({fn: '__init_' + evt.target.id})
       }
     },
+    __alert (args) {
+      return (args) => {
+        let options = {text: args, position: 'center', buttons: [{text: '确定'}]}
+        if (typeof args === 'string') options.text = args
+        if (window.toString.call(args) === '[object Object]') Object.assign(options, args)
+        this.$f7.dialog.create(options).open()
+      }
+    },
     // cache
     __$car () {
       return this.local.$car.filter(x => x.id === this.id)
