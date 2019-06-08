@@ -129,7 +129,7 @@ export default {
       this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slidePrev()
     },
     rebateDataCB (data = []) {
-      console.log(data)
+      // console.log(data)
       this.popupOpened = false
       if (data.length < 1) return
       this.rebateRates = this.rebateRates.map((item, j) => {

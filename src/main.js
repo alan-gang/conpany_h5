@@ -20,9 +20,10 @@ import Framework7 from 'framework7/framework7.esm.bundle.js'
 import Framework7Vue from 'framework7-vue/framework7-vue.esm.bundle.js'
 
 import 'framework7-icons'
-
+import VueClipboard from 'vue-clipboard2'
 // Init plugin and register all components
 Framework7.use(Framework7Vue)
+Vue.use(VueClipboard)
 
 Vue.prototype.$ = axios
 // Vue.prototype.$Modal = Modal

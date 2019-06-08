@@ -201,6 +201,8 @@ let api = {
   createQr: '/team/createAccount.do?method=createQr',
   // 生成推广链接地址
   showSpreadLinks: '/team/createAccount.do?method=showSpreadLinks',
+  // 设置保留返点
+  setKeepPoint: '/team/createAccount.do?method=setKeepPoint',
   // 银行卡
   getUserBankCards: '/person/bankcard.do?method=getUserBankCards',
   lockBankCard: '/person/bankcard.do?method=lockBankCard',
