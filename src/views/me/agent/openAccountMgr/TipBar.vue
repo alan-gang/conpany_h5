@@ -1,9 +1,9 @@
-<template>
-  <section class="flex flex-dr-r tip-bar-view ft_12" v-if="show">
-    <div class="icon-info"></div>
-    <div class="content" v-html="content"></div>
-    <div class="btn-close" @click="close"><i class="icon-cross"></i></div>
-  </section>
+<template lang="pug">
+  section(class="flex flex-dr-r tip-bar-view ft_12" v-if="show")
+    .icon-info
+    .content(v-html="content")
+    .btn-close(@click="close")
+      i(class="icon-cross")
 </template>
 
 <script>
@@ -37,7 +37,7 @@ export default {
   .icon-info {
     width 30px
     height 100%
-    // background url('../../assets/uyb/notification@2x.png') no-repeat center
+    // background url('../../assets/notification@2x.png') no-repeat center
     background-size 15px
   }
   .content {

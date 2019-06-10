@@ -3,7 +3,7 @@
     TipBar(:show="showTipBar" content="点击二维码可复制推广链接，或将二维码保存至手机。" @close-cb="showTipBar = false")
     ul.qrs-wp.flex.bgc_f
       li(v-for="(img, i) in QRs" :key="i")
-        img(:src="'data:image/png;base64,' + img" @click="imageHandler(i)")
+        img(:src="'data:image/png;base64,' + img" @click="imageHandler(i)" :ref="'qrCode'+i")
         .t_c.pb_20 链接{{i + 1}}
     .promotion-code.t_c.bgc_f 注册邀请码：&nbsp;&nbsp;{{promotionCode}}
     p.ml_20 推广链接设置 ：
@@ -11,10 +11,10 @@
     f7-button.mg_10(fill large @click="save") 保存设置
     f7-actions(:opened="shwoActionSheet" @actions:closed="shwoActionSheet = false")
       f7-actions-group
-        f7-actions-button(v-clipboard:copy="copyMsg" v-clipboard:success="copySuccess" v-clipboard:error="copyError") 复制【{{copyButtonTxt}}】
-        f7-actions-button 将二维码保存到手机
+        f7-actions-button.c_0(v-clipboard:copy="copyMsg" v-clipboard:success="copySuccess" v-clipboard:error="copyError") 复制【{{copyButtonTxt}}】
+        f7-actions-button.c_0(@click.native="saveToPhone") 将二维码保存到手机
       f7-actions-group
-        f7-actions-button 取消
+        f7-actions-button.c_0 取消
 </template>
 
 <script>
@@ -45,7 +45,8 @@ export default {
       },
       shwoActionSheet: false,
       copyButtonTxt: '链接',
-      copyMsg: ''
+      copyMsg: '',
+      curImg: ''
     }
   },
   mounted () {
@@ -96,6 +97,7 @@ export default {
       this.copyMsg = this.urls[i]
       this.copyButtonTxt = '链接' + (i + 1)
       this.shwoActionSheet = true
+      this.curImg = this.$refs['qrCode' + i][0]
     },
     save () {
       let params = {
@@ -121,6 +123,24 @@ export default {
     },
     copyError () {
       this.__toast('复制失败')
+    },
+    saveToPhone () {
+      this.doloadImg(this.curImg)
+    },
+    doloadImg (img) {
+      let imgCvs = document.createElement('canvas')
+      imgCvs.width = img.width
+      imgCvs.height = img.height
+      let ctx = imgCvs.getContext('2d')
+      ctx.drawImage(img, 0, 0)
+      let imgData = imgCvs.toDataURL('png')
+      imgData = imgData.replace('image/png', 'image/octet-stream')
+      let a = document.createElement('a')
+      a.href = imgData
+      a.download = `qr_code_${Date.now()}.png`
+      let evt = document.createEvent('MouseEvents')
+      evt.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+      a.dispatchEvent(evt)
     }
   }
 }
@@ -142,5 +162,4 @@ export default {
           margin 5px 0
   .promotion-code
     line-height 40px
-
 </style>
