@@ -337,6 +337,21 @@ let api = {
   plreport: '/report/personalReportAction.do?method=recentTotalReport',
   pld: '/report/personalProfit.do?method=sumDetail',
   pldl: '/report/personalProfit.do?method=dailyDetail',
+
+  // ***代理中心***
+  // 获取开户返点信息
+  showRegistUser: '/team/createAccount.do?method=showRegistUser',
+  // 开户
+  registUser: '/team/createAccount.do?method=registUser',
+  getUserList: '/team/useList.do?method=getUserList',
+  setBackWater: '/team/setBackWater.do?method=setBackWater',
+  getBackWater: '/team/useList.do?method=getBackWater',
+  // 二维码
+  createQr: '/team/createAccount.do?method=createQr',
+  // 生成推广链接地址
+  showSpreadLinks: '/team/createAccount.do?method=showSpreadLinks',
+  // 设置保留返点
+  setKeepPoint: '/team/createAccount.do?method=setKeepPoint',
   // 银行卡
   lockBankCard: '/person/bankcard.do?method=lockBankCard',
   '/dscagamesclient/person/bankcard.do?method=lockBankCard': {

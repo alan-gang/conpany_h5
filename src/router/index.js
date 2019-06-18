@@ -54,6 +54,8 @@ import bind from '@/views/me/bank/bind'
 import unbind from '@/views/me/bank/unbind.vue'
 
 import bonus from '@/views/me/bonus'
+import openAccountMgr from '@/views/me/agent/openAccountMgr'
+import lowerLevelMgr from '@/views/me/agent/lowerLevelMgr'
 
 // 帮助中心
 import help from '@/views/me/help'
@@ -319,6 +321,16 @@ export default [
   {
     path: '/me/help/detailpage/',
     component: detailpage,
+    rl: true
+  },
+  {
+    path: '/agent/openAccountMgr',
+    component: openAccountMgr,
+    rl: true
+  },
+  {
+    path: '/agent/lowerLevelMgr',
+    component: lowerLevelMgr,
     rl: true
   },
   {

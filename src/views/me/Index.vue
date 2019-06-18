@@ -52,9 +52,9 @@
               f7-button.hlh_40(bg-color="white" color="black" href="/rfs/pl/") 盈亏报表
           template(v-else)
             f7-col(width="33")
-              f7-button.hlh_40(bg-color="white" color="black") 开户管理
+              f7-button.hlh_40(bg-color="white" color="black" href="/agent/openAccountMgr") 开户管理
             f7-col(width="33")
-              f7-button.hlh_40(bg-color="white" color="black") 下级管理
+              f7-button.hlh_40(bg-color="white" color="black" href="/agent/lowerLevelMgr") 下级管理
             f7-col(width="33")
               f7-button.hlh_40(bg-color="white" color="black") 团队报表
       f7-list.mg_0.no_border(no-hairlines)
