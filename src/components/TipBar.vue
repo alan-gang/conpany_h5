@@ -37,7 +37,7 @@ export default {
   .icon-info {
     width 30px
     height 100%
-    // background url('../../assets/notification@2x.png') no-repeat center
+    background url('../assets/me/profile_icon_infor@2x.png') no-repeat center
     background-size 15px
   }
   .content {

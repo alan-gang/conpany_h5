@@ -20,7 +20,7 @@
 <script>
 import api from '@/api'
 import config from '@/config'
-import TipBar from './TipBar'
+import TipBar from 'comp/TipBar'
 import RebateRate from './RebateRate'
 export default {
   name: 'marketingLink',

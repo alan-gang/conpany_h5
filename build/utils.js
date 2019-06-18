@@ -54,6 +54,14 @@ exports.cssLoaders = function (options) {
     sass: generateLoaders('sass', { indentedSyntax: true }),
     scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
+    // stylus: generateLoaders('stylus').concat(
+    //   {
+    //     loader: 'stylus-resources-loader',
+    //     options: {
+    //       resources: path.resolve(__dirname, '../src/css/common.stylus')
+    //     }
+    //   }
+    // ),
     styl: generateLoaders('stylus')
   }
 }

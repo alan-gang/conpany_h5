@@ -52,6 +52,7 @@ import lock from '@/views/me/bank/lock'
 import locked from '@/views/me/bank/locked'
 import bonus from '@/views/me/bonus'
 import openAccountMgr from '@/views/me/agent/openAccountMgr'
+import lowerLevelMgr from '@/views/me/agent/lowerLevelMgr'
 
 // 帮助中心
 import help from '@/views/me/help'
@@ -325,6 +326,11 @@ export default [
   {
     path: '/agent/openAccountMgr',
     component: openAccountMgr,
+    rl: true
+  },
+  {
+    path: '/agent/lowerLevelMgr',
+    component: lowerLevelMgr,
     rl: true
   },
   {
