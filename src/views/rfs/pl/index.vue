@@ -16,10 +16,10 @@ f7-page.profit_loss_report
               span {{ y.n }}： 
               span.text-color-deeporange.ft_b.t_r.ft_16 {{ v[y.key]._f3() }}
 
-            .flex(v-else @click=" __go('/rfs/pl/pld/', {props: { v: y,  date: v.date}}) ")
-              .v_m.inlb
+            .flex(v-else @click=" __go('/rfs/pl/pld/', {props: { v: y, u: v, stet_: v.date ? [v.date, v.date] : stet}}) ")
+              .v_m.inlb.ellipsis
                 span {{ y.n + '盈亏' }}： 
-                span.c_3.ft_b {{ v[y.key]._f3() }}
+                span.c_3.ft_b(v-nwc="true") {{ v[y.key]._f3() }}
 
               f7-icon(f7="chevron_right" size="12px")
 
@@ -37,6 +37,7 @@ export default {
   props: [],
   data () {
     return {
+      stet: [new Date()._bf(-7)._setHMS(), new Date()._setHMS('23:59:59')],
       // 游戏类型：0:彩票盈亏；1:电竞；2:电游；3:真人；4:棋牌；5：捕鱼；6：体育；7：基诺彩；8：微游
       dns: [
         {n: '日期', key: 'date'},

@@ -25,17 +25,17 @@ window.Date.prototype._bf = function (d) {
 window.Date.prototype._bfM = function (d) {
   return new window.Date(new window.Date(this).setMonth(this.getMonth() + d))
 }
-window.Date.prototype._toString = function () {
-  return this.getFullYear() + '-' + (this.getMonth() + 1)._padStart(2, 0) + '-' + this.getDate()._padStart(2, 0) + ' ' + this.getHours()._padStart(2, 0) + ':' + this.getMinutes()._padStart(2, 0) + ':' + this.getSeconds()._padStart(2, 0)
+window.Date.prototype._bfY = function (y) {
+  return new window.Date(new window.Date(this).setFullYear(this.getFullYear() + y))
 }
-window.Date.prototype._toMonthString = function () {
-  return this.getFullYear() + '-' + (this.getMonth() + 1)._padStart(2, 0)
+window.Date.prototype._toString = function (s = '-') {
+  return this.getFullYear() + s + (this.getMonth() + 1)._padStart(2, 0) + s + this.getDate()._padStart(2, 0) + ' ' + this.getHours()._padStart(2, 0) + ':' + this.getMinutes()._padStart(2, 0) + ':' + this.getSeconds()._padStart(2, 0)
 }
-window.Date.prototype._toDayString = function () {
-  return this.getFullYear() + '-' + (this.getMonth() + 1)._padStart(2, 0) + '-' + this.getDate()._padStart(2, 0)
+window.Date.prototype._toMonthString = function (s = '-') {
+  return this.getFullYear() + s + (this.getMonth() + 1)._padStart(2, 0)
 }
-window.String.prototype._toAllString = function () {
-  return ''
+window.Date.prototype._toDayString = function (s = '-') {
+  return this.getFullYear() + s + (this.getMonth() + 1)._padStart(2, 0) + s + this.getDate()._padStart(2, 0)
 }
 window.Date.prototype._toAllString = function () {
   return this.getFullYear() + (this.getMonth() + 1)._padStart(2, 0) + this.getDate()._padStart(2, 0) + this.getHours()._padStart(2, 0) + this.getMinutes()._padStart(2, 0) + this.getSeconds()._padStart(2, 0)
@@ -43,15 +43,19 @@ window.Date.prototype._toAllString = function () {
 window.Date.prototype._toMonthDayStringCN = function () {
   return (this.getMonth() + 1) + '月' + this.getDate() + '日'
 }
-window.Date.prototype._toMDHMString = function () {
-  return (this.getMonth() + 1) + '-' + this.getDate() + ' ' + this.getHours()._padStart(2, 0) + ':' + this.getMinutes()._padStart(2, 0)
+window.Date.prototype._toMDHMString = function (s = '-') {
+  return (this.getMonth() + 1) + s + this.getDate() + ' ' + this.getHours()._padStart(2, 0) + ':' + this.getMinutes()._padStart(2, 0)
 }
 window.Date.prototype._toWeekString = function () {
   return '星期' + ['日', '一', '二', '三', '四', '五', '六'][this.getDay()]
 }
 // 今天/明天/昨天/后天
-window.Date.prototype.__toDayString = function () {
-  let x = this._toDayString()
+window.String.prototype.__toDayString = window.Date.prototype.__toDayString = function () {
+  let self = this
+  if (!self.getTime) {
+    return '不限'
+  }
+  let x = self._toDayString()
   let t = new Date(window.lstt)
   if (x === t._toDayString()) {
     return '今天'

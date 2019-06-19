@@ -27,3 +27,9 @@
   transform translate3d(-50%, -50%, 0)
   &.modal-out
     transform translate3d(-50%, 500%, 0)
+
+.dialog.full_width
+  left 10px
+  right 10px
+  width auto
+  margin-left 0

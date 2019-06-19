@@ -33,9 +33,10 @@ f7-page.rf_cr_1(:page-content="false")
       f7-card-content
         .flex.ft_13
           .a
-            .hlh_30.ft_15 {{ v.orderType }} 
-              span(:class=" v.inout._o0() ? 'c_s' : 'c_e' ") {{ v.inout._o0() ? '+' : '' }}{{ v.inout._f3() }}
-            .lh_20 {{ v.lotteryName }} ({{ v.issue }}期)
+            .ft_15 {{ v.orderType }} 
+              span(v-nwc="true") {{ v.inout }}
+            .lh_20(v-if="v.lotteryName") {{ v.lotteryName }}
+              span(v-if="v.issue") ({{ v.issue }}期)
 
           .b.t_r.wp_55
             .lh_20 主余额：{{ v.balance._f3() }}元
@@ -92,6 +93,7 @@ export default {
         orderId: this.s.id,
         beginDate: this.stet[0]._toAllString(),
         endDate: this.stet[1]._toAllString(),
+        scope: 0,
       }, option)).then(({data: {orderRecordList, totalSize}}) => {
         this.data = [...(option.page > this.fpage ? this.data : []), ...orderRecordList]
         this.total = totalSize

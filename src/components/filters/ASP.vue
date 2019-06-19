@@ -1,6 +1,10 @@
 <template lang="pug">
 .acount_state_pick.o_h
   .pl_10.pr_10.page_content_like
+    .pt_10
+      f7-button.wp_50.inlb.r_0(fill color="orange" @click=" (cache.filters.asid = '') || data.find(x => x.text === '游戏').orderList.forEach(y => change(y)) " ) 游戏账变
+      f7-button.wp_50.inlb.r_0(fill color="deeporange" @click=" (cache.filters.asid = '') || data.filter(x => x.text !== '游戏').forEach(z => z.orderList.forEach(y => change(y))) " ) 非游戏账变
+
     template(v-for=" (v, i) in data ")
       .hlh_30.pl_10.pt_10.text-color-gray(:key="i") {{ v.text }}
       f7-row.j_s(no-gap)
@@ -78,7 +82,7 @@ export default {
 .acount_state_pick
   .page_content_like
     height 60vh
-    padding-bottom 100px
+    padding-bottom 50px
 
   .p_a
     bottom 0

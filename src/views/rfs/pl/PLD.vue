@@ -5,16 +5,16 @@ f7-page.profit_loss_detail
     template(v-for=" (x, i) in dns.slice(0, 3) ")
       f7-list-item(v-if=" x.key === '_n' ")
         span {{ x.n }}
-        span 我
+        span {{ n }}
       
       f7-list-item(v-else-if=" x.key === '_date' ")
         span {{ x.n }}
-        template(v-if=" stet.n === '最近7天' ")
-          f7-button(outline @click=" __go('/rfs/pl/pld/pldl/', {props: { v, date }}) ") 
-            span {{ stet.n }}
+        template(v-if=" __stetgap ")
+          f7-button(outline @click=" __go('/rfs/pl/pld/pldl/', {props: { v, stet_, u: u }}) ") 
+            span {{ __stetn[0] }}
             f7-icon(f7="chevron_right" size="10")
 
-        span(v-else) {{ stet.n }}
+        span(v-else) {{ __stetn[0] }}
     
       f7-list-item(v-else-if=" Number(v_.pointLevel) ")
         span {{ v.n.replace('盈亏', '返点') }}
@@ -53,19 +53,17 @@ f7-page.profit_loss_detail
 <script>
 import config from '@/config'
 import api from '@/api'
+import stet from '@/components/stet'
 export default {
-  mixins: [config],
+  mixins: [config, stet],
   components: {
   },
   name: 'profit_loss_detail',
-  props: ['v', 'date'],
+  props: ['v', 'u', 'stet_'],
   data () {
     return {
-      stet: {
-        n: !this.date ? '最近7天' : this.date,
-        0: !this.date ? new Date()._bf(-7)._toDayString() : this.date,
-        1: !this.date ? new Date()._toDayString() : this.date,
-      },
+      stet: this.stet_,
+      n: !this.u.userId ? '我' : this.u.userName,
       // 游戏类型：0:彩票盈亏；1:电竞；2:电游；3:真人；4:棋牌；5：捕鱼；6：体育；7：基诺彩；8：微游
       dns: [
         {n: '用户', key: '_n'},
@@ -88,10 +86,10 @@ export default {
   methods: {
     list () {
       this.$.get(api.pld, {
-        userId: this.user.userId,
+        userId: this.u.userId || this.user.userId,
         gameType: this.v.id,
-        beginDate: this.stet[0],
-        endDate: this.stet[1],
+        beginDate: this.stet[0]._toDayString(),
+        endDate: this.stet[1]._toDayString(),
       }).then(({data: {items}}) => {
         this.v_ = items[0] || null
       })

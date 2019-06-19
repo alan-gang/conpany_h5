@@ -69,8 +69,8 @@ f7-page.car
               .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
                 .stepper-button-minus
                 .stepper-input-wrap
-                  input.inlb.v_m(type='number' v-model=" v.times " min='1', max='10000', step='1' @change=" update(v) ")
-                span.inlb.hp_100 倍
+                  input.inlb.v_m(type='number' pattern="[0-9]*" v-model=" v.times " min='1', max='10000', step='1' @change=" update(v) ")
+                //- span.inlb.hp_100 倍
                 .stepper-button-plus
               span.pd_5
               .list.inline-picker.border-gray

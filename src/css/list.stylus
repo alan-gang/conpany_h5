@@ -49,3 +49,8 @@ li.hlh_25
     padding-right 30px
     &:before
       transform rotateZ(90deg)
+      
+.list.input_t_r
+  input
+    text-align right
+    padding-right 20px

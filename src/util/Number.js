@@ -40,6 +40,9 @@ window.Number.prototype._toHMS = function () {
 window.Number.prototype._f1 = window.String.prototype._f1 = function () {
   return Number(this).toFixed(1)
 }
+window.Number.prototype._f2 = window.String.prototype._f2 = function () {
+  return Number(this).toFixed(2)
+}
 window.Number.prototype._f3 = window.String.prototype._f3 = function () {
   return Number(this).toFixed(3)
 }

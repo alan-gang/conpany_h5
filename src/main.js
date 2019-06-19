@@ -3,6 +3,7 @@
 // import 'babel-polyfill'
 import './util'
 import Vue from 'vue'
+import './directives'
 import App from './App'
 import router from './router'
 import axios from 'axios'

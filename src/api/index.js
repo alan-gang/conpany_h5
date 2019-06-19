@@ -309,7 +309,7 @@ let api = {
   // 设置安全问答
   // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=setSafeQuestion&question1=abc&question2=def&answer1=ghi&answer2=jkl
   setSafeQuestion: '/person/accountSecur.do?method=setSafeQuestion',
-  '/person/accountSecur.do?method=setSafeQuestion': {
+  '/dscagamesclient/person/accountSecur.do?method=setSafeQuestion': {
     1: {
       msg: '安全问答设置成功',
       fn: [{fn: '__acctSecureInfo'}],
@@ -319,7 +319,7 @@ let api = {
   // 设置安全验证方式
   // http://192.168.169.44:9901/cagamesclient/person/accountSecur.do?method=setsecurityCheck&checkType=1&verifyCode=2444
   setsecurityCheck: '/person/accountSecur.do?method=setsecurityCheck',
-  '/person/accountSecur.do?method=setsecurityCheck': {
+  '/dscagamesclient/person/accountSecur.do?method=setsecurityCheck': {
     1: {
       msg: '安全验证设置成功',
       fn: [{fn: '__acctSecureInfo'}],
@@ -337,6 +337,9 @@ let api = {
   plreport: '/report/personalReportAction.do?method=recentTotalReport',
   pld: '/report/personalProfit.do?method=sumDetail',
   pldl: '/report/personalProfit.do?method=dailyDetail',
+  // 下级个人盈亏
+  plreport_: '/report/personalProfit.do?method=total',
+  subBread: '/report/personalProfit.do?method=subBread',
   // 银行卡
   lockBankCard: '/person/bankcard.do?method=lockBankCard',
   '/dscagamesclient/person/bankcard.do?method=lockBankCard': {
@@ -357,7 +360,7 @@ let api = {
   },
   unbindCheck: '/person/bankcard.do?method=unbindCheck',
   unbindBankCard: '/person/bankcard.do?method=unbindBankCard',
-  '/person/bankcard.do?method=unbindBankCard': {
+  '/dscagamesclient/person/bankcard.do?method=unbindBankCard': {
     1: {
       msg: '解绑成功'
     }
@@ -365,6 +368,60 @@ let api = {
   // 帮助中心
   getHelpTag: '/help.do?method=getHelpTag',
   getHelpContent: '/help.do?method=getHelpContent',
+  // 历史分红和历史佣金
+  myBonusMobile: '/team/contractBonus.do?method=myBonusMobile',
+  // 上级确认奖金
+  // http://192.168.169.44:9901/cagamesclient/team/contractBonus.do?method=paraentCheckBonus&bonusId=1&sendType=1
+  paraentCheckBonus: '/team/contractBonus.do?method=paraentCheckBonus',
+  '/dscagamesclient/team/contractBonus.do?method=paraentCheckBonus': {
+    1: {
+      msg: '操作成功',
+      fn: [{fn: '__init_rf_fh_1'}]
+    },
+  },
+  // 下级确认完成奖金发放
+  // http://192.168.169.44:9901/cagamesclient/team/contractBonus.do?method=subCheckBonus&bonusId=1
+  subCheckBonus: '/team/contractBonus.do?method=subCheckBonus',
+  '/dscagamesclient/team/contractBonus.do?method=subCheckBonus': {
+    1: {
+      msg: '操作成功',
+      fn: [{fn: '__init_rf_fh_1'}]
+    },
+  },
+  mySubExpectedBounsMobile: '/team/contractBonus.do?method=mySubExpectedBounsMobile',
+  mySubContractMobile: '/team/contractBonus.do?method=mySubContractMobile',
+  // 创建一个契约
+  // http://192.168.169.44:9901/cagamesclient/team/contractBonus.do?method=createContract
+  createContract: '/team/contractBonus.do?method=createContract',
+  '/dscagamesclient/team/contractBonus.do?method=createContract': {
+    1: {
+      msg: '契约发送成功',
+      fn: [{fn: '__init_rf_fh_3'}]
+    }
+  },
+  // 接受、拒绝契约
+  // http://192.168.169.44:9901/cagamesclient/team/contractBonus.do?method=checkContract&contractId=11&status=1
+  checkContract: '/team/contractBonus.do?method=checkContract',
+  '/dscagamesclient/team/contractBonus.do?method=checkContract': {
+    1: {
+      msg: '操作成功',
+      fn: [{fn: '__init_rf_fh_3'}],
+    }
+  },
+  // 查询我的契约
+  // http://192.168.169.44:9901/cagamesclient/team/contractBonus.do?method=queryMyContract&startDate=20170101200000&endDate=20170115200000&stat=1
+  queryMyContract: '/team/contractBonus.do?method=queryMyContract',
+  // 日工资记录
+  getSalaryById: '/report/daySalaryRepor.do?method=getSalaryById',
+  // 日工资设置
+  mySubSalaryList: '/team/setDaySalary.do?method=mySubSalaryList',
+  setSalary: '/team/setDaySalary.do?method=setSalary',
+  '/dscagamesclient/team/setDaySalary.do?method=setSalary': {
+    1: {
+      msg: '日工资设置成功',
+      fn: [{fn: '__init_rf_ds_2'}]
+    }
+  },
 }
 
 Object.keys(api).forEach((key) => {

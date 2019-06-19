@@ -8,14 +8,13 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
 
   f7-toolbar(bottom)
     f7-row.wp_100.a_c
-      f7-col.t_r(width="20")
+      f7-col.t_r(width="75")
         span.text-color-deeporange {{ data.length }}
         span  期
-
-      f7-col.t_r(width="20")
+        span.pd_5
         span.text-color-deeporange {{ NA.n }}
         span  注
-      f7-col.t_r(width="30")
+        span.pd_5
         span.text-color-deeporange {{ Amt._f3() }}
         span  元
         
@@ -30,7 +29,7 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
           f7-list.inline-picker.mg_0.border-gray(no-hairlines)
             f7-list-item.hlh_25(title="期号" smart-select :smart-select-params="{openIn: 'sheet'}" ref="issuevm")
               select(v-model=" issue ")
-                option(:value=" v.issue " v-for=" (v, i) in issueList " :key=" i ") {{ v.issue }}
+                option(:value=" v.issue " v-for=" (v, i) in issueList " :key=" i ") {{ v.issue.slice(-8) }}
         span.pl_10 期
 
       .hlh_30.mb_10(v-show=" tabIndex === 1 || tabIndex === 0 ")
@@ -38,7 +37,7 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
         .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
             .stepper-button-minus
             .stepper-input-wrap
-              input.inlb.v_m(type='number' v-model=" times " min='1', max='10000', step='1')
+              input.inlb.v_m(type='number' pattern="[0-9]*" v-model=" times " min='1', max='10000', step='1')
             .stepper-button-plus
         span.pl_10 倍
 
@@ -47,22 +46,22 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
         .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
             .stepper-button-minus
             .stepper-input-wrap
-              input.inlb.v_m(type='number' v-model=" span " min='1', max='10000', step='1')
+              input.inlb.v_m(type='number' pattern="[0-9]*" v-model=" span " min='1', max='10000', step='1')
             .stepper-button-plus
         span.pl_10 期
 
       .hlh_30.mb_10(v-show=" tabIndex === 2 ")
         span.inlb.w_100 倍数&nbsp;&nbsp;&nbsp;&nbsp;X
-        .inlb.w_120
+        .inlb.w_105
           f7-input.hlh_25.border-gray(validate require outline pattern="[0-9]*"  )
-            input.t_c.hlh_25(type="number" v-model=" xtimes " )
+            input.t_c.hlh_25(type="number" pattern="[0-9]*" v-model=" xtimes " )
         span.pl_10 倍
 
       .hlh_30.mb_10(v-show=" tabIndex === 0 ")
         span.inlb.w_100 利润率
-        .inlb.w_120
+        .inlb.w_105
           f7-input.hlh_25.border-gray(validate require outline pattern="[0-9]*"  )
-            input.t_c.hlh_25(type="number" v-model=" profit " )
+            input.t_c.hlh_25(type="number"  pattern="[0-9]*" v-model=" profit " )
         span.pl_10 %
 
 
@@ -71,7 +70,7 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
         .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
             .stepper-button-minus
             .stepper-input-wrap
-              input.inlb.v_m(type='number' v-model=" count " min='1', max='10000', step='1')
+              input.inlb.v_m(type='number' pattern="[0-9]*" v-model=" count " min='1', max='10000', step='1')
             .stepper-button-plus
         span.pl_10 期
     
@@ -94,10 +93,10 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
       table
         tbody
           tr(v-for=" (v, i) in data " :key="i")
-            td.label-cell.t_l.wp_25 {{ v.issue }}
+            td.label-cell.t_l.wp_25 {{ v.issue.slice(-6) }}
             td.label-cell.t_c.wp_20
               f7-input.hlh_25.border-gray(validate require outline pattern="[0-9.]*"  )
-                input.hlh_25.t_c(type="number" v-model=" v.times " style="padding: 0 5px")
+                input.hlh_25.t_c(type="number" pattern="[0-9]*" v-model=" v.times " style="padding: 0 5px")
 
             td.label-cell.t_c.wp_5
             td.label-cell.t_l.wp_20 {{ (v.times * NA.a)._f3() }}

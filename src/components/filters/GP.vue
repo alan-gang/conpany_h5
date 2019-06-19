@@ -64,7 +64,7 @@ export default {
 .game_pick
   .page_content_like
     height 60vh
-    padding-bottom 100px
+    padding-bottom 50px
 
   .p_a
     bottom 0

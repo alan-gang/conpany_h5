@@ -31,8 +31,8 @@
       .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
         .stepper-button-minus
         .stepper-input-wrap
-          input.inlb.v_m(type='number' v-model=" local.$t " min='1', max='10000', step='1')
-        span.inlb.hp_100 倍
+          input.inlb.v_m(type='number' pattern="[0-9]*" v-model=" local.$t " min='1', max='10000', step='1')
+        //- span.inlb.hp_100 倍
         .stepper-button-plus
       span.pd_5
       f7-button.w_40.inlb.mr_2(fill :color=" v.v === local.$ ? 'deeporange' : 'gray'  " v-for=" (v, i) in btns " :key="i" :class=" {'text-color-white': v.v == local.$} " @click=" __setLocal({$: v.v}) ") {{ v.n }}

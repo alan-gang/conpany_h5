@@ -35,7 +35,6 @@ axios.interceptors.response.use((response) => {
     spin.close()
     api[response.config.url].spin = null
   }
-
   if (api[response.config.url] && api[response.config.url].$anyway) {
     api[response.config.url].$anyway()
     delete api[response.config.url].$anyway

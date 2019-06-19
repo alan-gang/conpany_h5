@@ -66,7 +66,7 @@ export default {
     },
     // form
     __form () {
-      return this.$refs[this._form_n || '_form'].$el || this.$refs[this._form_n || '_form']
+      return this.$refs[this.form_n_ || '_form'].$el || this.$refs[this.form_n_ || '_form'][0] || this.$refs[this.form_n_ || '_form']
     }
   },
   mounted () {
@@ -90,7 +90,7 @@ export default {
     },
     __validateform (cb) {
       this.$f7.input.validateInputs(this.__form)
-      if (!this.__form.querySelector('.input-invalid')) cb()
+      if (!this.__form.querySelector('.input-invalid')) cb && cb()
     }
   },
 }

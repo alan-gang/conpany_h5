@@ -33,11 +33,14 @@ export default {
     coupon,
   },
   name: 'promo',
-  props: [],
+  props: ['tabid'],
   data () {
     return {}
   },
   created () {
+  },
+  mounted () {
+    if (this.tabid) this.__setCall({fn: '__showTab', args: this.tabid})
   },
   methods: {
     tabShow (evt) {

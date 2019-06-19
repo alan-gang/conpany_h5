@@ -10,6 +10,7 @@ export default {
     // recent plays
     // rps: localStorage.getItem('rps') || '377:1, 377:0, 380:1, 543:1, 544:1, 1110:1, 546:1, 547:1, 548:1, 550:1, 551:1, 552:1, 553:1',
     rps: localStorage.getItem('rps') || '',
+    rns: localStorage.getItem('rns') || '',
     // 元角分厘
     $: Number(localStorage.getItem('$') || 1),
     $t: Number(localStorage.getItem('$t') || 1),
@@ -26,6 +27,7 @@ export default {
     cgs: localStorage.getItem('cgs') || '',
     // loadway
     loadway: localStorage.getItem('loadway') || '',
+
   },
   actions: {
     __setLocal (local = {}) {

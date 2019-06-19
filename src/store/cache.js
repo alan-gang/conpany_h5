@@ -23,6 +23,12 @@ export default {
       lsid: '',
       tsid: '',
       wsid: '',
+      fsid: '',
+      qsid: '',
+      zsid: '',
+      dssid: '',
+      dsssid: '',
+      ssid: '',
     },
 
     // static

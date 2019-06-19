@@ -1,7 +1,7 @@
 <template lang="pug">
 .s_d.p_a
   .popup-backdrop(@click=" close " :class=" {'backdrop-in': slideDown} ")
-  .sd_content.page-content.p_a.bg-color-white.z_9501(:class=" {slide_down: slideDown} ")
+  .sd_content.p_a.bg-color-white.z_9501(:class=" {slide_down: slideDown} ")
     slot
 
 </template>
@@ -57,6 +57,7 @@ export default {
     opacity 1
     
   .sd_content
+    padding-top 44px
     top -20%
     width 100%
     // max-height 0

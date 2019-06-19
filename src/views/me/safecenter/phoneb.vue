@@ -17,14 +17,14 @@ f7-page
           input(required validate type='text' v-model="form.c" placeholder="请输入手机验证码")
           span.input-clear-button
         .item-after
-          f7-button(fill round :disabled=" !!t " @click="!t && !v.t ? (_form_n = '_form_p') && __validateform(sendSms) : sendSms()") {{ t ? t + '秒后' : ''}}重新获取
+          f7-button(fill round :disabled=" !!t " @click="!t && !v.t ? (form_n_ = '_form_p') && __validateform(sendSms) : sendSms()") {{ t ? t + '秒后' : ''}}重新获取
 
     f7-list-input(type="password" required validate validate-on-blur :pattern=" R.pwd " label="资金密码" placeholder="请输入资金密码" clear-button :value=" form.cpwd " @input=" form.cpwd = $event.target.value ")
 
       
 
   .h_40
-  f7-button.mg_10(fill large @click=" (_form_n = '_form') && __validateform(!v.t ? bindMobile : unbindMobile) ") 确认
+  f7-button.mg_10(fill large @click=" (form_n_ = '_form') && __validateform(!v.t ? bindMobile : unbindMobile) ") 确认
 </template>
 
 <script>
@@ -38,7 +38,7 @@ export default {
   props: ['v'],
   data () {
     return {
-      _form_n: '',
+      form_n_: '',
       form: {
         p: '',
         c: '',

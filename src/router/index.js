@@ -80,6 +80,20 @@ import WRD from '@/views/rfs/cr/WRD'
 import pl from '@/views/rfs/pl'
 import PLD from '@/views/rfs/pl/PLD'
 import PLDL from '@/views/rfs/pl/PLDL'
+// 分红报表(分红、预期、契约) 佣金报表(佣金、预期、契约)
+import fh from '@/views/rfs/fh'
+import yj from '@/views/rfs/yj'
+import newc from '@/views/rfs/fh/newc'
+import newcyj from '@/views/rfs/yj/newc'
+// 日工资
+import ds from '@/views/rfs/ds'
+import setds from '@/views/rfs/ds/setds'
+// 下级账变明细
+import _ac from '@/views/rfs/_ac'
+// 下级彩票投注、追号
+import _bc from '@/views/rfs/_bc'
+// 下级账变明细
+import _pl from '@/views/rfs/_pl'
 
 let async = url => {
   return (routeTo, routeFrom, resolve, reject) => {
@@ -412,6 +426,21 @@ export default [
     ]
   },
   {
+    path: '/rfs/_bc/',
+    component: _bc,
+    master: true,
+    detailRoutes: [
+      {
+        path: '/rfs/bc/bd/:id/',
+        component: bd_,
+      },
+      {
+        path: '/rfs/bc/cd/:id/',
+        component: cd,
+      },
+    ]
+  },
+  {
     path: '/rfs/cr/',
     component: cr,
     master: true,
@@ -440,5 +469,57 @@ export default [
         component: PLDL,
       },
     ]
-  }
+  },
+  {
+    path: '/rfs/_pl/',
+    component: _pl,
+    master: true,
+    detailRoutes: [
+      {
+        path: '/rfs/pl/pld/',
+        component: PLD,
+      },
+      {
+        path: '/rfs/pl/pld/pldl/',
+        component: PLDL,
+      },
+    ]
+  },
+  {
+    path: '/rfs/fh/',
+    component: fh,
+    master: true,
+    detailRoutes: [
+      {
+        path: '/rfs/fh/newc',
+        component: newc,
+      }
+    ]
+  },
+  {
+    path: '/rfs/yj/',
+    component: yj,
+    master: true,
+    detailRoutes: [
+      {
+        path: '/rfs/yj/newc',
+        component: newcyj,
+      }
+    ]
+  },
+  {
+    path: '/rfs/ds/',
+    component: ds,
+    master: true,
+    detailRoutes: [
+      {
+        path: '/rfs/ds/setds',
+        component: setds,
+      }
+    ]
+  },
+  {
+    path: '/rfs/ac/',
+    component: _ac
+  },
 ]
