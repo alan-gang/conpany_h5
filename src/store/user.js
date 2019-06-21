@@ -1,5 +1,6 @@
 let defaultUser = {
   login: '',
+  displayPermission: {},
   codeimg: '',
   actvityUrl: '',
   broadcaseWSUrl: '',

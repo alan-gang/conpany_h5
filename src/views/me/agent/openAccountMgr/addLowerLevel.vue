@@ -135,7 +135,7 @@ export default {
       this.rebateRates = this.rebateRates.map((item, j) => {
         for (let i = 0; i < data.length; i++) {
           if (item.groupid === data[i].groupId) {
-            item.$ = (data[i].backWater * 1000).toFixed(1)
+            item.$ = ((data[i].backWater || 0) * 1000).toFixed(1)
             this.$refs['rebateSwiper' + j] && this.$refs['rebateSwiper' + j][0].swiper.slideTo(data[i].backWater * 1000 / 0.1, 0)
             break
           }

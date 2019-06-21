@@ -437,6 +437,8 @@ let api = {
       fn: [{fn: '__init_rf_ds_2'}]
     }
   },
+  // 下级管理点击查看详情
+  getUserAll: '/team/useList.do?method=getUserAll'
 }
 
 Object.keys(api).forEach((key) => {
