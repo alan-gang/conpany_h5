@@ -220,6 +220,9 @@ li
   justify-content space-between
   align-items center
 
+.flex-jc-s
+  justify-content flex-start
+
 .ellipsis
   display block
   white-space nowrap

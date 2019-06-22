@@ -1,27 +1,48 @@
 <template lang="pug">
   f7-page.lower-level-mgr(:page-content="false")
     f7-navbar(title="下级管理" back-link top)
-    f7-row.breadcrumb-row.bgc_f.pl_25
-      f7-col(width="85")
-        span.ft_15 我的下级
-      f7-col(width="15")
+    f7-row.breadcrumb-row.bgc_f.pl_25(v-show="!showSearchBar")
+      f7-col.breadcrumb-wp(width="85")
+        span.ft_15.mr_2(v-for="(u, i) in breadcrumb" @click="linkTo(u.userId)") {{u.userName}} {{breadcrumb.length > 1 && i !== breadcrumb.length - 1  ? '>' : ''}}
+      f7-col(width="15" @click="showSearchBar = true")
         .icon-search
     f7-row.bgc_f.pl_25.search-condi-bar
-      f7-col
-        | 注册时间
+      f7-col.flex.flex-jc-s(@click="showFilter = true")
+        span 注册时间:
         span 不限
         span.inlb.icon-triangle-wp
           Triangle
-      f7-col
-        | 排序方式
+      f7-col.flex.flex-jc-s
+        span 排序方式:
         span 注册时间
         span.inlb.icon-triangle-wp
           Triangle
-    filters(v-if=" showFilter " @sd=" showFilter = $event ")
+    //- 搜索框
+    .p_a.wp_100.p_t_0.z_9503.ft_14.search-bar(v-show="showSearchBar")
+      f7-searchbar(
+        ref="s" 
+        disable-button-text="取消" 
+        @click:disable="showSearchBar = false" 
+        placeholder="请输入下级用户名" 
+        :clear-button="true" 
+        @change=" name = $event.target.value" 
+        :value="name"
+        @input="name = $event.target.value" 
+        @focus="rns_ = true" 
+        @submit="search"
+      )
+      template(v-if="rns_")
+        .searchbar-backdrop.h_0(@click="showSearchBar = rns_ = false")
+        f7-list.mg_0.o_h.page_content_like.z_500(simple-list )
+          f7-list-item 
+            f7-button.wp_100.t_c.bg-color-white.pd_0(@click=" rns[0] && __setLocal({rns: ''}) ") {{ rns[0] ? '清空搜索记录' : '无搜索记录' }}
+          f7-list-item(v-for=" (x, i) in rns " :key="i" v-if=" x ")
+            f7-button.wp_100.t_l.bg-color-white.pd_0(color="black" @click="choiceName(x)") {{ x }}
+    filters(v-if=" showFilter " @sd="filterCB")
       DP(v-if="filterType === 1" @st="$set(stet, 0, $event || '')" @et="$set(stet, 1, $event || '')"  @done="__setCall({fn: '__closeSD'})")
     .tip-bar-wp
       TipBar(:show="showTipBar" content="账户余额仅包含【主账户】与【特殊账户】的余额。" @close-cb="showTipBar = false")
-    .ptr-content-wp
+    .ptr-content-wp(v-show="!showSearchBar")
       .ptr-content-inner-wp
         .page-content.ptr-content.infinite-scroll-content(ptr-mousewheel="true" @ptr:refresh=" refresh " @infinite="loadMore" :infinite-distance="50" )
           .ptr-preloader
@@ -35,7 +56,7 @@
                     span.ft_14.text-color-gray {{ d.userName }}
                     span.ft_14.text-color-gray {{ d.writeTime }}
                   f7-col.btns-wp.flex(width="60")
-                    f7-button.w_80(outline v-if="d.teamCount > 1") 
+                    f7-button.w_80(outline v-if="d.teamCount > 1" @click="viewSubLevel(d.userId)") 
                       | 查看下级
                       span
                     f7-button.w_65.btn-l-red.ml_10(outline @click="operate") 
@@ -43,20 +64,20 @@
                       span.inlb
                         Triangle(direction="down")
               f7-card-content
-                f7-row
+                f7-row.pb_10
                   f7-col(width="45")
                     span 账户余额：
                     span {{d.teamBalance}}
                   f7-col(width="55")
                     span 最后登录：
-                    span {{d.lastTime}}
+                    span {{fixDateStr(d.lastTime)}}
                 f7-row.pb_10
                   f7-col(width="45")
                     span 注册方式：
                     span {{ d.isAuto ? '自动' : '手动' }}
                   f7-col(width="55")
                     span 注册时间：
-                    span {{d.lastTime}}
+                    span {{fixDateStr(d.lastTime)}}
 
                 .ex-info(v-show="d.showDetail")
                   f7-row.b-t.pt_10
@@ -75,15 +96,15 @@
                       f7-col(width="50" v-for="(rebate, i) in d.rebates")
                         span {{rebate.name}}：
                         span {{rebate.userPoint}}
-                  f7-row.b-b.pt_10.pb_10(v-if="showSalary")
+                  f7-row.pt_10.pb_10(v-if="showSalary")
                     f7-col
                       span 日工资：团队销售&gt;={{d.teamSales}}, 有效人数&gt;={{d.actUser}}, 每1万{{d.daySalary}}。
-                  f7-row.pt_10.pb_10(v-if="showcpfh")
-                    f7-col
-                      | 彩票分红： 每半月，{{['手动发放', '自动发放'][d.cp.sendtype]}}
-                    f7-col.t_r(v-if="d.cp.myBounCpArr && d.cp.myBounCpArr.length >= 3") 
-                      span(@click="showAllRulesHandler(d.userId, i, 'cp')") 显示全部规则
-                  .cp-rules.pb_10(v-if="showcpfh")
+                  .cp-rules.pb_10(v-if="showcpfh && d.cp.myBounCpArr && d.cp.myBounCpArr.length >= 0")
+                    f7-row.b-t.pt_10.pb_10
+                      f7-col
+                        | 彩票分红： {{dateCycle[d.cp.sendcycle]}}，{{sendTypes[d.cp.sendtype]}}
+                      f7-col.t_r(v-if="d.cp.myBounCpArr && d.cp.myBounCpArr.length >= 3") 
+                        span(@click="showAllRulesHandler(d.userId, i, 'cp')") 显示全部规则
                     template(v-if="!d.showAllCPRule && d.cp.myBounCpArr && d.cp.myBounCpArr.length >= 3")
                       f7-row
                         f7-col 规则{{1}}: 累计销量&gt;={{d.cp.myBounCpArr[0].sales / 10000}}万，有效人数&gt;={{d.cp.myBounCpArr[0].actuser}}，分红比例{{mth.mul(d.cp.myBounCpArr[0].bounsrate, 100)}}%
@@ -94,12 +115,13 @@
                     template(v-else)
                       f7-row(v-for="(yjBouns, j) in d.cp.myBounCpArr")
                         f7-col 规则{{j + 1}}: 累计销量&gt;={{yjBouns.sales / 10000}}万，有效人数&gt;={{yjBouns.actuser}}，分红比例{{mth.mul(yjBouns.bounsrate, 100)}}%
-                  f7-row.b-t.pt_10.pb_10(v-if="showsfyj")
-                    f7-col
-                      | 其它游戏分红： 每半月，{{['手动发放', '自动发放'][d.yj.sendtype]}}
-                    f7-col.t_r(v-if="d.yj.myBounCpArr && d.yj.myBounCpArr.length >= 3") 
-                      span(@click="showAllRulesHandler(d.userId, i, 'yj')") 显示全部规则
-                  .yj-rules(v-if="showsfyj")
+                  
+                  .yj-rules(v-if="showsfyj && d.yj.myBounYjArr && d.yj.myBounYjArr.length >= 0")
+                    f7-row.b-t.pt_10.pb_10
+                      f7-col
+                        | 其它游戏分红：  {{dateCycle[d.cp.sendcycle]}}，{{sendTypes[d.yj.sendtype]}}
+                      f7-col.t_r(v-if="d.yj.myBounCpArr && d.yj.myBounCpArr.length >= 3") 
+                        span(@click="showAllRulesHandler(d.userId, i, 'yj')") 显示全部规则
                     template(v-if="!d.showYJAllRule && d.yj.myBounYjArr && d.yj.myBounYjArr.length >= 3")
                       f7-row
                         f7-col 规则{{1}}: 累计销量&gt;={{d.yj.myBounYjArr[0].sales / 10000}}万，有效人数&gt;={{d.yj.myBounYjArr[0].actuser}}，分红比例{{mth.mul(d.yj.myBounYjArr[0].bounsrate, 100)}}%
@@ -118,7 +140,7 @@
 
     f7-actions(:opened="shwoActionSheet" @actions:closed="shwoActionSheet = false")
       f7-actions-group
-        f7-actions-button.c_0(v-for="(v, k, i) in actionButtons" v-show="v.show") {{v.name}}
+        f7-actions-button.c_0(v-for="(v, k, i) in actionButtons" v-show="v.show" @click="actionButtonHandler(v.type)") {{v.name}}
 
       f7-actions-group
         f7-actions-button.c_0 取消
@@ -146,22 +168,27 @@ export default {
   data () {
     return {
       id: '',
+      showSearchBar: false,
       showFilter: false,
       filterType: 1,
       showTipBar: true,
+      rns_: false,
+      name: '',
       userName: '',
+      subUserid: '',
       pageSize: 10,
       page: 1,
       lowerLevelData: [],
       userPoint: 0,
       shwoActionSheet: false,
+      breadcrumb: [{userId: '', userName: '我的下级'}],
       actionButtons: {
-        id0: {name: '给下级转账', show: true},
-        id1: {name: '设置返点 / 返水', show: false},
-        id2: {name: '设置日工资', show: false},
-        id3: {name: '发起分红契约 / 重新发起分红契约', show: false},
-        id4: {name: '发起佣金契约 / 重新发起佣金契约', show: false},
-        id5: {name: '复制下级设置', show: true}
+        id0: {type: 'transToSub', name: '给下级转账', show: true},
+        id1: {type: 'setPoint', name: '设置返点 / 返水', show: false},
+        id2: {type: 'setDaySalary', name: '设置日工资', show: false},
+        id3: {type: 'fh', name: '发起分红契约 / 重新发起分红契约', show: false},
+        id4: {type: 'yj', name: '发起佣金契约 / 重新发起佣金契约', show: false},
+        id5: {type: 'cpSubSet', name: '复制下级设置', show: true}
       },
       isAddAccount: 0,
       canTopUp: false,
@@ -171,6 +198,8 @@ export default {
       moneyTypes: ['可用余额', '特殊金额'],
 
       userRebateData: [],
+      sendTypes: ['手动发放', '自动发放'],
+      dateCycle: ['', '每月', '每半月', '每周'],
       mth
     }
   },
@@ -189,6 +218,10 @@ export default {
     },
     showsfyj () {
       return this.user.displayPermission.showSfyj === 1
+    },
+    // 最近搜索的名字
+    rns () {
+      return this.local.rns.split(',').filter(x => x.indexOf(this.name) !== -1)
     }
   },
   mounted () {
@@ -196,18 +229,27 @@ export default {
     this.actionButtons['id2'].show = this.showSalary
     this.actionButtons['id3'].show = this.showcpfh
     this.actionButtons['id4'].show = this.showsfyj
+    let cdate = new Date()
+    cdate.setDate(cdate.getDate() - 30)
+    this.$set(this.stet, 0, cdate)
     this.list()
   },
   methods: {
     list (p = {}, cb = this.defaultListCb) {
       let params = {
+        startDate: this.stet[0].getTime(),
+        endDate: this.stet[1].getTime(),
         userName: this.userName,
         pageSize: this.pageSize,
         page: this.page
       }
+      if (this.subUserId) {
+        params.subUserid = this.subUserId
+      }
       Object.assign(params, p)
       // 搜索下级
-      this.$.get(api.getUserList, params).then(({data: {subUserInfo, totalSize, currUserId, isAddAccount, uploadLevel, userPoint}}) => {
+      this.$.get(api.getUserList, params).then(({data: {subUserInfo, totalSize, currUserId, isAddAccount, uploadLevel, userPoint, userBreads}}) => {
+        this.breadcrumb = [{userId: '', userName: '我的下级'}, ...userBreads.slice(1)]
         // 当前登录用户的固定信息
         this.id = currUserId
         // 开户
@@ -229,10 +271,21 @@ export default {
           s.showYJAllRule = false
           return s
         })
-        this.lowerLevelData = this.lowerLevelData.concat(subUserInfo || [])
+        this.lowerLevelData = params.page === 1 ? (subUserInfo || []) : this.lowerLevelData.concat(subUserInfo || [])
         this.total = totalSize
         cb && cb(subUserInfo)
       })
+    },
+    viewSubLevel (subUserId) {
+      this.subUserId = subUserId
+      this.page = 1
+      this.list()
+    },
+    linkTo (userId) {
+      this.viewSubLevel(userId)
+    },
+    showSearchBarHandler () {
+      this.showSearchBar = true
     },
     operate () {
       this.shwoActionSheet = true
@@ -244,16 +297,45 @@ export default {
       this.$set(this.lowerLevelData, i, userInfo)
     },
     collapse (userId, i) {
-      // this.getUserRebateDataById({userId}).then((data) => {
-      //   let userInfo = this.lowerLevelData[i]
-      //   userInfo.showDetail = !userInfo.showDetail
-      //   this.$set(this.lowerLevelData, i, userInfo)
-      // })
       this.getUserAll(userId).then((data) => {
         let userInfo = this.lowerLevelData[i]
         userInfo.showDetail = !userInfo.showDetail
         this.$set(this.lowerLevelData, i, userInfo)
       })
+    },
+    actionButtonHandler (type) {
+      switch (type) {
+        case 'transToSub':
+          break
+        case 'setPoint':
+          break
+        case 'setDaySalary':
+          this.__go('/rfs/ds/setds/', {props: {v: {}, max: 100}})
+          break
+        case 'fh':
+          this.__go('/rfs/fh/newc/', {props: { v: {}, ruleCfg: {} }})
+          break
+        case 'yj':
+          break
+        case 'cpSubSet':
+          break
+        default:
+          break
+      }
+    },
+    choiceName (name) {
+      this.name = name
+      this.search()
+    },
+    search () {
+      this.userName = this.name
+      this.showSearchBar = this.rns_ = false
+      this.page = 1
+      this.list()
+    },
+    filterCB (e) {
+      this.showFilter = e
+      this.list()
     },
     getUserIndexByUserId (userId) {
       for (let i = 0; i < this.lowerLevelData.length; i++) {
@@ -296,13 +378,15 @@ export default {
         }
         this.$set(this.lowerLevelData, index, userInfo)
       })
+    },
+    fixDateStr (dstr = '') {
+      return dstr.indexOf('.0') !== -1 ? dstr.slice(0, dstr.length - 2) : dstr
     }
   }
 }
 </script>
 
 <style lang="stylus">
-// @import '~src/css/var.stylus'
 .lower-level-mgr
   display flex
   flex-direction column
@@ -314,10 +398,12 @@ export default {
     border-bottom solid 1px #f1f1f1
   .b-t
     border-top solid 1px #f1f1f1
+  .search-bar
+    margin-top 44px
   .breadcrumb-row
     line-height 40px
     border-bottom solid 1px #f1f1f1
-    margin-top 40px
+    margin-top 44px
   .icon-search
     width 30px
     height 40px
@@ -339,7 +425,6 @@ export default {
     flex-direction row
     justify-content flex-end
     .button
-      // float right
     .icon-triangle.down::after
       border-top-color #ff5429
   .infinite-scroll-content
@@ -348,6 +433,18 @@ export default {
     left 0
   .card-footer
     justify-content center
+  .searchbar-backdrop
+    pointer-events auto
+  .searchbar-enabled ~ .searchbar-backdrop
+    height 100vh
+    opacity 1
+  .searchbar-enabled ~ .list
+    // margin-top 44px
+    max-height 50vh
+    overflow-y auto
+    
+  & > .page-content
+    padding-top calc(var(--f7-toolbar-height) + var(--f7-toolbar-height))
 .lower-level-mgr
   // top var(--f7-toolbar-height)
   // height calc(100% - var(--f7-toolbar-height))
