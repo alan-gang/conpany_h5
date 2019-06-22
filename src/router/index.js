@@ -96,6 +96,8 @@ import _ac from '@/views/rfs/_ac'
 import _bc from '@/views/rfs/_bc'
 // 下级账变明细
 import _pl from '@/views/rfs/_pl'
+// 团队统计
+import tpl from '@/views/rfs/tpl'
 
 let async = url => {
   return (routeTo, routeFrom, resolve, reject) => {
@@ -485,17 +487,10 @@ export default [
   {
     path: '/rfs/_pl/',
     component: _pl,
-    master: true,
-    detailRoutes: [
-      {
-        path: '/rfs/pl/pld/',
-        component: PLD,
-      },
-      {
-        path: '/rfs/pl/pld/pldl/',
-        component: PLDL,
-      },
-    ]
+  },
+  {
+    path: '/rfs/tpl/',
+    component: tpl,
   },
   {
     path: '/rfs/fh/',

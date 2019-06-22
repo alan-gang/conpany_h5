@@ -160,6 +160,10 @@ export default {
       {id: 'gameProfit', n: '游戏盈亏从高到低'},
       {id: 'totalProfit', n: '总盈亏从高到低'},
     ],
+    tzStateFilters: [
+      {id: 0, n: '仅投注用户'},
+      {id: 1, n: '全部用户'},
+    ],
     wallets: [
       {n: '主帐户', key: 'availableBalance', pid: 0},
       {n: '特殊帐户', key: 'specialBalance', pid: 1},
@@ -175,6 +179,17 @@ export default {
       {n: '微游帐户', key: '$lit', pid: 25},
       {n: '平博帐户', key: '$pb', pid: 19},
       {n: 'LG帐户', key: '$lg', pid: 21},
-    ]
+    ],
+    agts: {
+      0: '彩票盈亏',
+      1: '电竞',
+      2: '电游',
+      3: '真人',
+      4: '棋牌',
+      5: '捕鱼',
+      6: '体育',
+      7: '基诺彩',
+      8: '微游',
+    }
   }
 }

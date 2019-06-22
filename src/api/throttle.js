@@ -56,7 +56,7 @@ axios.throttle_post = (api, args) => {
     // save anyway
     if (args && args.$anyway) {
       API[api] = Object.assign(API[api] || {}, {$anyway: args.$anyway})
-      // delete args.$anyway
+      delete args.$anyway
     }
     if (m === 'get') args = {params: args}
     return axios['_' + m](api, args)

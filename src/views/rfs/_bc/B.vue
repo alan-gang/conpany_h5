@@ -139,9 +139,6 @@ export default {
     init () {
       this.list()
     },
-    __orderlist () {
-      this.list()
-    },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
       this.$.get(api.orderList, Object.assign({
         lotteryId: this.g.id,

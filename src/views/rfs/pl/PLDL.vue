@@ -1,9 +1,15 @@
 <template lang="pug">
 f7-page.profit_loss_detail_list
-  f7-navbar(:title=" title " back-link :back-link-url=" u.userId ? '/rfs/_pl/' : '' " :back-link-force=" !!u.userId ")
+  f7-navbar(:title=" v.n + ((!v.title || v.id !== 999) && v.id > -1 ? '每日' : '') + '盈亏明细' + (v.title || v.id !== -1 ? '(' + (v.title || '个人') + ')' : '') " back-link :back-link-url=" bl " :back-link-force="force")
+  //- u.userId && !v.key ? '/rfs/_pl/' : u.userId && v.title ? '/rfs/tpl/' : '' 
   .bgc_f
     f7-list.mg_0(v-if=" v.id === -1 ")
       f7-list-item(title="用户" :after=" n ")
+      f7-list-item(title="统计时间" :after=" __stetn[0] ")
+
+    f7-list.mg_0(v-else-if=" v.title ")
+      f7-list-item(title="团队" :after=" n + '的团队' ")
+      f7-list-item(title="团队人数" :after=" u.subCount + '人' ")
       f7-list-item(title="统计时间" :after=" __stetn[0] ")
 
     .hlh_30.t_c.ft_16(v-else) {{ __stetn[0] }} - {{ n }}
@@ -15,7 +21,7 @@ f7-page.profit_loss_detail_list
             th(v-for=" (y, i) in dns " :key=" i " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } ") {{ y.n }}
            
         tbody
-          tr(v-for=" (x, i) in data " :key=" i " :class=" v.id === -1 && x.userName !== '合计' ? 'will_active' : '' " @click=" v.id === -1 && x.userName !== '合计' && __go('/rfs/pl/pld/', {props: { v: {id: x.gameType, n: x.userName}, u: u, stet_: stet}}) ")
+          tr(v-for=" (x, i) in data " :key=" i " :class=" (v.id < 0 || v.title) && x.userName !== '合计' ? 'will_active' : '' " @click=" (v.id < 0 || v.title) && x.userName !== '合计' && __go('/rfs/pl/pld/', {props: { v: {id: x.gameType, n: x.userName, title: v.title}, u: Object.assign({}, u, {userId: u.userId || user.userId}), stet_: stet, bl}}) ")
             td(v-for=" (y, i) in dns " :key=" i " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } ")
               template(v-if=" !y.key ")
                 f7-icon(f7="chevron_right" size="12px")
@@ -23,7 +29,20 @@ f7-page.profit_loss_detail_list
               template(v-if=" y.key === 'date' ")
                 template(v-if=" x.date ") {{ x.date.slice(5) }}
                 template(v-else) 合计
-              template(v-else) {{ x[y.key] }}
+
+              template(v-else) 
+                span {{ y.v ? y.v(x) : x[y.key] }}
+    template(v-if=" (v.title && v.id === 999) && __stetgap ")
+      .h_5.bgc_pc
+      f7-list.mg_0
+        f7-list-item
+          span 上月结余
+          span {{ u.lastProfit }}
+        f7-list-item
+          span 总结算
+          span(v-nwc="true")  {{ u.totalProfit }}
+
+
 
 </template>
 
@@ -36,48 +55,76 @@ export default {
   components: {
   },
   name: 'profit_loss_detail_list',
-  props: ['v', 'u', 'stet_'],
+  props: ['v', 'u', 'stet_', 'bl'],
   data () {
     return {
       stet: this.stet_,
-      title: this.v.id !== -1 ? this.v.n + '每日盈亏明细(个人)' : '总盈亏明细',
-      n: !this.u.userId ? '我' : this.u.userName,
+      // title: this.v.id === -1 ? '总盈亏明细' : this.v.n + '每日盈亏明细(个人)' : ,
       // 游戏类型：0:彩票盈亏；1:电竞；2:电游；3:真人；4:棋牌；5：捕鱼；6：体育；7：基诺彩；8：微游
       dns_: [
-        {n: '游戏类别', key: 'userName'},
+        {n: '游戏类别', key: 'userName', v: x => x.userName || this.config.agts[x.gameType]},
         {n: '投注', key: 'buy'},
-        {n: '游戏盈亏', key: 'gameProfit'},
-        {n: '总盈亏', key: 'totalProfit'},
+        {n: '游戏盈亏', key: this.v.title ? 'profit' : 'gameProfit'},
+        {n: '总盈亏', key: this.v.title ? 'settle' : 'totalProfit'},
         {n: ''},
 
         {n: '日期', key: 'date'},
-        {n: '投注', key: 'buy'},
-        {n: '派奖', key: 'prize'},
-        {n: '游戏盈亏', key: 'gameProfit'},
-        {n: '返点', key: 'point'},
-        {n: '活动', key: 'reward'},
-        {n: '日工资', key: 'salary'},
-        {n: '总盈亏', key: 'totalProfit'},
+        {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
+        {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: x => this.v.id > 0},
+        {n: '游戏盈亏', key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.gameProfit || x.profit},
+        {n: this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number(x.pointAmount || x.point), v: x => x.pointAmount || x.point},
+        {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.reward || x.rewards},
+        {n: this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.salary || x.platfee},
+        {n: '总盈亏', key: 'settleAmount', nwc: true, v: x => x.settleAmount || x.settle || x.totalProfit},
+
+        // {n: '日期', key: 'date'},
+        // {n: '投注', key: 'buy'},
+        // {n: '派奖', key: 'prize'},
+        // {n: '游戏盈亏', key: 'gameProfit'},
+        // {n: '返点', key: 'point'},
+        // {n: '活动', key: 'reward'},
+        // {n: '日工资', key: 'salary'},
+        // {n: '总盈亏', key: 'totalProfit'},
       ],
       data: [],
+      force: false,
     }
   },
   computed: {
+    n () {
+      return this.u.userId === 0 || this.u.userId === this.user.userId ? '我' : this.u.userName || '我'
+    },
     dns () {
-      return this.v.id === -1 ? this.dns_.slice(0, 5) : this.dns_.slice(5)
+      return this.v.id < 0 || (this.v.title && this.v.id === 999) ? this.dns_.slice(0, 5) : this.dns_.slice(5)
     },
   },
   created () {
     this.list()
+    setTimeout(() => (this.force = (this.bl && (this.$f7router.previousRoute.path !== this.bl))), 0)
   },
   methods: {
     list () {
-      this.$.get(api.pldl, {
-        userId: this.id || this.user.userId,
-        gameType: this.v.id,
-        beginDate: this.stet[0]._toDayString(),
-        endDate: this.stet[1]._toDayString(),
-      }).then(({data: {items}}) => {
+      // api.pldl 个人每日盈亏明细
+      // api.tpldreport 彩票 团队每日盈亏明细
+      // api.toplreport 三方 团队盈亏明细
+      // api.topldreport 1.电竞。2.电游; 3.真人;4. 棋牌;5.捕鱼;6.体育；7.其他彩票；8.微游 团队每日盈亏明细
+      this.$.get(
+        this.v.title
+          ? this.v.id === 999
+            ? api.toplreport
+            : api.topldreport
+          : this.v.title
+            ? api.tpldreport
+            : api.pldl,
+        {
+          userId: this.id || this.user.userId,
+          gameType: this.v.id,
+          beginDate: this.stet[0]._toDayString(),
+          endDate: this.stet[1]._toDayString(),
+        }).then(({data: {items}}) => {
+        if (this.v.id !== 999 && this.v.id > -1 && this.v.title) {
+          items = [...items.slice(0, -1).reverse(), ...items.slice(-1)]
+        }
         this.data = items
       })
     }

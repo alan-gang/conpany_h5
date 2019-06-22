@@ -438,7 +438,13 @@ let api = {
     }
   },
   // 下级管理点击查看详情
-  getUserAll: '/team/useList.do?method=getUserAll'
+  getUserAll: '/team/useList.do?method=getUserAll',
+  // 团队盈亏 - 彩票盈亏
+  tplreport: '/report/ltrReport.do?method=list',
+  tpldreport: '/report/ltrReport.do?method=detail',
+  // 团队盈亏 - 三方盈亏 & 棋牌 & 微游
+  toplreport: '/report/otherReport.do?method=list',
+  topldreport: '/report/otherReport.do?method=detail',
 }
 
 Object.keys(api).forEach((key) => {

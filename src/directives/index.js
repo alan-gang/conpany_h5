@@ -4,7 +4,7 @@ Vue.directive('nwc', (el, { value }) => {
   if (value) {
     Vue.nextTick(() => {
       let r = /[+-\d.,]+/
-      let n = el.innerText.match(r)[0].replace(/,/g, '')
+      let n = (el.innerText.match(r) || [''])[0].replace(/,/g, '')
       el.className = el.className.replace(/(c_e|c_s|c_g)/g, '')
       if (n._o0()) {
         el.className += ' c_s'

@@ -23,8 +23,6 @@ f7-page.rf_ds_1(:page-content="false")
 
       f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 2 } ")
 
-    .v_line.hp_50.w_1.bg-color-gray.o_30
-
     f7-link(color="gray" @click=" sd === 3 ? __setCall({fn: '__closeSD'}) : sd = 3 ") 
       span {{ s.n }}
       f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 3 } ") 
