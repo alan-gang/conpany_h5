@@ -2,7 +2,7 @@
 .date_pick
   .pd_10
 
-    .flex.mb_5(v-if="!t")
+    .flex.mb_5(v-if="!t || t === 'rf_tpl_1' ")
       f7-button.bgc_pc.w_100(color="black"  @click=" changeStet(now ) ") 今天
       f7-button.bgc_pc.w_100(color="black"  @click=" changeStet(now._bf(-1) ) ") 昨天
       f7-button.bgc_pc.w_100(color="black"  @click=" changeStet(now._bf(-2) ) ") 前天
@@ -21,8 +21,13 @@
       f7-button.bgc_pc.w_100(color="black"  @click=" change('st', [now._setD(1)]) || change('et', [now]) || close() ") {{ now.getMonth() + 1 }}月
       f7-button.bgc_pc.w_100(color="black"  @click=" change('st', [now._setD(1)._bfM(-1)]) || change('et', [now._setD(-1)]) || close() ") {{ now._bfM(-1).getMonth() + 1 }}月
       f7-button.bgc_pc.w_100(color="black"  @click=" change('st', [now._setD(1)._bfM(-2)]) || change('et', [now._bfM(-1)._setD(-1)]) || close() ") {{ now._bfM(-2).getMonth() + 1 }}月
+
     
-    template(v-if=" t !== 'rf_pl_' ")
+    .flex.mb_5(v-if=" stets ")
+      f7-button.bgc_pc.w_100(color="black"  @click=" change('st', v.slice(0, 1)) || change('et', v.slice(1, 2)) || close() " v-for=" (v, i) in stets " :key="i") {{ window.__getstetn(v)[0] }}
+
+
+    template(v-if=" t !== 'rf_pl_' && t !== 'rf_tpl_1' ")
       
       .hlh_40.text-color-gray 自定义
 
@@ -56,7 +61,8 @@ export default {
     t: String,
     stet_: {
       default: () => [new Date()._setHMS(), new Date()._setHMS('23:59:59')]
-    }
+    },
+    stets: Array,
   },
   data () {
     return {

@@ -29,6 +29,7 @@ export default {
       dssid: '',
       dsssid: '',
       ssid: '',
+      tzsid: '',
     },
 
     // static

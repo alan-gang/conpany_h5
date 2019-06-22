@@ -437,6 +437,12 @@ let api = {
       fn: [{fn: '__init_rf_ds_2'}]
     }
   },
+  // 团队盈亏 - 彩票盈亏
+  tplreport: '/report/ltrReport.do?method=list',
+  tpldreport: '/report/ltrReport.do?method=detail',
+  // 团队盈亏 - 三方盈亏 & 棋牌 & 微游
+  toplreport: '/report/otherReport.do?method=list',
+  topldreport: '/report/otherReport.do?method=detail',
 }
 
 Object.keys(api).forEach((key) => {

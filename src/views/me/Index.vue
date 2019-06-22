@@ -56,7 +56,7 @@
             f7-col(width="33")
               f7-button.hlh_40(bg-color="white" color="black" href="/agent/lowerLevelMgr") 下级管理
             f7-col(width="33")
-              f7-button.hlh_40(bg-color="white" color="black") 团队盈亏
+              f7-button.hlh_40(bg-color="white" color="black" href="/rfs/tpl/") 团队盈亏
       f7-list.mg_0.no_border(no-hairlines)
         ul.bgc_o
           template(v-if=" mycenter ")
@@ -75,9 +75,6 @@
               f7-icon.mr_5._icon._help_center(slot="media" f7=" home ")
 
           template(v-else)
-
-            f7-list-item.ft_14.bgc_f.mg_10(title="团队统计" link="#")
-              f7-icon.mr_5._icon._sub_game_record(slot="media" f7=" home ")
 
             f7-list-item.ft_14.bgc_f.mg_10(title="下级个人盈亏" link="/rfs/_pl/")
               f7-icon.mr_5._icon._sub_game_record(slot="media" f7=" home ")

@@ -75,7 +75,7 @@ export default {
     // form
     __form () {
       return this.$refs[this.form_n_ || '_form'].$el || this.$refs[this.form_n_ || '_form'][0] || this.$refs[this.form_n_ || '_form']
-    }
+    },
   },
   mounted () {
     // if reload

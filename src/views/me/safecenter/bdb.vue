@@ -1,12 +1,12 @@
 <template lang="pug">
 f7-page
   f7-navbar(:title=" v.n + v.txt " back-link)
-  template(v-if=" !v.t || v.d ")
+  template(v-if=" !v.t && d ")
     .bg-color-deeporange.pd_20.t_c
       img(:src=" 'data:image/png;base64,' +  d.qrStr ")
 
   f7-list.mg_0(inline-labels no-hairlines ref="_form")
-    template(v-if=" !v.t || v.d ")
+    template(v-if=" !v.t && d ")
       f7-list-input(label="用户名" type="text" :placeholder=" d.userName " readonly)
       f7-list-input(label="平台名称" type="text" :placeholder=" d.plat " readonly)
       f7-list-input(label="密钥" type="text" :placeholder=" d.authKey " readonly)

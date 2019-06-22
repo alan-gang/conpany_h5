@@ -1,18 +1,9 @@
 <template lang="pug">
-f7-page.profit_loss_report_(:page-content="false")
-  f7-navbar(back-link)
-    f7-nav-title(@click.native=" sm = !sm ")
-      .ft_12 下级个人盈亏
-      .ft_16 {{ ts[tsi].n }}盈亏
-        f7-icon(:class=" {rz_90: !sm, 'rz_-90': sm} " f7="play_fill" size="12px" style="width: 18px")
 
-  filters.z_9504(v-if=" sm " @sd=" sm = $event " style="top: 0")
-    f7-list.mt_-44.mb_0(simple-list)
-      f7-list-item(v-for=" (x, i) in ts " :key="i")
-        f7-button.wp_100.bg-color-white.pd_0(color="black" @click=" (sm = false) || (tsi = i) ") {{ x.n }}盈亏
+f7-page.rf_tpl_4(:page-content="false")
 
   .p_a.wp_100.p_t_0.z_9503.ft_14
-    f7-searchbar(ref="s" disable-button-text="取消" placeholder="请输入直接下级的用户名" :clear-button="true" @change=" n = $event.target.value " :value=" n " @input=" n_ = $event.target.value" @focus=" rns_ = true ")
+    f7-searchbar(:ft_12=" !rns_ && tns.length > 20 " ref="s" disable-button-text="取消" placeholder="请输入团队名" :clear-button="true" @searchbar:disable=" rns_ = false " @change=" (rns_ = false) || (n = $event.target.value) " :value=" !rns_ ? tns : n " @input=" (rns_ = true) && (n_ = $event.target.value)" @focus=" rns_ = true ")
     template(v-if="rns_")
       .searchbar-backdrop.h_0(@click=" rns_ = false ")
       f7-list.mh_0.mg_0.o_h.page_content_like.z_500(simple-list )
@@ -38,46 +29,46 @@ f7-page.profit_loss_report_(:page-content="false")
       f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 3 } ") 
 
   filters(v-if=" sd " @sd=" sd = $event ")
-    SZP(v-if=" sd === 1 " @s=" z = $event " @done=" __setCall({fn: '__closeSD'}) ")
-    DP(v-else-if=" sd === 2 " :t=" 'rf_pl_' " @st=" $set(stet, 0, $event || '') " @et=" $set(stet, 1, $event || '') "  @done=" __setCall({fn: '__closeSD'}) ")
+    TZP(v-if=" sd === 1 " @s=" z = $event " @done=" __setCall({fn: '__closeSD'}) ")
+    DP(v-else-if=" sd === 2 " :t=" 'rf_tpl_1' " :stets="stets" @st=" $set(stet, 0, $event || '') " @et=" $set(stet, 1, $event || '') "  @done=" __setCall({fn: '__closeSD'}) ")
     SSP(v-else @s=" s = $event " @done=" __setCall({fn: '__closeSD'}) ")
-  
+
   .page-content.ptr-content.infinite-scroll-content(ptr-mousewheel="true" @ptr:refresh=" refresh " @infinite="loadMore" :infinite-distance="50")
 
     .ptr-preloader
       .preloader
       .ptr-arrow
-
+    
     f7-card(v-for=" (v, i) in data " :key="i" :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
       f7-card-header(v-if="!i")
-        .t_c.wp_100 总计
+        .t_c.wp_100 团队合计
 
       f7-card-header(v-else="i")
         .a.ft_14
-          f7-icon(f7="person" color="orange")
-          span.pl_5 {{ v.userName }}
+          f7-icon(:f7=" v.hasSub ? 'persons' : 'person' " :color=" v.userId === user.userId ? 'deeporange' : 'orange' ")
+          span.pl_5(:class=" v.userId === user.userId ? 'text-color-deeporange' : '' ") {{ v.userId === user.userId ? '我' : v.userName }}
 
-        f7-button(color="deeporange" outline small @click=" subBread(v) ") 用户层级
+        f7-button(color="deeporange" outline small @click=" n = v.userName " v-if=" v.hasSub " ) 他的团队
 
       f7-card-content
-        .flex(@click=" i && (tsi ? __go('/rfs/pl/pld/', {props: { v: ts[tsi], u: v, stet_: stet, bl}}) : __go('/rfs/pl/pld/pldl/', {props: { v: ts[tsi], u: v, stet_: stet, bl}}) )")
+        .flex(@click=" (i === 1 ? __go('/rfs/pl/pld/', {props: { v: g, u: v, stet_: stet, bl}}) : __go('/rfs/pl/pld/', {props: { v: Object.assign({}, g, {title: '团队'}), u: Object.assign({}, v, {userName: !i ? data[1].userName : v.userName}), stet_: stet, bl}}) )")
           .a.t_c
             .pb_5 投注
             div {{ v.buy }}
           .a.t_c
             .pb_5 游戏盈亏
-            div(v-nwc="i") {{ v.gameProfit }}
+            div(v-nwc="i") {{ v.profit }}
           .a.t_c
-            .pb_5 总盈亏
-            div(v-nwc="i") {{ v.totalProfit }}
-          .a(v-if="i")
+            .pb_5 总结算
+            div(v-nwc="i") {{ v.settle }}
+          .a
             f7-icon(f7="chevron_right" size="12px")
 
-
+           
 
     .preloader.infinite-scroll-preloader(v-if="showPreloader")
+
     .t_c.text-color-gray.pd_15.nomore --没有更多了--
-  
 
 
 </template>
@@ -88,51 +79,45 @@ import api from '@/api'
 import page from '@/components/page'
 import filters from '@/components/filters'
 import stet from '@/components/stet'
-import SZP from '@/components/filters/SZP'
+import TZP from '@/components/filters/TZP'
 import DP from '@/components/filters/DP'
 import SSP from '@/components/filters/SSP'
 export default {
   mixins: [config, stet, page],
   components: {
     filters,
-    SZP,
+    TZP,
     DP,
     SSP,
   },
-  name: 'profit_loss_report_',
-  props: [],
+  name: 'rf_tpl_4',
+  props: ['g_'],
   data () {
     return {
-      rns_: true,
+      rns_: false,
+      sd: false,
+      // stet: [new Date()._bf(-1)._setHMS(), new Date()._bf(-1)._setHMS('23:59:59')],
+      s: {n: '投注从高到低', id: 'buy'},
+      z: {n: '仅投注用户', id: 0},
       n: '',
       n_: '',
-      sd: false,
-      stet: [new Date()._setHMS(), new Date()._setHMS('23:59:59')],
-      s: {n: '投注从高到低', id: 'buy'},
-      z: {n: '全部下级', id: 0},
-      // 游戏类型：0:彩票盈亏；1:电竞；2:电游；3:真人；4:棋牌；5：捕鱼；6：体育；7：基诺彩；8：微游
-      sm: false,
-      ts: [
-        {id: -1, n: '总'},
-        {id: 0, n: '彩票'},
-        {id: 8, n: '微游'},
-        {id: 2, n: '老虎机'},
-        {id: 6, n: '体育'},
-        {id: 4, n: '棋牌'},
-        {id: 3, n: '真人'},
-        {id: 1, n: '电竞'},
-        {id: 5, n: '捕鱼'},
-        {id: 7, n: '基诺彩'},
-      ],
-      tsi: 0,
       data: [],
-      bl: '/rfs/_pl/',
+      userBreads: [{}],
+      bonusReleaseCycle: 1,
+      g: {id: 8, n: '微游', key: 'ltrsettle'},
+      bl: '/rfs/tpl/'
     }
   },
   computed: {
     // 最近搜索的名字
     rns () {
       return this.local.rns.split(',').filter(x => x.indexOf(this.n_) !== -1)
+    },
+    tns () {
+      return this.userBreads.map(x => (!x.userName || x.userId === this.user.userId ? '我' : x.userName) + '的团队').join('>')
+    },
+    stets () {
+      return [this.getfhd(this.bonusReleaseCycle), this.getfhd(this.bonusReleaseCycle, -1), this.getfhd(this.bonusReleaseCycle, -2)]
     },
   },
   watch: {
@@ -143,40 +128,36 @@ export default {
       this.init()
       if (this.n) this.__setLocal({rns: this.n + ',' + this.local.rns.replace(this.n + ',', '')})
     },
-    tsi (n) {
-      this.init()
-    },
   },
   created () {
     this.init()
   },
   methods: {
+    __init_rf_tpl_4 () {
+      this.init()
+    },
     init () {
       this.list()
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
-      this.$.get(api.plreport_, Object.assign(option, {
-        gameType: this.ts[this.tsi].id,
+      this.$.get(api.toplreport, Object.assign(option, {
         beginDate: this.stet[0]._toDayString(),
         endDate: this.stet[1]._toDayString(),
-        orderBy: this.s.id,
-        scope: this.z.id,
+        listAll: this.z.id,
+        // 可选范围：”activityAmount”,”betAmount”,”pointAmount”,”prizeAmount”,”salaryAmount”,”settleAmount”,”userName”,”vrBetAmount”,”vrPointAmount”,”vrPrizeAmount”
+        orderBy: ({buy: 'realbuy', gameProfit: 'profit', totalProfit: 'settle'})[this.s.id],
+        userId: this.user.userId,
         username: this.n,
-      })).then(({data: {items, totalSize}}) => {
+        gameType: 4,
+      })).then(({data: {items, totalSize, userBreads, bonusReleaseCycle}}) => {
         if (items[0]) {
           items = [...(items.splice(-1, 1)), ...items]
         }
+        if (option.page > this.fpage) items.splice(0, 1)
         this.data = [...(option.page > this.fpage ? this.data : []), ...items]
         this.total = totalSize
+        this.userBreads = userBreads
         cb && cb(items)
-      })
-    },
-    subBread (v) {
-      if (v.path) return this.$f7.dialog.alert(`<p class="t_l mg_0">${v.path}</p>`, '')
-      this.$.get(api.subBread, {userId: v.userId}).then(({data: {userBreads}}) => {
-        // 用户层级：我 > xxxx > xxxx > zhijiexiajia
-        v.path = '用户层级：' + userBreads.map(x => x.userName).join(' > ')
-        this.$f7.dialog.alert(`<p class="t_l mg_0">${v.path}</p>`, '')
       })
     },
   }
@@ -186,11 +167,11 @@ export default {
 <style lang="stylus">
 @import '~src/css/var.stylus'
 // 建议不添加scoped， 所有样式最多嵌套2层
-.profit_loss_report_
-  .flex:active
-    opacity .6
+.rf_tpl_4
+  .searchbar[ft_12="true"] input
+    font-size 12px
 
-.profit_loss_report_
+.rf_tpl_4
   top var(--f7-toolbar-height)
   height calc(100% - var(--f7-toolbar-height))
   .infinite-scroll-preloader + .nomore
@@ -213,9 +194,10 @@ export default {
     padding-top calc(var(--f7-toolbar-height) + var(--f7-toolbar-height))
     
 .navbar-hidden ~ .page
-  .profit_loss_report_
+  .rf_tpl_4
     .toolbar.toolbar-top
       top calc(var(--f7-toolbar-height) + var(--f7-toolbar-height))
     & > .page-content
       padding-top calc(var(--f7-toolbar-height) + var(--f7-toolbar-height))
+  
 </style>

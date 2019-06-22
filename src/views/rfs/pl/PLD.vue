@@ -1,52 +1,27 @@
 <template lang="pug">
 f7-page.profit_loss_detail
-  f7-navbar(:title=" v.n + '盈亏明细(个人)' " back-link)
-  f7-list.mg_0(simple-list v-if=" v_ ")
-    template(v-for=" (x, i) in dns.slice(0, 3) ")
-      f7-list-item(v-if=" x.key === '_n' ")
-        span {{ x.n }}
-        span {{ n }}
-      
-      f7-list-item(v-else-if=" x.key === '_date' ")
+  f7-navbar(:title=" v.n + '盈亏明细(' + (v.title || '个人') + ')' " back-link)
+
+  f7-list.mg_0(simple-list)
+    template(v-for=" (x, i) in dns ")
+      f7-list-item(v-if=" x.key === '_date' ")
         span {{ x.n }}
         template(v-if=" __stetgap ")
-          f7-button(outline @click=" __go('/rfs/pl/pld/pldl/', {props: { v, stet_, u: u }}) ") 
+          f7-button(outline @click=" __go('/rfs/pl/pld/pldl/', {props: { v, stet_, u: u, bl }}) ") 
             span {{ __stetn[0] }}
             f7-icon(f7="chevron_right" size="10")
 
         span(v-else) {{ __stetn[0] }}
-    
-      f7-list-item(v-else-if=" Number(v_.pointLevel) ")
-        span {{ v.n.replace('盈亏', '返点') }}
-        span(v-if=" !v.id ") {{ (v_[x.key] * 100)._f1() }}% 
-        span(v-else) {{ v_[x.key] * 1000 }}‰
 
-  f7-list.mt_5(simple-list v-if=" v_ ")
-    template(v-for=" (x, i) in dns.slice(3) ")
-      template(v-if=" x.key === 'point' ")
-        f7-list-item(v-if=" Number(v_.pointLevel) ") 
+      template(v-else)
+        f7-list-item(v-if=" !v.title || x.key !== 'gameUserCount' || (__stetgap && i === 4) || (!__stetgap && i === 3) " v-show=" !x.show || x.show(v__) ")
           span {{ x.n }}
-          span {{ v_[x.key] }}
+          span 
+            span {{ x.start || '' }}
+            span(v-nwc="x.nwc") {{ x.v ? x.v(v__) : v__[x.key] }}
+            span {{ x.end || ''}}
 
-      template(v-else-if=" x.key === 'prize' ")
-        f7-list-item(v-if=" !v.id ") 
-          span {{ x.n }}
-          span {{ v_[x.key] }}
-
-      template(v-else-if=" x.key === 'salary' ")
-        f7-list-item(v-if=" !v.id ") 
-          span {{ x.n }}
-          span {{ v_[x.key] }}
-
-      template(v-else-if=" x.key === 'totalProfit' ")
-        f7-list-item
-          span {{ x.n }}
-          span(:class=" {'c_e': v_.totalProfit._l0(), 'c_s': v_.totalProfit._o0()} ") {{ v_[x.key] }}
-
-      f7-list-item(v-else)
-        span {{ x.n }}
-        span {{ v_[x.key] }}
-
+      li.bgc_pc(style="height: 5px" v-if=" i === (v.title ? 4 : 2) ")
 
 </template>
 
@@ -59,29 +34,53 @@ export default {
   components: {
   },
   name: 'profit_loss_detail',
-  props: ['v', 'u', 'stet_'],
+  props: ['v', 'u', 'stet_', 'bl'],
   data () {
     return {
       stet: this.stet_,
-      n: !this.u.userId ? '我' : this.u.userName,
       // 游戏类型：0:彩票盈亏；1:电竞；2:电游；3:真人；4:棋牌；5：捕鱼；6：体育；7：基诺彩；8：微游
-      dns: [
-        {n: '用户', key: '_n'},
-        {n: '返点', key: 'pointLevel'},
+      dns_: [
+        {n: '团队', v: x => this.n, end: '的团队'},
+        {n: '团队人数', key: 'subCount', end: '人'},
+        {n: '统计时间', key: '_date'},
+        {n: '游戏人数', key: 'gameUserCount', end: '人'},
+        {n: '日均游戏人数', key: 'gameUserCount', end: '人'},
+
+        {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
+        {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize},
+        {n: '游戏盈亏', key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.profit},
+        {n: this.v && this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number(x.pointAmount || x.point), v: x => x.pointAmount || x.point},
+        {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.rewards},
+        {n: this.v && this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.platfee},
+        {n: '总盈亏', key: 'settleAmount', nwc: true, v: x => x.settleAmount || x.settle},
+
+        {n: '用户', v: x => this.n},
+        {n: this.v && this.v.n + '返点', key: 'pointLevel', show: x => Number(x.pointLevel), v: x => (!this.v || !this.v.id ? x.pointLevel * 100 : x.pointLevel * 1000).toFixed(1), end: !this.v || !this.v.id ? '%' : '‰'},
         {n: '统计时间', key: '_date'},
         {n: '投注', key: 'buy'},
         {n: '派奖', key: 'prize'},
         {n: '游戏盈亏', key: 'gameProfit'},
-        {n: '返点', key: 'point'},
+        {n: '返点', key: 'point', show: x => Number(x.pointLevel)},
         {n: '活动', key: 'reward'},
         {n: '日工资', key: 'salary'},
-        {n: '总盈亏', key: 'totalProfit'},
+        {n: '总盈亏', key: 'totalProfit', nwc: true},
       ],
       v_: null
     }
   },
+  computed: {
+    n () {
+      return this.u.userId === 0 || this.u.userId === this.user.userId ? '我' : this.u.userName || '我'
+    },
+    dns () {
+      return this.v.title ? this.dns_.slice(0, 12) : this.dns_.slice(12)
+    },
+    v__ () {
+      return this.v_ || this.u
+    },
+  },
   created () {
-    this.list()
+    !this.v.title && this.list()
   },
   methods: {
     list () {

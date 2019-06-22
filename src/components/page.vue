@@ -13,6 +13,10 @@ export default {
       showPreloader: true,
     }
   },
+  watch: {
+    showPreloader (n, o) {
+    },
+  },
   created () {
   },
   methods: {
@@ -24,6 +28,7 @@ export default {
     },
     defaultListCb (data = []) {
       if (data.length < this.pageSize) this.showPreloader = false
+      else this.showPreloader = true
       this.currentPage = 1
     },
     loadMore (evt, done, p) {
