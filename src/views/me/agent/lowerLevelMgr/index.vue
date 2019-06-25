@@ -1,22 +1,24 @@
 <template lang="pug">
   f7-page.lower-level-mgr(:page-content="false")
     f7-navbar(title="下级管理" back-link top)
-    f7-row.breadcrumb-row.bgc_f.pl_25(v-show="!showSearchBar")
+    f7-row.breadcrumb-row.bgc_f.pl_25
       f7-col.breadcrumb-wp(width="85")
-        span.ft_15.mr_2(v-for="(u, i) in breadcrumb" @click="linkTo(u.userId)") {{u.userName}} {{breadcrumb.length > 1 && i !== breadcrumb.length - 1  ? '>' : ''}}
+        span.ft_15.mr_2.breadcrumb-item(v-for="(u, i) in breadcrumb" @click="linkTo(u.userId)") 
+          span(:class="{c_orange: i === 0 || i < breadcrumb.length - 1}") {{u.userName}} 
+          i {{breadcrumb.length > 1 && i !== breadcrumb.length - 1  ? '>' : ''}}
       f7-col(width="15" @click="showSearchBar = true")
         .icon-search
     f7-row.bgc_f.pl_25.search-condi-bar
-      f7-col.flex.flex-jc-s(@click="showFilter = true")
-        span 注册时间:
-        span 不限
+      f7-col.flex.flex-jc-s(@click="(filterType = 1) && (showFilter = !showFilter) && (rns_ = true)")
+        span(v-show="condiRegisterDate.indexOf('至') == -1") 注册时间:
+        span.pl_5 {{condiRegisterDate}}
         span.inlb.icon-triangle-wp
-          Triangle
-      f7-col.flex.flex-jc-s
+          Triangle(:direction="filterType == 1 && showFilter ? 'up' : 'down'")
+      f7-col.flex.flex-jc-s(@click="(filterType = 2) && (showFilter = !showFilter) && (rns_ = true)")
         span 排序方式:
-        span 注册时间
+        span.pl_5 注册时间
         span.inlb.icon-triangle-wp
-          Triangle
+          Triangle(:direction="filterType == 2 && showFilter ? 'up' : 'down'")
     //- 搜索框
     .p_a.wp_100.p_t_0.z_9503.ft_14.search-bar(v-show="showSearchBar")
       f7-searchbar(
@@ -31,17 +33,18 @@
         @focus="rns_ = true" 
         @submit="search"
       )
-      template(v-if="rns_")
+      template
         .searchbar-backdrop.h_0(@click="showSearchBar = rns_ = false")
         f7-list.mg_0.o_h.page_content_like.z_500(simple-list )
           f7-list-item 
             f7-button.wp_100.t_c.bg-color-white.pd_0(@click=" rns[0] && __setLocal({rns: ''}) ") {{ rns[0] ? '清空搜索记录' : '无搜索记录' }}
           f7-list-item(v-for=" (x, i) in rns " :key="i" v-if=" x ")
             f7-button.wp_100.t_l.bg-color-white.pd_0(color="black" @click="choiceName(x)") {{ x }}
-    filters(v-if=" showFilter " @sd="filterCB")
-      DP(v-if="filterType === 1" @st="$set(stet, 0, $event || '')" @et="$set(stet, 1, $event || '')"  @done="__setCall({fn: '__closeSD'})")
+    filters.filter-wp.b-t(v-if=" showFilter " @sd="filterCB")
+      DP(v-if="filterType === 1" @st="$set(stet, 0, $event || '')" @et="$set(stet, 1, $event || '')"  @done="__setCall({fn: '__closeSD'})" t="rf_fh_3")
+      QueryCondition(:show="filterType === 2" :conditions="orderTypes" @change="orderTypeChange" @done="__setCall({fn: '__closeSD'})")
     .tip-bar-wp
-      TipBar(:show="showTipBar" content="账户余额仅包含【主账户】与【特殊账户】的余额。" @close-cb="showTipBar = false")
+      TipBar(:show="showTipBar && !showSearchBar" content="账户余额仅包含【主账户】与【特殊账户】的余额。" @close-cb="showTipBar = false")
     .ptr-content-wp(v-show="!showSearchBar")
       .ptr-content-inner-wp
         .page-content.ptr-content.infinite-scroll-content(ptr-mousewheel="true" @ptr:refresh=" refresh " @infinite="loadMore" :infinite-distance="50" )
@@ -53,13 +56,15 @@
               f7-card-header
                 f7-row.w-100p
                   f7-col(width="40")
-                    span.ft_14.text-color-gray {{ d.userName }}
+                    span.ft_14.text-color-gray
+                      f7-icon(f7="person" color="orange")
+                      span {{ d.userName }}
                     span.ft_14.text-color-gray {{ d.writeTime }}
                   f7-col.btns-wp.flex(width="60")
                     f7-button.w_80(outline v-if="d.teamCount > 1" @click="viewSubLevel(d.userId)") 
                       | 查看下级
                       span
-                    f7-button.w_65.btn-l-red.ml_10(outline @click="operate") 
+                    f7-button.w_65.btn-l-red.ml_10(outline @click="operate(d)")
                       span 操作
                       span.inlb
                         Triangle(direction="down")
@@ -156,6 +161,7 @@ import DP from '@/components/filters/DP'
 import stet from '@/components/stet'
 import TipBar from 'comp/TipBar'
 import Triangle from 'comp/icons/Triangle'
+import QueryCondition from '@/components/filters/QueryCondition'
 export default {
   name: 'lowerLevelMgr',
   mixins: [config, stet, page],
@@ -163,7 +169,8 @@ export default {
     TipBar,
     Triangle,
     filters,
-    DP
+    DP,
+    QueryCondition
   },
   data () {
     return {
@@ -173,6 +180,8 @@ export default {
       filterType: 1,
       showTipBar: true,
       rns_: false,
+      orderTypes: [{id: '3', name: '注册时间'}, {id: '4', name: '最后登录'}, {id: '2', name: '账户余额'}],
+      curOrderType: '',
       name: '',
       userName: '',
       subUserid: '',
@@ -180,6 +189,9 @@ export default {
       page: 1,
       lowerLevelData: [],
       userPoint: 0,
+      operCurUser: {
+        userId: ''
+      },
       shwoActionSheet: false,
       breadcrumb: [{userId: '', userName: '我的下级'}],
       actionButtons: {
@@ -222,6 +234,10 @@ export default {
     // 最近搜索的名字
     rns () {
       return this.local.rns.split(',').filter(x => x.indexOf(this.name) !== -1)
+    },
+    condiRegisterDate () {
+      console.log('this.stet=', this.stet)
+      return !this.stet[0] || !this.stet[1] ? '不限' : this.__stetn.join(' 至 ')
     }
   },
   mounted () {
@@ -229,23 +245,24 @@ export default {
     this.actionButtons['id2'].show = this.showSalary
     this.actionButtons['id3'].show = this.showcpfh
     this.actionButtons['id4'].show = this.showsfyj
-    let cdate = new Date()
-    cdate.setDate(cdate.getDate() - 30)
-    this.$set(this.stet, 0, cdate)
+    // let cdate = new Date()
+    // cdate.setDate(cdate.getDate() - 30)
+    // this.$set(this.stet, 0, cdate)
+    this.stet = []
     this.list()
   },
   methods: {
     list (p = {}, cb = this.defaultListCb) {
       let params = {
-        startDate: this.stet[0].getTime(),
-        endDate: this.stet[1].getTime(),
+        startDate: this.stet[0] && this.stet[0].getTime(),
+        endDate: this.stet[1] && this.stet[1].getTime(),
         userName: this.userName,
         pageSize: this.pageSize,
-        page: this.page
+        page: this.page,
+        subUserid: this.subUserId,
+        orderType: this.curOrderType
       }
-      if (this.subUserId) {
-        params.subUserid = this.subUserId
-      }
+
       Object.assign(params, p)
       // 搜索下级
       this.$.get(api.getUserList, params).then(({data: {subUserInfo, totalSize, currUserId, isAddAccount, uploadLevel, userPoint, userBreads}}) => {
@@ -269,6 +286,13 @@ export default {
           s.showAllCPRule = false
           s.yj = {}
           s.showYJAllRule = false
+          s.back = [
+            {
+              $: s.userPoint.toFixed(1),
+              $$: s.userPoint.toFixed(1),
+              $s: userPoint * 10
+            }
+          ]
           return s
         })
         this.lowerLevelData = params.page === 1 ? (subUserInfo || []) : this.lowerLevelData.concat(subUserInfo || [])
@@ -276,18 +300,24 @@ export default {
         cb && cb(subUserInfo)
       })
     },
+    orderTypeChange (v, i) {
+      this.curOrderType = v.id
+    },
     viewSubLevel (subUserId) {
+      this.userName = this.name = ''
       this.subUserId = subUserId
       this.page = 1
       this.list()
     },
     linkTo (userId) {
+      this.userName = this.name = ''
       this.viewSubLevel(userId)
     },
     showSearchBarHandler () {
       this.showSearchBar = true
     },
-    operate () {
+    operate (user) {
+      this.operCurUser = user
       this.shwoActionSheet = true
     },
     showAllRulesHandler (userId, i, type) {
@@ -306,8 +336,10 @@ export default {
     actionButtonHandler (type) {
       switch (type) {
         case 'transToSub':
+          this.__go('/agent/lowerLevelMgr/transferTo', {props: {id: this.operCurUser.userId, name: this.operCurUser.userName, myId: this.id}})
           break
         case 'setPoint':
+          this.__go('/agent/lowerLevelMgr/setPoint', {props: {id: this.operCurUser.userId, name: this.operCurUser.userName, userPoint: this.operCurUser.userPoint, myPoint: this.userPoint}})
           break
         case 'setDaySalary':
           this.__go('/rfs/ds/setds/', {props: {v: {}, max: 100}})
@@ -316,6 +348,7 @@ export default {
           this.__go('/rfs/fh/newc/', {props: { v: {}, ruleCfg: {} }})
           break
         case 'yj':
+          this.__go('/rfs/yj/newc/', {props: { v: {}, ruleCfg: {} }})
           break
         case 'cpSubSet':
           break
@@ -399,11 +432,18 @@ export default {
   .b-t
     border-top solid 1px #f1f1f1
   .search-bar
-    margin-top 44px
+    margin-top 88px
+  .filter-wp
+    top 126px
+    .sd_content
+      padding-top 0
   .breadcrumb-row
     line-height 40px
     border-bottom solid 1px #f1f1f1
     margin-top 44px
+  // .breadcrumb-item
+  //   span:first-child
+  //     color #ff5429
   .icon-search
     width 30px
     height 40px
@@ -435,7 +475,8 @@ export default {
     justify-content center
   .searchbar-backdrop
     pointer-events auto
-  .searchbar-enabled ~ .searchbar-backdrop
+  .searchbar-enabled ~ .searchbar-backdrop,
+  .searchbar-backdrop
     height 100vh
     opacity 1
   .searchbar-enabled ~ .list

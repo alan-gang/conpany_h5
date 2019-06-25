@@ -347,8 +347,12 @@ let api = {
   // 开户
   registUser: '/team/createAccount.do?method=registUser',
   getUserList: '/team/useList.do?method=getUserList',
+  // 调点用量升点
+  // http://192.168.169.44:9901/cagamesclient/team/useList.do?method=adjustPoint&destUserId=5&adjustType=0&increaseType=0&point=0.1
+  adjustPoint: '/team/useList.do?method=adjustPoint',
   setBackWater: '/team/setBackWater.do?method=setBackWater',
   getBackWater: '/team/useList.do?method=getBackWater',
+  recharge: '/team/useList.do?method=recharge',
   // 二维码
   createQr: '/team/createAccount.do?method=createQr',
   // 生成推广链接地址

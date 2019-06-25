@@ -1,5 +1,5 @@
 
-export default {
+ const MMath = {
   add(a, b) {
     a = String(a);
     b = String(b);
@@ -55,3 +55,5 @@ export default {
     return MMath.mul(Number(a) / Number(b), Math.pow(10, d - c));
   }
 }
+
+export default MMath

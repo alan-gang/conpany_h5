@@ -56,6 +56,8 @@ import unbind from '@/views/me/bank/unbind.vue'
 import bonus from '@/views/me/bonus'
 import openAccountMgr from '@/views/me/agent/openAccountMgr'
 import lowerLevelMgr from '@/views/me/agent/lowerLevelMgr'
+import setPoint from '@/views/me/agent/lowerLevelMgr/setPoint'
+import transferTo from '@/views/me/agent/lowerLevelMgr/transferTo'
 
 // 帮助中心
 import help from '@/views/me/help'
@@ -347,6 +349,16 @@ export default [
   {
     path: '/agent/lowerLevelMgr',
     component: lowerLevelMgr,
+    rl: true
+  },
+  {
+    path: '/agent/lowerLevelMgr/setPoint',
+    component: setPoint,
+    rl: true
+  },
+  {
+    path: '/agent/lowerLevelMgr/transferTo',
+    component: transferTo,
     rl: true
   },
   {
