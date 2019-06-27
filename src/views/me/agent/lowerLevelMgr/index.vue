@@ -61,7 +61,7 @@
                       span {{ d.userName }}
                     span.ft_14.text-color-gray {{ d.writeTime }}
                   f7-col.btns-wp.flex(width="60")
-                    f7-button.w_80(outline v-if="d.teamCount > 1" @click="viewSubLevel(d.userId)") 
+                    f7-button.w_80.c_p.btn-v-v-s(outline v-if="d.teamCount > 1" @click="viewSubLevel(d.userId)") 
                       | 查看下级
                       span
                     f7-button.w_65.btn-l-red.ml_10(outline @click="operate(d)")
@@ -71,74 +71,79 @@
               f7-card-content
                 f7-row.pb_10
                   f7-col(width="45")
-                    span 账户余额：
+                    span.c_9 账户余额：
                     span {{d.teamBalance}}
                   f7-col(width="55")
-                    span 最后登录：
+                    span.c_9 最后登录：
                     span {{fixDateStr(d.lastTime)}}
                 f7-row.pb_10
                   f7-col(width="45")
-                    span 注册方式：
+                    span.c_9 注册方式：
                     span {{ d.isAuto ? '自动' : '手动' }}
                   f7-col(width="55")
-                    span 注册时间：
+                    span.c_9 注册时间：
                     span {{fixDateStr(d.lastTime)}}
 
                 .ex-info(v-show="d.showDetail")
                   f7-row.b-t.pt_10
                     f7-col(width="45")
-                      span 团队人数：
+                      span.c_9 团队人数：
                       span {{d.teamCount}}
                     f7-col(width="55")
-                      span 团队余额：
+                      span.c_9 团队余额：
                       span {{d.teamBalance}}
                   f7-row.b-b.pb_10
                     f7-col(width="45")
-                      span 给下级转账：
+                      span.c_9 给下级转账：
                       span {{canTopUp ? '已开通' : '未开通'}}
                   .rebates-wp.b-b.pt_10.pb_10
                     f7-row
                       f7-col(width="50" v-for="(rebate, i) in d.rebates")
-                        span {{rebate.name}}：
+                        span.c_9 {{rebate.name}}：
                         span {{rebate.userPoint}}
                   f7-row.pt_10.pb_10(v-if="showSalary")
                     f7-col
-                      span 日工资：团队销售&gt;={{d.teamSales}}, 有效人数&gt;={{d.actUser}}, 每1万{{d.daySalary}}。
+                      span.c_9 日工资：
+                      span 团队销售&gt;={{d.teamSales}}, 有效人数&gt;={{d.actUser}}, 每1万{{d.daySalary}}。
                   .cp-rules.pb_10(v-if="showcpfh && d.cp.myBounCpArr && d.cp.myBounCpArr.length >= 0")
                     f7-row.b-t.pt_10.pb_10
                       f7-col
-                        | 彩票分红： {{dateCycle[d.cp.sendcycle]}}，{{sendTypes[d.cp.sendtype]}}
+                        span.c_9 彩票分红： 
+                        span {{dateCycle[d.cp.sendcycle]}}，{{sendTypes[d.cp.sendtype]}}
                       f7-col.t_r(v-if="d.cp.myBounCpArr && d.cp.myBounCpArr.length >= 3") 
-                        span(@click="showAllRulesHandler(d.userId, i, 'cp')") 显示全部规则
-                    template(v-if="!d.showAllCPRule && d.cp.myBounCpArr && d.cp.myBounCpArr.length >= 3")
-                      f7-row
-                        f7-col 规则{{1}}: 累计销量&gt;={{d.cp.myBounCpArr[0].sales / 10000}}万，有效人数&gt;={{d.cp.myBounCpArr[0].actuser}}，分红比例{{mth.mul(d.cp.myBounCpArr[0].bounsrate, 100)}}%
-                      f7-row
-                        f7-col ......  
-                      f7-row
-                        f7-col 规则{{d.cp.myBounCpArr.length}}: 累计销量&gt;={{d.cp.myBounCpArr[d.cp.myBounCpArr.length - 1].sales / 10000}}万，有效人数&gt;={{d.cp.myBounCpArr[d.cp.myBounCpArr.length - 1].actuser}}，分红比例{{mth.mul(d.cp.myBounCpArr[d.cp.myBounCpArr.length - 1].bounsrate, 100)}}%
-                    template(v-else)
-                      f7-row(v-for="(yjBouns, j) in d.cp.myBounCpArr")
-                        f7-col 规则{{j + 1}}: 累计销量&gt;={{yjBouns.sales / 10000}}万，有效人数&gt;={{yjBouns.actuser}}，分红比例{{mth.mul(yjBouns.bounsrate, 100)}}%
+                        span.c_p(@click="showAllRulesHandler(d.userId, i, 'cp')") 显示全部规则
+                    .inner-ctx.b-b.pt_10.pd_10  
+                      template(v-if="!d.showAllCPRule && d.cp.myBounCpArr && d.cp.myBounCpArr.length >= 3")
+                        f7-row
+                          f7-col 规则{{1}}: 累计销量&gt;={{d.cp.myBounCpArr[0].sales / 10000}}万，有效人数&gt;={{d.cp.myBounCpArr[0].actuser}}，分红比例{{mth.mul(d.cp.myBounCpArr[0].bounsrate, 100)}}%
+                        f7-row
+                          f7-col ......  
+                        f7-row
+                          f7-col 规则{{d.cp.myBounCpArr.length}}: 累计销量&gt;={{d.cp.myBounCpArr[d.cp.myBounCpArr.length - 1].sales / 10000}}万，有效人数&gt;={{d.cp.myBounCpArr[d.cp.myBounCpArr.length - 1].actuser}}，分红比例{{mth.mul(d.cp.myBounCpArr[d.cp.myBounCpArr.length - 1].bounsrate, 100)}}%
+                      template(v-else)
+                        f7-row(v-for="(yjBouns, j) in d.cp.myBounCpArr")
+                          f7-col 规则{{j + 1}}: 累计销量&gt;={{yjBouns.sales / 10000}}万，有效人数&gt;={{yjBouns.actuser}}，分红比例{{mth.mul(yjBouns.bounsrate, 100)}}%
                   
                   .yj-rules(v-if="showsfyj && d.yj.myBounYjArr && d.yj.myBounYjArr.length >= 0")
                     f7-row.b-t.pt_10.pb_10
                       f7-col
-                        | 其它游戏分红：  {{dateCycle[d.cp.sendcycle]}}，{{sendTypes[d.yj.sendtype]}}
+                        span.c_9 其它游戏分红：  
+                        span {{dateCycle[d.yj.sendcycle]}}，{{sendTypes[d.yj.sendtype]}}
                       f7-col.t_r(v-if="d.yj.myBounCpArr && d.yj.myBounCpArr.length >= 3") 
-                        span(@click="showAllRulesHandler(d.userId, i, 'yj')") 显示全部规则
-                    template(v-if="!d.showYJAllRule && d.yj.myBounYjArr && d.yj.myBounYjArr.length >= 3")
-                      f7-row
-                        f7-col 规则{{1}}: 累计销量&gt;={{d.yj.myBounYjArr[0].sales / 10000}}万，有效人数&gt;={{d.yj.myBounYjArr[0].actuser}}，分红比例{{mth.mul(d.yj.myBounYjArr[0].bounsrate, 100)}}%
-                      f7-row
-                        f7-col ......  
-                      f7-row
-                        f7-col 规则{{d.yj.myBounYjArr.length}}: 累计销量&gt;={{d.yj.myBounYjArr[d.yj.myBounYjArr.length - 1].sales / 10000}}万，有效人数&gt;={{d.yj.myBounYjArr[d.yj.myBounYjArr.length - 1].actuser}}，分红比例{{mth.mul(d.yj.myBounYjArr[d.yj.myBounYjArr.length - 1].bounsrate, 100)}}%
-                    template(v-else)
-                      f7-row(v-for="(yjBouns, j) in d.yj.myBounYjArr")
-                        f7-col 规则{{j + 1}}: 累计销量&gt;={{yjBouns.sales / 10000}}万，有效人数&gt;={{yjBouns.actuser}}，分红比例{{mth.mul(yjBouns.bounsrate, 100)}}%
+                        span.c_p(@click="showAllRulesHandler(d.userId, i, 'yj')") 显示全部规则
+                    .inner-ctx.b-b.pt_10.pd_10  
+                      template(v-if="!d.showYJAllRule && d.yj.myBounYjArr && d.yj.myBounYjArr.length >= 3")
+                        f7-row
+                          f7-col 规则{{1}}: 累计销量&gt;={{d.yj.myBounYjArr[0].sales / 10000}}万，有效人数&gt;={{d.yj.myBounYjArr[0].actuser}}，分红比例{{mth.mul(d.yj.myBounYjArr[0].bounsrate, 100)}}%
+                        f7-row
+                          f7-col ......  
+                        f7-row
+                          f7-col 规则{{d.yj.myBounYjArr.length}}: 累计销量&gt;={{d.yj.myBounYjArr[d.yj.myBounYjArr.length - 1].sales / 10000}}万，有效人数&gt;={{d.yj.myBounYjArr[d.yj.myBounYjArr.length - 1].actuser}}，分红比例{{mth.mul(d.yj.myBounYjArr[d.yj.myBounYjArr.length - 1].bounsrate, 100)}}%
+                      template(v-else)
+                        f7-row(v-for="(yjBouns, j) in d.yj.myBounYjArr")
+                          f7-col 规则{{j + 1}}: 累计销量&gt;={{yjBouns.sales / 10000}}万，有效人数&gt;={{yjBouns.actuser}}，分红比例{{mth.mul(yjBouns.bounsrate, 100)}}%
               f7-card-footer.card-footer
-                span(@click="collapse(d.userId, i)") {{d.showDetail ? '收起' : '展开'}}详情
+                span.c_p(@click="collapse(d.userId, i)") {{d.showDetail ? '收起' : '展开'}}详情
 
           .preloader.infinite-scroll-preloader(v-if="showPreloader")
           .t_c.text-color-gray.pd_15.nomore --没有更多了--
@@ -336,7 +341,7 @@ export default {
     actionButtonHandler (type) {
       switch (type) {
         case 'transToSub':
-          this.__go('/agent/lowerLevelMgr/transferTo', {props: {id: this.operCurUser.userId, name: this.operCurUser.userName, myId: this.id}})
+          this.__go('/agent/lowerLevelMgr/transferTo', {props: {id: this.operCurUser.userId, name: this.operCurUser.userName, myId: this.id, topUpMax: this.topUpMax, topUpMin: this.topUpMin}})
           break
         case 'setPoint':
           this.__go('/agent/lowerLevelMgr/setPoint', {props: {id: this.operCurUser.userId, name: this.operCurUser.userName, userPoint: this.operCurUser.userPoint, myPoint: this.userPoint}})
@@ -351,6 +356,7 @@ export default {
           this.__go('/rfs/yj/newc/', {props: { v: {}, ruleCfg: {} }})
           break
         case 'cpSubSet':
+          this.__go('/agent/lowerLevelMgr/copySet', {props: {id: this.operCurUser.userId, name: this.operCurUser.userName, myId: this.id}})
           break
         default:
           break
@@ -361,6 +367,7 @@ export default {
       this.search()
     },
     search () {
+      this.__setLocal({rns: this.name + ',' + this.local.rns.replace(this.name + ',', '')})
       this.userName = this.name
       this.showSearchBar = this.rns_ = false
       this.page = 1
@@ -461,12 +468,16 @@ export default {
     height 110%
     left 0
     top -40px
+  .inner-ctx
+    background-color #e6e6e6
   .btns-wp
     flex-direction row
     justify-content flex-end
     .button
     .icon-triangle.down::after
       border-top-color #ff5429
+    .btn-v-v-s
+      border solid 1px #ff9500
   .infinite-scroll-content
     width 100%
     position absolute

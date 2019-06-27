@@ -353,6 +353,7 @@ let api = {
   setBackWater: '/team/setBackWater.do?method=setBackWater',
   getBackWater: '/team/useList.do?method=getBackWater',
   recharge: '/team/useList.do?method=recharge',
+  getUserSubCopy: '/team/useList.do?method=getUserSubCopy',
   // 二维码
   createQr: '/team/createAccount.do?method=createQr',
   // 生成推广链接地址

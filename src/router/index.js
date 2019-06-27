@@ -58,6 +58,7 @@ import openAccountMgr from '@/views/me/agent/openAccountMgr'
 import lowerLevelMgr from '@/views/me/agent/lowerLevelMgr'
 import setPoint from '@/views/me/agent/lowerLevelMgr/setPoint'
 import transferTo from '@/views/me/agent/lowerLevelMgr/transferTo'
+import copySet from '@/views/me/agent/lowerLevelMgr/copySet'
 
 // 帮助中心
 import help from '@/views/me/help'
@@ -359,6 +360,11 @@ export default [
   {
     path: '/agent/lowerLevelMgr/transferTo',
     component: transferTo,
+    rl: true
+  },
+  {
+    path: '/agent/lowerLevelMgr/copySet',
+    component: copySet,
     rl: true
   },
   {
