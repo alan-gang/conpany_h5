@@ -78,6 +78,19 @@ let api = {
   getNoActivatePrize: '/ext/bg.do?method=getNoActivatePrize',
   transferToBG: '/ext/bg.do?method=transferToBG',
 
+  // 三方游戏
+  gameUrl: '/ext/bg.do?method=gameUrl',
+  '/dscagamesclient/ext/bg.do?method=gameUrl': {
+    loading: 10000,
+    loadingText: '链接中...',
+    1: {
+      msg: '链接成功',
+    },
+    0: {fn: [{fn: '__backing'}]},
+  },
+  // 微游
+  gameTree: '/gameTree',
+
   // 游戏
   recentlyCode: '/issue.do?method=recentlyCode',
   // gameid
@@ -405,6 +418,8 @@ let api = {
   },
   mySubExpectedBounsMobile: '/team/contractBonus.do?method=mySubExpectedBounsMobile',
   mySubContractMobile: '/team/contractBonus.do?method=mySubContractMobile',
+  getSysContractRange: '/team/contractBonus.do?method=getSysContractRange',
+  rconfig: '/team/contractBonus.do?method=myRule',
   // 创建一个契约
   // http://192.168.169.44:9901/cagamesclient/team/contractBonus.do?method=createContract
   createContract: '/team/contractBonus.do?method=createContract',

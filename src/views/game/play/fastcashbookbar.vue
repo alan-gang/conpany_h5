@@ -4,8 +4,8 @@
   .hlh_40.pl_15.pr_15.p_r
     f7-icon._icon._trash(f7=" home " color="gray" @click.native.stop=" __setCall({fn: '__clearSelection'}) ")
     .inlb.w_80.v_m
-      f7-input.hlh_30.border-gray(validate require outline pattern="[0-9.]*"  )
-        input.hlh_30.t_c(type="number" v-model=" local.$m " style="padding: 0 5px" placeholder="快速金额")
+      f7-input.hlh_30.border-gray(outline)
+        input.hlh_30.t_c.with_following-msg(validate pattern="[0-9]*" type="number" v-model=" local.$m " style="padding: 0 5px" placeholder="快速金额")
     span.pl_10
     f7-list.inline-picker.border-gray.mg_0.r_5.o_h(no-hairlines)
       f7-list-item.hlh_28.ft_14(title="模式" smart-select :smart-select-params="{openIn: 'popover'}")

@@ -2,7 +2,9 @@
 
 f7-page.game_all_8
   f7-card(v-for=" (v, i) in data " :key=" i ")
-    f7-card-content.hlh_100._bg(:class=" [v.nid, v.plat] ")
+    .collect_action(@click=" local.cgs.indexOf( ',' + v.nid + ',') === -1 ? __setLocal({cgs: ',' + v.nid + ',' + local.cgs.replace(',' + v.nid + ',', '')}) : __setLocal({cgs: local.cgs.replace(',' + v.nid + ',', '')}) " :class=" {collected: local.cgs.indexOf(','+ v.nid + ',') !== -1 }")
+    
+    f7-card-content.hlh_100._bg(:class=" [v.nid, v.plat] "  @click.native=" __go('/outer/', {props: v}) ")
     f7-card-footer {{v.n }}
 
   

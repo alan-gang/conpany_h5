@@ -90,7 +90,7 @@ export default {
   
   &>.page
     .page-content
-      padding-top 30px
+      padding-top 32px
   table
     table-layout fixed
   th, td

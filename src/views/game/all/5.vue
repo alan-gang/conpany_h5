@@ -4,7 +4,9 @@ f7-page.game_all_5
   f7-row(no-gap)
     f7-col.pd_0(width="33" v-for=" (v, i) in data " :key=" i ")
       f7-card.mg_5
-        f7-card-content.h_60._bg(:class=" [v.nid, v.plat] ")
+        .collect_action(@click=" local.cgs.indexOf( ',' + v.nid + ',') === -1 ? __setLocal({cgs: ',' + v.nid + ',' + local.cgs.replace(',' + v.nid + ',', '')}) : __setLocal({cgs: local.cgs.replace(',' + v.nid + ',', '')}) " :class=" {collected: local.cgs.indexOf(','+ v.nid + ',') !== -1 }")
+
+        f7-card-content.h_60._bg(:class=" [v.nid, v.plat] "  @click.native=" __go('/outer/', {props: v}) ")
         .t_c.hlh_30.c_6 {{v.n }}
 
   

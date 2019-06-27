@@ -60,6 +60,13 @@ urls = {
     _gidnba: '~src/assets/gameicon/game_icon_nba',
     _gidlol: '~src/assets/gameicon/game_icon_lol',
 
+    _gid_zjh: '~src/assets/gameicon/game_icon_zjh',
+    _gid_jqw: '~src/assets/gameicon/game_icon_jqw',
+    _gid_byw3d: '~src/assets/gameicon/game_icon_agby',
+    _gid_agbjl: '~src/assets/gameicon/game_icon_bjl',
+    _gid_basketball: '~src/assets/gameicon/game_icon_nba',
+    _gid_lol: '~src/assets/gameicon/game_icon_lol',
+
 
 
   }

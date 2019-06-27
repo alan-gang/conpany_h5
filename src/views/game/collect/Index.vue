@@ -4,10 +4,10 @@ f7-page.game_collect
   f7-row.j_s(no-gap)
     f7-col.pd_0(width="33" v-for=" (v, i) in data " :key=" i ")
       f7-card.mg_5
-        f7-card-content.h_60._bg._notbg.j_c.t_c(:class=" [v.nid, v.plat] ")
+        f7-card-content.h_60._bg._notbg.j_c.t_c(:class=" [v.nid, v.plat] " @click.native=" v.id ? __go('/game/play/', {props: v}) : __go('/outer/', {props: v}) ")
           f7-icon._icon(:class=" '_gid' + v.id " f7=" home " size="60px" v-if=" v.id ")
-
-        .t_c.hlh_30.c_6 {{v.n }}
+        
+        .t_c.hlh_30.c_6 {{ v.n }}
 
   
 

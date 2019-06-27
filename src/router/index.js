@@ -27,6 +27,8 @@ import usecoupon from '@/views/promo/coupon/use'
 import play from '@/views/game/play'
 import car from '@/views/game/play/car'
 import chase from '@/views/game/play/chase'
+// outer
+import outer from '@/views/outer'
 
 // 我的 me
 import load from '@/views/me/load'
@@ -178,6 +180,10 @@ export default [
     keepAlive: true,
   },
   // modul frame
+  {
+    path: '/outer/',
+    component: outer,
+  },
   {
     path: '/frame/',
     component: frame,

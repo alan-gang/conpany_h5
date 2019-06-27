@@ -83,6 +83,8 @@ export default {
   created () {
     this.__login({isAuto: 1})
     this.getCfgInfo()
+    // document.addEventListener('visibilitychange', function () {
+    // })
   },
   mounted () {
     if (this.__query.tag) this.$f7.popup.open('#register') && this.__getcodeimg()
@@ -205,7 +207,7 @@ export default {
       this.$.get(api.__getUserBankCards).then(({data}) => {
         if (!data.userBankCards.length) {
           this.$f7.dialog.confirm('立即前往绑定银行卡', '', () => {
-            this.__go('/bank/bind/')
+            this.__go('/me/bank/bind/')
           })
         }
         this.__setUser(data)
@@ -223,7 +225,10 @@ export default {
       this.$f7.dialog.password('请输入资金密码', '', (cpwd) => {
         this.$.get(api.checkSecurityPwd, {password: cpwd}).then(() => { cb(cpwd) })
       }).el.querySelector('input').focus()
-    }
+    },
+    __backing () {
+      setTimeout(this.__back, 500)
+    },
   }
 }
 </script>

@@ -57,15 +57,16 @@ urls = {
 
 }
 labels = {
+  _bg: '~src/assets/gameicon/cards/game_lable_bg',
   _ly: '~src/assets/gameicon/cards/game_lable_ly',
   _ky: '~src/assets/gameicon/cards/game_lable_ky',
   _ag: '~src/assets/gameicon/cards/game_lable_ag',
-  _bg: '~src/assets/gameicon/cards/game_lable_bg',
   _pt: '~src/assets/gameicon/cards/game_lable_pt',
   _lg: '~src/assets/gameicon/cards/game_lable_lg',
   _uw: '~src/assets/gameicon/cards/game_lable_uy',
   _sb: '~src/assets/gameicon/cards/game_lable_sb',
   _pb: '~src/assets/gameicon/cards/game_lable_pb',
+  _xy: '~src/assets/gameicon/cards/game_lable_xy',
 }
 sizes = {
 }

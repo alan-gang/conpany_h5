@@ -3,7 +3,7 @@ export default {
   name: 'random',
   methods: {
     // 随机选择一个号码
-    __random ({continuee}) {
+    __random ({continuee} = {continuee: false}) {
       if (!this.s[0]) this.__randomValue()
       else {
         let t = setInterval(() => {

@@ -12,14 +12,14 @@ f7-page.load
 
   f7-row.pd_5(no-gap)
     f7-col.pd_5(width="50" v-for=" (v, i) in data " :key=" i "  @click=" __setLocal({loadway: v.saveWay}) ") 
-      .bgc_f.hlh_70.r_10(:class=" {active: local.loadway === v.saveWay} ")
-        .flex
+      .bgc_f.r_10(:class=" {active: local.loadway === v.saveWay} ")
+        .flex.h_70
           .a
             .pl_10.pr_10.v_m.inlb 
               f7-icon._icon(f7="home" :class=" '_load_' + v.saveWay " size="50")
-            span {{ v.saveWayName }}
+          span {{ v.saveWayName }}
 
-          f7-checkbox.mr_10(v-show=" local.loadway === v.saveWay "  :checked=" local.loadway === v.saveWay ")
+          f7-checkbox.mr_10(:class=" { o_0: local.loadway !== v.saveWay } " :checked=" local.loadway === v.saveWay ")
 
   template(v-if=" way ")
     f7-list.mt_5.mb_5(v-show=" way.range[1] ")
@@ -56,7 +56,7 @@ f7-page.load
           span.text-color-deeporange {{ way.range[form.i].fee + '%' }}
       template(v-else)
         .pl_10.pr_10
-          f7-button.mr_2.w_60.inlb.color-orange(fill  v-for=" (v, i) in  way.range[form.i].range " @click=" form.m = v ") {{ v }}
+          f7-button.mr_2.mb_2.w_60.inlb.color-orange(fill  v-for=" (v, i) in  way.range[form.i].range " @click=" form.m = v ") {{ v }}
 
     .h_25
     f7-button.mg_10(fill large @click="commitNew") 去付款

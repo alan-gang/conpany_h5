@@ -76,7 +76,7 @@ export default {
   components: {
   },
   name: 'new_contract',
-  props: ['v', 'ruleCfg'],
+  props: ['v'],
   data () {
     let r = {ruletype: 1, sales: '', actUser: '', bounsRate: '', sales_: 0, actUser_: 0}
     return {
@@ -102,6 +102,7 @@ export default {
       rs: [
         Object.assign({}, r),
       ],
+      ruleCfg: [],
     }
   },
   computed: {
@@ -110,8 +111,16 @@ export default {
   },
   mounted () {
     this.notice()
+    this.rconfig()
   },
   methods: {
+    rconfig () {
+      this.$.get(api.rconfig, {
+        cType: 1
+      }).then(({data: {ruleCfg}}) => {
+        this.ruleCfg = ruleCfg
+      })
+    },
     notice () {
       this.$f7.dialog.create({
         cssClass: 'full_width',

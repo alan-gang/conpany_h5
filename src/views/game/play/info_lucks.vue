@@ -72,7 +72,7 @@ export default {
       this.list()
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
-      this.$.myget(api.recentlyCode, Object.assign({
+      this.$.get(api.recentlyCode, Object.assign({
         gameid: this.id,
       }, option)).then(({data: {items, totalSize}}) => {
         this.data = [...(option.page > this.fpage ? this.data : []), ...items]
@@ -178,7 +178,7 @@ export default {
   
   &>.page
     .page-content
-      padding-top 30px
+      padding-top 32px
       
   th, td
     padding 5px

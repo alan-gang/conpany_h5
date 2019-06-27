@@ -50,9 +50,9 @@ f7-page.rf_yj_3(:page-content="false")
 
             template(v-else)
               template(v-if=" x.stat === '未签订' ")
-                f7-button.inlb(color="deeporange" outline small @click=" __go('/rfs/yj/newc/', {props: { v: x, ruleCfg }}) ") 发起签约
+                f7-button.inlb(color="deeporange" outline small @click=" __go('/rfs/yj/newc/', {props: { v: x }}) ") 发起签约
               template(v-else)
-                f7-button.inlb(color="deeporange" outline small @click=" __go('/rfs/yj/newc/', {props: { v: x, ruleCfg }}) ") 重新发起签约
+                f7-button.inlb(color="deeporange" outline small @click=" __go('/rfs/yj/newc/', {props: { v: x }}) ") 重新发起签约
 
 
 

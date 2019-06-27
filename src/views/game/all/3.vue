@@ -2,8 +2,13 @@
 
 f7-page.game_all_3
   f7-card(v-for=" (v, i) in data " :key=" i ")
-    f7-card-content.hlh_70._bg._notbg(:class=" [v.nid, v.plat] ")
+    .collect_action(@click=" local.cgs.indexOf( ',' + v.nid + ',') === -1 ? __setLocal({cgs: ',' + v.nid + ',' + local.cgs.replace(',' + v.nid + ',', '')}) : __setLocal({cgs: local.cgs.replace(',' + v.nid + ',', '')}) " :class=" {collected: local.cgs.indexOf(','+ v.nid + ',') !== -1 }")
+    
+    f7-card-content.hlh_70._bg._notbg(:class=" [v.nid, v.plat] "  @click.native=" __go('/outer/', {props: v}) ")
       span.c_f {{ v.n }}
+
+    //- f7-card-content
+
 
   
 
@@ -12,6 +17,7 @@ f7-page.game_all_3
 
 <script>
 import config from '@/config'
+import api from '@/api'
 import og from '@/gm/og'
 export default {
   mixins: [config],
@@ -28,7 +34,14 @@ export default {
       return og.filter(x => x.gn === '微游')
     }
   },
+  created () {
+    // this.gameTree()
+  },
   methods: {
+    gameTree () {
+      this.$.get(api.gameTree).then(({data}) => {
+      })
+    }
   }
 }
 </script>

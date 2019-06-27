@@ -9,7 +9,7 @@ f7-page.game(:page-content="false")
       f7-link.text-color-black.with-underline-active(tab-link href="#game_collect" ) 收藏
 
     f7-nav-right
-      f7-link 特色
+      f7-link.n.w_50.pl_15.ft_14(color="white" @click=" __setCall({fn: '__showTab', args: '#game_all_3'}) ") 特色
 
   f7-tabs
     f7-tab#game_all.tab-active(@tab:show=" tabShow ")
@@ -57,5 +57,20 @@ export default {
 <style lang="stylus">
 @import '~src/css/var.stylus'
 // 建议不添加scoped， 所有样式最多嵌套2层
-    
+urls = {
+  _n: '~src/assets/play/game_btn_postion',
+}
+
+.game .navbar-inner .right .n
+  &:after
+    content ''
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    z-index -1
+    bg(urls._n + '@2x.png', 100% auto)
+    transform scaleX(-1)
+  
 </style>

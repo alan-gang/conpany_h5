@@ -42,7 +42,7 @@ export default {
       ]
     },
     getstetn (stet = this.stet) {
-      stet = stet.map(x => new Date(x))
+      stet = stet.map(x => x ? new Date(x) : x)
       let x = [stet[0].__toDayString(), stet[1].__toDayString()]
       return x[0] === x[1] ? [x[0]]
         : stet[0]._bf(7).__toDayString() === stet[1].__toDayString() ? ['最近7天']

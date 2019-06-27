@@ -3,7 +3,7 @@
 f7-page.notice(infinite :infinite-distance="50" :infinite-preloader="showPreloader" @infinite="loadMore" ptr :ptr-mousewheel="true" @ptr:refresh="refresh")
   f7-navbar(back-link title="系统公告")
   
-  f7-card(v-for=" v in data " :key=" v.subject ")
+  f7-card(v-for=" (v, i) in data " :key=" i ")
     f7-card-header {{ v.subject }}
     f7-card-content 
       pre {{ v.content }}

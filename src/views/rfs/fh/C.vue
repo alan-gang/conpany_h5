@@ -50,9 +50,9 @@ f7-page.rf_fh_3(:page-content="false")
 
             template(v-else)
               template(v-if=" x.stat === '未签订' ")
-                f7-button.inlb(color="deeporange" outline small @click=" __go('/rfs/fh/newc/', {props: { v: x, ruleCfg }}) ") 发起签约
+                f7-button.inlb(color="deeporange" outline small @click=" __go('/rfs/fh/newc/', {props: { v: x }}) ") 发起签约
               template(v-else)
-                f7-button.inlb(color="deeporange" outline small @click=" __go('/rfs/fh/newc/', {props: { v: x, ruleCfg }}) ") 重新发起签约
+                f7-button.inlb(color="deeporange" outline small @click=" __go('/rfs/fh/newc/', {props: { v: x }}) ") 重新发起签约
 
 
 
@@ -136,7 +136,6 @@ export default {
       n_: '',
       data: [],
       v: null,
-      ruleCfg: null,
     }
   },
   computed: {
@@ -174,14 +173,13 @@ export default {
         userName: this.n,
         status: this.s.id,
         cType: 0,
-      }, option)).then(({data: {my, mySubContract, ruleCfg, totalSize}}) => {
+      }, option)).then(({data: {my, mySubContract, totalSize}}) => {
         // my[0].isDone = 2
         my.forEach(x => (x.o = false))
         mySubContract.forEach(x => (x.o = false))
         this.data = [...(option.page > this.fpage ? this.data : my), ...mySubContract]
         this.total = totalSize
         cb && cb(mySubContract)
-        this.ruleCfg = ruleCfg
       })
     },
     checkContract (id, s) {

@@ -9,7 +9,7 @@ f7-page.game_new
       .more.pd_15
         h3.t_c.mg_0 {{v.gameName }}
         p {{ v.desc }}
-        f7-button(fill large) 开始游戏
+        f7-button(fill large @click=" v.gameType === 1 ? __go('/game/play/', {props: Object.assign({}, v, ag.find(x => x.id === v.gameId), {n: v.gameName})}) : __go('/outer/', {props: Object.assign({}, v, ag.find(x => x.pid === v.gameId), {n: v.gameName})}) ") 开始游戏
         .h_60
 
 
@@ -18,6 +18,7 @@ f7-page.game_new
 
 <script>
 import config from '@/config'
+import ag from '@/gm/ag'
 export default {
   mixins: [config],
   components: {
@@ -26,6 +27,7 @@ export default {
   props: [],
   data () {
     return {
+      ag: ag,
       data: [
         // {id: 150, n: '微博5分彩'}
       ]
