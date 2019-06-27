@@ -17,7 +17,6 @@ export default {
     }
   },
   mounted () {
-    console.log('info tip')
   },
   methods: {
     close () {

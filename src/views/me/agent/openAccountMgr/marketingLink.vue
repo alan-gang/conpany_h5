@@ -69,6 +69,7 @@ export default {
           x.$s = x.backwater * 10000
           x.rebateTypeTxt = '返水'
           x.unitTxt = '千分之'
+          x.groupName = x.groupname
           return x
         })
         data.back.unshift({

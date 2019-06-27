@@ -84,7 +84,8 @@ for x in  0 1 2 5 10 15 20 25 28 30 34 35 40 44 45 50 55 60 65 70 80 90 100 110 
   .minh_{x}
     min-height x * 1px
   
-
+.h_100p
+  height 100%
 
 // colors
 colors = {
@@ -218,6 +219,12 @@ li
   box-sizing border-box
   display flex
   justify-content space-between
+  align-items center
+
+.flex-jc-s
+  justify-content flex-start
+
+.flex-ai-c
   align-items center
 
 .ellipsis

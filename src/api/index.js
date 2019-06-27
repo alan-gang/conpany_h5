@@ -360,8 +360,13 @@ let api = {
   // 开户
   registUser: '/team/createAccount.do?method=registUser',
   getUserList: '/team/useList.do?method=getUserList',
+  // 调点用量升点
+  // http://192.168.169.44:9901/cagamesclient/team/useList.do?method=adjustPoint&destUserId=5&adjustType=0&increaseType=0&point=0.1
+  adjustPoint: '/team/useList.do?method=adjustPoint',
   setBackWater: '/team/setBackWater.do?method=setBackWater',
   getBackWater: '/team/useList.do?method=getBackWater',
+  recharge: '/team/useList.do?method=recharge',
+  getUserSubCopy: '/team/useList.do?method=getUserSubCopy',
   // 二维码
   createQr: '/team/createAccount.do?method=createQr',
   // 生成推广链接地址
@@ -452,6 +457,8 @@ let api = {
       fn: [{fn: '__init_rf_ds_2'}]
     }
   },
+  // 下级管理点击查看详情
+  getUserAll: '/team/useList.do?method=getUserAll',
   // 团队盈亏 - 彩票盈亏
   tplreport: '/report/ltrReport.do?method=list',
   tpldreport: '/report/ltrReport.do?method=detail',
