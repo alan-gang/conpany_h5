@@ -68,7 +68,7 @@
                       span 操作
                       span.inlb
                         Triangle(direction="down")
-              f7-card-content
+              f7-card-content.pb_10
                 f7-row.pb_10
                   f7-col(width="45")
                     span.c_9 账户余额：
@@ -82,7 +82,7 @@
                     span {{ d.isAuto ? '自动' : '手动' }}
                   f7-col(width="55")
                     span.c_9 注册时间：
-                    span {{fixDateStr(d.lastTime)}}
+                    span {{fixDateStr(d.registerTime)}}
 
                 .ex-info(v-show="d.showDetail")
                   f7-row.b-t.pt_10
@@ -187,6 +187,7 @@ export default {
       rns_: false,
       orderTypes: [{id: '3', name: '注册时间'}, {id: '4', name: '最后登录'}, {id: '2', name: '账户余额'}],
       curOrderType: '',
+      maxDaySalary: 0,
       name: '',
       userName: '',
       subUserid: '',
@@ -241,7 +242,6 @@ export default {
       return this.local.rns.split(',').filter(x => x.indexOf(this.name) !== -1)
     },
     condiRegisterDate () {
-      console.log('this.stet=', this.stet)
       return !this.stet[0] || !this.stet[1] ? '不限' : this.__stetn.join(' 至 ')
     }
   },
@@ -250,9 +250,6 @@ export default {
     this.actionButtons['id2'].show = this.showSalary
     this.actionButtons['id3'].show = this.showcpfh
     this.actionButtons['id4'].show = this.showsfyj
-    // let cdate = new Date()
-    // cdate.setDate(cdate.getDate() - 30)
-    // this.$set(this.stet, 0, cdate)
     this.stet = []
     this.list()
   },
@@ -270,8 +267,9 @@ export default {
 
       Object.assign(params, p)
       // 搜索下级
-      this.$.get(api.getUserList, params).then(({data: {subUserInfo, totalSize, currUserId, isAddAccount, uploadLevel, userPoint, userBreads}}) => {
+      this.$.get(api.getUserList, params).then(({data: {salaryComb, subUserInfo, totalSize, currUserId, isAddAccount, uploadLevel, userPoint, userBreads}}) => {
         this.breadcrumb = [{userId: '', userName: '我的下级'}, ...userBreads.slice(1)]
+        this.maxDaySalary = salaryComb[salaryComb.length - 1].value
         // 当前登录用户的固定信息
         this.id = currUserId
         // 开户
@@ -347,13 +345,13 @@ export default {
           this.__go('/agent/lowerLevelMgr/setPoint', {props: {id: this.operCurUser.userId, name: this.operCurUser.userName, userPoint: this.operCurUser.userPoint, myPoint: this.userPoint}})
           break
         case 'setDaySalary':
-          this.__go('/rfs/ds/setds/', {props: {v: {}, max: 100}})
+          this.__go('/rfs/ds/setds/', {props: {v: {userId: this.operCurUser.userId, userName: this.operCurUser.userName}, max: this.maxDaySalary}})
           break
         case 'fh':
-          this.__go('/rfs/fh/newc/', {props: { v: {}, ruleCfg: {} }})
+          this.__go('/rfs/fh/newc/', {props: { v: {userId: this.operCurUser.userId, userName: this.operCurUser.userName} }})
           break
         case 'yj':
-          this.__go('/rfs/yj/newc/', {props: { v: {}, ruleCfg: {} }})
+          this.__go('/rfs/yj/newc/', {props: { v: {userId: this.operCurUser.userId, userName: this.operCurUser.userName} }})
           break
         case 'cpSubSet':
           this.__go('/agent/lowerLevelMgr/copySet', {props: {id: this.operCurUser.userId, name: this.operCurUser.userName, myId: this.id}})
@@ -408,7 +406,7 @@ export default {
       if (userInfo && ((this.userPoint > 0 && userInfo.rebates.length > 1) || (this.userPoint <= 0 && userInfo.rebates.length > 0))) return Promise.resolve(userInfo)
       return this.$.get(api.getUserAll, {subUserid: userId}).then(({data: {backMyArr, cpArr, yjArr, myPointArr, subPointArr}}) => {
         backMyArr.forEach(b => {
-          userInfo.rebates.push({show: true, userPoint: (b.backWater || 0) > 0 ? ((b.backWater || 0) * 1000 + '‰') : '--', name: b.groupname + '返水'})
+          userInfo.rebates.push({show: true, userPoint: (b.backwater || 0) > 0 ? ((b.backwater || 0) * 1000 + '‰') : '--', name: b.groupname + '返水'})
         })
         if (cpArr.length > 0) {
           userInfo.cp = cpArr[0]
@@ -443,6 +441,7 @@ export default {
   .filter-wp
     top 126px
     .sd_content
+      top -5%
       padding-top 0
   .breadcrumb-row
     line-height 40px

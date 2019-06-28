@@ -15,14 +15,14 @@
 <script>
 import api from '@/api'
 import config from '@/config'
-import RebateRate from 'comp/agent/RebateRate'
+// import RebateRate from 'comp/agent/RebateRate'
 import RebateRateRow from 'comp/agent/RebateRateRow'
 import mth from '@/util/mth'
 export default {
   name: 'setPoint',
   mixins: [config],
   components: {
-    RebateRate,
+    // RebateRate,
     RebateRateRow
   },
   props: ['id', 'name', 'userPoint', 'myPoint'],
@@ -71,6 +71,7 @@ export default {
           x.$s = x.maxBackWater * 10000
           x.rebateTypeTxt = '当前返水'
           x.unitTxt = '千分之'
+          x.unitSymbal = '‰'
           return x
         })
         if (this.showpoint) {
@@ -81,12 +82,14 @@ export default {
             $s: this.myPoint * 10,
             backwater: this.userPoint,
             rebateTypeTxt: '返点',
-            unitTxt: '百分之'
+            unitTxt: '百分之',
+            unitSymbal: '%'
           })
         }
         this.rebateRates = backWaterComb
         console.log('rebateRates=', this.rebateRates)
       }, (rep) => {
+        this.__back()
       })
     },
     setRebateRate (backWater, groupId, groupName) {

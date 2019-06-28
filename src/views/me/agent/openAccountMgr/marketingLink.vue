@@ -21,7 +21,8 @@
 import api from '@/api'
 import config from '@/config'
 import TipBar from 'comp/TipBar'
-import RebateRate from './RebateRate'
+import RebateRate from 'comp/agent/RebateRate'
+// import RebateRate from './RebateRate'
 export default {
   name: 'marketingLink',
   mixins: [config],
@@ -69,6 +70,7 @@ export default {
           x.$s = x.backwater * 10000
           x.rebateTypeTxt = '返水'
           x.unitTxt = '千分之'
+          x.unitSymbal = '‰'
           x.groupName = x.groupname
           return x
         })
@@ -78,7 +80,8 @@ export default {
           $s: data.userPoint * 10,
           backwater: data.userPoint,
           rebateTypeTxt: '返点',
-          unitTxt: '百分之'
+          unitTxt: '百分之',
+          unitSymbal: '%'
         })
         // data.back.forEach((x, i) => {
         //   x.$ = (x.backwater - x.value).toFixed(4) * 1000
@@ -86,7 +89,6 @@ export default {
         // })
         // data.back[0].$ = (data.userPoint - data.autoPoint).toFixed(1)
         this.rebateRates = data.back
-        console.log('rebateRates=', data.back)
       }, (rep) => {
         this.__alert('自动注册链接获取失败！')
       })
