@@ -3,6 +3,8 @@
 f7-page.game_new
   f7-card(expandable v-for=" (v, i) in cache.plats " :key="i")
     f7-card-content.pd_0
+      f7-link.card-opened-fade-in.p_a.p_t_15.p_r_15(card-close='', color='white' icon-f7='close_round_fill')
+
       //- ._bg._notbg.h_350(:class=" '_bgid' + v.id ")
       img.h_300.wp_100(:src=" v.picUrl "  )
 

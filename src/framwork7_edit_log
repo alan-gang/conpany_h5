@@ -1,3 +1,7 @@
 #1  navbar.js 
 // don't add navbar-hidden class ========================================== joey =========================
     if (className === 'navbar-hidden') return
+
+
+#2 tab.js company\vue.xy.h5.pwa\node_modules\framework7\components\tabs\tab.js line: 191 - 202
+// toolbar tabbar auto scroll 

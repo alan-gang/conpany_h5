@@ -1,0 +1,6 @@
+.page-with-card-opened
+  .navbar
+    transform translateY(-100%)
+  .toolbar 
+    transform translateY(100%)
+    

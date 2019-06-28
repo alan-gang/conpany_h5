@@ -30,6 +30,9 @@ f7-app(:params=" f7Params ")
   f7-popup#register(@popup:opened=" __getcodeimg ")
     f7-view(url="/register")
 
+  f7-popup#register(@popup:opened=" __getcodeimg ")
+    f7-view(url="/ggl")
+
 
 </template>
 

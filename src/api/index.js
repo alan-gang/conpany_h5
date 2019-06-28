@@ -77,6 +77,12 @@ let api = {
   getLotteryGoodPrize: '/ext/bg.do?method=getLotteryGoodPrize',
   getNoActivatePrize: '/ext/bg.do?method=getNoActivatePrize',
   transferToBG: '/ext/bg.do?method=transferToBG',
+  // 获取用户剩余刮刮乐数量
+  getUserScratch: '/activity.do?method=getUserScratch',
+  // 判断刮刮乐是否中奖
+  getScratchPrize: '/activity.do?method=getScratchPrize',
+  // 刮刮乐奖金入库
+  finishScratchPrize: '/activity.do?method=finishScratchPrize',
 
   // 三方游戏
   gameUrl: '/ext/bg.do?method=gameUrl',

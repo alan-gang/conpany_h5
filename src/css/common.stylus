@@ -18,6 +18,7 @@
 @import './cards.stylus'
 @import './modal.stylus'
 @import './stripe.stylus'
+@import './card.stylus'
 
 //font-size
 for x in  12 13 14 15 16 18 20 22 24 25 26 28 30 32 35 36 38 40 42 45 46 48 50
@@ -28,7 +29,7 @@ for x in  12 13 14 15 16 18 20 22 24 25 26 28 30 32 35 36 38 40 42 45 46 48 50
 
 // margin padding
 
-for x in  -100 -80 -50  -44 -40 -30 -20 -10 -5 0 1 2 5 10 15 20 25 30 34 40 44 50
+for x in  -100 -80 -50  -44 -40 -30 -20 -10 -5 -2 0 1 2 5 10 15 20 25 30 34 40 44 50
   .pd_{x}
     padding x * 1px
   .mg_{x}
@@ -56,7 +57,7 @@ for x in  -100 -80 -50  -44 -40 -30 -20 -10 -5 0 1 2 5 10 15 20 25 30 34 40 44 5
     left x * 1px
     
   .p_r_{x}
-    left x * 1px
+    right x * 1px
   
   .p_t_{x}
     top x * 1px
@@ -151,7 +152,8 @@ for x in 90 -90
 for x in 1 2 9 10 99 101 500 501 999 1001 5001 8998 8999 9000 9500 9501 9502 9503 9504 9999 9998 9997
   .z_{x}
     z-index x
-
+.mg_0a
+  margin 0 auto
 .b_s
   box-sizing border-box
 .h_o

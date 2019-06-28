@@ -1,7 +1,8 @@
 <template lang="pug">
 
 f7-page.game_collect
-  f7-row.j_s(no-gap)
+  f7-block.t_9(v-if="!data[0]") 您暂时还没有任何收藏，快去收藏喜欢的游戏吧~
+  f7-row.j_s(no-gap v-else)
     f7-col.pd_0(width="33" v-for=" (v, i) in data " :key=" i ")
       f7-card.mg_5
         f7-card-content.h_60._bg._notbg.j_c.t_c(:class=" [v.nid, v.plat] " @click.native=" v.id ? __go('/game/play/', {props: v}) : __go('/outer/', {props: v}) ")

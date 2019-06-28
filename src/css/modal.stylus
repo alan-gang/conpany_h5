@@ -25,6 +25,8 @@
   top 50%
   left 50%
   transform translate3d(-50%, -50%, 0)
+  &.full_width
+    width 100%
   &.modal-out
     transform translate3d(-50%, 500%, 0)
 
