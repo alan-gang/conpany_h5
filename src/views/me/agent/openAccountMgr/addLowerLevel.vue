@@ -4,32 +4,32 @@
       f7-row
         f7-col(width="25") 用户名：
         f7-col(width="75")
-          f7-input(type="text" maxlength="16" placeholder="6-16位，数字或字母组合" :value="userName" @input="userName = $event.target.value")
+          f7-input(type="text" maxlength="20" placeholder="6-20位，数字或字母组合" :value="userName" @input="userName = $event.target.value")
       f7-row
         f7-col(width="25") 登录密码：
         f7-col(width="75")
           input(type="password" maxlength="20" :placeholder="'默认密码' + defaultPwd" v-model="password")
 
     f7-row.set-header(v-show="isShowRebateLs")
-      f7-col(width="50") 返点/返水设置
+      f7-col(width="50") 返点-返水设置：
       f7-col(width="50")
         f7-button.ft_14(fill large @click="openUseAlreadySetDialog" @click.native="popupOpened = true") 使用已有下级的设置
 
-    f7-list.rebate-ls(v-show="isShowRebateLs")
-      f7-list-item(v-for="(item, i) in rebateRates" :key="i")
-        f7-row.rebate-type-row
-          f7-col(width="20") 
-            span(class="c_orange") {{item.name || item.groupname}} 
-          f7-col.ft_15(width="80") 
-            span {{item.rebateTypeTxt}} 
-            span(class="c_orange") {{item.$ || 0.00}}% 
-            span.c_g &nbsp;({{item.unitTxt}}{{item.$ || 0.00}})
-        .rebate-swiper-wp
-          .left-r(@click="swiperLeft(i)")
-          f7-swiper.rebate-swiper(:params="swiperParams" v-show="item.$s" :ref="'rebateSwiper' + i")
-            f7-swiper-slide(v-for="(rate, j) in item.$s" :key="j" @click.native="rebateItemHandler(rate, i, j)" :class="{active: (rate * 0.1).toFixed(1) === item.$}") {{(rate * 0.1).toFixed(1)}}%
-          .right-r(@click="swiperRight(i)")
-
+    //- f7-list.rebate-ls(v-show="isShowRebateLs")
+    //-   f7-list-item(v-for="(item, i) in rebateRates" :key="i")
+    //-     f7-row.rebate-type-row
+    //-       f7-col(width="20") 
+    //-         span(class="c_orange") {{item.name || item.groupname}} 
+    //-       f7-col.ft_15(width="80") 
+    //-         span {{item.rebateTypeTxt}} 
+    //-         span(class="c_orange") {{item.$ || 0.00}}{{item.unitSymbal}} 
+    //-         span.c_g &nbsp;({{item.unitTxt}}{{item.$ || 0.00}})
+    //-     .rebate-swiper-wp
+    //-       .left-r(@click="swiperLeft(i)")
+    //-       f7-swiper.rebate-swiper(:params="swiperParams" v-show="item.$s" :ref="'rebateSwiper' + i")
+    //-         f7-swiper-slide(v-for="(rate, j) in item.$s" :key="j" @click.native="rebateItemHandler(rate, i, j)" :class="{active: (rate * 0.1).toFixed(1) === item.$}") {{(rate * 0.1).toFixed(1)}}{{item.unitSymbal}} 
+    //-       .right-r(@click="swiperRight(i)")
+    RebateRate(:rebateRates="rebateRates" :show="isShowRebateLs" @update="updateRebateRates")
     f7-button.mg_10(fill large @click="openAccount") 开户
 
     f7-popup.search-lower-level-dialog.dialog-popup(:opened="popupOpened" @popup:closed="popupOpened = false")
@@ -41,17 +41,19 @@
 import api from '@/api'
 import config from '@/config'
 import SearchLowerLeverDialog from './SearchLowerLeverDialog'
+import RebateRate from 'comp/agent/RebateRate'
 export default {
   name: 'addLowerLevel',
   mixins: [config],
   components: {
-    SearchLowerLeverDialog
+    SearchLowerLeverDialog,
+    RebateRate
   },
   data () {
     return {
       userName: '',
       password: '',
-      defaultPwd: '123456a',
+      defaultPwd: '',
       keepPoint: '',
       rebateRates: [],
       isShowRebateLs: false,
@@ -92,11 +94,14 @@ export default {
     },
     getShowRegistUser () {
       this.$.get(api.showRegistUser).then(({data}) => {
+        this.defaultPwd = data.defaultPwd
         data.back = data.back.map((x, i) => {
           x.$ = '0.0'
           x.$s = x.backwater * 10000
           x.rebateTypeTxt = '返水'
           x.unitTxt = '千分之'
+          x.unitSymbal = '‰'
+          x.groupName = x.groupname
           return x
         })
         data.back.unshift({
@@ -105,7 +110,8 @@ export default {
           $: '0.0',
           $s: data.userPoint * 10,
           rebateTypeTxt: '返点',
-          unitTxt: '百分之'
+          unitTxt: '百分之',
+          unitSymbal: '%'
         })
         this.rebateRates = data.back
         this.isShowRebateLs = !this.checkRebateIsAllOfZero(data.back)
@@ -119,15 +125,15 @@ export default {
       }
       return true
     },
-    rebateItemHandler (rate, i, j) {
-      this.rebateRates[i].$ = (rate * 0.1).toFixed(1)
-    },
-    swiperLeft (i) {
-      this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slideNext()
-    },
-    swiperRight (i) {
-      this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slidePrev()
-    },
+    // rebateItemHandler (rate, i, j) {
+    //   this.rebateRates[i].$ = (rate * 0.1).toFixed(1)
+    // },
+    // swiperLeft (i) {
+    //   this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slideNext()
+    // },
+    // swiperRight (i) {
+    //   this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slidePrev()
+    // },
     rebateDataCB (data = []) {
       // console.log(data)
       this.popupOpened = false
@@ -142,6 +148,10 @@ export default {
         }
         return item
       })
+    },
+    updateRebateRates (d) {
+      this.rebateRates = d
+      console.log('rebateRates=', JSON.stringify(this.rebateRates))
     },
     openUseAlreadySetDialog () {}
   }

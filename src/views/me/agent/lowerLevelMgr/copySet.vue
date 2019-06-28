@@ -1,7 +1,10 @@
 <template lang="pug">
 f7-page.copyset-to-pg
   f7-navbar(title="复制下级设置" back-link top v-if="showChoiceCpCtxPage")
-  f7-navbar(back-link top v-else)
+  f7-navbar(top v-else)
+    f7-nav-left
+      .link
+        .icon.icon-back.color-theme-deeporange.choice-user-pg-nav(@click="showChoiceCpCtxPage = true")
     f7-nav-title 选择用户
     f7-nav-right(@click.native="showChoiceCpCtxPage = true") 完成
   .choice-cp-ctx(v-show="showChoiceCpCtxPage")
@@ -322,6 +325,13 @@ export default {
     right 10px
   .user-item
     width 33.33%
+  .choice-cp-ctx
+    .checkbox i, .icon-checkbox
+      background-color gray
+      border-color gray
+      &:after
+        opacity 1
+        font-size 21px !important
   .choice-cp-users
     display flex
     flex-direction column
@@ -364,5 +374,6 @@ export default {
       right -5px
       background url('../../../../assets/me/icon_dele@2x.png') no-repeat center
       background-size 100%
-
+.choice-user-pg-nav
+  padding-left 17px
 </style>

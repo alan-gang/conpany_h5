@@ -371,7 +371,11 @@ export default [
   {
     path: '/agent/lowerLevelMgr/copySet',
     component: copySet,
-    rl: true
+    rl: true,
+    // beforeLeave: function (routeTo, routeFrom, resolve, reject) {
+    //   console.log(routeTo, routeFrom, this)
+    //   resolve()
+    // }
   },
   {
     path: '/settings/',
