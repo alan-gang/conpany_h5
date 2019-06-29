@@ -1,5 +1,5 @@
 <template lang="pug">
-  f7-page(:page-content="false" )
+  f7-page.open-account-mgr-pg(:page-content="false" )
     f7-toolbar(tabbar top)
       .a
         f7-link.wp_80(back)
@@ -39,5 +39,7 @@ export default {
 </script>
 
 <style lang="stylus">
-
+.open-account-mgr-pg
+  .page-content
+    padding-top 44px
 </style>

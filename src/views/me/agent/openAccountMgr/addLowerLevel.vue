@@ -13,22 +13,8 @@
     f7-row.set-header(v-show="isShowRebateLs")
       f7-col(width="50") 返点-返水设置：
       f7-col(width="50")
-        f7-button.ft_14(fill large @click="openUseAlreadySetDialog" @click.native="popupOpened = true") 使用已有下级的设置
+        f7-button.ft_14(fill large @click.native="popupOpened = true") 使用已有下级的设置
 
-    //- f7-list.rebate-ls(v-show="isShowRebateLs")
-    //-   f7-list-item(v-for="(item, i) in rebateRates" :key="i")
-    //-     f7-row.rebate-type-row
-    //-       f7-col(width="20") 
-    //-         span(class="c_orange") {{item.name || item.groupname}} 
-    //-       f7-col.ft_15(width="80") 
-    //-         span {{item.rebateTypeTxt}} 
-    //-         span(class="c_orange") {{item.$ || 0.00}}{{item.unitSymbal}} 
-    //-         span.c_g &nbsp;({{item.unitTxt}}{{item.$ || 0.00}})
-    //-     .rebate-swiper-wp
-    //-       .left-r(@click="swiperLeft(i)")
-    //-       f7-swiper.rebate-swiper(:params="swiperParams" v-show="item.$s" :ref="'rebateSwiper' + i")
-    //-         f7-swiper-slide(v-for="(rate, j) in item.$s" :key="j" @click.native="rebateItemHandler(rate, i, j)" :class="{active: (rate * 0.1).toFixed(1) === item.$}") {{(rate * 0.1).toFixed(1)}}{{item.unitSymbal}} 
-    //-       .right-r(@click="swiperRight(i)")
     RebateRate(:rebateRates="rebateRates" :show="isShowRebateLs" @update="updateRebateRates")
     f7-button.mg_10(fill large @click="openAccount") 开户
 
@@ -125,17 +111,7 @@ export default {
       }
       return true
     },
-    // rebateItemHandler (rate, i, j) {
-    //   this.rebateRates[i].$ = (rate * 0.1).toFixed(1)
-    // },
-    // swiperLeft (i) {
-    //   this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slideNext()
-    // },
-    // swiperRight (i) {
-    //   this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slidePrev()
-    // },
     rebateDataCB (data = []) {
-      // console.log(data)
       this.popupOpened = false
       if (data.length < 1) return
       this.rebateRates = this.rebateRates.map((item, j) => {
@@ -151,9 +127,7 @@ export default {
     },
     updateRebateRates (d) {
       this.rebateRates = d
-      console.log('rebateRates=', JSON.stringify(this.rebateRates))
-    },
-    openUseAlreadySetDialog () {}
+    }
   }
 }
 </script>

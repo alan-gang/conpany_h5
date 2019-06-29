@@ -87,7 +87,6 @@ export default {
           })
         }
         this.rebateRates = backWaterComb
-        console.log('rebateRates=', this.rebateRates)
       }, (rep) => {
         this.__back()
       })
