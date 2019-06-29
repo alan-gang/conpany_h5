@@ -212,7 +212,6 @@ export default {
       getCommonRow({n: '千位'}),
       getCommonRow({n: '百位'}),
       getCommonRow({n: '十位'}),
-      getCommonRow({n: '个位'}),
     ]
   },
 
@@ -233,7 +232,6 @@ export default {
       getCommonRow({n: '千位'}),
       getCommonRow({n: '百位'}),
       getCommonRow({n: '十位'}),
-      getCommonRow({n: '个位'}),
     ]
   },
 
