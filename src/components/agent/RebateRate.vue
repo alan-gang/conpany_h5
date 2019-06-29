@@ -1,20 +1,8 @@
 <template lang="pug">
   .rebate-rate-view(v-if="show")
     f7-list.rebate-ls
-      RebateRateRow(v-for="(item, i) in rebateRates" :key="i" :item="item" :i="i" :swiperParams="swiperParams" @update="update")
-      //- f7-list-item(v-for="(item, i) in rebateRates" :key="i")
-        //- f7-row.rebate-type-row
-        //-   f7-col(width="20") 
-        //-     span(class="c_orange") {{item.name || item.groupname}} 
-        //-   f7-col.ft_15(width="80") 
-        //-     span {{item.rebateTypeTxt}} 
-        //-     span(class="c_orange") {{item.$ || 0.00}}% 
-        //-     span.c_g &nbsp;({{item.unitTxt}}{{item.$ || 0.00}})
-        //- .rebate-swiper-wp
-        //-   .left-r(@click="swiperLeft(i)")
-        //-   f7-swiper.rebate-swiper(:params="swiperParams" v-show="item.$s" :ref="'rebateSwiper' + i")
-        //-     f7-swiper-slide(v-for="(rate, j) in item.$s" :key="j" @click.native="rebateItemHandler(rate, i, j)" :class="{active: (rate * 0.1).toFixed(1) === item.$}") {{(rate * 0.1).toFixed(1)}}%
-        //-   .right-r(@click="swiperRight(i)")
+      slot(name="rebateRateRow")
+        RebateRateRow(v-for="(item, i) in rebateRates" :key="i" :item="item" :i="i" :swiperParams="swiperParams" @update="update")
 </template>
 
 <script>
@@ -40,42 +28,11 @@ export default {
       }
     }
   },
-  data () {
-    return {
-    }
-  },
-  // watch: {
-  //   rebateRates () {
-  //     this.$nextTick(() => {
-  //       this.updateSwiperPosition()
-  //     })
-  //   }
-  // },
-  mounted () {
-    // this.$nextTick(() => {
-    //   this.updateSwiperPosition()
-    // })
-  },
   methods: {
     update (item, i, j) {
       this.rebateRates[i] = item
       this.$emit('update', this.rebateRates)
-    },
-    // updateSwiperPosition () {
-    //   for (let i = 0; i < this.rebateRates.length; i++) {
-    //     this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slideTo(this.rebateRates[i].$ / 0.1 - 1, 0)
-    //   }
-    // },
-    // rebateItemHandler (rate, i, j) {
-    //   this.rebateRates[i].$ = (rate * 0.1).toFixed(1)
-    //   this.$emit('update', this.rebateRates)
-    // },
-    // swiperLeft (i) {
-    //   this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slideNext()
-    // },
-    // swiperRight (i) {
-    //   this.$refs['rebateSwiper' + i] && this.$refs['rebateSwiper' + i][0].swiper.slidePrev()
-    // }
+    }
   }
 }
 </script>

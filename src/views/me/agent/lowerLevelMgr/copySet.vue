@@ -245,7 +245,6 @@ export default {
       } else {
         this.typeCheckeds.splice(this.typeCheckeds.indexOf(value), 1)
       }
-      console.log(JSON.stringify(this.typeCheckeds))
     },
     choiceUser (e) {
       const value = parseInt(e.target.value, 10)
@@ -258,7 +257,6 @@ export default {
       } else {
         this.removeUser(value)
       }
-      console.log(JSON.stringify(this.choiceUsers))
     },
     sync () {
       if (this.typeCheckeds.length < 1) {

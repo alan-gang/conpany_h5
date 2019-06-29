@@ -28,8 +28,7 @@ export default {
     item: {
       type: Object,
       default () {
-        return {
-        }
+        return {}
       }
     },
     swiperParams: {
@@ -48,7 +47,7 @@ export default {
   },
   data () {
     return {
-      isHighestRate: false
+      isHighestRate: false // 是否启用最高比率显示，1.只显示最高比较文案，2.比率不可调整
     }
   },
   watch: {
