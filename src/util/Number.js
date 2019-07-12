@@ -91,15 +91,15 @@ window.String.prototype._AtoN = function () {
 window.String.prototype._EtoN = function () {
   switch (this) {
     case '金':
-      return getNumberOfAnimal('猴').concat(getNumberOfAnimal('鸡')).sort()
+      return ('猴')._AtoN().concat(('鸡')._AtoN()).sort()
     case '木':
-      return getNumberOfAnimal('虎').concat(getNumberOfAnimal('兔')).sort()
+      return ('虎')._AtoN().concat(('兔')._AtoN()).sort()
     case '水':
-      return getNumberOfAnimal('鼠').concat(getNumberOfAnimal('猪')).sort()
+      return ('鼠')._AtoN().concat(('猪')._AtoN()).sort()
     case '火':
-      return getNumberOfAnimal('蛇').concat(getNumberOfAnimal('马')).sort()
+      return ('蛇')._AtoN().concat(('马')._AtoN()).sort()
     case '土':
-      return getNumberOfAnimal('牛').concat(getNumberOfAnimal('龙')).concat(getNumberOfAnimal('羊')).concat(getNumberOfAnimal('狗')).sort()
+      return ('牛')._AtoN().concat(('龙')._AtoN()).concat(('羊')._AtoN()).concat(('狗')._AtoN()).sort()
     default:
       return []
   }
