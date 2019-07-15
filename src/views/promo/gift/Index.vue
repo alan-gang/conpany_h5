@@ -15,7 +15,7 @@ f7-page.gift(:page-content="false")
             .text-color-deeporange.ft_24 {{ v.prizeAmount }}
             .text-color-black.ft_12 {{ v.activityName }}
             .text-color-gray.ft_12 {{ v.msg }}
-            f7-button.p_a.aa(fill :class=" {'color-gray': v.enable !== '1'} " @click=" v.activityType !== 3 ? getNow(v) : checkinNow(t) ") 
+            f7-button.p_a.aa(fill :class=" {'color-gray': v.enable !== '1'} " @click=" v.activityType !== 3 ? getNow(v) : checkinNow(v) ") 
               span 立即领取
 
     f7-tab#gift_2.page-content

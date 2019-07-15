@@ -16,6 +16,7 @@ export default {
   N
   */
   '1500:0' ({value}) {
+    this.func = `[N(value, 3).length, N(value, 3)]`
     return [N(value, 3).length, N(value, 3)]
   },
 
@@ -44,6 +45,7 @@ export default {
   N=输入的号码个数 N
   */
   '1502:0' ({value}) {
+    this.func = `[N(value, 3, 2).length, N(value, 3, 2)]`
     return [N(value, 3, 2).length, N(value, 3, 2)]
   },
 
@@ -60,6 +62,7 @@ export default {
   N=输入的号码个数 N
   */
   '1503:0' ({value}) {
+    this.func = `[N(value, 3, 1).length, N(value, 3, 1)]`
     return [N(value, 3, 1).length, N(value, 3, 1)]
   },
 
@@ -68,6 +71,7 @@ export default {
   N=输入的号码个数 N
   */
   '1504:0' ({value}) {
+    this.func = `[ON(value, 3, 2).length, ON(value, 3, 2)]`
     return [ON(value, 3, 2).length, ON(value, 3, 2)]
   },
 
@@ -97,6 +101,7 @@ export default {
   N
   */
   '1506:0' ({value}) {
+    this.func = `[N(value, 2).length, N(value, 2)]`
     return [N(value, 2).length, N(value, 2)]
   },
 
@@ -115,6 +120,7 @@ export default {
   N
   */
   '1507:0' ({value}) {
+    this.func = `[N(value, 2, 1).length, N(value, 2, 1)]`
     return [N(value, 2, 1).length, N(value, 2, 1)]
   },
   /* ..............后二直选............... */
@@ -132,6 +138,7 @@ export default {
   N
   */
   '1508:0' ({value}) {
+    this.func = `[N(value, 2).length, N(value, 2)]`
     return [N(value, 2).length, N(value, 2)]
   },
 
@@ -149,6 +156,7 @@ export default {
   同前二
   */
   '1509:0' ({value}) {
+    this.func = `[N(value, 2, 1).length, N(value, 2, 1)]`
     return [N(value, 2, 1).length, N(value, 2, 1)]
   },
 

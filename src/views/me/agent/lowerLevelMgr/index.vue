@@ -8,17 +8,19 @@
           i {{breadcrumb.length > 1 && i !== breadcrumb.length - 1  ? '>' : ''}}
       f7-col(width="15" @click="showSearchBar = true")
         .icon-search
-    f7-row.bgc_f.pl_25.search-condi-bar
+    
+    f7-row.bgc_f.pl_25.search-condi-bar.c_6
       f7-col.flex.flex-jc-s(@click="(filterType = 1) && (showFilter = !showFilter) && (rns_ = true)")
-        span(v-show="condiRegisterDate.indexOf('至') == -1") 注册时间:
+        span(v-show="condiRegisterDate.indexOf('至') == -1") 注册时间：
         span.pl_5 {{condiRegisterDate}}
         span.inlb.icon-triangle-wp
           Triangle(:direction="filterType == 1 && showFilter ? 'up' : 'down'")
       f7-col.flex.flex-jc-s(@click="(filterType = 2) && (showFilter = !showFilter) && (rns_ = true)")
-        span 排序方式:
-        span.pl_5 注册时间
+        span 排序方式：
+        span.pl_5 {{ curOrderObject.name }}
         span.inlb.icon-triangle-wp
           Triangle(:direction="filterType == 2 && showFilter ? 'up' : 'down'")
+
     //- 搜索框
     .p_a.wp_100.p_t_0.z_9503.ft_14.search-bar(v-show="showSearchBar")
       f7-searchbar(
@@ -51,7 +53,7 @@
           .ptr-preloader
             .preloader
             .ptr-arrow
-          .user-list-wp.ft_12
+          .user-list-wp
             f7-card(v-for=" (d, i) in lowerLevelData " :key="i")
               f7-card-header
                 f7-row.w-100p
@@ -68,43 +70,44 @@
                       span 操作
                       span.inlb
                         Triangle(direction="down")
-              f7-card-content.pb_10
-                f7-row.pb_10
-                  f7-col(width="45")
+              f7-card-content.pt_0.pb_0
+                f7-row.pb_5.pt_10
+                  f7-col(width="50")
                     span.c_9 账户余额：
                     span {{d.teamBalance}}
-                  f7-col(width="55")
+                  f7-col(width="50")
                     span.c_9 最后登录：
-                    span {{fixDateStr(d.lastTime)}}
+                    span {{ fixDateStr(d.lastTime).split(' ')[0] }}
                 f7-row.pb_10
-                  f7-col(width="45")
+                  f7-col(width="50")
                     span.c_9 注册方式：
                     span {{ d.isAuto ? '自动' : '手动' }}
-                  f7-col(width="55")
+                  f7-col(width="50")
                     span.c_9 注册时间：
-                    span {{fixDateStr(d.registerTime)}}
+                    span {{ fixDateStr(d.registerTime).split(' ')[0] }}
 
                 .ex-info(v-show="d.showDetail")
-                  f7-row.b-t.pt_10
-                    f7-col(width="45")
+                  f7-row.b-t.pt_10.pb_5
+                    f7-col(width="50")
                       span.c_9 团队人数：
                       span {{d.teamCount}}
-                    f7-col(width="55")
+                    f7-col(width="50")
                       span.c_9 团队余额：
                       span {{d.teamBalance}}
                   f7-row.b-b.pb_10
-                    f7-col(width="45")
+                    f7-col(width="50")
                       span.c_9 给下级转账：
-                      span {{canTopUp ? '已开通' : '未开通'}}
-                  .rebates-wp.b-b.pt_10.pb_10
+                      span(v-state="true") {{canTopUp ? '已开通' : '未开通'}}
+                  .rebates-wp.b-b.pt_10.pb_5
                     f7-row
-                      f7-col(width="50" v-for="(rebate, i) in d.rebates")
+                      f7-col.pb_5(:width=" i % 2 ? 50 : 45 " v-for="(rebate, i) in d.rebates")
                         span.c_9 {{rebate.name}}：
                         span {{rebate.userPoint}}
+
                   f7-row.pt_10.pb_10(v-if="showSalary")
                     f7-col
                       span.c_9 日工资：
-                      span 团队销售&gt;={{d.teamSales}}, 有效人数&gt;={{d.actUser}}, 每1万{{d.daySalary}}。
+                      span 团队销售&gt;={{d.teamSales}}, 有效人数&gt;={{d.actUser}}, 每1万{{d.daySalary}}
                   .cp-rules.pb_10(v-if="showcpfh && d.cp.myBounCpArr && d.cp.myBounCpArr.length >= 0")
                     f7-row.b-t.pt_10.pb_10
                       f7-col
@@ -186,6 +189,7 @@ export default {
       showTipBar: true,
       rns_: false,
       orderTypes: [{id: '3', name: '注册时间'}, {id: '4', name: '最后登录'}, {id: '2', name: '账户余额'}],
+      curOrderObject: {id: '3', name: '注册时间'},
       curOrderType: '',
       maxDaySalary: 0,
       name: '',
@@ -304,6 +308,7 @@ export default {
       })
     },
     orderTypeChange (v, i) {
+      this.curOrderObject = v
       this.curOrderType = v.id
     },
     viewSubLevel (subUserId) {

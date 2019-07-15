@@ -18,7 +18,7 @@ f7-app(:params=" f7Params ")
   //- f7-view(url="/" :main="true" :push-state="true")
   f7-view(url="/" :main="true")
   // Popup. All modals should be outside of Views
-  f7-popup#login(@popup:opened=" __getcodeimg ")
+  f7-popup#login(@popup:opened=" __getcodeimg() || __setCall({fn: '__initLoginPopup'}) ")
     f7-view(url="/login")
 
   f7-popup#forget
@@ -175,6 +175,13 @@ export default {
     },
     __login ({un, pwd, code, cb, isAuto}) {
       this.$.get(api.__login + (isAuto ? '&' : ''), {userName: un, userPwd: pwd, verifyCode: code, channelType: this.local.pf, isAuto: isAuto, $anyway: this.__getUserPrefence}).then(({data}) => {
+        this.__setUser(Object.assign(data, {login: true}))
+        this.__getBalance()
+        cb && cb()
+      })
+    },
+    __tryLogin ({code, cb}) {
+      this.$.get(api.__tryLogin, {verifyCode: code, channelType: this.local.pf}).then(({data}) => {
         this.__setUser(Object.assign(data, {login: true}))
         this.__getBalance()
         cb && cb()

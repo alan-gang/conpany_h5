@@ -70,14 +70,7 @@ export default {
     ]
   },
   // title: '猜前四名单式
-  '4017:0' () {
-    return [
-      getCommonRow({n: '冠军'}),
-      getCommonRow({n: '亚军'}),
-      getCommonRow({n: '季军'}),
-      getCommonRow({n: '第四名'}),
-    ]
-  },
+  '4017:0' () {},
   // title: '猜三四名复式'
   '4015:1' () {
     return [
@@ -90,7 +83,7 @@ export default {
   // title: '龙虎
   '4011:1' () {
     return [
-      getCommonRow({n: '龙虎', exclu: true, vs: [{s: false, n: '龙', v: 1}, {s: false, n: '虎', v: 1}]}),
+      getCommonRow({n: '龙虎', exclu: true, btns: [], vs: [{s: false, n: '龙', v: 1}, {s: false, n: '虎', v: 1}]}),
     ]
   },
   // title: '定位胆

@@ -34,7 +34,7 @@ f7-page.register.bg-color-white
 
   .t_c
     span.v_m 已有帐户，去
-    f7-button.inlb(@click="$f7.popup.open('#login')" popup-close="#register") 登录
+    f7-button.inlb(@click="__setCall({fn: '__initLoginPopup'}) || $f7.popup.open('#login')" popup-close="#register") 登录
 
 
 </template>

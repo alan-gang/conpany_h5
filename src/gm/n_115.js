@@ -38,6 +38,7 @@ export default {
    *直选单式  N
    **/
   '2001:0' ({value}) {
+    this.func = `[N(value, 6, 1, 2, 11, 1).length, N(value, 6, 1, 2, 11, 1)]`
     return [N(value, 6, 1, 2, 11, 1).length, N(value, 6, 1, 2, 11, 1)]
   },
   /*
@@ -50,6 +51,7 @@ export default {
    *组选单式  N
    **/
   '2003:0' ({value}) {
+    this.func = `[N(value, 6, 1, 2, 11, 1).length, N(value, 6, 1, 2, 11, 1)]`
     return [N(value, 6, 1, 2, 11, 1).length, N(value, 6, 1, 2, 11, 1)]
   },
   /*
@@ -65,6 +67,7 @@ export default {
   },
    // '直选单式',
   '2036:0' ({value}) {
+    this.func = `[N(value, 4, 1, 2, 11, 1).length, N(value, 4, 1, 2, 11, 1)]`
     return [N(value, 4, 1, 2, 11, 1).length, N(value, 4, 1, 2, 11, 1)]
   },
    // '组选复式',
@@ -73,6 +76,7 @@ export default {
   },
    // '组选单式',
   '2037:0' ({value}) {
+    this.func = `[N(value, 4, 1, 2, 11, 1).length, N(value, 4, 1, 2, 11, 1)]`
     return [N(value, 4, 1, 2, 11, 1).length, N(value, 4, 1, 2, 11, 1)]
   },
    // '组选胆拖',
@@ -121,34 +125,42 @@ export default {
   },
    // '一中一',
   '2018:0' ({value}) {
+    this.func = `[N(value, 2, 1, 2, 11, 1).length, N(value, 2, 1, 2, 11, 1)]`
     return [N(value, 2, 1, 2, 11, 1).length, N(value, 2, 1, 2, 11, 1)]
   },
    // '二中二',
   '2019:0' ({value}) {
+    this.func = `[N(value, 4, 1, 2, 11, 1).length, N(value, 4, 1, 2, 11, 1)]`
     return [N(value, 4, 1, 2, 11, 1).length, N(value, 4, 1, 2, 11, 1)]
   },
    // '三中三',
   '2020:0' ({value}) {
+    this.func = `[N(value, 6, 1, 2, 11, 1).length, N(value, 6, 1, 2, 11, 1)]`
     return [N(value, 6, 1, 2, 11, 1).length, N(value, 6, 1, 2, 11, 1)]
   },
    // '四中四',
   '2021:0' ({value}) {
+    this.func = `[N(value, 8, 1, 2, 11, 1).length, N(value, 8, 1, 2, 11, 1)]`
     return [N(value, 8, 1, 2, 11, 1).length, N(value, 8, 1, 2, 11, 1)]
   },
    // '五中五',
   '2022:0' ({value}) {
+    this.func = `[N(value, 10, 1, 2, 11, 1).length, N(value, 10, 1, 2, 11, 1)]`
     return [N(value, 10, 1, 2, 11, 1).length, N(value, 10, 1, 2, 11, 1)]
   },
    // '六中五',
   '2023:0' ({value}) {
+    this.func = `[N(value, 12, 1, 2, 11, 1).length, N(value, 12, 1, 2, 11, 1)]`
     return [N(value, 12, 1, 2, 11, 1).length, N(value, 12, 1, 2, 11, 1)]
   },
    // '七中五',
   '2024:0' ({value}) {
+    this.func = `[N(value, 14, 1, 2, 11, 1).length, N(value, 14, 1, 2, 11, 1)]`
     return [N(value, 14, 1, 2, 11, 1).length, N(value, 14, 1, 2, 11, 1)]
   },
    // '八中五',
   '2025:0' ({value}) {
+    this.func = `[N(value, 16, 1, 2, 11, 1).length, N(value, 16, 1, 2, 11, 1)]`
     return [N(value, 16, 1, 2, 11, 1).length, N(value, 16, 1, 2, 11, 1)]
   },
    // '二中二',

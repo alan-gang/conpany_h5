@@ -392,7 +392,7 @@ export default {
   */
   '578:1' () {
     return  [
-      getCommonRow({n: '跨度', min: 0, max: 27}),
+      getCommonRow({n: '跨度'}),
     ]
   },
 
@@ -472,7 +472,7 @@ export default {
   */
   '577:1' () {
     return  [
-      getCommonRow({n: '特殊号', vs: [{s: false, n: '豹', v: '1'}, {s: false, n: '顺', v: '2'}, {s: false, n: '对', v: '3'}]}),
+      getCommonRow({n: '特殊号', btns: [], vs: [{s: false, n: '豹', v: '1'}, {s: false, n: '顺', v: '2'}, {s: false, n: '对', v: '3'}]}),
     ]
   },
 
@@ -578,7 +578,7 @@ export default {
   */
   '582:1' () {
     return  [
-      getCommonRow({n: '包胆', sl: 1}),
+      getCommonRow({n: '包胆', sl: 1, btns: []}),
     ]
   },
 
@@ -597,7 +597,7 @@ export default {
   */
   '574:1' () {
     return  [
-      getCommonRow({n: '特殊号', vs: [{s: false, n: '豹', v: '1'}, {s: false, n: '顺', v: '2'}, {s: false, n: '对', v: '3'}]}),
+      getCommonRow({n: '特殊号', btns: [], vs: [{s: false, n: '豹', v: '1'}, {s: false, n: '顺', v: '2'}, {s: false, n: '对', v: '3'}]}),
     ]
   },
 
@@ -699,7 +699,7 @@ export default {
   */
   '580:1' () {
     return  [
-      getCommonRow({n: '包胆', sl: 1}),
+      getCommonRow({n: '包胆', sl: 1, btns: []}),
     ]
   },
 
@@ -718,7 +718,7 @@ export default {
   */
   '564:1' () {
     return  [
-      getCommonRow({n: '特殊号', vs: [{s: false, n: '豹', v: '1'}, {s: false, n: '顺', v: '2'}, {s: false, n: '对', v: '3'}]}),
+      getCommonRow({n: '特殊号', btns: [], vs: [{s: false, n: '豹', v: '1'}, {s: false, n: '顺', v: '2'}, {s: false, n: '对', v: '3'}]}),
     ]
   },
 
@@ -780,7 +780,7 @@ export default {
   */
   '901:1' () {
     return  [
-      getCommonRow({n: '包胆', sl: 1}),
+      getCommonRow({n: '包胆', sl: 1, btns: []}),
     ]
   },
 
@@ -838,7 +838,7 @@ export default {
   */
   '897:1' () {
     return  [
-      getCommonRow({n: '包胆', sl: 1}),
+      getCommonRow({n: '包胆', sl: 1, btns: []}),
     ]
   },
 
@@ -1197,8 +1197,8 @@ export default {
   */
   '37:1' () {
     return  [
-      getCommonRow({n: '万位', vs: [{s: false, n: '大', v: '1'}, {s: false, n: '小', v: '2'}, {s: false, n: '单', v: '3'}, {s: false, n: '双', v: '4'}]}),
-      getCommonRow({n: '千位', vs: [{s: false, n: '大', v: '1'}, {s: false, n: '小', v: '2'}, {s: false, n: '单', v: '3'}, {s: false, n: '双', v: '4'}]}),
+      getCommonRow({n: '万位', btns: [], vs: [{s: false, n: '大', v: '1'}, {s: false, n: '小', v: '2'}, {s: false, n: '单', v: '3'}, {s: false, n: '双', v: '4'}]}),
+      getCommonRow({n: '千位', btns: [], vs: [{s: false, n: '大', v: '1'}, {s: false, n: '小', v: '2'}, {s: false, n: '单', v: '3'}, {s: false, n: '双', v: '4'}]}),
     ]
   },
   /*
@@ -1207,8 +1207,8 @@ export default {
   */
   '38:1' () {
     return  [
-      getCommonRow({n: '十位', vs: [{s: false, n: '大', v: '1'}, {s: false, n: '小', v: '2'}, {s: false, n: '单', v: '3'}, {s: false, n: '双', v: '4'}]}),
-      getCommonRow({n: '个位', vs: [{s: false, n: '大', v: '1'}, {s: false, n: '小', v: '2'}, {s: false, n: '单', v: '3'}, {s: false, n: '双', v: '4'}]}),
+      getCommonRow({n: '十位', btns: [], vs: [{s: false, n: '大', v: '1'}, {s: false, n: '小', v: '2'}, {s: false, n: '单', v: '3'}, {s: false, n: '双', v: '4'}]}),
+      getCommonRow({n: '个位', btns: [], vs: [{s: false, n: '大', v: '1'}, {s: false, n: '小', v: '2'}, {s: false, n: '单', v: '3'}, {s: false, n: '双', v: '4'}]}),
     ]
   },
 
@@ -1318,7 +1318,7 @@ export default {
   */
   '1201:1' () {
     return [
-      getCommonRow({n: '斗牛', vs: [{s: false, n: '牛一', v: '1'}, {s: false, n: '牛二', v: '2'}, {s: false, n: '牛三', v: '3'}, {s: false, n: '牛四', v: '4'}, {s: false, n: '牛五', v: '5'}, {s: false, n: '牛六', v: '6'}, {s: false, n: '牛七', v: '7'}, {s: false, n: '牛八', v: '8'}, {s: false, n: '牛九', v: '9'}, {s: false, n: '牛牛', v: '10'}, {s: false, n: '没牛', v: '11'}]}),
+      getCommonRow({n: '斗牛', btns: [], vs: [{s: false, n: '牛一', v: '1'}, {s: false, n: '牛二', v: '2'}, {s: false, n: '牛三', v: '3'}, {s: false, n: '牛四', v: '4'}, {s: false, n: '牛五', v: '5'}, {s: false, n: '牛六', v: '6'}, {s: false, n: '牛七', v: '7'}, {s: false, n: '牛八', v: '8'}, {s: false, n: '牛九', v: '9'}, {s: false, n: '牛牛', v: '10'}, {s: false, n: '没牛', v: '11'}]}),
     ]
   }
 }

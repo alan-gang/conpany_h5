@@ -47,6 +47,9 @@ export default {
       '待确认': 'c_p',
       '处理中': 'c_p',
       '待充值': 'c_p',
+
+      '已开通': 'c_s',
+      '未开通': 'c_g',
     },
     stateColor: {
       0: 'orange',

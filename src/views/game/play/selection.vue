@@ -199,7 +199,7 @@ export default {
         pos: this.pvc,
         codes: this.__getCodes(),
         count: this.n,
-        times: this.local.$t,
+        times: this.local.$t * 1,
         money: this.m_,
         mode: (String(this.local.$).split('.')[1] || '').length + 1,
         userpoint: this.userpoint.toFixed(3),

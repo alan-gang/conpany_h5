@@ -36,7 +36,7 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
         .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
             .stepper-button-minus
             .stepper-input-wrap
-              input.inlb.v_m(type='number' v-model=" times " min='1', max='10000', step='1')
+              input.inlb.v_m(pattern="[0-9]*" type='number' v-model=" times " min='1', max='10000', step='1')
             .stepper-button-plus
         span.pl_10 倍
 
@@ -45,7 +45,7 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
         .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
             .stepper-button-minus
             .stepper-input-wrap
-              input.inlb.v_m(type='number' v-model=" span " min='1', max='10000', step='1')
+              input.inlb.v_m(pattern="[0-9]*" type='number' v-model=" span " min='1', max='10000', step='1')
             .stepper-button-plus
         span.pl_10 期
 
@@ -53,14 +53,14 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
         span.inlb.w_100 倍数&nbsp;&nbsp;&nbsp;&nbsp;x
         .inlb.w_105
           f7-input.hlh_25.border-gray(validate require outline pattern="[0-9]*"  )
-            input.t_c.hlh_25(type="number" v-model=" xtimes " )
+            input.t_c.hlh_25(pattern="[0-9]*" type="number" v-model=" xtimes " )
         span.pl_10 倍
 
       .hlh_30.mb_10(v-show=" tabIndex === 0 ")
         span.inlb.w_100 利润率
         .inlb.w_105
           f7-input.hlh_25.border-gray(validate require outline pattern="[0-9]*"  )
-            input.t_c.hlh_25(type="number" v-model=" profit " )
+            input.t_c.hlh_25(pattern="[0-9]*" type="number" v-model=" profit " )
         span.pl_10 %
 
 
@@ -69,7 +69,7 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
         .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
             .stepper-button-minus
             .stepper-input-wrap
-              input.inlb.v_m(type='number' v-model=" count " min='1', max='10000', step='1')
+              input.inlb.v_m(pattern="[0-9]*" type='number' v-model=" count " min='1', max='10000', step='1')
             .stepper-button-plus
         span.pl_10 期
     
@@ -94,11 +94,11 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
             td.label-cell.t_l.wp_25 {{ v.issue }}
             td.label-cell.t_c.wp_20
               f7-input.hlh_25.border-gray(validate require outline pattern="[0-9.]*"  )
-                input.hlh_25.t_c(type="number" v-model=" v.times " style="padding: 0 5px")
+                input.hlh_25.t_c(pattern="[0-9]*" type="number" v-model=" v.times " style="padding: 0 5px")
 
             td.label-cell.t_r.wp_25 
               f7-button.pd_0(color="black") {{ (v.times * NA.a)._f3() }}
-            td.label-cell.t_r.wp_30.ft_12 {{ v.saleend }}
+            td.label-cell.t_r.wp_30.ft_12 {{ v.saleend.split('.')[0] }}
 
 </template>
 
@@ -245,7 +245,6 @@ export default {
 @import '~src/css/var.stylus'
 // 建议不添加scoped， 所有样式最多嵌套2层
 .chase
-  // --f7-input-outline-border-color #efefef
   table
     table-layout fixed
   .null_scroll

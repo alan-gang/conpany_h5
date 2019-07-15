@@ -7,7 +7,7 @@
       f7-input.hlh_30.border-gray(outline)
         input.hlh_30.t_c.with_following-msg(validate pattern="[0-9]*" type="number" v-model=" local.$m " style="padding: 0 5px" placeholder="快速金额")
     span.pl_10
-    f7-list.inline-picker.border-gray.mg_0.r_5.o_h(no-hairlines)
+    f7-list.inline-picker.border-gray.mg_0.r_5.o_h(no-hairlines v-if=" t !== 'kq' ")
       f7-list-item.hlh_28.ft_14(title="模式" smart-select :smart-select-params="{openIn: 'popover'}")
         select(v-model=" local.$$ ")
           option(:value="v.v" v-for=" (v, i) in btns " :key="i") {{ v.n }}
@@ -30,8 +30,8 @@ export default {
       btns: [
         {n: '元', v: 1},
         {n: '角', v: 0.1},
-        {n: '分', v: 0.01},
-        {n: '厘', v: 0.001},
+        // {n: '分', v: 0.01},
+        // {n: '厘', v: 0.001},
       ],
     }
   },

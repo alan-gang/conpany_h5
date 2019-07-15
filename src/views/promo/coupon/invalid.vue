@@ -1,6 +1,7 @@
 <template lang="pug">
 
 f7-page.coupon_3(infinite :infinite-distance="50" :infinite-preloader="showPreloader" @infinite="loadMore" ptr :ptr-mousewheel="true" @ptr:refresh="refresh")
+  .pd_15.t_c.text-color-gray(v-if="!data[0]") 您没有已失效的优惠券~
   f7-card(v-for=" (v, i) in data " :key=" i ")
     f7-card-content.a.text-color-white.goods_gray
       .mh_80

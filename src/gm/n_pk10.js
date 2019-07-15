@@ -10,7 +10,7 @@ export default {
   },
   // title: '猜冠亚军单式
   '4013:0' ({value}) {
-    // return [N(value, 5).length, N(value, 5)]
+    this.func = `[N(value, 4, 1, 2, 10, 1).length, N(value, 4, 1, 2, 10, 1)]`
     return [N(value, 4, 1, 2, 10, 1).length, N(value, 4, 1, 2, 10, 1)]
   },
   // title: '猜前三名
@@ -27,7 +27,7 @@ export default {
   },
   // title: '猜前三名单式
   '4016:0' ({value}) {
-    // return [N(value, 5).length, N(value, 5)]
+    this.func = `[N(value, 6, 1, 2, 10, 1).length, N(value, 6, 1, 2, 10, 1)]`
     return [N(value, 6, 1, 2, 10, 1).length, N(value, 6, 1, 2, 10, 1)]
   },
   // title: '猜前四名
@@ -46,7 +46,7 @@ export default {
   },
   // title: '猜前四名单式
   '4017:0' ({value}) {
-    // return [N(value, 5).length, N(value, 5)]
+    this.func = `[N(value, 8, 1, 2, 10, 1).length, N(value, 8, 1, 2, 10, 1)]`
     return [N(value, 8, 1, 2, 10, 1).length, N(value, 8, 1, 2, 10, 1)]
   },
   // title: '猜三四名复式'
@@ -55,7 +55,7 @@ export default {
   },
   // title: '猜三四名单式'
   '4014:0' ({value}) {
-    // return [N(value, 5).length, N(value, 5)]
+    this.func = `[N(value, 4, 1, 2, 10, 1).length, N(value, 4, 1, 2, 10, 1)]`
     return [N(value, 4, 1, 2, 10, 1).length, N(value, 4, 1, 2, 10, 1)]
   },
   // title: '龙虎

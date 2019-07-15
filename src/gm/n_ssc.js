@@ -34,6 +34,7 @@ export default {
   N
    */
   '377:0' ({value}) {
+    this.func = `[N(value, 5).length, N(value, 5)]`
     return [N(value, 5).length, N(value, 5)]
   },
 
@@ -144,6 +145,7 @@ export default {
   N N=输入的号码个数
    */
   '1121:0' ({value}) {
+    this.func = `[N(value, 4).length, N(value, 4)]`
     return [N(value, 4).length, N(value, 4)]
   },
 
@@ -202,6 +204,7 @@ export default {
   同前四 同前四
   */
   '382:0' ({value}) {
+    this.func = `[N(value, 4).length, N(value, 4)]`
     return [N(value, 4).length, N(value, 4)]
   },
 
@@ -243,7 +246,7 @@ export default {
   同前四 同前四
   */
   '558:1' ({nsl, r}) {
-    return C(nsl[0], 2)
+    return C(nsl[0], 1) * C(nsl[1], 1) - C(r, 1)
   },
 
   /* *************************************前三*********************************** */
@@ -261,6 +264,7 @@ export default {
   N
   */
   '14:0' ({value}) {
+    this.func = `[N(value, 3).length, N(value, 3)]`
     return [N(value, 3).length, N(value, 3)]
   },
 
@@ -300,6 +304,7 @@ export default {
   N=输入的号码个数 N
   */
   '18:0' ({value}) {
+    this.func = `[N(value, 3, 2).length, N(value, 3, 2)]`
     return [N(value, 3, 2).length, N(value, 3, 2)]
   },
 
@@ -316,6 +321,7 @@ export default {
   N=输入的号码个数 N
   */
   '19:0' ({value}) {
+    this.func = `[N(value, 3, 1).length, N(value, 3, 1)]`
     return [N(value, 3, 1).length, N(value, 3, 1)]
   },
 
@@ -324,6 +330,7 @@ export default {
   N=输入的号码个数 N
   */
   '20:0' ({value}) {
+    this.func = `[ON(value, 3, 2).length, ON(value, 3, 2)]`
     return [ON(value, 3, 2).length, ON(value, 3, 2)]
   },
 
@@ -586,6 +593,7 @@ export default {
   N
   */
   '28:0' ({value}) {
+    this.func = `[N(value, 2).length, N(value, 2)]`
     return [N(value, 2).length, N(value, 2)]
   },
 
@@ -616,6 +624,7 @@ export default {
   N
   */
   '30:0' ({value}) {
+    this.func = `[N(value, 2, 1).length, N(value, 2, 1)]`
     return [N(value, 2, 1).length, N(value, 2, 1)]
   },
 
@@ -643,6 +652,7 @@ export default {
   N
   */
   '29:0' ({value}) {
+    this.func = `[N(value, 2).length, N(value, 2)]`
     return [N(value, 2).length, N(value, 2)]
   },
 
@@ -671,6 +681,7 @@ export default {
   同前二
   */
   '31:0' ({value}) {
+    this.func = `[N(value, 2, 1).length, N(value, 2, 1)]`
     return [N(value, 2, 1).length, N(value, 2, 1)]
   },
 
@@ -821,6 +832,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 2) * N
   */
   '410:0' ({value, psl}) {
+    this.func = `[C(psl, 2) * N(value, 2).length, N(value, 2)]`
     return [C(psl, 2) * N(value, 2).length, N(value, 2)]
   },
 
@@ -837,6 +849,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 2) * N
   */
   '412:0' ({psl, value}) {
+    this.func = `[C(psl, 2) * N(value, 2).length, N(value, 2)]`
     return [C(psl, 2) * N(value, 2).length, N(value, 2)]
   },
 
@@ -861,6 +874,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 3) * N
   */
   '417:0' ({psl, value}) {
+    this.func = `[C(psl, 3) * N(value, 3).length, N(value, 3)]`
     return [C(psl, 3) * N(value, 3).length, N(value, 3)]
   },
 
@@ -878,6 +892,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 3) * N
   */
   '418:0' ({psl, value}) {
+    this.func = `[C(psl, 3) * N(value, 3, 2).length, N(value, 3, 2)]`
     return [C(psl, 3) * N(value, 3, 2).length, N(value, 3, 2)]
   },
 
@@ -893,6 +908,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 3) * N
   */
   '421:0' ({psl, value}) {
+    this.func = `[C(psl, 3) * N(value, 3, 1).length, N(value, 3, 1)]`
     return [C(psl, 3) * N(value, 3, 1).length, N(value, 3, 1)]
   },
   /*
@@ -900,6 +916,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 3) * N
   */
   '907:0' ({psl, value}) {
+    this.func = `[C(psl, 3) * ON(value, 3, 2).length, ON(value, 3, 2)]`
     return [C(psl, 3) * ON(value, 3, 2).length, ON(value, 3, 2)]
   },
 
@@ -924,6 +941,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 4) * N
   */
   '419:0' ({psl, value}) {
+    this.func = `[C(psl, 4) * N(value, 4).length, N(value, 4)]`
     return [C(psl, 4) * N(value, 4).length, N(value, 4)]
   },
 

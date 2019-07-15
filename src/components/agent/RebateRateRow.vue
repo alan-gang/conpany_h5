@@ -72,10 +72,10 @@ export default {
       this.$emit('update', this.item, i, j)
     },
     swiperLeft (i) {
-      this.$refs['rebateSwiper'] && this.$refs['rebateSwiper'].swiper.slideNext()
+      this.$refs['rebateSwiper'] && this.$refs['rebateSwiper'].swiper.slidePrev()
     },
     swiperRight (i) {
-      this.$refs['rebateSwiper'] && this.$refs['rebateSwiper'].swiper.slidePrev()
+      this.$refs['rebateSwiper'] && this.$refs['rebateSwiper'].swiper.slideNext()
     }
   }
 }

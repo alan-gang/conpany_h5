@@ -64,6 +64,9 @@ export default {
   created () {
   },
   methods: {
+    __initLoginPopup () {
+      this.tryPlay = false
+    },
     __loginSuccess () {
       this.code = ''
       !this.tryPlay && this.__setLocal({

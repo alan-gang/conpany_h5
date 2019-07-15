@@ -23,7 +23,7 @@ f7-page.car
         span.text-color-deeporange {{ NA.n }}
         span  注
       f7-col.t_r(width="25")
-        span.text-color-deeporange {{ NA.a }}
+        span.text-color-deeporange {{ NA.a._f3() }}
         span  元
         
       f7-col(width="25")
@@ -41,11 +41,6 @@ f7-page.car
           f7-list-item.hlh_25(title="期号" smart-select :smart-select-params="{openIn: 'sheet'}" ref="issuevm")
             select(v-model=" issue ")
               option(:value=" v.issue " v-for=" (v, i) in issueList " :key=" i ") {{ v.issue }} {{ i === 0 ? '(当前期)' : '' }}
-
-  
-  //- swipeout @swipeout:deleted="onDeleted"
-  //- f7-swipeout-actions(right='')
-      f7-swipeout-button(delete='') Delete
 
 
   f7-list.mg_10.no_border(no-hairlines v-for=" (v, i) in __$car " :key=" '' + i + v.methodid + v.count + v.codes.slice(0, 6) ")
@@ -66,12 +61,8 @@ f7-page.car
               span.text-color-orange {{ v.money._f3() }} 
               span 元
             div
-              .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
-                .stepper-button-minus
-                .stepper-input-wrap
-                  input.inlb.v_m(type='number' pattern="[0-9]*" v-model=" v.times " min='1', max='10000', step='1' @change=" update(v) ")
-                //- span.inlb.hp_100 倍
-                .stepper-button-plus
+              f7-stepper.v_m(small pattern="[0-9]*" color="gray" :value=" v.times " :min="1" :max="1000" :step="1" @stepper:change=" update((v.times = $event) ? v : v) ")
+              
               span.pd_5
               .list.inline-picker.border-gray
                 ul(style="padding-left: 0")
