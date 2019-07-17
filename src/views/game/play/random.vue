@@ -30,7 +30,7 @@ export default {
      */
     // 重复号码 === r
     // let N = (value, N, r, l, max, min)
-    __randomValue () {
+    __randomValue (ntforcar) {
       let fuc = this.N[this.mid].toString().match(/\(value, ([^)]*)\)/) ? this.N[this.mid].toString() : this.N[this.N[this.mid].toString().match(/\d+:\d/)[0]].toString()
       let x = fuc.replace(/\n/g).replace(/.*\(value, ([^)]*)\).*/, '$1').replace(/\s/g, '').split(',')
       let n = x[0] * 1
@@ -47,9 +47,11 @@ export default {
         result.push(r-- > 0 ? pre : this.__randomANumber({min, max, notin: r <= 0 ? result : undefined}))
       })
       this.value_ = result.map(x => x._padStart(l || 1, '0')).join('')
-      this.$nextTick(() => {
-        this.n && this.__addToCar()
-      })
+      if (!ntforcar) {
+        this.$nextTick(() => {
+          this.n && this.__addToCar()
+        })
+      }
     },
     __randomANumber ({min = 0, max = 9, notin}) {
       let n = Math.round(Math.random() * (max - min) + min)

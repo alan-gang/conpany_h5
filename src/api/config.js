@@ -8,7 +8,7 @@ let $f7 = null
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 // axios.defaults.withCredentials = true
 // axios.defaults.headers['X-Requested-With'] = 'XMLHttpRequest'
-axios.defaults.timeout = 10000
+axios.defaults.timeout = 25 * 1000
 axios.interceptors.request.use((config) => {
   $f7 = axios.$root.$f7
   // preloader

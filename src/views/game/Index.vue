@@ -9,7 +9,7 @@ f7-page.game(:page-content="false")
       f7-link.text-color-black.with-underline-active(tab-link href="#game_collect" ) 收藏
 
     f7-nav-right
-      f7-link.n.w_50.pl_15.ft_14(color="white" @click=" __setCall({fn: '__showTab', args: '#game_all_3'}) ") 特色
+      f7-link.n.w_50.pl_15.ft_14(color="white" @click=" __setCall({fn: '__showTab', args: '#game_all'}) || __setCall({fn: '__showTab', args: '#game_all_3'}) ") 特色
 
   f7-tabs
     f7-tab#game_all.tab-active(@tab:show=" tabShow ")

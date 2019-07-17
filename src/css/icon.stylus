@@ -72,7 +72,7 @@ urls = {
     _load_jd: '~src/assets/load/recharge_icon_jdzf',
     _load_unionpay: '~src/assets/load/recharge_icon_ylzf',
     _load_bank: '~src/assets/load/recharge_icon_ylzf',
-    _load_wexin: '~src/assets/load/recharge_icon_wxzf',
+    _load_weixin: '~src/assets/load/recharge_icon_wxzf',
     _load_qqwallet: '~src/assets/load/recharge_icon_ylzf',
     _load_bdwallet: '~src/assets/load/recharge_icon_ylzf',
     _load_fast: '~src/assets/load/recharge_icon_kjzz',

@@ -36,7 +36,7 @@
         //- f7-list-input.hlh_40.mt_10.bgc_pc(label='结束时间' type='date' readonly  placeholder="请选择"   :value=" cache.stet[1] " )
 
         f7-list-input.hlh_40.mt_10.bgc_pc(ref="st" label='开始时间', type='datepicker', :placeholder=' st ',  :calendar-params="{openIn: 'customModal', header: true, footer: true, dateFormat: 'yyyy-mm-dd'}" @calendar:change=" change('st', $event) ")
-        f7-list-input.hlh_40.mt_10.bgc_pc(ref="et" label='开始时间', type='datepicker', :placeholder=' et ',  :calendar-params="{openIn: 'customModal', header: true, footer: true, dateFormat: 'yyyy-mm-dd'}" @calendar:change=" change('et', $event) ")
+        f7-list-input.hlh_40.mt_10.bgc_pc(ref="et" label='结束时间', type='datepicker', :placeholder=' et ',  :calendar-params="{openIn: 'customModal', header: true, footer: true, dateFormat: 'yyyy-mm-dd'}" @calendar:change=" change('et', $event) ")
 
 
 

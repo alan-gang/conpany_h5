@@ -73,7 +73,7 @@ export default {
           dayNamesShort: ['天', '一', '二', '三', '四', '五', '六'],
           toolbarCloseText: '确定',
           headerPlaceholder: '请选择',
-        }
+        },
       }
     }
   },
@@ -178,6 +178,7 @@ export default {
         this.__setUser(Object.assign(data, {login: true}))
         this.__getBalance()
         cb && cb()
+        !this.user.cashPwd && this.__toast({text: '尊敬的用户，您还未设置资金密码，为了不影响您的提款，请立即前往设置资金密码', position: 'center', closeTimeout: 6500})
       })
     },
     __tryLogin ({code, cb}) {

@@ -45,7 +45,7 @@ export default {
     },
     __toast (args) {
       return (args) => {
-        if (typeof args === 'string') args = {text: args, position: 'center', closeTimeout: 1000}
+        if (typeof args === 'string') args = {text: args, position: 'center', closeTimeout: 1.5 * 1000}
         this.$f7.toast.create(args).open()
       }
     },

@@ -9,7 +9,7 @@
       f7-col(width="15" @click="showSearchBar = true")
         .icon-search
     
-    f7-row.bgc_f.pl_25.search-condi-bar.c_6
+    f7-row.bgc_f.pl_25.search-condi-bar.c_6.z_9503.p_r
       f7-col.flex.flex-jc-s(@click="(filterType = 1) && (showFilter = !showFilter) && (rns_ = true)")
         span(v-show="condiRegisterDate.indexOf('至') == -1") 注册时间：
         span.pl_5 {{condiRegisterDate}}
@@ -63,7 +63,7 @@
                       span {{ d.userName }}
                     span.ft_14.text-color-gray {{ d.writeTime }}
                   f7-col.btns-wp.flex(width="60")
-                    f7-button.w_80.c_p.btn-v-v-s(outline v-if="d.teamCount > 1" @click="viewSubLevel(d.userId)") 
+                    f7-button.w_80.c_p.btn-v-v-s(outline v-if=" d.teamCount > 1 && breadcrumb[breadcrumb.length - 1].userId !== d.userId " @click="viewSubLevel(d.userId)") 
                       | 查看下级
                       span
                     f7-button.w_65.btn-l-red.ml_10(outline @click="operate(d)")
@@ -442,14 +442,14 @@ export default {
   .b-t
     border-top solid 1px #f1f1f1
   .search-bar
-    margin-top 88px
+    margin-top 87px
   .filter-wp
-    top 126px
+    top 130px
     .sd_content
       top -5%
       padding-top 0
   .breadcrumb-row
-    line-height 40px
+    line-height 42px
     border-bottom solid 1px #f1f1f1
     margin-top 44px
   // .breadcrumb-item
@@ -461,7 +461,7 @@ export default {
     background url('../../../../assets/me/icon_screen@2x.png') no-repeat center
     background-size 15px
   .search-condi-bar
-    line-height 40px
+    line-height 44px
   .ptr-content-wp
     flex 1
     position relative

@@ -43,21 +43,12 @@ export default {
   methods: {
     getHelpContent () {
       this.$.get(api.getHelpContent, {id: this.id}).then(({data: {content}}) => {
-        // console.log(content[0].value[0])
-        // if (this.content.length) {
-        //   if (this.content[0].value.length && this.content[0].value[0].subList.length) {
-        //     this.subList = content[0].value[0].subList
-        //   } else if (this.content[0].value.length && this.content[0].value.length >= 1) {
-        //     this.subList = content[0].value[0].subList
-        //   }
-        // }
         if (content[0].value[0].subList.length >= 1) {
           this.contitle = content[0].value[0].content
           this.subList = content[0].value[0].subList
         } else {
           this.subList = content[0].value
         }
-        // console.log(this.subList)
       })
     }
   }

@@ -24,7 +24,10 @@ f7-page.xyb_io
           input(required validate type='number' step="0.001" v-model="form.m" placeholder="请输入金额" :max=" Number(im) " :min="1")
           span.input-clear-button
 
-  f7-button.mg_10(fill @click=" form.m &&  p2pBuyProduct() ") 确认
+  f7-button.mg_10(fill large @click=" form.m &&  p2pBuyProduct() ") 确认
+  .pd_10.text-color-gray(v-if=" !f && time ") 
+    span 预计收益到账时间
+    span.c_orange {{ new Date(time)._toMonthDayStringCN() }}({{ new Date(time)._toWeek() }})
 
 </template>
 
@@ -43,7 +46,8 @@ export default {
         i: 0,
         j: 0,
         m: '',
-      }
+      },
+      time: ''
     }
   },
   computed: {
@@ -52,6 +56,7 @@ export default {
     },
   },
   created () {
+    !this.f && this.getTimeByProductId()
   },
   methods: {
     p2pBuyProduct () {
@@ -60,6 +65,11 @@ export default {
         action: this.f ? 'withdraw' : 'buy',
         amount: this.form.m,
         accountType: this.f ? this.form.i : this.form.j,
+      })
+    },
+    getTimeByProductId () {
+      this.$.get(api.getTimeByProductId, {productId: this.v.id}).then(({data: {dataTime}}) => {
+        this.time = dataTime
       })
     },
   }

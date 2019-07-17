@@ -12,7 +12,7 @@ f7-page.activity(:page-content="false")
   f7-tabs(animated swipeable)
     f7-tab#activity_1(tab-active)
       f7-page(ptr :ptr-mousewheel="true" @ptr:refresh="refresh")
-        f7-link.ml_10.mr_10.mt_5.mb_5(:key=" v.title " v-for=" v in activityList " @click=" __go('/frame/', {props: {title: v.title, url: v.mobilePageUrl}}) " )
+        f7-link.ml_10.mr_10.mt_5.mb_5(:key=" v.title " v-for=" v in activityList " @click=" __go('/frame/', {props: {title: v.title, url: '/xy_activity' + v.mobilePageUrl.split('xy_activity')[1] }}) " )
           img.wp_100.r_5(:src=" v.mobilePicPath " )
 
     f7-tab#activity_2.page-content

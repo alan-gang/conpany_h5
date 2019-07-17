@@ -63,20 +63,22 @@ f7-page.load
 
     f7-block 一般情况下，充值到账时间为1-2分钟，有时会因为银行、第三支付、网络等原因延迟。如果超过5分钟没有到账，可到充值记录-充值详情中，提交“催到账”申请单，或直接联系客服。
 
-  f7-popup.r_5.dialog-popup-auto-center.load_result_popup
+  f7-popup.r_5.dialog-popup-auto-center.load_result_popup(style="width: 90%")
     f7-navbar(title="充值详情")
       f7-nav-right
         f7-link(icon-f7="close" icon-size="40px" popup-close=".load_result_popup" @click="afterCommit")
     .pl_20.pr_20
       template(v-if=" result && result.appendix ")
         f7-list.mg_0
-          f7-list-item(title=" 支付宝真实姓名"  :after=" form.n " v-show=" rn ")
-          f7-list-item(title=" 充值总额"  :after=" result.amount ")
-          f7-list-item(title=" 银行信息"  :after=" result.bankName ")
-          f7-list-item(title=" 户名"  :after=" result.cardName ")
-          f7-list-item(title=" 卡号"  :after=" result.cardNum ")
-          f7-list-item(title=" 订单号"  :after=" result.orderId ")
-          f7-list-item(title=" 附言"  :after=" result.appendix ")
+          f7-list-item(v-clipboard:success="onCopy" v-clipboard:copy="form.n" title=" 支付宝真实姓名"  :after=" form.n " v-show=" rn ")
+          f7-list-item(v-clipboard:success="onCopy" v-clipboard:copy="result.amount" title=" 充值总额"  :after=" result.amount ")
+          f7-list-item(v-clipboard:success="onCopy" v-clipboard:copy="result.bankName" title=" 银行信息"  :after=" result.bankName ")
+          f7-list-item(v-clipboard:success="onCopy" v-clipboard:copy="result.cardName" title=" 户名"  :after=" result.cardName ")
+          f7-list-item(v-clipboard:success="onCopy" v-clipboard:copy="result.cardNum" title=" 卡号"  :after=" result.cardNum ")
+          f7-list-item(v-clipboard:success="onCopy" v-clipboard:copy="result.orderId" title=" 订单号"  :after=" result.orderId ")
+          f7-list-item(v-clipboard:success="onCopy" v-clipboard:copy="result.appendix" title=" 附言"  :after=" result.appendix ")
+        f7-button.mg_10(fill large @click=" window.open(result.payUrl) " v-if=" result.payUrl ") 去网银支付
+
 
       template(v-else)
         .hlh_30.t_c
@@ -194,6 +196,9 @@ export default {
         }
       })
     },
+    onCopy (e) {
+      this.__alert('复制成功：' + e.text)
+    },
   }
 }
 </script>
@@ -206,4 +211,6 @@ export default {
     border 2px solid rgba(0,0,0,0)
     &.active
       border-color var(--f7-theme-color)
+.load_result_popup
+  --f7-list-item-title-font-size 14px
 </style>

@@ -19,10 +19,10 @@ f7-page.car
   
   f7-toolbar(bottom)
     f7-row.wp_100.a_c
-      f7-col.t_r(width="25")
+      f7-col.t_r(width="50")
         span.text-color-deeporange {{ NA.n }}
         span  注
-      f7-col.t_r(width="25")
+        span.pd_5
         span.text-color-deeporange {{ NA.a._f3() }}
         span  元
         
@@ -30,12 +30,13 @@ f7-page.car
         f7-button(fill color="orange" @click=" __go('/game/chase/', {props: {id, n}}) ") 
           span 追号 
       f7-col(width="25")
-        f7-button(fill @click=" booking ")   
+        f7-button(fill @click=" !ntsf && booking() ")   
           span 投注
   
     .p_a.issue.bg-color-white.pl_15.pr_15.pt_10.pb_10
       f7-checkbox(name=" $usexycoin " :checked=" local.$usexycoin " @click=" __setLocal({$usexycoin: !local.$usexycoin}) ")
       span(@click=" __setLocal({$usexycoin: !local.$usexycoin}) ")  使用信游币
+        span.c_orange.ft_12  {{ user.freeAvaiable }}
       template(v-if=" issueList ")
         f7-list.inline-picker.f_r.mg_0(no-hairlines)
           f7-list-item.hlh_25(title="期号" smart-select :smart-select-params="{openIn: 'sheet'}" ref="issuevm")
@@ -126,6 +127,15 @@ export default {
         return p
       }, {n: 0, a: 0})
     },
+    // not sufficient funds
+    ntsf () {
+      return (this.user[!this.local.$usexycoin ? 'availableBalance' : 'freeAvaiable'] * 1) < this.NA.a
+    }
+  },
+  watch: {
+    ntsf (n, o) {
+      if (n) this.__alert(!this.local.$usexycoin ? '余额' : '信游币' + '不足')
+    }
   },
   created () {
   },

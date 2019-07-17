@@ -6,8 +6,8 @@
   template(v-if="s[0]")
     selectionrow(v-for=" (v, i) in s " :key="i" v-bind="{row: v, rowIndex: i}" v-on:row=" update ")
   template(v-else)
-    textarea.bg-color-white.pd_5(v-model=" value_ " placeholder="每一注号码之间请用一个 空格[ ]、逗号[,] 或者 分号[;] 隔开" @dblclick="__random")
-    f7-button.o_50(fill @click="__random") 机选
+    textarea.bg-color-white.pd_5(v-model=" value_ " placeholder="每一注号码之间请用一个 空格[ ]、逗号[,] 或者 分号[;] 隔开")
+    f7-button.o_50.mt_10(fill @click=" __randomValue(true) ") 机选
   
 </template>
 
@@ -164,7 +164,12 @@ export default {
         return this.no[1].join(this.rjr)
       }
     },
+    __beforeAddToCar () {
+      if (this.__$car && this.__$car.length === 10) return this.__alert('单次最多只能投注10个方案') && false
+      return true
+    },
     __addToCar () {
+      if (!this.__beforeAddToCar()) return false
       this.local.$car.push(Object.assign(this.__getNumberItems()[0], {
         // 更多信息
         id: this.id,

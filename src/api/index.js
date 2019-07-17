@@ -153,6 +153,7 @@ let api = {
   p2pAccount: '/p2p/product.do?method=productAccount',
   p2pList: '/p2p/product.do?method=list',
   selectAccountChange: '/p2p/product.do?method=selectAccountChange',
+  getTimeByProductId: '/p2p/product.do?method=getTime',
   // 充值
   saveRangesNew: '/person/recharge.do?method=saveRangesNew',
   commitNew: '/person/recharge.do?method=commitNew',

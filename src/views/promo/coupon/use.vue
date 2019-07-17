@@ -56,9 +56,10 @@ export default {
   },
   methods: {
     use () {
-      if (this.v.goodsType === 5) this.activeCoupon()
-      else if (this.v.gameGroupPlatArr[this.form.i].groupId === '0' || this.v.gameGroupPlatArr[this.form.i].groupId === '99') this.getLotteryGoodPrize()
-      else this.transferToBG(this.v.goodsType === 3 && Number(this.v.prizeAmount) <= 0)
+      this.transferToBG()
+      // if (this.v.goodsType === 5) this.activeCoupon()
+      // else if (this.v.gameGroupPlatArr[this.form.i].groupId === '0' || this.v.gameGroupPlatArr[this.form.i].groupId === '99') this.getLotteryGoodPrize()
+      // else this.transferToBG(this.v.goodsType === 3 && Number(this.v.prizeAmount) <= 0)
     },
     getLotteryGoodPrize () {
       this.$.get(api.getLotteryGoodPrize, {
@@ -82,6 +83,7 @@ export default {
       this.$.get(api.getNoActivatePrize, {entry: this.v.entry}).then(this.then)
     },
     then ({data}) {
+      this.__setCall({fn: '__init_coupon_1'})
       this.__back()
     }
   }

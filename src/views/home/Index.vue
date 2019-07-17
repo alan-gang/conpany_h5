@@ -10,7 +10,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
 
   f7-swiper.a(:params="{speed:500, autoplay: true, slidesPerView: 1.2, spaceBetween: -15, centeredSlides: true, effect: 'coverflow'}")
     f7-swiper-slide.aa(v-for=" (b, i) in banners " :key="i")
-      img(:src=" b.mobileBanner " @click=" __go('/frame/', {props: {title: '充值大放送', url: '/xy_activity/wap/bankTopup.html'}}) ")
+      img(:src=" b.mobileBanner " @click=" b.mobilePageUrl && __go('/frame/', {props: {title: b.activityName, url: b.mobilePageUrl}}) ")
 
   .mt_10.pt_5.pb_5.bg-color-white
     f7-toolbar.ft_12.c_333.bg-color-white(labels)
@@ -59,7 +59,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
     f7-swiper.d.pl_10.pr_10(:params="{slidesPerView: 1.8, spaceBetween: 10}")
       f7-swiper-slide.da.t_c(v-for=" (h, i) in cache.plats " :key=" i ")
         //- @error=" cache.plats.splice(i, 1) "
-        img(:src=" h.picUrl " @click=" __go('/frame/', {props: {title: h.gameName, url: '/xy_activity/wap/bankTopup.html'}}) ")
+        img(:src=" h.picUrl " @click=" h.gameType === 1 ? __go('/game/play/', {props: Object.assign({}, v, ag.find(x => x.id === h.gameId), {n: h.gameName})}) : __go('/outer/', {props: Object.assign({}, h, ag.find(x => x.pid === h.gameId), {n: h.gameName})}) ")
 
         .c_333 {{ h.title }}
 
@@ -68,9 +68,12 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
       f7-icon._icon._hot(f7=" home " size="18px")
       span.pl_10.v_m 关于我们
 
-    f7-swiper.e.pl_10.pr_10(:params="{slidesPerView: 3.3, spaceBetween: 10}")
+    f7-swiper.e.pl_10.pr_10(:params="{slidesPerView: 3.3, spaceBetween: 10}" @click.native="$refs.pageDark.open()")
       f7-swiper-slide.ea.t_c(v-for=" (h, i) in usimgs " :key=" i ")
         img(:src=" h ")
+
+    f7-photo-browser(:photos="usimgs" type="page" back-link-text="返回" navbar-of-text="/" ref="pageDark")
+
 
   p.pb_15.ft_12.text-color-gray.t_c 信游娱乐持有菲律宾PAGCOR合法牌照，请放心购买
 
@@ -84,6 +87,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
 import config from '@/config'
 import api from '@/api'
 import g from '@/gm/g'
+import ag from '@/gm/ag'
 export default {
   mixins: [config],
   components: {
@@ -102,7 +106,8 @@ export default {
         '/static/img/home/home_img_05.png',
         '/static/img/home/home_img_06.png',
       ],
-      chatUrl: ''
+      chatUrl: '',
+      ag: ag,
     }
   },
   computed: {
