@@ -37,7 +37,8 @@
                 template(v-for=" (y, k) in dns ")
                   .hlh_30.wp_50.inlb.pl(:key="k" v-if=" y.key !== 'level' ")
                     span {{ y.n }}： 
-                    span.text-color-black {{ x[y.key] }}
+                    span.text-color-black
+                      span(v-state=" x.state ") {{ x[y.key] }}
 
                   template(v-if=" y.key === 'level' " v-for=" (z, l) in x.level.split(',') ")
 
@@ -57,7 +58,8 @@
                 template(v-for=" (y, k) in dns ")
                   .hlh_30.wp_50.inlb.pl(:key="k" v-if=" y.key !== 'level' ")
                     span {{ y.n }}： 
-                    span.text-color-black {{ x[y.key] }}
+                    span.text-color-black
+                      span(v-state=" x.state ") {{ x[y.key] }}
 
                   template(v-if=" y.key === 'level' " v-for=" (z, l) in x.level.split(',') ")
 
@@ -77,7 +79,8 @@
                 template(v-for=" (y, k) in dns ")
                   .hlh_30.wp_50.inlb.pl(:key="k" v-if=" y.key !== 'level' ")
                     span {{ y.n }}： 
-                    span.text-color-black {{ x[y.key] }}
+                    span.text-color-black
+                      span(v-state=" x.state ") {{ x[y.key] }}
 
                   template(v-if=" y.key === 'level' " v-for=" (z, l) in x.level.split(',') ")
 
@@ -97,7 +100,8 @@
                 template(v-for=" (y, k) in dns ")
                   .hlh_30.wp_50.inlb.pl(:key="k" v-if=" y.key !== 'level' ")
                     span {{ y.n }}： 
-                    span.text-color-black {{ x[y.key] }}
+                    span.text-color-black
+                      span(v-state=" x.state ") {{ x[y.key] }}
 
                   template(v-if=" y.key === 'level' " v-for=" (z, l) in x.level.split(',') ")
 
@@ -117,7 +121,8 @@
                 template(v-for=" (y, k) in dns ")
                   .hlh_30.wp_50.inlb.pl(:key="k" v-if=" y.key !== 'level' ")
                     span {{ y.n }}： 
-                    span.text-color-black {{ x[y.key] }}
+                    span.text-color-black
+                      span(v-state=" x.state ") {{ x[y.key] }}
 
                   template(v-if=" y.key === 'level' " v-for=" (z, l) in x.level.split(',') ")
 
@@ -137,7 +142,8 @@
                 template(v-for=" (y, k) in dns ")
                   .hlh_30.wp_50.inlb.pl(:key="k" v-if=" y.key !== 'level' ")
                     span {{ y.n }}： 
-                    span.text-color-black {{ x[y.key] }}
+                    span.text-color-black
+                      span(v-state=" x.state ") {{ x[y.key] }}
 
                   template(v-if=" y.key === 'level' " v-for=" (z, l) in x.level.split(',') ")
 
@@ -157,7 +163,8 @@
                 template(v-for=" (y, k) in dns ")
                   .hlh_30.wp_50.inlb.pl(:key="k" v-if=" y.key !== 'level' ")
                     span {{ y.n }}： 
-                    span.text-color-black {{ x[y.key] }}
+                    span.text-color-black
+                      span(v-state=" x.state ") {{ x[y.key] }}
 
                   template(v-if=" y.key === 'level' " v-for=" (z, l) in x.level.split(',') ")
 
@@ -196,7 +203,7 @@ export default {
         {n: '返点', key: 'userPoint'},
         {n: '奖级', key: 'level'},
         // {n: '奖金', key: 'prize'},
-        {n: '状态', key: 'state'},
+        {n: '状态', key: 'state', state: true},
       ]
     }
   },

@@ -1,5 +1,6 @@
 <template lang="pug">
 f7-page.xyb_2(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh ")
+  f7-block.t_9.t_c(v-if="!data[0]") 暂无数据~
   f7-card(v-for=" (x, i) in data " :key="i")
     f7-card-content
       .flex.ft_12

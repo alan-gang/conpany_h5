@@ -12,7 +12,7 @@ f7-page.profit_loss_report_(:page-content="false")
         f7-button.wp_100.bg-color-white.pd_0(color="black" @click=" (sm = false) || (tsi = i) ") {{ x.n }}盈亏
 
   .p_a.wp_100.p_t_0.z_9503.ft_14
-    f7-searchbar(ref="s" disable-button-text="取消" placeholder="请输入直接下级的用户名" :clear-button="true" @change=" n = $event.target.value " :value=" n " @input=" n_ = $event.target.value" @focus=" rns_ = true ")
+    f7-searchbar(ref="s" disable-button-text="取消" placeholder="请输入直接下级的用户名" :clear-button="true" @change=" n = $event.target.value " :value=" n " @input=" n_ = $event.target.value" @focus=" rns_ = true " @searchbar:disable=" rns_ = false ")
     template(v-if="rns_")
       .searchbar-backdrop.h_0(@click=" rns_ = false ")
       f7-list.mh_0.mg_0.o_h.page_content_like.z_500(simple-list )

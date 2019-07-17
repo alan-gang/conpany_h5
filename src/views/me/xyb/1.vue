@@ -1,5 +1,6 @@
 <template lang="pug">
 f7-page.xyb_1(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh ")
+  f7-block.t_9.t_c(v-if="!data[0]") 暂无数据~
   f7-card(v-for=" (x, i) in data " :key="i")
     f7-card-content
       .flex.ft_12
@@ -10,6 +11,7 @@ f7-page.xyb_1(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh ")
         .b.t_r.wp_55
           .lh_20.ft_15(:class=" {c_s: x.changemoney._o0(), c_e: x.changemoney._l0()} ") {{ x.changemoney._o0() ? '+' : '' }}{{ x.changemoney._f3() }}
           .lh_20.text-color-gray 余额：{{ x.amount._f3() }}
+
 
 </template>
 

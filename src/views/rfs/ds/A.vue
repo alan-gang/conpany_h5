@@ -3,7 +3,7 @@
 f7-page.rf_ds_1(:page-content="false")
 
   .p_a.wp_100.p_t_0.z_9503.ft_14
-    f7-searchbar(ref="s" disable-button-text="取消" placeholder="请输入直接下级的用户名" :clear-button="true" @change=" n = $event.target.value " :value=" n " @input=" n_ = $event.target.value" @focus=" rns_ = true ")
+    f7-searchbar(ref="s" disable-button-text="取消" placeholder="请输入直接下级的用户名" :clear-button="true" @change=" n = $event.target.value " :value=" n " @input=" n_ = $event.target.value" @focus=" rns_ = true " @searchbar:disable=" rns_ = false ")
     template(v-if="rns_")
       .searchbar-backdrop.h_0(@click=" rns_ = false ")
       f7-list.mh_0.mg_0.o_h.page_content_like.z_500(simple-list )

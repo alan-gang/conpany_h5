@@ -50,6 +50,9 @@ export default {
 
       '已开通': 'c_s',
       '未开通': 'c_g',
+
+      '使用中': 'c_s',
+      '已关闭': 'c_g',
     },
     stateColor: {
       0: 'orange',

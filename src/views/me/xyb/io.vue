@@ -21,13 +21,13 @@ f7-page.xyb_io
         f7-icon._icon._load_amount(f7="home")
       .item-inner
         .item-input-wrap
-          input(required validate type='number' step="0.001" v-model="form.m" placeholder="请输入金额" :max=" Number(im) " :min="1")
+          input(required validate pattern="[0-9]*" type='number' step="0.001" v-model="form.m" placeholder="请输入金额" :max=" Number(im) " :min="1")
           span.input-clear-button
 
   f7-button.mg_10(fill large @click=" form.m &&  p2pBuyProduct() ") 确认
-  .pd_10.text-color-gray(v-if=" !f && time ") 
-    span 预计收益到账时间
-    span.c_orange {{ new Date(time)._toMonthDayStringCN() }}({{ new Date(time)._toWeek() }})
+  .pl_10.pr_10.text-color-gray(v-if=" !f && time ") 
+    span.mr_5 预计收益到账时间
+    span.c_orange {{ new Date(time)._toMonthDayStringCN() }}({{ new Date(time)._toWeekString() }})
 
 </template>
 

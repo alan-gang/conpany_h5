@@ -29,18 +29,18 @@ f7-page.transfer
     li
       .item-content.text-color-gray.t_r(style="min-height: 30px; font-size: 12px;") 余额：{{ jm._f3() }}
 
-  f7-list.mg_10
+  f7-list.mg_10(ref="_form")
     li.item-content.item-input(ref="m")
       .item-media
         f7-icon._icon._load_amount(f7="home")
       .item-inner
         .item-input-wrap
-          input(required validate type='number' v-model="form.m" :placeholder=" '可转账金额：' + im._f3() " :max=" Number(im) " :min="10")
+          input(required validate pattern="[0-9]*" type='number' v-model="form.m" :placeholder=" '可转账金额：' + im._f3() " :max=" Number(im) || 10000 " :min="10")
           span.input-clear-button
       .item-after.pr_10
-        f7-button(@click=" (form.i !== '') && (form.m = user[config.wallets[form.i].key]) ") 全部
+        f7-button(@click=" (form.i !== '') && (form.m = user[config.wallets[form.i].key]) && window.setTimeout(() =>  __validateform(), 0 ) ") 全部
   .pl_10.pr_10.flex
-    f7-button.wp_25.inlb.bg-color-white(color="black" v-for=" (v, i) in  [10, 100, 1000, 10000] " @click=" form.m = v " :class=" {mr_5: i < 3} ") {{ v }}
+    f7-button.wp_25.inlb.bg-color-white(color="black" v-for=" (v, i) in  [10, 100, 1000, 10000] " @click=" (form.m = v) && window.setTimeout(() =>  __validateform(), 0 )  " :class=" {mr_5: i < 3} ") {{ v }}
 
   f7-block
     f7-button(fill large @click=" (form.i || form.j) && $refs['m'].className.indexOf('item-input-invalid') === -1 && [ato, sta, ota][Math.min(form.i, 2)]() ") 确认转账

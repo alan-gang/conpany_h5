@@ -32,7 +32,7 @@ f7-page.withdraw
         f7-icon._icon._load_amount(f7="home")
       .item-inner
         .item-input-wrap
-          input(required validate type='number' v-model="form.m" :placeholder=" maxAmount ? '今日剩余提现额度' + maxAmount + '元' : '请输入提现金额' " )
+          input(required validate pattern="[0-9]*" type='number' v-model="form.m" :placeholder=" maxAmount ? '今日剩余提现额度' + maxAmount + '元' : '请输入提现金额' " )
           span.input-clear-button
       .item-after.pr_10
         f7-button(@click=" form.m = user[key] ") 全部额度
@@ -43,7 +43,7 @@ f7-page.withdraw
     span.text-color-deeporange  {{ times }} 
     span 次
   f7-block
-    f7-button(fill large @click=" __setCall({fn: '__cpwd', doWithDraw}) ") 提交
+    f7-button(fill large @click=" __setCall({fn: '__cpwd', args: doWithDraw}) ") 提交
 
 
 

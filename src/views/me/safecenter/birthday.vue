@@ -4,7 +4,7 @@ f7-page
   .t_c.pd_20
     f7-icon._icon.v_t(:class=" '_safeicon' + v._icon + '_big' " f7="home" size="60")
   f7-list.mg_0(inline-labels no-hairlines-md ref="_form")
-    template(v-if=" v.t ")
+    template(v-if=" !v.t ")
       f7-list-input(label='生日', required validate type='datepicker', :placeholder=" user.birthday ",  :calendar-params="{openIn: 'customModal', header: true, footer: true, dateFormat: 'yyyy-mm-dd'}" @calendar:change=" form.d = $event[0] ")
   .h_40
   f7-button.mg_10(fill large @click=" __validateform(changNickName) ") 确认
@@ -36,7 +36,7 @@ export default {
   methods: {
     changNickName () {
       this.$f7.input.validateInputs(this.$refs['_form'])
-      this.$.get(api.setBirthday, {date: this.form.d._toDayString()})
+      this.$.get(api.setBirthday, {date: this.form.d._toDayString()}).then(this.__back)
     }
   }
 }

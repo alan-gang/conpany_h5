@@ -62,7 +62,7 @@ f7-page.car
               span.text-color-orange {{ v.money._f3() }} 
               span 元
             div
-              f7-stepper.v_m(small pattern="[0-9]*" color="gray" :value=" v.times " :min="1" :max="1000" :step="1" @stepper:change=" update((v.times = $event) ? v : v) ")
+              f7-stepper.v_m(small autorepeat type="number" pattern="[0-9]*" color="gray" :value=" v.times " :min="1" :max="1000" :step="1" @stepper:change=" update((v.times = $event) ? v : v) ")
               
               span.pd_5
               .list.inline-picker.border-gray
@@ -134,7 +134,7 @@ export default {
   },
   watch: {
     ntsf (n, o) {
-      if (n) this.__alert(!this.local.$usexycoin ? '余额' : '信游币' + '不足')
+      if (n) this.__alert((!this.local.$usexycoin ? '余额' : '信游币') + '不足')
     }
   },
   created () {

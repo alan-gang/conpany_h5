@@ -39,7 +39,7 @@ f7-page.load
           f7-icon._icon._load_amount(f7="home")
         .item-inner
           .item-input-wrap
-            input(required validate type='number' v-model="form.m" :placeholder=" readonly ? '点击按钮选择可充值金额' : '请输入充值金额' " :readonly=" readonly ")
+            input(required validate pattern="[0-9]*" type='number' v-model="form.m" :placeholder=" readonly ? '点击按钮选择可充值金额' : '请输入充值金额' " :readonly=" readonly ")
             span.input-clear-button
         .item-after.pr_10
           span.text-color-gray 实际到账：

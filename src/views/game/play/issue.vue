@@ -26,13 +26,13 @@ export default {
       this.traceIssueList()
     },
     traceIssueList () {
-      this.$.get(api.traceIssueList, {gameid: this.id}).then(({data: {items}}) => {
+      this.$.myget(api.traceIssueList, {gameid: this.id}).then(({data: {items}}) => {
         this.issueList = items
         if (typeof this.traceIssueListCb === 'function') this.traceIssueListCb()
       })
     },
     current () {
-      this.$.get(api.current, {gameid: this.id}).then(({data: {issue, salestart, saleend}}) => {
+      this.$.myget(api.current, {gameid: this.id}).then(({data: {issue, salestart, saleend}}) => {
         this.issue = issue
         this.timming = (saleend - salestart) / 1000
         this.countDown()

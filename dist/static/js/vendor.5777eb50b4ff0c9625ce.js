@@ -71694,6 +71694,10 @@ const Plugin = {
       type: String,
       default: 'text'
     },
+    pattern: {
+      type: String,
+      default: '[0-9]*'
+    },
     inputReadonly: {
       type: Boolean,
       default: false
@@ -71760,11 +71764,11 @@ const Plugin = {
       max,
       step,
       id,
-      style
+      style,
+      pattern,
     } = props;
     let inputWrapEl;
     let valueEl;
-
     if (input && !buttonsOnly) {
       let inputEl;
       {
@@ -71779,9 +71783,10 @@ const Plugin = {
           },
           attrs: {
             type: inputType,
+            pattern: pattern,
             min: inputType === 'number' ? min : undefined,
             max: inputType === 'number' ? max : undefined,
-            step: inputType === 'number' ? step : undefined
+            step: inputType === 'number' ? step : undefined,
           }
         });
       }

@@ -30,6 +30,16 @@ f7-page.wallet(:page-content="false")
         f7-button(fill color="orange" @click="__go('/me/transfer/', {props: { j: i }})" v-show=" i !== 1 ") 转入
         f7-button(fill color="deeporange" @click="__go('/me/transfer/', {props: { i: i }})") 转出
 
+    f7-card.no-shadow
+      f7-card-header
+        .wp_60.flex(@click=" __setCall({fn: '__getMoreBalance', args: [{pid: 0}]}) ")
+          f7-button(color="black") 信游币
+          .flex
+            f7-button.t_r(color="black")
+              span {{ user.freeAvaiable || '0.000' }}
+            f7-icon(f7="refresh" color="gray" size="18")
+
+
 
 
 

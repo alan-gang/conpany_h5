@@ -33,7 +33,7 @@ f7-page.book_detail
       
       .hlh_30.flex.justify-content-flex-start
         span.c_9.inlb 投注内容：
-        f7-button.pd_0.c_0.minw_0(popover-open=".oriCode") {{ v.oriCode }}
+        f7-button.pd_0.c_0.mwp_70(popover-open=".oriCode") {{ v.oriCode }}
 
 
       .hlh_30
