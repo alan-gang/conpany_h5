@@ -64,8 +64,8 @@ export default {
         productId: this.v.id,
         action: this.f ? 'withdraw' : 'buy',
         amount: this.form.m,
-        accountType: this.f ? this.form.i : this.form.j,
-      })
+        accountType: !this.f ? this.form.i : this.form.j,
+      }).then(() => (this.form.m = ''))
     },
     getTimeByProductId () {
       this.$.get(api.getTimeByProductId, {productId: this.v.id}).then(({data: {dataTime}}) => {

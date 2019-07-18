@@ -39,7 +39,10 @@ f7-page.rf_cr_1(:page-content="false")
               span(v-if="v.issue") ({{ v.issue }}期)
 
           .b.t_r.wp_55
-            .lh_20 主余额：{{ v.balance._f3() }}元
+            .lh_20 
+              span(v-if=" v.isFree ") 信游币
+              span(v-else) 主
+              span 余额：{{ v.balance._f3() }}元
             .lh_20 特殊余额：{{ v.speBalance._f3() }}元
 
     .preloader.infinite-scroll-preloader(v-if="showPreloader")

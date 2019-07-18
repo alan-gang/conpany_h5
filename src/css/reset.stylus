@@ -31,6 +31,7 @@ iframe
     height 100%
     position relative
     z-index 1
+  
 
 // .page-previous
 .view .page-previous .page-current
@@ -52,6 +53,4 @@ iframe
   // navbar
   // --f7-navbar-bg-color #ff6b22
   // --f7-navbar-text-color #fff
-
-
 

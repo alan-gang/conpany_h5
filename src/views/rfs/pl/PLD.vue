@@ -48,7 +48,7 @@ export default {
 
         {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
         {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize},
-        {n: '游戏盈亏', key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.profit},
+        {n: '游戏盈亏', nwc: true, key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.profit},
         {n: this.v && this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number(x.pointAmount || x.point), v: x => x.pointAmount || x.point},
         {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.rewards},
         {n: this.v && this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.platfee},
@@ -59,7 +59,7 @@ export default {
         {n: '统计时间', key: '_date'},
         {n: '投注', key: 'buy'},
         {n: '派奖', key: 'prize'},
-        {n: '游戏盈亏', key: 'gameProfit'},
+        {n: '游戏盈亏', nwc: true, key: 'gameProfit'},
         {n: '返点', key: 'point', show: x => Number(x.pointLevel)},
         {n: '活动', key: 'reward'},
         {n: '日工资', key: 'salary'},

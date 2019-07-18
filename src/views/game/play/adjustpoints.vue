@@ -16,7 +16,7 @@
             .r_5.o_h.w_40.color-theme-gray(@click=" $f7.range.setValue('#point_range', pp) ")
              .stepper-button-minus.h_30
           f7-col.pl_15.pr_15(width="80")
-            f7-range#point_range(:min=' dp.minpoint * 100 ', :max=' dp.maxpoint * 100 ', :step='0.1', :value='v * 100', @range:change=" $emit('adjust:point', ($event / 100)._f3() ) ")
+            f7-range#point_range(:min=' dp.minpoint * 100 ', :max=' dp.maxpoint * 100 ', :step='0.1', :value='v * 100', @range:change=" $emit('adjust:point', ($event / 100)._f3() * 1 ) ")
           f7-col(width="10")
             .r_5.o_h.w_40.color-theme-gray(@click=" $f7.range.setValue('#point_range', np) ")
               .stepper-button-plus.h_30

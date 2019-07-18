@@ -76,8 +76,6 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
 
 
   p.pb_15.ft_12.text-color-gray.t_c 信游娱乐持有菲律宾PAGCOR合法牌照，请放心购买
-
-
   
 
 

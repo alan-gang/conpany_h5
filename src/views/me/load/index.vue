@@ -33,13 +33,13 @@ f7-page.load
         f7-icon(f7="person" slot="media" style="color: var(--f7-theme-color)")
 
 
-    f7-list.mt_5.mb_5
+    f7-list.mt_5.mb_5(ref="_form")
       li.item-content.item-input
         .item-media
           f7-icon._icon._load_amount(f7="home")
         .item-inner
           .item-input-wrap
-            input(required validate pattern="[0-9]*" type='number' v-model="form.m" :placeholder=" readonly ? '点击按钮选择可充值金额' : '请输入充值金额' " :readonly=" readonly ")
+            input(required validate pattern="[0-9]*" type='number' :max=" way.range[form.i].range.slice(-1)[0].split('~')[1] " v-model="form.m" :placeholder=" readonly ? '点击按钮选择可充值金额' : '请输入充值金额' " :readonly=" readonly ")
             span.input-clear-button
         .item-after.pr_10
           span.text-color-gray 实际到账：
@@ -59,7 +59,7 @@ f7-page.load
           f7-button.mr_2.mb_2.w_60.inlb.color-orange(fill  v-for=" (v, i) in  way.range[form.i].range " @click=" form.m = v ") {{ v }}
 
     .h_25
-    f7-button.mg_10(fill large @click="commitNew") 去付款
+    f7-button.mg_10(fill large @click=" __validateform( commitNew ) ") 去付款
 
     f7-block 一般情况下，充值到账时间为1-2分钟，有时会因为银行、第三支付、网络等原因延迟。如果超过5分钟没有到账，可到充值记录-充值详情中，提交“催到账”申请单，或直接联系客服。
 

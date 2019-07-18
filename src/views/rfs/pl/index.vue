@@ -6,7 +6,7 @@ f7-page.profit_loss_report
     f7-card-content
       .stripe_white_gray_40.pl_5.pr_5
         template(v-for=" (y, k) in dns ")
-          .hlh_40.wp_50.inlb.b_s.pl_5.pr_5(:key="k" :class=" y.key ")
+          .hlh_40.inlb.b_s.pl_5.pr_5(:key="k" :class=" [y.key, y.cls || 'wp_50'] ")
 
             span(v-if=" y.key === 'date'")
               f7-icon._icon._date.v_m.p_r(f7="calendar_fill" size="20" style="left: -10px")
@@ -40,8 +40,8 @@ export default {
       stet: [new Date()._bf(-7)._setHMS(), new Date()._setHMS('23:59:59')],
       // 游戏类型：0:彩票盈亏；1:电竞；2:电游；3:真人；4:棋牌；5：捕鱼；6：体育；7：基诺彩；8：微游
       dns: [
-        {n: '日期', key: 'date'},
-        {n: '总盈亏', key: 'settlement'},
+        {n: '日期', key: 'date', cls: 'wp_40'},
+        {n: '总盈亏', key: 'settlement', cls: 'wp_60'},
         {id: 0, n: '彩票', key: 'ltrsettle'},
         {id: 8, n: '微游', key: 'litsettle'},
         {id: 2, n: '老虎机', key: 'egamesettle'},

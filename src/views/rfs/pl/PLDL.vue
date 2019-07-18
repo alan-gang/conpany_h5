@@ -2,7 +2,8 @@
 f7-page.profit_loss_detail_list
   f7-navbar(:title=" v.n + ((!v.title || v.id !== 999) && v.id > -1 ? '每日' : '') + '盈亏明细' + (v.title || v.id !== -1 ? '(' + (v.title || '个人') + ')' : '') " back-link :back-link-url=" bl " :back-link-force="force")
   //- u.userId && !v.key ? '/rfs/_pl/' : u.userId && v.title ? '/rfs/tpl/' : '' 
-  .bgc_f
+
+  .bgc_f.smooth_scroll
     f7-list.mg_0(v-if=" v.id === -1 ")
       f7-list-item(title="用户" :after=" n ")
       f7-list-item(title="统计时间" :after=" __stetn[0] ")
@@ -14,7 +15,7 @@ f7-page.profit_loss_detail_list
 
     .hlh_30.t_c.ft_16(v-else) {{ __stetn[0] }} - {{ n }}
 
-    .data-table
+    .data-table(ref="table_table")
       table
         thead.bgc_pc
           tr
@@ -31,7 +32,7 @@ f7-page.profit_loss_detail_list
                 template(v-else) 合计
 
               template(v-else) 
-                span {{ y.v ? y.v(x) : x[y.key] }}
+                span(v-nwc=" y.nwc ") {{ y.v ? y.v(x) : x[y.key] }}
     template(v-if=" (v.title && v.id === 999) && __stetgap ")
       .h_5.bgc_pc
       f7-list.mg_0
@@ -41,7 +42,6 @@ f7-page.profit_loss_detail_list
         f7-list-item
           span 总结算
           span(v-nwc="true")  {{ u.totalProfit }}
-
 
 
 </template>
@@ -64,14 +64,14 @@ export default {
       dns_: [
         {n: '游戏类别', key: 'userName', v: x => x.userName || this.config.agts[x.gameType]},
         {n: '投注', key: 'buy'},
-        {n: '游戏盈亏', key: this.v.title ? 'profit' : 'gameProfit'},
-        {n: '总盈亏', key: this.v.title ? 'settle' : 'totalProfit'},
+        {n: '游戏盈亏', nwc: true, key: this.v.title ? 'profit' : 'gameProfit'},
+        {n: '总盈亏', nwc: true, key: this.v.title ? 'settle' : 'totalProfit'},
         {n: ''},
 
         {n: '日期', key: 'date'},
         {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
         {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: x => this.v.id > 0},
-        {n: '游戏盈亏', key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.gameProfit || x.profit},
+        {n: '游戏盈亏', nwc: true, key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.gameProfit || x.profit},
         {n: this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number(x.pointAmount || x.point), v: x => x.pointAmount || x.point},
         {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.reward || x.rewards},
         {n: this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.salary || x.platfee},
@@ -102,7 +102,17 @@ export default {
     this.list()
     setTimeout(() => (this.force = (this.bl && (this.$f7router.previousRoute.path !== this.bl))), 0)
   },
+  mounted () {
+    this.horizonscroll()
+  },
   methods: {
+    horizonscroll () {
+      const p = this.$refs['table_table']
+      p.style.overflow = 'hidden'
+      setTimeout(() => {
+        p.style.overflow = 'auto'
+      }, 500)
+    },
     list () {
       // api.pldl 个人每日盈亏明细
       // api.tpldreport 彩票 团队每日盈亏明细
@@ -127,7 +137,7 @@ export default {
         }
         this.data = items
       })
-    }
+    },
   }
 }
 </script>

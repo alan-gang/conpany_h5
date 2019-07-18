@@ -50,9 +50,10 @@ f7-page.rf_bc_2(:page-content="false")
               span 已完成：{{ v.finishedcount }}期，共{{ v.taskprice }}元，中奖{{ v.winCount }}期，共
               span.text-color-deeporange {{ v.winprize }}
               span 元
-          .b
+          .b(@click="  ")
             .inlb.w_5
-            f7-icon(f7="chevron_right" size="12px")
+            f7-link(:href=" '/rfs/bc/cd/' + v.taskId + '/'" color="gray")
+              f7-icon.pd_10(f7="chevron_right" size="12px")
 
     .preloader.infinite-scroll-preloader(v-if="showPreloader")
 

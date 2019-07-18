@@ -21,6 +21,11 @@ f7-page.xyb(:page-content="false")
   f7-toolbar(tabbar)
     f7-link.underline_40(tab-link-active tab-link href="#xyb_1") 资金明细
     f7-link.underline_40(tab-link href="#xyb_2") 结算记录
+
+  f7-toolbar(bottom)
+    f7-button.wp_50(fill color="orange" @click=" __go('/me/xyb/io/', {props: { v, f: 1 }}) ") 转出
+    span.pd_5
+    f7-button.wp_50(fill @click=" __go('/me/xyb/io/', {props: { v}}) ") 转入
   
   f7-tabs(animated swipeable)
     f7-tab#xyb_1(tab-active @tab:show=" __tabShow ")
@@ -28,10 +33,7 @@ f7-page.xyb(:page-content="false")
     f7-tab#xyb_2(@tab:show=" __tabShow ")
       B(v-bind=" {v} ")
 
-  f7-toolbar(tabbar bottom)
-    f7-button.wp_50(fill color="orange" @click=" __go('/me/xyb/io/', {props: { v, f: 1 }}) ") 转出
-    span.pd_5
-    f7-button.wp_50(fill @click=" __go('/me/xyb/io/', {props: { v}}) ") 转入
+  
 
 
 </template>
@@ -89,5 +91,8 @@ export default {
     margin-top var(--f7-navbar-height)
   .tabbar .toolbar-inner
     justify-content center
+  
+  .page-content
+    --f7-page-toolbar-bottom-offset 210px
     
 </style>

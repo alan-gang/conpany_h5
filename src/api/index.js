@@ -148,7 +148,6 @@ let api = {
       msg: '操作成功',
       fn: [{fn: '__getBalance'}, {fn: '__p2pAccount'}]
     },
-    fn: '__clearform',
   },
   p2pAccount: '/p2p/product.do?method=productAccount',
   p2pList: '/p2p/product.do?method=list',
