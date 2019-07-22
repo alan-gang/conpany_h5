@@ -30,8 +30,8 @@ f7-app(:params=" f7Params ")
   f7-popup#register(@popup:opened=" __getcodeimg ")
     f7-view(url="/register")
 
-  f7-popup#register(@popup:opened=" __getcodeimg ")
-    f7-view(url="/ggl")
+  f7-popup#guide
+    f7-view(url="/guide")
 
 
 </template>
@@ -178,7 +178,8 @@ export default {
         this.__setUser(Object.assign(data, {login: true}))
         this.__getBalance()
         cb && cb()
-        !this.user.cashPwd && this.__toast({text: '尊敬的用户，您还未设置资金密码，为了不影响您的提款，请立即前往设置资金密码', position: 'center', closeTimeout: 6500})
+        if (!this.user.hasLogPwd || !this.user.hasSecurityPwd) this.$f7.popup.open('#guide')
+        else if (!this.user.hasBankCard) this.__go('/me/bank/bind/')
       })
     },
     __tryLogin ({code, cb}) {

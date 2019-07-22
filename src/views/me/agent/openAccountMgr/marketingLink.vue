@@ -83,7 +83,7 @@ export default {
         })
         this.rebateRates = data.back
       }, (rep) => {
-        this.__alert('自动注册链接获取失败！')
+        this.__toast('自动注册链接获取失败！')
       })
     },
     updateRebateRates (d) {
@@ -109,9 +109,9 @@ export default {
         })
       }
       this.$.get(api.setKeepPoint, params).then(({data}) => {
-        this.__alert(data.msg || '保留返点设置成功！')
+        this.__toast(data.msg || '保留返点设置成功！')
       }, (rep) => {
-        this.__alert('保留返点设置失败！')
+        this.__toast('保留返点设置失败！')
       })
     },
     copySuccess () {

@@ -26,13 +26,13 @@ f7-page.withdraw
       select(name="banks" v-model=" form.i ")
         option(v-for=" (v, i) in user.userBankCards " :key="i" :value="i") {{ v.bankName }}(尾号{{ v.cardNo.slice(-4) }})
 
-  f7-list.mt_5.mb_5
+  f7-list.mt_5.mb_5(ref="_form")
     li.item-content.item-input
       .item-media
         f7-icon._icon._load_amount(f7="home")
       .item-inner
         .item-input-wrap
-          input(required validate pattern="[0-9]*" type='number' v-model="form.m" :placeholder=" maxAmount ? '今日剩余提现额度' + maxAmount + '元' : '请输入提现金额' " )
+          input(required validate pattern="[0-9]*" type='number' :max=" user[key] " v-model="form.m" :placeholder=" maxAmount ? '今日剩余提现额度' + maxAmount + '元' : '请输入提现金额' " )
           span.input-clear-button
       .item-after.pr_10
         f7-button(@click=" form.m = user[key] ") 全部额度
@@ -43,7 +43,7 @@ f7-page.withdraw
     span.text-color-deeporange  {{ times }} 
     span 次
   f7-block
-    f7-button(fill large @click=" __setCall({fn: '__cpwd', args: doWithDraw}) ") 提交
+    f7-button(fill large @click=" __validateform( () => __setCall({fn: '__cpwd', args: doWithDraw}) )  ") 提交
 
 
 

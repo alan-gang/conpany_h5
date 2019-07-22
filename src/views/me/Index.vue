@@ -64,8 +64,7 @@
             f7-list-item.ft_14.bgc_f.mg_10(title="账户安全" link="/me/safecenter/")
               f7-icon.mr_5._icon._account_safe(slot="media" f7=" home ")
 
-            //- f7-list-item.ft_14.bgc_f.mg_10(title="银行卡" link="#" @click=" __setCall({fn: '__cpwd', args: () => { __go('/me/bank/') }}) ")
-            f7-list-item.ft_14.bgc_f.mg_10(title="银行卡" link="/me/bank/")
+            f7-list-item.ft_14.bgc_f.mg_10(title="银行卡" link="#" @click=" __setCall({fn: '__cpwd', args: () => { __go('/me/bank/') }}) ")
               f7-icon.mr_5._icon.__bank_card(slot="media" f7=" home ")
 
             f7-list-item.ft_14.bgc_f.mg_10(title="彩票奖金" link="/me/bonus/")

@@ -22,7 +22,8 @@ f7-page.profit_loss_detail
             span {{ x.end || ''}}
 
       li.bgc_pc(style="height: 5px" v-if=" i === (v.title ? 4 : 2) ")
-
+  
+  .pd_10.c_e 温馨提示：总盈亏为正数表示团队盈亏，为负数表示团队亏损
 </template>
 
 <script>

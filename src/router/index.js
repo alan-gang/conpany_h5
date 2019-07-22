@@ -121,6 +121,9 @@ let async = url => {
       case '@/views/popup/register':
         vueComponent = () => import('@/views/popup/register')
         break
+      case '@/views/popup/guide':
+        vueComponent = () => import('@/views/popup/guide')
+        break
     }
     // resolve promise
     vueComponent().then((vc) => {
@@ -405,6 +408,10 @@ export default [
   {
     path: '/register',
     async: async('@/views/popup/register')
+  },
+  {
+    path: '/guide',
+    async: async('@/views/popup/guide')
   },
   {
     path: '/forget',

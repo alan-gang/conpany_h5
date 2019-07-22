@@ -4,11 +4,9 @@ f7-page
   .t_c.pd_20
     f7-icon._icon.v_t(:class=" '_safeicon' + v._icon + '_big' " f7="home" size="60")
   f7-list.mg_0(inline-labels no-hairlines-md ref="_form")
-    template(v-if=" v.t ")
-      f7-list-input(type="text" required validate minlength="2" validate-on-blur label="昵称" :placeholder="user.greetMsg" clear-button :value=" form.n " @input=" form.n = $event.target.value ")
+    f7-list-input(type="text" required validate minlength="2" validate-on-blur label="昵称" :placeholder=" user.greetMsg || '请输入问候语' " clear-button :value=" form.n " @input=" form.n = $event.target.value ")
   .h_40
   f7-button.mg_10(fill large @click=" __validateform(changNickName) ") 确认
-  //- .mg_10.c_g.ft_12 注： 密码长度6-12位，由数字、小写字符和大写字母组成，但必须至少包括2种字符
 
 
 </template>
@@ -36,7 +34,7 @@ export default {
   methods: {
     changNickName () {
       this.$f7.input.validateInputs(this.$refs['_form'])
-      this.$.post(api.setGreetMsg, {greetMsg: this.form.n})
+      this.$.post(api.setGreetMsg, {greetMsg: this.form.n}).then(this.__back)
     }
   }
 }

@@ -29,6 +29,14 @@ f7-page.register.bg-color-white
           img.code(:src=" user.codeimg " @click=" __setCall({fn: '__getcodeimg'}) ")
     li.h_o
 
+  .flex.pl_15.pr_15.pt_5.pb_5(v-show=" form.pwd ")
+    .l
+      span.mg_2.w_30.inlb.h_5(v-for=" (x, i) in 4 " :class=" [{ bgc_g: pwdlevel.level <= i }, pwdlevel.level > i && ('bg' + pwdlevel.cls) ] ")
+    .r(:class=" pwdlevel.cls ")
+      span 密码强度：
+      span {{ pwdlevel.text }}
+
+
   f7-block.mb_5
     f7-button(round fill large @click=" autoRegist ") 注册
 
@@ -42,6 +50,7 @@ f7-page.register.bg-color-white
 <script>
 import config from '@/config'
 import api from '@/api'
+import { getPwdSafeLevel } from '@/util/pwd'
 export default {
   mixins: [config],
   components: {
@@ -62,6 +71,9 @@ export default {
     }
   },
   computed: {
+    pwdlevel () {
+      return getPwdSafeLevel(this.form.pwd)
+    }
   },
   created () {
     if (this.__query.tag) this.getCodeByTag(this.__query.tag)

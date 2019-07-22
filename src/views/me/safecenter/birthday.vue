@@ -5,10 +5,9 @@ f7-page
     f7-icon._icon.v_t(:class=" '_safeicon' + v._icon + '_big' " f7="home" size="60")
   f7-list.mg_0(inline-labels no-hairlines-md ref="_form")
     template(v-if=" !v.t ")
-      f7-list-input(label='生日', required validate type='datepicker', :placeholder=" user.birthday ",  :calendar-params="{openIn: 'customModal', header: true, footer: true, dateFormat: 'yyyy-mm-dd'}" @calendar:change=" form.d = $event[0] ")
+      f7-list-input(label='生日', required validate type='datepicker', :placeholder=" user.birthday ",  placeholder="点击选择您的出生日期" :calendar-params="{openIn: 'customModal', header: true, footer: true, dateFormat: 'yyyy-mm-dd'}" @calendar:change=" form.d = $event[0] ")
   .h_40
   f7-button.mg_10(fill large @click=" __validateform(changNickName) ") 确认
-  //- .mg_10.c_g.ft_12 注： 密码长度6-12位，由数字、小写字符和大写字母组成，但必须至少包括2种字符
 
 
 </template>

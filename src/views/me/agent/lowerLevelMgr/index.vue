@@ -104,7 +104,7 @@
                         span.c_9 {{rebate.name}}：
                         span {{rebate.userPoint}}
 
-                  f7-row.pt_10.pb_10(v-if="showSalary")
+                  f7-row.pt_10.pb_10(v-if="showSalary && d.daySalary ")
                     f7-col
                       span.c_9 日工资：
                       span 团队销售&gt;={{d.teamSales}}, 有效人数&gt;={{d.actUser}}, 每1万{{d.daySalary}}
@@ -243,7 +243,7 @@ export default {
     },
     // 最近搜索的名字
     rns () {
-      return this.local.rns.split(',').filter(x => x.indexOf(this.name) !== -1)
+      return this.local.rns.split(',').slice(0, 20).filter(x => x.indexOf(this.name) !== -1)
     },
     condiRegisterDate () {
       return !this.stet[0] || !this.stet[1] ? '不限' : this.__stetn.join(' 至 ')

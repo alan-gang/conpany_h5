@@ -10,10 +10,10 @@
         f7-col(width="75")
           input(type="password" maxlength="20" :placeholder="'默认密码' + defaultPwd" v-model="password")
 
-    f7-row.set-header(v-show="isShowRebateLs")
-      f7-col(width="50") 返点-返水设置：
-      f7-col(width="50")
-        f7-button.ft_14(fill large @click.native="popupOpened = true") 使用已有下级的设置
+    .set-header.flex(v-show="isShowRebateLs")
+      span 返点-返水设置：
+      f7-button.ft_14(fill large @click=" copyfromspread ") 复制推广链接设置
+      f7-button.ft_14(fill large @click="popupOpened = true") 使用已有下级设置
 
     RebateRate(:rebateRates="rebateRates" :show="isShowRebateLs" @update="updateRebateRates")
     f7-button.mg_10(fill large @click="openAccount") 开户
@@ -50,7 +50,8 @@ export default {
         allowSlidePrev: true,
         allowSlideNext: true
       },
-      popupOpened: false
+      popupOpened: false,
+      data: null,
     }
   },
   mounted () {
@@ -81,8 +82,10 @@ export default {
     getShowRegistUser () {
       this.$.get(api.showRegistUser).then(({data}) => {
         this.defaultPwd = data.defaultPwd
+        this.data = data
         data.back = data.back.map((x, i) => {
           x.$ = '0.0'
+          x.$$ = (x.keepBack * 1000).toFixed(1)
           x.$s = x.backwater * 10000
           x.rebateTypeTxt = '返水'
           x.unitTxt = '千分之'
@@ -94,6 +97,7 @@ export default {
           name: '彩票',
           backwater: data.userPoint,
           $: '0.0',
+          $$: (data.keepPoint * 1).toFixed(1),
           $s: data.userPoint * 10,
           rebateTypeTxt: '返点',
           unitTxt: '百分之',
@@ -127,6 +131,14 @@ export default {
     },
     updateRebateRates (d) {
       this.rebateRates = d
+    },
+    copyfromspread () {
+      const x = this.rebateRates
+      this.rebateRates = []
+      setTimeout(() => {
+        x.forEach(x => (x.$ = x.$$))
+        this.rebateRates = x
+      }, 0)
     }
   }
 }
