@@ -12,7 +12,7 @@
       slot(name="leftIcon")
         .left-r(@click="swiperLeft(i)")
       f7-swiper.rebate-swiper(:params="swiperParams" v-show="item.$s" ref="rebateSwiper")
-        f7-swiper-slide(v-for="(rate, j) in item.$s" :key="j" @click.native="rebateItemHandler(rate, i, j)" :class="{active: (rate * 0.1).toFixed(1) === item.$}") {{(rate * 0.1).toFixed(1)}}{{item.unitSymbal}} 
+        f7-swiper-slide(v-for="(rate, j) in item.$s" :key="j" @click.native="rebateItemHandler(rate, i, j)" :class="{active: (rate * 0.1).toFixed(1) === item.$}") {{(rate * 0.1).toFixed(1)}}{{item.unitSymbal}}
       slot(name="rightIcon")
         .right-r(@click="swiperRight(i)")
       slot(name="right")
@@ -68,8 +68,9 @@ export default {
       this.$refs['rebateSwiper'] && this.$refs['rebateSwiper'].swiper.slideTo(this.item.$ / 0.1 - 1, 0)
     },
     rebateItemHandler (rate, i, j) {
-      this.item.$ = (rate * 0.1).toFixed(1)
-      this.$emit('update', this.item, i, j)
+      let item = Object.assign({}, this.item)
+      item.$ = (rate * 0.1).toFixed(1)
+      this.$emit('update', item, i, j)
     },
     swiperLeft (i) {
       this.$refs['rebateSwiper'] && this.$refs['rebateSwiper'].swiper.slidePrev()

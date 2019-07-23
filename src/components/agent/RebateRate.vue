@@ -30,8 +30,9 @@ export default {
   },
   methods: {
     update (item, i, j) {
-      this.rebateRates[i] = item
-      this.$emit('update', this.rebateRates)
+      let rebateRates = this.rebateRates.slice(0)
+      rebateRates[i] = item
+      this.$emit('update', rebateRates)
     }
   }
 }
