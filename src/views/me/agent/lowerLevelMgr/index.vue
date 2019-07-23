@@ -9,7 +9,7 @@
       f7-col(width="15" @click="showSearchBar = true")
         .icon-search
     
-    f7-row.bgc_f.pl_25.search-condi-bar.c_6.z_9503.p_r
+    f7-row.bgc_f7.pl_25.search-condi-bar.c_6.z_9503.p_r
       f7-col.flex.flex-jc-s(@click="(filterType = 1) && (showFilter = !showFilter) && (rns_ = true)")
         span(v-show="condiRegisterDate.indexOf('至') == -1") 注册时间：
         span.pl_5 {{condiRegisterDate}}
@@ -188,7 +188,7 @@ export default {
       filterType: 1,
       showTipBar: true,
       rns_: false,
-      orderTypes: [{id: '3', name: '注册时间'}, {id: '4', name: '最后登录'}, {id: '2', name: '账户余额'}],
+      orderTypes: [{id: '2', name: '账户余额'}, {id: '3', name: '注册时间'}, {id: '4', name: '最后登录时间'}],
       curOrderObject: {id: '3', name: '注册时间'},
       curOrderType: '',
       maxDaySalary: 0,
@@ -217,7 +217,6 @@ export default {
       safeCheckCode: '',
       topUpMax: '',
       topUpMin: '',
-      moneyTypes: ['可用余额', '特殊金额'],
 
       userRebateData: [],
       sendTypes: ['手动发放', '自动发放'],
@@ -266,7 +265,7 @@ export default {
         pageSize: this.pageSize,
         page: this.page,
         subUserid: this.subUserId,
-        orderType: this.curOrderType
+        sortType: this.curOrderType
       }
 
       Object.assign(params, p)
@@ -288,7 +287,7 @@ export default {
         this.actionButtons['id0'].show = this.canTopUp
         this.userPoint = userPoint
         subUserInfo = subUserInfo.map(s => {
-          s.rebates = [{show: userPoint > 0, userPoint: userPoint + '%', name: '彩票返点'}]
+          s.rebates = [{show: userPoint > 0, userPoint: s.userPoint.toFixed(1) + '%', name: '彩票返点'}]
           s.cp = {}
           s.showAllCPRule = false
           s.yj = {}
@@ -409,8 +408,8 @@ export default {
       let index = this.getUserIndexByUserId(userId)
       let userInfo = this.lowerLevelData[index]
       if (userInfo && ((this.userPoint > 0 && userInfo.rebates.length > 1) || (this.userPoint <= 0 && userInfo.rebates.length > 0))) return Promise.resolve(userInfo)
-      return this.$.get(api.getUserAll, {subUserid: userId}).then(({data: {backMyArr, cpArr, yjArr, myPointArr, subPointArr}}) => {
-        backMyArr.forEach(b => {
+      return this.$.get(api.getUserAll, {subUserid: userId}).then(({data: {backArr, cpArr, yjArr, myPointArr, subPointArr}}) => {
+        backArr.forEach(b => {
           userInfo.rebates.push({show: true, userPoint: (b.backwater || 0) > 0 ? ((b.backwater || 0) * 1000 + '‰') : '--', name: b.groupname + '返水'})
         })
         if (cpArr.length > 0) {

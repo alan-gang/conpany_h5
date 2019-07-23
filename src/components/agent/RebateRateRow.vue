@@ -98,6 +98,7 @@ export default {
   .swiper-slide
     height 35px
     line-height 35px
+    min-width 44.4px
     text-align center
     background-color #efefef
   .rebate-swiper-wp

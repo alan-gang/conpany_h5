@@ -23,7 +23,7 @@ f7-page.new_contract
         .item-content
           .item-inner.align-items-flex-start
             .item-title.p_r.p_t_10 规则{{ i + 1 }}
-            .a.wp_60
+            .a.wp_70
               .hlh_40.mb_5
                 .v_m.inlb
                   f7-segmented.w_100(slot="after" )

@@ -95,7 +95,7 @@
 
   </div>
   <div class="got">
-    <span onclick=" location.href = '/' ">已有帐户，去登录</span>
+    <span onclick=" location.href = 'http://x.xybets.com' ">已有帐户，去登录</span>
   </div>
 
 
@@ -138,6 +138,10 @@
     axios.get('/dscagamesclient/team/createAccount.do?method=autoRegist', {params:  args}).then(function(rep){
       var msg = '注册成功'
       if (rep.data.success === 1) {
+        // 注册成功
+        setTimeout(function(){
+          location.href = 'http://x.xybets.com'
+        }, 2000)
       } else {
         msg = rep.data.msg || '注册失败'
         __getcodeimg() 
