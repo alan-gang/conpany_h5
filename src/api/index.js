@@ -67,6 +67,12 @@ let api = {
   '/dscagamesclient/activity.do?method=getAllEnablePrize': {
     '-1': {fn: [{fn: '__showTab', args: '#activity'}, {fn: '__setGlobal', args: {afterLoginAction: {fn: '__showTab', args: '#gift'}}}]}
   },
+  doRewardPrize: '/activity.do?method=doRewardPrize',
+  '/dscagamesclient/activity.do?method=doRewardPrize': {
+    1: {
+      msg: '领取成功',
+    },
+  },
   myGetPrize: '/activity.do?method=myGetPrize',
   getCheckInReward: '/activity.do?method=getCheckInReward',
   doCheckIn: '/activity.do?method=doCheckIn',

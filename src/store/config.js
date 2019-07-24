@@ -144,7 +144,7 @@ export default {
       {id: 2, n: '间接下级'},
     ],
     dsStateFilters: [
-      {id: '', n: '全部状态'},
+      {id: undefined, n: '全部状态'},
       {id: 0, n: '未领取'},
       {id: 1, n: '已领取'},
     ],

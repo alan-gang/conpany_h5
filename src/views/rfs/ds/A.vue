@@ -101,7 +101,7 @@ export default {
       rns_: true,
       sd: false,
       stet: [new Date()._bf(-1)._setHMS(), new Date()._bf(-1)._setHMS('23:59:59')],
-      s: {n: '全部状态', id: ''},
+      s: {n: '全部状态', id: undefined},
       z: {n: '我和下级', id: 2},
       n: '',
       n_: '',

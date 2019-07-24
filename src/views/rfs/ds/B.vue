@@ -41,7 +41,7 @@ f7-page.rf_ds_2(:page-content="false")
             f7-icon(f7="person" :color=" x.userId !== user.userId ? 'orange' : 'deeporange' ")
             span.pl_5(:class=" {'text-color-deeporange': x.userId === user.userId} ") {{ x.userId !== user.userId ? x.userName : '我' }}
 
-          f7-button(color="deeporange" outline small @click=" __go('/rfs/ds/setds/', {props: { v: x, max }}) ") 设置日工资
+          f7-button(v-if=" x.userId !== user.userId  " color="deeporange" outline small @click=" __go('/rfs/ds/setds/', {props: { v: x, max }}) ") 设置日工资
 
         f7-card-header.ft_14
 
@@ -140,6 +140,7 @@ export default {
         userName: this.n,
         salaryType: this.s.id,
       }, option)).then(({data: {my, salaryList, totalSize, max}}) => {
+        my && my[0] && (my[0].userId = this.user.userId)
         this.data = [...(option.page > this.fpage ? this.data : my), ...salaryList]
         this.total = totalSize
         cb && cb(salaryList)
