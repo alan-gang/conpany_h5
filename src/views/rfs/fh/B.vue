@@ -111,8 +111,8 @@ export default {
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
       this.$.get(api.mySubExpectedBounsMobile, Object.assign({
-        startDate: '',
-        endDate: '',
+        startDate: new Date(window.lstt)._toDayString(),
+        endDate: new Date(window.lstt)._toDayString(),
         groupId: 0,
       }, option)).then(({data: {my, myBonus, bonus, totalSize}}) => {
         my.forEach(x => (x.o = false))

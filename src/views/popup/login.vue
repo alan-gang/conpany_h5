@@ -21,7 +21,7 @@ f7-page.login.bg-color-white
     li.h_o
 
   .pd_15.ft_12(v-show=" !tryPlay ")
-    f7-checkbox(name=" remember " :checked=" local.remember " @click=" __setLocal({remember: !local.remember}) ")
+    f7-checkbox(name=" remember " :checked=" local.remember " v-on:toggle:change=" __setLocal({remember: local.remember}) ")
     span(@click=" __setLocal({remember: !local.remember}) ")  记住密码
 
     f7-link.f_r(popup-open="#forget")
@@ -69,6 +69,10 @@ export default {
     },
     __loginSuccess () {
       this.code = ''
+      /* log */
+      // if (!this.tryPlay && this.local.remember) {
+      //   this.__toast('已经记住您登录的帐号密码，' + this.local.un + ':' + this.local.pwd)
+      // }
       !this.tryPlay && this.__setLocal({
         remember: !!this.local.remember,
         un: this.local.remember ? this.local.un : '',

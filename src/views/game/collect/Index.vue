@@ -7,8 +7,14 @@ f7-page.game_collect
       f7-card.mg_5
         f7-card-content.h_60._bg._notbg.j_c.t_c(:class=" [v.nid, v.plat] " @click.native=" v.id ? __go('/game/play/', {props: v}) : __go('/outer/', {props: v}) ")
           f7-icon._icon(:class=" '_gid' + v.id " f7=" home " size="60px" v-if=" v.id ")
+          .p_a.p_r_0.p_t_0.pd_10(v-show="mode" @click.stop=" __setLocal({cgs: local.cgs.replace(',' + v.id + ',', '')}) ")
+            f7-icon(f7=" close_round_fill " color="gray" size="20px")
+
         
         .t_c.hlh_30.c_6 {{ v.n }}
+
+  .p_f.z_1.p_b_10.wp_100.t_c
+    f7-button.w_60.inlb(large @click=" mode = !mode ") {{ mode ? '完成' : '编辑' }}
 
   
 
@@ -26,6 +32,7 @@ export default {
   props: [],
   data () {
     return {
+      mode: false,
     }
   },
   computed: {
@@ -45,5 +52,5 @@ export default {
   ._notbg._bg
     background-size auto 100%
     background-position right
-    
+
 </style>

@@ -127,7 +127,7 @@ export default {
             ? api.tpldreport
             : api.pldl,
         {
-          userId: this.id || this.user.userId,
+          userId: this.u.userId || this.user.userId,
           gameType: this.v.id,
           beginDate: this.stet[0]._toDayString(),
           endDate: this.stet[1]._toDayString(),

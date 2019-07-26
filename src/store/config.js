@@ -170,6 +170,14 @@ export default {
       {id: 0, n: '仅投注用户'},
       {id: 1, n: '全部用户'},
     ],
+    ctSortStateFilters: [
+      {id: 1, n: '充值从高到低'},
+      {id: 2, n: '提款从高到低'},
+    ],
+    hdSortStateFilters: [
+      {id: 1, n: '人数从高到低'},
+      {id: 2, n: '金额从高到低'},
+    ],
     wallets: [
       {n: '主帐户', key: 'availableBalance', pid: 0},
       {n: '特殊帐户', key: 'specialBalance', pid: 1},

@@ -75,6 +75,9 @@
 
           template(v-else)
 
+            f7-list-item.ft_14.bgc_f.mg_10(title="团队统计" link="/rfs/ts/")
+              f7-icon.mr_5._icon._sub_game_record(slot="media" f7=" home ")
+
             f7-list-item.ft_14.bgc_f.mg_10(title="下级个人盈亏" link="/rfs/_pl/")
               f7-icon.mr_5._icon._sub_game_record(slot="media" f7=" home ")
 

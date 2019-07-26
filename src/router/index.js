@@ -87,6 +87,13 @@ import WRD from '@/views/rfs/cr/WRD'
 import pl from '@/views/rfs/pl'
 import PLD from '@/views/rfs/pl/PLD'
 import PLDL from '@/views/rfs/pl/PLDL'
+// 团队统计
+import ts from '@/views/rfs/ts'
+import tsAD from '@/views/rfs/ts/AD'
+import tsADL from '@/views/rfs/ts/ADL'
+import tsBD from '@/views/rfs/ts/BD'
+import tsBDL from '@/views/rfs/ts/BDL'
+
 // 分红报表(分红、预期、契约) 佣金报表(佣金、预期、契约)
 import fh from '@/views/rfs/fh'
 import yj from '@/views/rfs/yj'
@@ -526,6 +533,29 @@ export default [
   {
     path: '/rfs/tpl/',
     component: tpl,
+  },
+  {
+    path: '/rfs/ts/',
+    component: ts,
+    master: true,
+    detailRoutes: [
+      {
+        path: '/rfs/ts/ad/',
+        component: tsAD,
+      },
+      {
+        path: '/rfs/ts/adl/',
+        component: tsADL,
+      },
+      {
+        path: '/rfs/ts/bd/',
+        component: tsBD,
+      },
+      {
+        path: '/rfs/ts/bdl/',
+        component: tsBDL,
+      },
+    ]
   },
   {
     path: '/rfs/fh/',

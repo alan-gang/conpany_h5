@@ -7,7 +7,7 @@ f7-page.rf_bc_1_(:page-content="false")
       //- .o_h(:class=" !rns_ ? 'mh_0' : 'mh_100' " style="transition: max-height .5s linear")
       f7-button.inlb(v-for=" (x, i) in stbs " :key="i" @click=" stbi = i " :color=" i === stbi ? 'deeporange' : 'gray' ") {{ x.n }}
 
-    f7-searchbar(ref="s" disable-button-text="取消" placeholder="输入账变编号号 或 用户名查询" :clear-button="true" @searchbar:disable=" rns_ = false " @change=" (rns_ = false) || (n = $event.target.value) " :value=" (!rns_ && n ? stbs[stbi].n + '：' : '') + n " @input=" (rns_ = true) && (n_ = $event.target.value) " @focus=" rns_ = true ")
+    f7-searchbar(ref="s" disable-button-text="取消" placeholder="输入下级用户名 或 注单编号" :clear-button="true" @searchbar:disable=" rns_ = false " @change=" (rns_ = false) || (n = $event.target.value) " :value=" (!rns_ && n ? stbs[stbi].n + '：' : '') + n " @input=" (rns_ = true) && (n_ = $event.target.value) " @focus=" rns_ = true ")
 
     template(v-if=" rns_ && !stbi ")
       .searchbar-backdrop.h_0(@click=" rns_ = false ")
@@ -102,7 +102,7 @@ export default {
     return {
       stbs: [
         {n: '用户名'},
-        {n: '账变编号'},
+        {n: '注单编号'},
       ],
       stbi: 0,
       rns_: false,

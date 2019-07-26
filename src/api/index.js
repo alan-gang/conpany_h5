@@ -477,6 +477,14 @@ let api = {
   // 团队盈亏 - 三方盈亏 & 棋牌 & 微游
   toplreport: '/report/otherReport.do?method=list',
   topldreport: '/report/otherReport.do?method=detail',
+
+  // 团队统计
+  // 充提
+  ct: '/report/otherReport.do?method=rechargeList',
+  ctd: '/report/otherReport.do?method=rechargeDetail',
+  // 活动
+  hd: '/report/otherReport.do?method=activitList',
+  hdd: '/report/otherReport.do?method=activitDetail',
 }
 
 Object.keys(api).forEach((key) => {

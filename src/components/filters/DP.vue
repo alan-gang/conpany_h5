@@ -2,7 +2,7 @@
 .date_pick
   .pd_10
 
-    .flex.mb_5(v-if="!t || t === 'rf_tpl_1' ")
+    .flex.mb_5(v-if="!t || t === 'rf_tpl_1' || t === 'rf_ts_1' || t === 'rf_ts_2' ")
       f7-button.bgc_pc.w_100(color="black"  @click=" changeStet(now ) ") 今天
       f7-button.bgc_pc.w_100(color="black"  @click=" changeStet(now._bf(-1) ) ") 昨天
       f7-button.bgc_pc.w_100(color="black"  @click=" changeStet(now._bf(-2) ) ") 前天

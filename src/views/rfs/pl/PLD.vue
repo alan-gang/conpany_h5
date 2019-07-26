@@ -59,11 +59,11 @@ export default {
         {n: this.v && this.v.n + '返点', key: 'pointLevel', show: x => Number(x.pointLevel), v: x => (!this.v || !this.v.id ? x.pointLevel * 100 : x.pointLevel * 1000).toFixed(1), end: !this.v || !this.v.id ? '%' : '‰'},
         {n: '统计时间', key: '_date'},
         {n: '投注', key: 'buy'},
-        {n: '派奖', key: 'prize'},
+        {n: '派奖', key: 'prize', show: x => !this.v.id},
         {n: '游戏盈亏', nwc: true, key: 'gameProfit'},
         {n: '返点', key: 'point', show: x => Number(x.pointLevel)},
         {n: '活动', key: 'reward'},
-        {n: '日工资', key: 'salary'},
+        {n: '日工资', key: 'salary', show: x => Number(x.salary)},
         {n: '总盈亏', key: 'totalProfit', nwc: true},
       ],
       v_: null

@@ -65,7 +65,7 @@ f7-page.chase_detail
 
     f7-button(fill large popover-open=".cdl") 查看各期追号情况
 
-    f7-button.mt_10(outline large @click=" cancelChase(id, v) " v-if=" !v.status ") 取消追号
+    f7-button.mt_10(outline large @click=" cancelChase(id, v) " v-if=" !v.status && user.userId === v.userId ") 取消追号
 
 
   f7-popover.codes.r_5 

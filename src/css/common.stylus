@@ -189,6 +189,8 @@ li
   position relative
 .p_a
   position absolute
+.p_f
+  position sticky
 .j_c
   justify-content center
 .j_s

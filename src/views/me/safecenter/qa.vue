@@ -55,7 +55,7 @@ export default {
       })
     },
     setSafeQuestion () {
-      this.$.get(api.setSafeQuestion, {
+      this.$.post(api.setSafeQuestion, {
         question1: (this.data[this.form.i] || {}).title,
         question2: (this.data[this.form.j] || {}).title,
         answer1: this.form.a1,
