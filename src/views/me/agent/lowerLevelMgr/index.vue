@@ -1,7 +1,7 @@
 <template lang="pug">
   f7-page.lower-level-mgr(:page-content="false")
     f7-navbar(title="下级管理" back-link top)
-    f7-row.breadcrumb-row.bgc_f.pl_25
+    f7-row.breadcrumb-row.bgc_f.pl_15
       f7-col.breadcrumb-wp(width="85")
         span.ft_15.mr_2.breadcrumb-item(v-for="(u, i) in breadcrumb" @click="linkTo(u.userId)") 
           span(:class="{c_orange: i === 0 || i < breadcrumb.length - 1}") {{u.userName}} 
@@ -9,16 +9,16 @@
       f7-col(width="15" @click="showSearchBar = true")
         .icon-search
     
-    f7-row.bgc_f7.pl_25.search-condi-bar.c_6.z_9503.p_r
-      f7-col.flex.flex-jc-s(@click="(filterType = 1) && (showFilter = !showFilter) && (rns_ = true)")
+    f7-row.bgc_f7.pl_15.pr_15.search-condi-bar.c_6.z_9503.p_r
+      f7-col(@click="(filterType = 1) && (showFilter = !showFilter) && (rns_ = true)")
         span(v-show="condiRegisterDate.indexOf('至') == -1") 注册时间：
         span.pl_5 {{condiRegisterDate}}
-        span.inlb.icon-triangle-wp
+        span.inlb.icon-triangle-wp.p_r.p_t_-3
           Triangle(:direction="filterType == 1 && showFilter ? 'up' : 'down'")
-      f7-col.flex.flex-jc-s(@click="(filterType = 2) && (showFilter = !showFilter) && (rns_ = true)")
+      f7-col.t_r(@click="(filterType = 2) && (showFilter = !showFilter) && (rns_ = true)")
         span 排序方式：
         span.pl_5 {{ curOrderObject.name }}
-        span.inlb.icon-triangle-wp
+        span.inlb.icon-triangle-wp.p_r.p_t_-3
           Triangle(:direction="filterType == 2 && showFilter ? 'up' : 'down'")
 
     //- 搜索框
@@ -98,11 +98,11 @@
                     f7-col(width="50")
                       span.c_9 给下级转账：
                       span(v-state="true") {{canTopUp ? '已开通' : '未开通'}}
-                  .rebates-wp.b-b.pt_10.pb_5
+                  .rebates-wp.b-b.pt_10.pb_5(v-if=" d.rebates.filter(x => x.show)[0] ")
                     f7-row
-                      f7-col.pb_5(:width=" i % 2 ? 50 : 45 " v-for="(rebate, i) in d.rebates")
+                      f7-col.pb_5(:width=" i % 2 ? 50 : 45 " v-for="(rebate, i) in d.rebates" v-if=" rebate.show ")
                         span.c_9 {{rebate.name}}：
-                        span {{rebate.userPoint}}
+                        span {{ rebate.userPoint }}
 
                   f7-row.pt_10.pb_10(v-if="showSalary && d.daySalary ")
                     f7-col
@@ -287,7 +287,7 @@ export default {
         this.actionButtons['id0'].show = this.canTopUp
         this.userPoint = userPoint
         subUserInfo = subUserInfo.map(s => {
-          s.rebates = [{show: userPoint > 0, userPoint: s.userPoint.toFixed(1) + '%', name: '彩票返点'}]
+          s.rebates = [{show: s.userPoint * 1 > 0, userPoint: s.userPoint.toFixed(1) + '%', name: '彩票返点'}]
           s.cp = {}
           s.showAllCPRule = false
           s.yj = {}
@@ -399,7 +399,7 @@ export default {
       if (userInfo && ((this.userPoint > 0 && userInfo.rebates.length > 1) || (this.userPoint <= 0 && userInfo.rebates.length > 0))) return Promise.resolve(userInfo)
       return this.$.get(api.getBackWater, params).then(({data: {backWaterComb}}) => {
         backWaterComb.forEach(b => {
-          userInfo.rebates.push({show: true, userPoint: (b.backWater || 0) > 0 ? ((b.backWater || 0) * 1000 + '‰') : '--', name: b.groupName + '返水'})
+          userInfo.rebates.push({show: (b.backWater || 0) > 0, userPoint: (b.backWater || 0) > 0 ? ((b.backWater || 0) * 1000 + '‰') : '--', name: b.groupName + '返水'})
         })
         this.$set(this.lowerLevelData, index, userInfo)
       })
@@ -410,7 +410,7 @@ export default {
       if (userInfo && ((this.userPoint > 0 && userInfo.rebates.length > 1) || (this.userPoint <= 0 && userInfo.rebates.length > 0))) return Promise.resolve(userInfo)
       return this.$.get(api.getUserAll, {subUserid: userId}).then(({data: {backArr, cpArr, yjArr, myPointArr, subPointArr}}) => {
         backArr.forEach(b => {
-          userInfo.rebates.push({show: true, userPoint: (b.backwater || 0) > 0 ? ((b.backwater || 0) * 1000 + '‰') : '--', name: b.groupname + '返水'})
+          userInfo.rebates.push({show: (b.backwater || 0) > 0, userPoint: (b.backwater || 0) > 0 ? ((b.backwater || 0) * 1000 + '‰') : '--', name: b.groupname + '返水'})
         })
         if (cpArr.length > 0) {
           userInfo.cp = cpArr[0]

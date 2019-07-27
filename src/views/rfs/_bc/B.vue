@@ -58,7 +58,7 @@ f7-page.rf_bc_1_(:page-content="false")
           span.ft_14.text-color-gray 订单编号：{{ v.projectId }}
           span.ft_14.text-color-gray {{ v.writeTime }}
         .flex
-          .a
+          .a.mwp_70
             .ft_15
               span {{ v.lotteryName }} - {{ v.methodName }}
               span.text-color-deeporange  ({{ v.codeType === '1' ? '复式' : '单式' }})

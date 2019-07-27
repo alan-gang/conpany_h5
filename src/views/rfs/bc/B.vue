@@ -38,11 +38,12 @@ f7-page.rf_bc_1(:page-content="false")
         span.ft_14.text-color-gray {{ v.writeTime }}
       f7-card-content
         .flex
-          .a
-            .hlh_20
+          .a.mwp_70
+            .ft_15
               span {{ v.lotteryName }} - {{ v.methodName }}
               span.text-color-deeporange  ({{ v.codeType === '1' ? '复式' : '单式' }})
-            .hlh_20
+            .h_5
+            .ft_15
               span.c_9 投注：
               span {{ v.totalPrice }}元
           .b

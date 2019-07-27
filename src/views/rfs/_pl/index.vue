@@ -166,6 +166,7 @@ export default {
         if (items[0]) {
           items = [...(items.splice(-1, 1)), ...items]
         }
+        if (option.page > this.fpage) items.splice(0, 1)
         this.data = [...(option.page > this.fpage ? this.data : []), ...items]
         this.total = totalSize
         cb && cb(items)

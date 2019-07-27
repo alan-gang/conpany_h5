@@ -116,7 +116,7 @@ export default {
     },
     n (n) {
       this.init()
-      if (this.n) this.__setLocal({rns: this.n + ',' + this.local.rns.replace(this.n + ',', '')})
+      if (this.n && !this.stbi) this.__setLocal({rns: this.n + ',' + this.local.rns.replace(this.n + ',', '')})
     },
   },
   created () {
