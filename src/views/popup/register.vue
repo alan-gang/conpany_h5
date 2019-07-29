@@ -41,7 +41,7 @@ f7-page.register.bg-color-white
     f7-button(round fill large @click=" autoRegist ") 注册
 
   .t_c
-    span.v_m 已有帐户，去
+    span.v_m 已有账户，去
     f7-button.inlb(@click="__setCall({fn: '__initLoginPopup'}) || $f7.popup.open('#login')" popup-close="#register") 登录
 
 

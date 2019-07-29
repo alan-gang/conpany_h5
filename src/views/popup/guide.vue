@@ -6,7 +6,7 @@ f7-page.guide
 
   .r_5.dialog-popup.popup.modal-in.not-animated
     f7-link.p_a.p_r_5.p_t_5(icon-f7="close" color="gray" icon-size="20px" popup-close="#guide")
-    .c_orange.t_c.pd_15 设置帐户信息
+    .c_orange.t_c.pd_15 设置账户信息
 
     f7-list.mr_15(no-hairlines ref="_form")
       template(v-if=" !user.hasNickName ")
@@ -18,7 +18,7 @@ f7-page.guide
         li.flex.pl_15.pr_15.pt_5.pb_5(v-show=" form.pwd ")
           .l
             span.mg_2.w_30.inlb.h_5(v-for=" (x, i) in 4 " :class=" [{ bgc_g: pwdlevel.level <= i }, pwdlevel.level > i && ('bg' + pwdlevel.cls) ] ")
-          .r(:class=" pwdlevel.cls ")
+          .r.twinkle(:class=" pwdlevel.cls ")
             span 密码强度：
             span {{ pwdlevel.text }}
       
@@ -74,7 +74,7 @@ export default {
   methods: {
     guiding () {
       !this.user.hasNickName && this.changNickName()
-      !this.user.hasLogPwd && this.changLoginPwd()
+      !this.user.hasLogPwd && this.pwdlevel.level > 1 && this.changLoginPwd()
       !this.user.hasSecurityPwd && this.changSecurePwd()
     },
     changNickName () {

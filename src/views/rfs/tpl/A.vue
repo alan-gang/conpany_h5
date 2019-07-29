@@ -39,7 +39,7 @@ f7-page.rf_tpl_1(:page-content="false")
       .preloader
       .ptr-arrow
     
-    f7-card(v-for=" (v, i) in data " :key="i" :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
+    f7-card(v-for=" (v, i) in data " :key="i + Math.random()" :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
       f7-card-header(v-if="!i")
         .t_c.wp_100 团队合计
 
@@ -145,9 +145,10 @@ export default {
         endDate: this.stet[1]._toDayString(),
         listAll: this.z.id,
         // 可选范围：”activityAmount”,”betAmount”,”pointAmount”,”prizeAmount”,”salaryAmount”,”settleAmount”,”userName”,”vrBetAmount”,”vrPointAmount”,”vrPrizeAmount”
-        orderBy: ({buy: 'betAmount', gameProfit: 'prizeAmount', totalProfit: 'settleAmount'})[this.s.id],
+        orderBy: ({buy: 'betAmount', gameProfit: 'gameSettleAmount', totalProfit: 'settleAmount'})[this.s.id],
         userId: this.user.userId,
         username: this.n,
+        ascOrDesc: 1,
       })).then(({data: {items, totalSize, userBreads, bonusReleaseCycle}}) => {
         if (items[0]) {
           items = [...(items.splice(-1, 1)), ...items]

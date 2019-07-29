@@ -32,7 +32,7 @@
       f7-toolbar.ft_12.c_333.bg-color-white(labels)
         f7-link._icon._load(icon-f7=" home " href="/me/load/") 充值
         f7-link._icon._withdraw(icon-f7=" home " href="/me/withdraw/") 提现
-        f7-link._icon._transfer(icon-f7=" home " href="/me/transfer/") 转帐
+        f7-link._icon._transfer(icon-f7=" home " href="/me/transfer/") 转账
         f7-link._icon._xyb(icon-f7=" home " href="/me/xyb/") 信游宝
 
 

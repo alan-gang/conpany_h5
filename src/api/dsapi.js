@@ -546,7 +546,7 @@ let Form = {
   // 撤单
   // http://192.168.169.44:9901/cagamesclient/booking.do?method=cancel&id=1304
   cancel: '//booking.do?method=cancel',
-  // 帐变查询
+  // 账变查询
   // http://192.168.169.44:9901/cagamesclient/report/OrderReport.do?method=list
   list: '/report/OrderReport.do?method=list',
   // 盈亏报表列表
@@ -576,7 +576,7 @@ let Form = {
   // 在追号详情页面，取消追号（没有）
   // http://192.168.169.44:9901/cagamesclient/booking.do?method=cancelTask&id=1304
   followCancel: '/booking.do?method=cancelTask',
-  // 获取帐变类型列表
+  // 获取账变类型列表
   // http://192.168.169.44:9901/cagamesclient/report/OrderReport.do?method=getOrderType
   getOrderType: '/report/OrderReport.do?method=getOrderType',
   // 获取彩种列表

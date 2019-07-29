@@ -8,15 +8,15 @@ f7-page
       f7-list-input(type="password" required validate :pattern="R.pwd" validate-on-blur label="旧密码" placeholder="请输入当前密码" clear-button :value=" form.pwd " @input=" form.pwd = $event.target.value ")
     f7-list-input(type="password" required validate :pattern="R.pwd" validate-on-blur label="新密码" placeholder="请输入当前密码" clear-button :value=" form.npwd " @input=" form.npwd = $event.target.value ")
     f7-list-input(type="password" required validate :pattern="form.npwd" error-message="2次密码输入不一致" validate-on-blur label="确认密码" placeholder="请输入当前密码" clear-button :value=" form.npwda " @input=" form.npwda = $event.target.value ")
-  .flex.pl_15.pr_15.pt_5.pb_5(v-show=" form.npwd ")
+  .flex.pl_15.pr_15.pt_5.pb_5(v-show=" form.npwd " :class="  ")
     .l
       span.mg_2.w_30.inlb.h_5(v-for=" (x, i) in 4 " :class=" [{ bgc_g: pwdlevel.level <= i }, pwdlevel.level > i && ('bg' + pwdlevel.cls) ] ")
-    .r(:class=" pwdlevel.cls ")
+    .r.twinkle(:class=" pwdlevel.cls ")
       span 密码强度：
       span {{ pwdlevel.text }}
 
   .h_40
-  f7-button.mg_10(fill large @click=" __validateform(changLoginPwd) ") 确认
+  f7-button.mg_10(fill large @click=" __validateform(pwdlevel.level > 1 && changLoginPwd() ) ") 确认
   .mg_10.c_g.ft_12 注： 由字符和数字组成6-16个字符，且必须包含数字和字母，不允许连续三位相同
 
 

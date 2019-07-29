@@ -8,11 +8,11 @@ f7-page.withdraw
   f7-toolbar.bgc_orange.pd_20(top labels)
 
     f7-link.text-color-white._icon._withdraw_main(icon-f7=" home "   @click=" key = 'availableBalance' " style="padding: 0") 
-      span 主帐户
+      span 主账户
       span.inlb.line.wp_50.h_5.bgc_f(:class=" { h_o: key !== 'availableBalance' } ")
 
     f7-link.text-color-white._icon._withdraw_special(icon-f7=" home " @click=" key = 'specialBalance'  " style="padding: 0") 
-      span 特殊帐户
+      span 特殊账户
       span.inlb.line.wp_50.h_5.bgc_f(:class=" { h_o: key !== 'specialBalance' } ")
 
 

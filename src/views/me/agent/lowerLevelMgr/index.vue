@@ -66,7 +66,7 @@
                     f7-button.w_80.c_p.btn-v-v-s(outline v-if=" d.teamCount > 1 && breadcrumb[breadcrumb.length - 1].userId !== d.userId " @click="viewSubLevel(d.userId)") 
                       | 查看下级
                       span
-                    f7-button.w_65.btn-l-red.ml_10(outline @click="operate(d)")
+                    f7-button.w_65.btn-l-red.ml_10(outline @click="operate(d)" v-if=" d.isSub ")
                       span 操作
                       span.inlb
                         Triangle(direction="down")
@@ -97,12 +97,13 @@
                   f7-row.b-b.pb_10
                     f7-col(width="50")
                       span.c_9 给下级转账：
-                      span(v-state="true") {{canTopUp ? '已开通' : '未开通'}}
-                  .rebates-wp.b-b.pt_10.pb_5(v-if=" d.rebates.filter(x => x.show)[0] ")
+                      span(v-state="true") {{ d.uploadlevel !== "0" ? '已开通' : '未开通'}}
+                  .rebates-wp.b-b.pt_10.pb_5
                     f7-row
-                      f7-col.pb_5(:width=" i % 2 ? 50 : 45 " v-for="(rebate, i) in d.rebates" v-if=" rebate.show ")
+                      f7-col.pb_5(:width=" i % 2 ? 50 : 45 " v-for="(rebate, i) in d.rebates")
                         span.c_9 {{rebate.name}}：
-                        span {{ rebate.userPoint }}
+                        span(v-if=" !rebate.show ") --
+                        span(v-else) {{ rebate.userPoint }}
 
                   f7-row.pt_10.pb_10(v-if="showSalary && d.daySalary ")
                     f7-col

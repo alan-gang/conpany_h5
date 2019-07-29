@@ -1,13 +1,29 @@
 <template lang="pug">
   f7-page.bonus(:page-content="false")
     f7-navbar(title="奖金详情" back-link)
-    .head
-      a._icon._bonusicon.link.color-black
-        i.icon.f7-icons home
-      br
-      strong {{ n }}
-      br
-      span 昵称：{{ nn }}
+    .head.flex
+      .a.w_80
+        a._icon._bonusicon.link.color-black
+          i.icon.f7-icons home
+      .b.t_l.pr_10
+        div
+          span 账户：{{ n }}
+        div
+          span 昵称：{{ nn }}
+        div
+          span 返点：{{ userPoint }}
+        div
+          span 日工资：{{ salary }}
+        div
+          span 高频彩奖金限额：{{ limitbonus }}
+        div
+          span 低频彩奖金限额：{{ dplimitbonus }}
+
+      .b.t_l.pl_10.pr_10
+        div(v-for=" (x, i) in userBackWater ")
+          span {{ x.groupName }}返水：{{ x.backWater }}
+
+
 
     f7-toolbar(tabbar scrollable v-if=" cnNames[0] ")
       f7-link(tab-link-active tab-link href="#bonus_SSC")
@@ -204,7 +220,12 @@ export default {
         {n: '奖级', key: 'level'},
         // {n: '奖金', key: 'prize'},
         {n: '状态', key: 'state', state: true},
-      ]
+      ],
+      limitbonus: '',
+      dplimitbonus: '',
+      userPoint: '',
+      salary: '',
+      userBackWater: [],
     }
   },
   created () {
@@ -212,13 +233,18 @@ export default {
   },
   methods: {
     getLotteryPrinzeInfo () {
-      this.$.get(api.getLotteryPrinzeInfo).then(({data: {cnNames, lotteryPrizeInfo, nickName, userName}}) => {
+      this.$.get(api.getLotteryPrinzeInfo).then(({data: {cnNames, lotteryPrizeInfo, nickName, userName, userPoint, limitbonus, dplimitbonus, userBackWater, userDaySalary: { salary }}}) => {
         cnNames.forEach(x => (x.id = '#bonus_' + x.enName))
         Object.values(lotteryPrizeInfo).forEach(x => x.forEach(y => (y.state = y.isClose ? '已关闭' : '使用中')))
         this.lotteryPrizeInfo = lotteryPrizeInfo
         this.cnNames = cnNames
         this.nn = nickName
         this.n = userName
+        this.limitbonus = limitbonus
+        this.dplimitbonus = dplimitbonus
+        this.userPoint = userPoint
+        this.salary = salary
+        this.userBackWater = userBackWater
       })
     }
   }
@@ -235,16 +261,10 @@ export default {
       background linear-gradient(to right, #ff8131, #ff5429)
       text-align center
       ._bonusicon
-        margin-top 0.7rem
         transform scale(4)
-      strong
-        display inline-block
-        font-size 0.27rem
-        color #fff
-        margin-top 0.55rem
       span
         font-size 0.22rem
-        color #ffb296
+        color #fff
     .toolbar
       // margin-top 2.7rem
       .tab-link

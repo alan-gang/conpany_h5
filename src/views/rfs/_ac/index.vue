@@ -97,7 +97,6 @@ export default {
       stbi: 0,
       rns_: false,
       sd: false,
-      stet: ['', ''],
       s: {n: '全部类型', id: ''},
       n: '',
       n_: '',
@@ -140,6 +139,7 @@ export default {
         scope: 1,
         userName: !this.stbi ? this.n : '',
         serialValue: this.stbi ? this.n : '',
+        serialType: 2,
       }, option)).then(({data: {orderRecordList, totalSize}}) => {
         this.data = [...(option.page > this.fpage ? this.data : []), ...orderRecordList]
         this.total = totalSize

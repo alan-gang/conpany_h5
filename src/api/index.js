@@ -4,7 +4,7 @@ let api = {
   // 配置信息config
   // 1. 权限
   getUserPrefence: '/home/userMenus.do?method=getUserPrefence',
-  // 2. 帐变类型
+  // 2. 账变类型
   getOrderType: '/report/OrderReport.do?method=getOrderType',
   // 3. socket通知
   getCfgInfo: '/login/login.do?method=getCfgInfo',
@@ -185,28 +185,28 @@ let api = {
   ato: '/ext/bg.do?method=transferToBG',
   '/dscagamesclient/ext/bg.do?method=transferToBG': {
     1: {
-      msg: '转帐成功',
+      msg: '转账成功',
       fn: [{fn: '__getBalance'}],
     }
   },
   sta: '/person/recharge.do?method=transAmount',
   '/dscagamesclient/person/recharge.do?method=transAmount': {
     1: {
-      msg: '转帐成功',
+      msg: '转账成功',
       fn: [{fn: '__getBalance'}],
     }
   },
   ota: '/ext/bg.do?method=withdrawFromBG',
   '/dscagamesclient/ext/bg.do?method=withdrawFromBG': {
     1: {
-      msg: '转帐成功',
+      msg: '转账成功',
       fn: [{fn: '__getBalance'}],
     }
   },
   ata: '/ext/bg.do?method=withdrawAll',
   '/dscagamesclient/ext/bg.do?method=withdrawAll': {
     1: {
-      msg: '转帐成功',
+      msg: '转账成功',
       fn: [{fn: '__getAllBalance'}],
     }
   },

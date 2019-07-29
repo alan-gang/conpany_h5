@@ -7,7 +7,7 @@
     .ipt-wp
       f7-input(type="text" placeholder="请输入下级的用户名" :value="userName" @input="userName = $event.target.value" :clear-button="true")
     f7-list(:simple-list="true")
-      f7-list-item(v-for="(act, i) in accountsHistory" :title="act.userName" @click.native="listItemHandler(act)")
+      f7-list-item(v-for="(act, i) in accountsHistory" :title="act.userName" @click.native="getUserRebateDataById(act)")
     f7-button.mg_10(fill large @click="sure") 确定
 </template>
 
@@ -35,19 +35,22 @@ export default {
       // 搜索下级
       this.$.get(api.getUserList, params).then(({data}) => {
         if (data.subUserInfo.length > 0) {
-          console.log(data.subUserInfo)
           this.saveUserToHistory(data.subUserInfo[0])
           this.$emit('info', data.subUserInfo[0])
-          this.getUserRebateDataById({userId: data.subUserInfo[0].userId})
+          this.getUserRebateDataById({userId: data.subUserInfo[0]})
         } else {
           this.__alert('您输入的下级用户名不存在')
         }
       })
     },
     // 获取用户的返水数据
-    getUserRebateDataById (params = {}) {
-      this.$.get(api.getBackWater, params).then(({data: {backWaterComb}}) => {
-        this.$emit('rebate-data', backWaterComb)
+    getUserRebateDataById (user = {}) {
+      const cpBackWater = {
+        groupId: 0,
+        backWater: user.userPoint,
+      }
+      this.$.get(api.getBackWater, { userId: user.userId }).then(({data: {backWaterComb}}) => {
+        this.$emit('rebate-data', [cpBackWater, ...backWaterComb])
       })
     },
     listItemHandler (act) {

@@ -12,8 +12,8 @@
 
     .set-header.flex(v-show="isShowRebateLs")
       span 返点-返水设置：
-      f7-button.ft_14(fill large @click=" copyfromspread ") 复制推广链接设置
-      f7-button.ft_14(fill large @click="popupOpened = true") 使用已有下级设置
+      f7-button.ft_12(fill large @click=" copyfromspread ") 复制推广链接设置
+      f7-button.ft_12(fill large @click="popupOpened = true") 使用已有下级设置
 
     RebateRate(:rebateRates="rebateRates" :show="isShowRebateLs" @update="updateRebateRates")
     f7-button.mg_10(fill large @click="openAccount") 开户
@@ -94,6 +94,7 @@ export default {
           return x
         })
         data.back.unshift({
+          groupid: 0,
           name: '彩票',
           backwater: data.userPoint,
           $: '0.0',
@@ -118,9 +119,12 @@ export default {
     rebateDataCB (data = []) {
       this.popupOpened = false
       if (data.length < 1) return
-      this.rebateRates = this.rebateRates.map((item, j) => {
+      const x = this.rebateRates.map((item, j) => {
         for (let i = 0; i < data.length; i++) {
-          if (item.groupid === data[i].groupId) {
+          if (item.groupid === 0 && item.groupid === data[i].groupId) {
+            item.$ = (data[i].backWater * 1).toFixed(1)
+            break
+          } else if (item.groupid === data[i].groupId) {
             item.$ = ((data[i].backWater || 0) * 1000).toFixed(1)
             this.$refs['rebateSwiper' + j] && this.$refs['rebateSwiper' + j][0].swiper.slideTo(data[i].backWater * 1000 / 0.1, 0)
             break
@@ -128,6 +132,10 @@ export default {
         }
         return item
       })
+      this.rebateRates = []
+      setTimeout(() => {
+        this.rebateRates = x
+      }, 0)
     },
     updateRebateRates (d) {
       this.rebateRates = d

@@ -5,9 +5,9 @@ f7-page
     f7-icon._icon.v_t(:class=" '_safeicon' + v._icon + '_big' " f7="home" size="60")
   f7-list.mg_0(form inline-labels no-hairlines-md ref="_form")
     template(v-if=" v.t ")
-      f7-list-input(type="password" required validate :pattern="R.pwd" validate-on-blur label="旧密码" placeholder="请输入当前密码" clear-button :value=" form.pwd " @input=" form.pwd = $event.target.value ")
-    f7-list-input(type="password" required validate :pattern="R.pwd" validate-on-blur label="新密码" placeholder="请输入当前密码" clear-button :value=" form.npwd " @input=" form.npwd = $event.target.value ")
-    f7-list-input(type="password" required validate :pattern="form.npwd" error-message="2次密码输入不一致" validate-on-blur label="确认密码" placeholder="请输入当前密码" clear-button :value=" form.npwda " @input=" form.npwda = $event.target.value ")
+      f7-list-input(type="password" required validate :pattern="R.pwd" validate-on-blur label="旧密码" placeholder="请输入旧密码" clear-button :value=" form.pwd " @input=" form.pwd = $event.target.value ")
+    f7-list-input(type="password" required validate :pattern="R.pwd" validate-on-blur label="新密码" placeholder="请输入新密码" clear-button :value=" form.npwd " @input=" form.npwd = $event.target.value ")
+    f7-list-input(type="password" required validate :pattern="form.npwd" error-message="2次密码输入不一致" validate-on-blur label="确认密码" placeholder="请输入新密码" clear-button :value=" form.npwda " @input=" form.npwda = $event.target.value ")
 
   .flex.pl_15.pr_15.pt_5.pb_5(v-show=" form.npwd ")
     .l

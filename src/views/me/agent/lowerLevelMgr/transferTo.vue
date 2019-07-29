@@ -3,9 +3,9 @@ f7-page.transfer-to-pg
   f7-navbar(title="给下级转账" back-link top)
   .step-1(v-show="step == 1")
     f7-row.h_40.bgc_f.flex-ai-c.pl_25
-      f7-col 转帐给: {{name}}
+      f7-col 转账给: {{name}}
     f7-row.h_40.bgc_f.flex-ai-c.pl_25.mt_10.j_s
-      f7-col(width="20") 转帐金额:
+      f7-col(width="20") 转账金额:
       f7-col.pr_10(width="80") 
         f7-input(type="text" :clear-button="true" :placeholder="`单笔充值金额最低${topUpMin}元，最高${topUpMax}元`" :value="amount" @input="amount = $event.target.value" maxlength="10")
     .accounts-wp

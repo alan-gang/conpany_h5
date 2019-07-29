@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.transfer
-  f7-navbar(title="转帐" back-link)
+  f7-navbar(title="转账" back-link)
     f7-nav-right
       f7-link(@click=" __go('/rfs/cr/', {props: {tabid: '#rf_cr_3'}}) ") 转账记录
 
