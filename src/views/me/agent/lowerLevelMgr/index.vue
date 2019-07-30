@@ -270,6 +270,7 @@ export default {
       }
 
       Object.assign(params, p)
+      params.page === this.fpage && this.$el && this.$f7.ptr.refresh(this.$el.querySelector('.ptr-content'))
       // 搜索下级
       this.$.get(api.getUserList, params).then(({data: {salaryComb, subUserInfo, totalSize, currUserId, isAddAccount, uploadLevel, userPoint, userBreads}}) => {
         this.breadcrumb = [{userId: '', userName: '我的下级'}, ...userBreads.slice(1)]

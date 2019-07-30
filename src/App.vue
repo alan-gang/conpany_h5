@@ -177,6 +177,7 @@ export default {
       this.$.get(api.__login + (isAuto ? '&' : ''), {userName: un, userPwd: pwd, verifyCode: code, channelType: this.local.pf, isAuto: isAuto, $anyway: this.__getUserPrefence}).then(({data}) => {
         this.__setUser(Object.assign(data, {login: true}))
         this.__getBalance()
+        this.__acctSecureInfo()
         cb && cb()
         if (!this.user.hasLogPwd || !this.user.hasSecurityPwd) this.$f7.popup.open('#guide')
         else if (!this.user.hasBankCard) this.__go('/me/bank/bind/')

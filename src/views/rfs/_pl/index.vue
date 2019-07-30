@@ -152,6 +152,7 @@ export default {
   },
   methods: {
     init () {
+      this.$el && this.$f7.ptr.refresh(this.$el.querySelector('.ptr-content'))
       this.list()
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {

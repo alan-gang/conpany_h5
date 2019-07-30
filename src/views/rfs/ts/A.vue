@@ -2,15 +2,27 @@
 
 f7-page.rf_ts_1(:page-content="false")
 
-  .p_a.wp_100.p_t_0.z_9503.ft_14
-    f7-searchbar(:ft_12=" !rns_ && tns.length > 20 " ref="s" disable-button-text="取消" placeholder="请输入团队名" :clear-button="true" @searchbar:disable=" rns_ = false " @change=" (rns_ = false) || (n = $event.target.value) " :value=" !rns_ ? tns : n " @input=" (rns_ = true) && (n_ = $event.target.value)" @focus=" rns_ = true ")
-    template(v-if="rns_")
-      .searchbar-backdrop.h_0(@click=" rns_ = false ")
-      f7-list.mh_0.mg_0.o_h.page_content_like.z_500(simple-list )
-        f7-list-item 
-          f7-button.wp_100.t_c.bg-color-white.pd_0(@click=" rns[0] && __setLocal({rns: ''}) ") {{ rns[0] ? '清空搜索记录' : '无搜索记录' }}
-        f7-list-item(v-for=" (x, i) in rns " :key="i" v-if=" x ")
-          f7-button.wp_100.t_l.bg-color-white.pd_0(color="black" @click=" (n = x) && (rns_ = false) ") {{ x }}
+  .p_a.wp_100.p_t_0.z_9503.ft_14.bgc_pc
+
+    template(v-if=" !rns_ ")
+      .flex.pl_10.pr_10.h_44
+        .a
+          f7-button.inlb.pd_0(v-for=" (x, i) in userBreads " :color=" !userBreads[i + 1] ? 'gray' : 'deeporange' " @click=" n = x.userName ") 
+            span {{ (!x.userName || x.userId === user.userId ? '我' : x.userName)  }}的团队
+            span.pd_2(v-if=" userBreads[i + 1] ") >
+
+        f7-icon(f7="search" size="20px" @click.native=" rns_ = true ")
+
+    
+    template(v-else)
+      f7-searchbar(ref="s" disable-button-text="取消" placeholder="请输入团队名" :clear-button="true" @searchbar:disable=" rns_ = false " @change=" (rns_ = false) || (n = $event.target.value) " :value=" n " @input=" (rns_ = true) && (n_ = $event.target.value)" @focus=" rns_ = true ")
+      template(v-if="rns_")
+        .searchbar-backdrop.h_0(@click=" rns_ = false ")
+        f7-list.mh_0.mg_0.o_h.page_content_like.z_500(simple-list )
+          f7-list-item 
+            f7-button.wp_100.t_c.bg-color-white.pd_0(@click=" rns[0] && __setLocal({rns: ''}) ") {{ rns[0] ? '清空搜索记录' : '无搜索记录' }}
+          f7-list-item(v-for=" (x, i) in rns " :key="i" v-if=" x ")
+            f7-button.wp_100.t_l.bg-color-white.pd_0(color="black" @click=" (n = x) && (rns_ = false) ") {{ x }}
 
   f7-toolbar.z_9502.ft_14(top)
 
@@ -128,6 +140,7 @@ export default {
       this.init()
     },
     init () {
+      this.$el && this.$f7.ptr.refresh(this.$el.querySelector('.ptr-content'))
       this.list()
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {

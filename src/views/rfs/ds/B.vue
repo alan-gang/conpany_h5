@@ -128,6 +128,7 @@ export default {
       this.init()
     },
     init () {
+      this.$el && this.$f7.ptr.refresh(this.$el.querySelector('.ptr-content'))
       this.list()
     },
     __orderlist () {

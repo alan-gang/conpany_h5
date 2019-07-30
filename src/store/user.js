@@ -65,6 +65,7 @@ let defaultUser = {
   isSetSafeQuest: '',
   isSetSecurityPwd: '',
   isSetVerifytyp: '',
+  myFavour: [],
 }
 export default {
   state: defaultUser,

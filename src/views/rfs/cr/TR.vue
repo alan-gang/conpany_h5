@@ -80,6 +80,7 @@ export default {
       this.init()
     },
     init () {
+      this.$el && this.$f7.ptr.refresh(this.$el.querySelector('.ptr-content'))
       this.list({pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize, $anyway: this.defaultListCb.bind(this, [])})
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
