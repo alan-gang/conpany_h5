@@ -1,7 +1,7 @@
 <template lang="pug">
 .game_selection_ps.pb_10
   f7-row.j_s
-    f7-col.pd_1(v-for=" (v, i) in pss " :key=" i " width="20")
+    f7-col.pd_1(v-for=" (v, i) in pss " :key=" i + Math.random() " width="20")
       f7-button.mt_5.pd_0(:class=" { 'bg-color-deeporange color-white': v.s, 'bg-color-white': !v.s } " @click=" toggle(v) ") {{ v.n[pi || 0] }}
 
 

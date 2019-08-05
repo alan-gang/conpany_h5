@@ -10,11 +10,11 @@ f7-page.team_ct_detali_list
       table
         thead.bgc_pc
           tr
-            th(v-for=" (y, i) in dns " :key=" i " :class=" {'label-cell': y.key === 'finishdate', 'numeric-cell': y.key !== 'finishdate' } ") {{ y.n }}
+            th(v-for=" (y, i) in dns " :key=" i + Math.random() " :class=" {'label-cell': y.key === 'finishdate', 'numeric-cell': y.key !== 'finishdate' } ") {{ y.n }}
            
         tbody
-          tr(v-for=" (x, i) in data " :key=" i ")
-            td(v-for=" (y, i) in dns " :key=" i " :class=" {'label-cell': y.key === 'finishdate', 'numeric-cell': y.key !== 'finishdate' } ")
+          tr(v-for=" (x, i) in data " :key=" i + Math.random() ")
+            td(v-for=" (y, i) in dns " :key=" i + Math.random() " :class=" {'label-cell': y.key === 'finishdate', 'numeric-cell': y.key !== 'finishdate' } ")
 
               template(v-if=" y.key === 'finishdate' ")
                 template(v-if=" x.finishdate !== '合计' ") {{ x.finishdate.slice(5) }}

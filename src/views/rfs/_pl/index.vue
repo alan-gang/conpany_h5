@@ -48,7 +48,7 @@ f7-page.profit_loss_report_(:page-content="false")
       .preloader
       .ptr-arrow
 
-    f7-card(v-for=" (v, i) in data " :key="i" :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
+    f7-card(v-for=" (v, i) in data " :key=" i + Math.random() " :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
       f7-card-header(v-if="!i")
         .t_c.wp_100 总计
 

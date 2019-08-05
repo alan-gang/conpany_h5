@@ -7,7 +7,7 @@ f7-page.game_best
       f7-icon._icon(:class=" { _vmode02_a: list, _vmode02: !list } " f7="data_fill" @click.native=" list = !list ")
 
   f7-row(no-gap)
-    f7-col.pd_0(:width=" list ? 100 : 33 " v-for=" (v, i) in data " :key=" i ")
+    f7-col.pd_0(:width=" list ? 100 : 33 " v-for=" (v, i) in data " :key=" i + Math.random() ")
       f7-card.cli_a.mg_5(@click.native=" v.id ? __go('/game/play/', {props: Object.assign({}, v, ag.find(x => x.id === v.id || x.nid === v.nid))}) : __go('/outer/', {props: Object.assign({}, v, ag.find(x => x.id === v.id || x.nid === v.nid))}) ")
         f7-card-header(:class=" {'j_c': !list} ")
           f7-icon._icon(:class=" '_gid' + (v.id || v.nid) " f7=" home " size="60px")

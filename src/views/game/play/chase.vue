@@ -28,7 +28,7 @@ f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
           f7-list.inline-picker.mg_0.border-gray(no-hairlines)
             f7-list-item.hlh_25(title="期号" smart-select :smart-select-params="{openIn: 'sheet'}" ref="issuevm")
               select(v-model=" issue ")
-                option(:value=" v.issue " v-for=" (v, i) in issueList " :key=" i ") {{ v.issue }}
+                option(:value=" v.issue " v-for=" (v, i) in issueList " :key=" i + Math.random() ") {{ v.issue }}
         span.pl_10 期
 
       .hlh_30.mb_10(v-show=" tabIndex === 1 || tabIndex === 0 ")

@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.game_all_7
-  f7-card(v-for=" (v, i) in data " :key=" i ")
+  f7-card(v-for=" (v, i) in data " :key=" i + Math.random() ")
     .collect_action(@click=" local.cgs.indexOf( ',' + v.nid + ',') === -1 ? __setLocal({cgs: ',' + v.nid + ',' + local.cgs.replace(',' + v.nid + ',', '')}) : __setLocal({cgs: local.cgs.replace(',' + v.nid + ',', '')}) " :class=" {collected: local.cgs.indexOf(','+ v.nid + ',') !== -1 }")
     
     f7-card-content.hlh_70._bg(:class=" [v.nid, v.plat] "  @click.native=" __go('/outer/', {props: v}) ")

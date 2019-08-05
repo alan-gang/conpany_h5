@@ -31,7 +31,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
       span.pl_10.v_m 热门游戏
 
     f7-swiper.b(:params="{slidesPerView: 4, spaceBetween: 15}")
-      f7-swiper-slide.ba.t_c(v-for=" (h, i) in hots " :key=" i ")
+      f7-swiper-slide.ba.t_c(v-for=" (h, i) in hots " :key=" i + Math.random() ")
         f7-link._icon(:class=" '_gid' + h.id " icon-f7=" home " icon-size="72px" @click=" __go('/game/play/', {props: h}) ") 
         .c_333 {{ h.n }}
 
@@ -41,7 +41,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
       span.pl_10.v_m 中奖喜报
 
     f7-swiper.c(:params="{loop: true, autoplay: true, slidesPerView: 4, direction: 'vertical'}")
-      f7-swiper-slide.ca.t_c(v-for=" (h, i) in news " :key=" i ")
+      f7-swiper-slide.ca.t_c(v-for=" (h, i) in news " :key=" i + Math.random() ")
         .pt_5.pb_5.ft_12.pl_30.pr_15.t_l.caa.p_r
           span.ft_30.text-color-red.p_a.caaa .
           span {{ h.name }}投注
@@ -57,7 +57,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
       span.pl_10.v_m 平台推荐
 
     f7-swiper.d.pl_10.pr_10(:params="{slidesPerView: 1.8, spaceBetween: 10}")
-      f7-swiper-slide.da.t_c(v-for=" (h, i) in cache.plats " :key=" i ")
+      f7-swiper-slide.da.t_c(v-for=" (h, i) in cache.plats " :key=" i + Math.random() ")
         //- @error=" cache.plats.splice(i, 1) "
         img(:src=" h.picUrl " @click=" h.gameType === 1 ? __go('/game/play/', {props: Object.assign({}, v, ag.find(x => x.id === h.gameId), {n: h.gameName})}) : __go('/outer/', {props: Object.assign({}, h, ag.find(x => x.pid === h.gameId), {n: h.gameName})}) ")
 
@@ -69,7 +69,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
       span.pl_10.v_m 关于我们
 
     f7-swiper.e.pl_10.pr_10(:params="{slidesPerView: 3.3, spaceBetween: 10}" @click.native="$refs.pageDark.open()")
-      f7-swiper-slide.ea.t_c(v-for=" (h, i) in usimgs " :key=" i ")
+      f7-swiper-slide.ea.t_c(v-for=" (h, i) in usimgs " :key=" i + Math.random() ")
         img(:src=" h ")
 
     f7-photo-browser(:photos="usimgs" type="page" back-link-text="返回" navbar-of-text="/" ref="pageDark")

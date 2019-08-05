@@ -11,7 +11,7 @@ f7-page.load
     .text-color-gray {{ user.userName }}
 
   f7-row.pd_5(no-gap)
-    f7-col.pd_5(width="50" v-for=" (v, i) in data " :key=" i "  @click=" __setLocal({loadway: v.saveWay}) ") 
+    f7-col.pd_5(width="50" v-for=" (v, i) in data " :key=" i + Math.random() "  @click=" __setLocal({loadway: v.saveWay}) ") 
       .bgc_f.r_10(:class=" {active: local.loadway === v.saveWay} ")
         .flex.h_70
           .a

@@ -18,7 +18,7 @@ f7-page.team_hd_detali_list
               th.numeric-cell 参与人数
            
         tbody
-          tr(v-for=" (x, i) in data " :key=" i ")
+          tr(v-for=" (x, i) in data " :key=" i + Math.random() ")
             td.label-cell
               template(v-if=" x.date !== '合计' ") {{ x.date.slice(5) }}
               template(v-else) 合计

@@ -42,7 +42,7 @@ f7-page.car
         f7-list.inline-picker.f_r.mg_0(no-hairlines)
           f7-list-item.hlh_25(title="期号" smart-select :smart-select-params="{openIn: 'sheet'}" ref="issuevm")
             select(v-model=" issue ")
-              option(:value=" v.issue " v-for=" (v, i) in issueList " :key=" i ") {{ v.issue }} {{ i === 0 ? '(当前期)' : '' }}
+              option(:value=" v.issue " v-for=" (v, i) in issueList " :key=" i + Math.random() ") {{ v.issue }} {{ i === 0 ? '(当前期)' : '' }}
 
 
   f7-list.mg_10.no_border(no-hairlines v-for=" (v, i) in __$car " :key=" '' + i + v.methodid + v.count + v.codes.slice(0, 6) ")
