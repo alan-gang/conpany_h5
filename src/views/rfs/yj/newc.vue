@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.new_contract
-  f7-navbar(title="发起佣金契约" back-link)
+  f7-navbar(title="发起分红契约" back-link)
   .hlh_45.pl_10.pr_10.bgc_f.ft_16
     span 下级用户名：
     span {{ v.userName }}
@@ -10,7 +10,7 @@ f7-page.new_contract
       f7-list-input(required validate  ref="et" label='结束时间', type='datepicker', :placeholder=' form.et ',  :calendar-params="{openIn: 'customModal', header: true, footer: true, dateFormat: 'yyyy-mm-dd'}"  @change=" form.et = $event.target.value " clear-button)
 
     f7-list.mt_5.mb_5(inline-labels no-hairlines)
-      f7-list-item(title="佣金周期")
+      f7-list-item(title="分红周期")
         f7-segmented.w_160(slot="after" )
           f7-button(round v-for=" (x, i) in is " :class=" {'color-black bgc_239': form.i !== i} " :active=" form.i === i " @click=" form.i = i ") {{ x.n }}
 
@@ -43,10 +43,10 @@ f7-page.new_contract
                 span.pd_5 人
 
               .hlh_40.mb_5
-                .v_m.inlb.w_100 佣金比例
+                .v_m.inlb.w_100 分红比例
                 span.pd_5.o_0 ≥
                 .wp_30.inlb.v_m.list.inline-picker.mg_0.r_5.input-outline
-                  f7-list-item.hlh_25.bgc_239(title="佣金比例" placeholder="..." smart-select :smart-select-params="{openIn: 'sheet'}" :ref=" 's' + i " )
+                  f7-list-item.hlh_25.bgc_239(title="分红比例" placeholder="..." smart-select :smart-select-params="{openIn: 'sheet'}" :ref=" 's' + i " )
                     select(:name="i" v-model=" x.bounsRate " @change=" updateM1M2(x, $event.target.value, i) ")
                       option(v-for=" (y, j) in ruleCfg.filter(z => z.ruletype === x.ruletype) " :key=" (i + '-' + j) " :value="j" :disabled=" rs.filter(z => z.ruletype === x.ruletype && z.bounsRate === j && z !== x)[0] ") {{ y.bounsRate }}%
 
@@ -124,7 +124,7 @@ export default {
     notice () {
       this.$f7.dialog.create({
         cssClass: 'full_width',
-        content: `<div class="t_l ft_12"><p>契约规则： 1.佣金比例不能为空2.亏损、销量/人数需要符合当前佣金比例的最小值限制3.不能有相同的规则或空规则</p>在您和下级签订了签约以后，如果每期的下级契约佣金没有完成发放，则您的提款和代充功能将暂时会被禁用1.销量和亏损只要达到规则，都应按照规则的佣金比例派发佣金2.[手动发放]即每次发佣金的时候需要您进入[历史佣金]点击确认发放3.[自动发放]是在您资金足够的情况下，由系统根据您设置的规则自动发放下级佣金，资金不足则交由您手动执行4. 契约执行周期为：[按月]1号；[按半月]1号和16号5. 一天内投注额达到500元，为一个有效用户</div>`,
+        content: `<div class="t_l ft_12"><p>契约规则： 1.分红比例不能为空2.亏损、销量/人数需要符合当前分红比例的最小值限制3.不能有相同的规则或空规则</p>在您和下级签订了签约以后，如果每期的下级契约分红没有完成发放，则您的提款和代充功能将暂时会被禁用1.销量和亏损只要达到规则，都应按照规则的分红比例派发分红2.[手动发放]即每次发分红的时候需要您进入[历史分红]点击确认发放3.[自动发放]是在您资金足够的情况下，由系统根据您设置的规则自动发放下级分红，资金不足则交由您手动执行4. 契约执行周期为：[按月]1号；[按半月]1号和16号5. 一天内投注额达到500元，为一个有效用户</div>`,
         title: '温馨提示',
         buttons: [
           {text: '知道了', close: true}

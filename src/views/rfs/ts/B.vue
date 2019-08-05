@@ -62,10 +62,10 @@ f7-page.rf_ts_2(:page-content="false")
         .flex(@click=" __go('/rfs/ts/bd/', { props: { v, stet_: stet } }) ")
           .a.t_c
             .pb_5 全部活动参与人数
-            div {{ v.sumpeople }}
+            div {{ v.sumtotalpeople }}
           .a.t_c
             .pb_5 全部活动领取金额
-            div(v-nwc="i") {{ v.sumamount }}
+            div(v-nwc="i") {{ v.sumtotalamount }}
           .a
             f7-icon(f7="chevron_right" size="12px")
 

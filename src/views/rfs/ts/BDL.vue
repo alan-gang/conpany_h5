@@ -24,8 +24,8 @@ f7-page.team_hd_detali_list
               template(v-else) 合计
             
             template(v-for=" (y, j) in x.gamedate ")
-              td.numeric-cell {{ y.amount }}
-              td.numeric-cell {{ y.people }}
+              td.numeric-cell(v-nwc="true") {{ y.totalamount }}
+              td.numeric-cell {{ y.totalpeople }}
               
 
 

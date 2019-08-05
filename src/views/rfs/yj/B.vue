@@ -3,11 +3,11 @@
 f7-page.rf_yj_2(infinite :infinite-distance="50" :infinite-preloader="showPreloader" @infinite="loadMore" ptr :ptr-mousewheel="true" @ptr:refresh="refresh")
   .pd_10.flex.bgc_light_orange(v-if="a")
     f7-icon.pl_10(f7="info_round_fill" size="18" color="red")
-    .lh_25.pl_10.pr_10.text-color-deeporange.ft_12 温馨提示：预期佣金是基于阶段性数据测算得出，仅为预测下一次佣金提供参考，不作为发放佣金的依据。
+    .lh_25.pl_10.pr_10.text-color-deeporange.ft_12 温馨提示：预期分红是基于阶段性数据测算得出，仅为预测下一次分红提供参考，不作为发放分红的依据。
     f7-icon(f7="close" size="18" @click.native=" a = false ")
 
   .t_c.c_f.ft_13.bg-color-deeporange.pd_10
-    span.o_50 距下一个 佣金结算日（{{ data[0] ? data[0].issue : '--' }}）还有 
+    span.o_50 距下一个 分红结算日（{{ data[0] ? data[0].issue : '--' }}）还有 
     br
     span.ft_25 {{ d }}
     span.o_50.pl_2 天
@@ -22,11 +22,11 @@ f7-page.rf_yj_2(infinite :infinite-distance="50" :infinite-preloader="showPreloa
       f7-card-header.ft_14
 
         .a
-          .n.c_9.pb_5 佣金测算起止日期
+          .n.c_9.pb_5 分红预算起止日期
           .v {{ x.startDate }} 至 {{ x.issue }}
 
         .a.t_r
-          .n.c_9.pb_5 佣金金额
+          .n.c_9.pb_5 分红金额
           .v {{ x.bonus }}
 
       f7-card-content.pt_0.pb_0(v-if="x.o")
@@ -50,7 +50,7 @@ f7-page.rf_yj_2(infinite :infinite-distance="50" :infinite-preloader="showPreloa
          
     .bgc_light_orange.mg_10.r_5.c_orange.hlh_30.ft_13.pl_15.pr_15.t_c(v-if="!i")
       f7-icon.inlb.v_m(f7="bars_chart_round_fill" color="red" size="18")
-      span.pl_2.v_m 下级预期总佣金： {{ v.sent }}元
+      span.pl_2.v_m 下级其它游戏预期分红： {{ v.sent }}元
   .t_c.text-color-gray.pd_15.nomore --没有更多了--
 
 
@@ -80,12 +80,12 @@ export default {
       data: [],
       v: null,
       dns: [
-        {n: '彩票总销量', key: 'saleAmount', nwc: true},
-        {n: '彩票总盈亏', key: 'profitAmount', nwc: true},
+        {n: '当月总盈亏', key: 'profitAmount', nwc: true},
+        {n: '累计总盈亏', key: 'totProfit', nwc: true},
         {n: '有效人数', key: 'actUser'},
-        { n: '对应佣金规则', v: '规则1>', click: (v) => this.showRule(v) },
-        {n: '佣金比例', key: 'bonusRate', end: '%'},
-        {n: '佣金金额', key: 'bonus', nwc: true},
+        { n: '对应分红规则', v: '规则1>', click: (v) => this.showRule(v) },
+        {n: '分红比例', key: 'bonusRate', end: '%'},
+        {n: '分红金额', key: 'bonus', nwc: true},
       ],
     }
   },
@@ -128,10 +128,10 @@ export default {
       this.$f7.dialog.create({
         cssClass: 'full_width',
         content: v.bounsruleListBy.reduce((p, x, i) => {
-          p += `<p class="t_l ft_13">规则${i + 1}：累计${this.config.fhType[x.ruletype]}${x.sales}万，有效人数≥${x.actuser}，佣金比例 ${x.bounsrate}%</p>`
+          p += `<p class="t_l ft_13">规则${i + 1}：累计${this.config.fhType[x.ruletype]}${x.sales}万，有效人数≥${x.actuser}，分红比例 ${x.bounsrate}%</p>`
           return p
         }, ''),
-        title: '佣金规则',
+        title: '分红规则',
         buttons: [
           {text: '知道了', close: true}
         ]

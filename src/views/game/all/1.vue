@@ -1,6 +1,28 @@
 <template lang="pug">
 
 f7-page.game_all_1.text-color-white
+  
+
+  template(v-if=" user.myFavour && user.myFavour[0] ")
+    f7-card.a.r_8
+      f7-card-header.no-border.bgg.r_8(valign='middle' @click.native=" fs = !fs ")
+        .card-header.no-border.aa.pd_0
+          f7-icon._icon._ssc(f7=" home " size="60px")
+          .aaa.pl_10
+            p 最近常玩
+            p.ft_14 {{ get3thNamesOfFavour().join('...') }}
+        f7-icon.f_r(f7="play_fill" size="16px" :class=" {open: fs} ") 
+
+
+      f7-card-content.ab.o_h(:class=" {'mh_0 pd_0': !fs} ").text-color-black
+        .c.inlb.t_c(v-for=" (v, i) in g.filter(x => x.favour) ")
+          f7-card
+            .collect_action(@click=" local.cgs.indexOf( ',' + v.id + ',') === -1 ? __setLocal({cgs: ',' + v.id + ',' + local.cgs.replace(',' + v.id + ',', '')}) : __setLocal({cgs: local.cgs.replace(',' + v.id + ',', '')}) " :class=" {collected: local.cgs.indexOf(','+ v.id + ',') !== -1 }")
+            f7-card-content.ca.pl_0.pr_0.pt_0(@click.native=" __go('/game/play/', {props: v}) ")
+              f7-icon._icon(:class=" '_gid' + v.id " f7=" home " size="60px")
+              .ft_12 {{ v.n }}
+
+
   f7-card.a.r_8(v-for=" (i, gn) in gns " :key="i.c")
     f7-card-header.no-border.bgg.r_8(:class="i.c" valign='middle' @click.native=" i.show = !i.show")
       .card-header.no-border.aa.pd_0()
@@ -49,8 +71,9 @@ export default {
       return p
     }, {})
     return {
-      // g: g,
       gns: gns,
+      // favours show ?
+      fs: false,
     }
   },
   computed: {
@@ -59,14 +82,26 @@ export default {
     }
   },
   created () {
+    this.init()
   },
   methods: {
+    // init favour games
+    init () {
+      this.g.forEach(x => (x.favour = false))
+      this.user.myFavour.forEach(x => ((this.g.find(y => y.id * 1 === x.lotteryId) || {}).favour = true))
+    },
     get3thNames (gn) {
       return this.g.filter(x => x.gn === gn).slice(0, 3).reduce((p, x, i) => {
         p.push(x.n)
         return p
       }, [])
-    }
+    },
+    get3thNamesOfFavour () {
+      return this.g.filter(x => x.favour).slice(0, 3).reduce((p, x, i) => {
+        p.push(x.n)
+        return p
+      }, [])
+    },
   }
 }
 </script>

@@ -56,7 +56,7 @@ export default {
         {n: '团队人数', key: 'temacount', end: '人'},
         {n: '统计时间', key: '_date'},
         {n: '全部活动参与人数', key: 'sumtotalpeople'},
-        {n: '全部活动领取金额', key: 'sumtotalamount'},
+        {n: '全部活动领取金额', key: 'sumtotalamount', nwc: true},
       ],
     }
   },

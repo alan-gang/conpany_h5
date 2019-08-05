@@ -401,7 +401,7 @@ export default {
       if (userInfo && ((this.userPoint > 0 && userInfo.rebates.length > 1) || (this.userPoint <= 0 && userInfo.rebates.length > 0))) return Promise.resolve(userInfo)
       return this.$.get(api.getBackWater, params).then(({data: {backWaterComb}}) => {
         backWaterComb.forEach(b => {
-          userInfo.rebates.push({show: (b.backWater || 0) > 0, userPoint: (b.backWater || 0) > 0 ? ((b.backWater || 0) * 1000 + '‰') : '--', name: b.groupName + '返水'})
+          userInfo.rebates.push({show: (b.backWater || 0) > 0, userPoint: (b.backWater || 0) > 0 ? (((b.backWater || 0) * 1000).toFixed(1) + '‰') : '--', name: b.groupName + '返水'})
         })
         this.$set(this.lowerLevelData, index, userInfo)
       })
@@ -412,7 +412,7 @@ export default {
       if (userInfo && ((this.userPoint > 0 && userInfo.rebates.length > 1) || (this.userPoint <= 0 && userInfo.rebates.length > 0))) return Promise.resolve(userInfo)
       return this.$.get(api.getUserAll, {subUserid: userId}).then(({data: {backArr, cpArr, yjArr, myPointArr, subPointArr}}) => {
         backArr.forEach(b => {
-          userInfo.rebates.push({show: (b.backwater || 0) > 0, userPoint: (b.backwater || 0) > 0 ? ((b.backwater || 0) * 1000 + '‰') : '--', name: b.groupname + '返水'})
+          userInfo.rebates.push({show: (b.backwater || 0) > 0, userPoint: (b.backwater || 0) > 0 ? (((b.backwater || 0) * 1000).toFixed(1) + '‰') : '--', name: b.groupname + '返水'})
         })
         if (cpArr.length > 0) {
           userInfo.cp = cpArr[0]

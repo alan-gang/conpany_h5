@@ -30,7 +30,7 @@ f7-page.car
         f7-button(fill color="orange" @click=" __go('/game/chase/', {props: {id, n}}) ") 
           span 追号 
       f7-col(width="25")
-        f7-button(fill @click=" !ntsf && booking() ")   
+        f7-button(fill @click=" checkntsf() && booking() ")   
           span 投注
   
     .p_a.issue.bg-color-white.pl_15.pr_15.pt_10.pb_10
@@ -140,6 +140,10 @@ export default {
   created () {
   },
   methods: {
+    checkntsf () {
+      if (this.ntsf) this.__alert((!this.local.$usexycoin ? '余额' : '信游币') + '不足')
+      return !this.ntsf
+    },
     update (v) {
       v.money = (v.count * v.up_ * v.times * [1, 0.1, 0.01, 0.001][v.mode - 1])._f3()
     },

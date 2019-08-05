@@ -6,9 +6,9 @@ f7-page.rf_yj(:page-content="false")
         f7-icon(color="deeporange" f7="chevron_left")
 
     .b.flex.wp_100.hp_100
-      f7-link.underline_40(tab-link tab-link-active href="#rf_yj_1") 历史佣金
-      f7-link.underline_40(tab-link href="#rf_yj_2" ) 预期佣金 
-      f7-link.underline_40(tab-link href="#rf_yj_3" ) 佣金契约 
+      f7-link.underline_40(tab-link tab-link-active href="#rf_yj_1") 历史其它分红
+      f7-link.underline_40(tab-link href="#rf_yj_2" ) 预期分红 
+      f7-link.underline_40(tab-link href="#rf_yj_3" ) 分红契约 
 
   f7-tabs(animated swipeable)
     f7-tab#rf_yj_1(tab-active @tab:show=" tabShow ")

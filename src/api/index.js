@@ -125,7 +125,7 @@ let api = {
   followCancel: '/booking.do?method=cancelTask',
   booking: '/booking.do?method=add',
   '/dscagamesclient/booking.do?method=add': {
-    loading: 10000,
+    loading: 25000,
     loadingText: '投注中...',
     1: {
       msg: '投注成功',
@@ -134,7 +134,7 @@ let api = {
   },
   kqbooking: '/game/fastBet.do?method=doBet',
   '/dscagamesclient/game/fastBet.do?method=doBet': {
-    loading: 10000,
+    loading: 25000,
     loadingText: '投注中...',
     1: {
       msg: '投注成功',

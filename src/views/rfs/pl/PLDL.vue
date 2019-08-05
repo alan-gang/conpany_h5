@@ -19,11 +19,11 @@ f7-page.profit_loss_detail_list
       table
         thead.bgc_pc
           tr
-            th(v-for=" (y, i) in dns " :key=" i " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } ") {{ y.n }}
+            th(v-for=" (y, i) in dns " :key=" i " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } " v-show=" y.show !== false ") {{ y.n }}
            
         tbody
           tr(v-for=" (x, i) in data " :key=" i " :class=" (v.id < 0 || v.title) && x.userName !== '合计' ? 'will_active' : '' " @click=" (v.id < 0 || v.title) && x.userName !== '合计' && __go('/rfs/pl/pld/', {props: { v: {id: x.gameType, n: x.userName, title: v.title}, u: Object.assign({}, u, {userId: u.userId || user.userId}), stet_: stet, bl}}) ")
-            td(v-for=" (y, i) in dns " :key=" i " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } ")
+            td(v-for=" (y, i) in dns " :key=" i " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } " v-show=" y.show !== false ")
               template(v-if=" !y.key ")
                 f7-icon(f7="chevron_right" size="12px")
 
@@ -70,11 +70,11 @@ export default {
 
         {n: '日期', key: 'date'},
         {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
-        {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: x => this.v.id > 0},
+        {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: this.v.id > 0},
         {n: '游戏盈亏', nwc: true, key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.gameProfit || x.profit},
-        {n: this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number(x.pointAmount || x.point), v: x => x.pointAmount || x.point},
+        {n: this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', v: x => x.pointAmount || x.point, show: false},
         {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.reward || x.rewards},
-        {n: this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.salary || x.platfee},
+        {n: this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.salary || x.platfee, show: !!(this.v.id <= 0 || this.v.title)},
         {n: '总盈亏', key: 'settleAmount', nwc: true, v: x => x.settleAmount || x.settle || x.totalProfit},
 
         // {n: '日期', key: 'date'},
@@ -136,6 +136,7 @@ export default {
           items = [...items.slice(0, -1).reverse(), ...items.slice(-1)]
         }
         this.data = items
+        items.find(x => Number(x.pointAmount || x.point)) && (this.dns_[9].show = true)
       })
     },
   }

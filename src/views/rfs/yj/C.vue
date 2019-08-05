@@ -76,16 +76,16 @@ f7-page.rf_yj_3(:page-content="false")
             .n.c_9.pb_5 签约日期
             .v {{ x.tm.split(' ')[0] }}
           .a.wp_33.mt_10.mb_10.inlb.v_t.t_c
-            .n.c_9.pb_5 佣金周期
+            .n.c_9.pb_5 分红周期
             .v {{ ['', '月', '半月', '周'][x.sendCycle] }}
           .a.wp_33.mt_10.mb_10.inlb.v_t.t_r
             .n.c_9.pb_5 发放方式
             .v {{ x.sendType * 1 === 1 ? '自动' : '手动' }}发放
 
         f7-card-footer.c_3.ft_12(v-if=" x.o ")
-          .c_9 佣金规则
+          .c_9 分红规则
             .c_3(v-for=" (y, j) in x.bonusRules ")
-              .mt_10 {{ `规则${j + 1}：累计${config.fhType[y.ruletype]}${y.sales}万，有效人数≥${y.actUser}，佣金比例 ${y.bounsRate}%` }}
+              .mt_10 {{ `规则${j + 1}：累计${config.fhType[y.ruletype]}${y.sales}万，有效人数≥${y.actUser}，分红比例 ${y.bounsRate}%` }}
 
 
         
