@@ -19,8 +19,8 @@
 
     .flex.mb_5(v-if=" t === 'rf_pl_' ")
       f7-button.bgc_pc.w_100(color="black"  @click=" change('st', [now._setD(1)]) || change('et', [now]) || close() ") {{ now.getMonth() + 1 }}月
-      f7-button.bgc_pc.w_100(color="black"  @click=" change('st', [now._setD(1)._bfM(-1)]) || change('et', [now._setD(-1)]) || close() ") {{ now._bfM(-1).getMonth() + 1 }}月
-      f7-button.bgc_pc.w_100(color="black"  @click=" change('st', [now._setD(1)._bfM(-2)]) || change('et', [now._bfM(-1)._setD(-1)]) || close() ") {{ now._bfM(-2).getMonth() + 1 }}月
+      f7-button.bgc_pc.w_100(color="black"  @click=" change('st', [now._setD(1)._bfM(-1)]) || change('et', [now._setD(0)]) || close() ") {{ now._bfM(-1).getMonth() + 1 }}月
+      f7-button.bgc_pc.w_100(color="black"  @click=" change('st', [now._setD(1)._bfM(-2)]) || change('et', [now._bfM(-1)._setD(0)]) || close() ") {{ now._bfM(-2).getMonth() + 1 }}月
 
     
     .flex.mb_5(v-if=" stets ")
