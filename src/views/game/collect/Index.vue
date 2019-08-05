@@ -13,7 +13,7 @@ f7-page.game_collect
         
         .t_c.hlh_30.c_6 {{ v.n }}
 
-  .p_f.z_1.p_b_10.wp_100.t_c
+  .p_f.z_1.p_b_10.wp_100.t_c(v-if=" data[0] ")
     f7-button.w_60.inlb(large @click=" mode = !mode ") {{ mode ? '完成' : '编辑' }}
 
   

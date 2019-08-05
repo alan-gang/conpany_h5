@@ -34,8 +34,9 @@ f7-page.car
           span 投注
   
     .p_a.issue.bg-color-white.pl_15.pr_15.pt_10.pb_10
-      f7-checkbox(name=" $usexycoin " :checked=" local.$usexycoin " @click=" __setLocal({$usexycoin: !local.$usexycoin}) ")
+      f7-checkbox(name=" $usexycoin " :checked=" local.$usexycoin " @change=" __setLocal({$usexycoin: $event.target.checked}) ")
       span(@click=" __setLocal({$usexycoin: !local.$usexycoin}) ")  使用信游币
+
         span.c_orange.ft_12  {{ user.freeAvaiable }}
       template(v-if=" issueList ")
         f7-list.inline-picker.f_r.mg_0(no-hairlines)

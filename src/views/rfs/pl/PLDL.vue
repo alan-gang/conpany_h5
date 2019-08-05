@@ -62,29 +62,22 @@ export default {
       // title: this.v.id === -1 ? '总盈亏明细' : this.v.n + '每日盈亏明细(个人)' : ,
       // 游戏类型：0:彩票盈亏；1:电竞；2:电游；3:真人；4:棋牌；5：捕鱼；6：体育；7：基诺彩；8：微游
       dns_: [
+        // 三方盈亏
         {n: '游戏类别', key: 'userName', v: x => x.userName || this.config.agts[x.gameType]},
         {n: '投注', key: 'buy'},
         {n: '游戏盈亏', nwc: true, key: this.v.title ? 'profit' : 'gameProfit'},
         {n: '总盈亏', nwc: true, key: this.v.title ? 'settle' : 'totalProfit'},
         {n: ''},
 
+        // 个人盈亏每日盈亏明细（彩票 + 其它）团队盈亏每日盈亏明细（彩票 ）
         {n: '日期', key: 'date'},
         {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
-        {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: this.v.id > 0},
+        {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: this.v.id === 0},
         {n: '游戏盈亏', nwc: true, key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.gameProfit || x.profit},
         {n: this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', v: x => x.pointAmount || x.point, show: false},
         {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.reward || x.rewards},
         {n: this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.salary || x.platfee, show: !!(this.v.id <= 0 || this.v.title)},
         {n: '总盈亏', key: 'settleAmount', nwc: true, v: x => x.settleAmount || x.settle || x.totalProfit},
-
-        // {n: '日期', key: 'date'},
-        // {n: '投注', key: 'buy'},
-        // {n: '派奖', key: 'prize'},
-        // {n: '游戏盈亏', key: 'gameProfit'},
-        // {n: '返点', key: 'point'},
-        // {n: '活动', key: 'reward'},
-        // {n: '日工资', key: 'salary'},
-        // {n: '总盈亏', key: 'totalProfit'},
       ],
       data: [],
       force: false,
@@ -131,12 +124,12 @@ export default {
           gameType: this.v.id,
           beginDate: this.stet[0]._toDayString(),
           endDate: this.stet[1]._toDayString(),
-        }).then(({data: {items}}) => {
+        }).then(({data: {items, pointLevel}}) => {
         if (this.v.id !== 999 && this.v.id > -1 && this.v.title) {
           items = [...items.slice(0, -1).reverse(), ...items.slice(-1)]
         }
         this.data = items
-        items.find(x => Number(x.pointAmount || x.point)) && (this.dns_[9].show = true)
+        pointLevel && (this.dns_[9].show = true)
       })
     },
   }

@@ -48,7 +48,7 @@ export default {
         {n: '日均游戏人数', key: 'gameUserCount', end: '人'},
 
         {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
-        {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize},
+        {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: x => !(this.v.id > 0 && this.v.title === '团队')},
         {n: '游戏盈亏', nwc: true, key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.profit},
         {n: this.v && this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number(x.pointAmount || x.point), v: x => x.pointAmount || x.point},
         {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.rewards},
@@ -91,7 +91,6 @@ export default {
         beginDate: this.stet[0]._toDayString(),
         endDate: this.stet[1]._toDayString(),
       }).then(({data: {items, userBackWater}}) => {
-        console.log(items[0] && !items[0].pointLevel, userBackWater)
         if (items[0] && !items[0].pointLevel) {
           items[0].pointLevel = userBackWater / 1000
         }
