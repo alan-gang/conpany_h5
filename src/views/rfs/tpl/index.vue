@@ -8,7 +8,7 @@ f7-page.rf_tpl(:page-content="false")
     .b.flex.wp_100.hp_100
       f7-link.underline_40(tab-link tab-link-active href="#rf_tpl_1") 彩票盈亏
       f7-link.underline_40(tab-link href="#rf_tpl_2" ) 三方盈亏 
-      f7-link.underline_40(tab-link href="#rf_tpl_3" ) 棋牌盈亏 
+      //- f7-link.underline_40(tab-link href="#rf_tpl_3" ) 棋牌盈亏 
       f7-link.underline_40(tab-link href="#rf_tpl_4" ) 微游盈亏 
 
   f7-tabs(animated swipeable)
@@ -16,7 +16,7 @@ f7-page.rf_tpl(:page-content="false")
       A(:g_="g")
     f7-tab#rf_tpl_2(@tab:show=" tabShow ")
       B(:g_="g")
-    f7-tab#rf_tpl_3(@tab:show=" tabShow ")
+    //- f7-tab#rf_tpl_3(@tab:show=" tabShow ")
       C(:g_="g")
     f7-tab#rf_tpl_4(@tab:show=" tabShow ")
       D(:g_="g")

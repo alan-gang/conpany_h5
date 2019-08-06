@@ -51,11 +51,11 @@ export default {
     }
   },
   watch: {
-    item () {
-      this.$nextTick(() => {
-        this.updateSwiperPosition()
-      })
-    }
+    // item () {
+    //   this.$nextTick(() => {
+    //     this.updateSwiperPosition()
+    //   })
+    // }
   },
   mounted () {
     if (this.swiperParams.checkHighestRate && this.item.$ * 10 === this.item.$s) this.isHighestRate = true

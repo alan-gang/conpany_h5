@@ -8,6 +8,7 @@ urls = {
     _hlffc: '~src/assets/gameicon/game_icon_hlffc',
     _bjpk10: '~src/assets/gameicon/game_icon_bjpk10',
 
+    _favour: '~src/assets/gameicon/game_lottery_offen',
     _ssc: '~src/assets/gameicon/game_icon_cqssc',
     _115: '~src/assets/gameicon/game_icon_ah11x5',
     _k3: '~src/assets/gameicon/game_icon_ahk3',

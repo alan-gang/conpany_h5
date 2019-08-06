@@ -5,9 +5,9 @@ f7-page.game_all_1.text-color-white
 
   template(v-if=" user.myFavour && user.myFavour[0] ")
     f7-card.a.r_8
-      f7-card-header.no-border.bgg.r_8(valign='middle' @click.native=" fs = !fs ")
+      f7-card-header.no-border.bgg.r_8._favour(valign='middle' @click.native=" fs = !fs ")
         .card-header.no-border.aa.pd_0
-          f7-icon._icon._ssc(f7=" home " size="60px")
+          f7-icon._icon._favour(f7=" home " size="60px")
           .aaa.pl_10
             p 最近常玩
             p.ft_14 {{ get3thNamesOfFavour().join('...') }}
@@ -126,6 +126,7 @@ export default {
     &._pk10
       bgg(90deg, rgb(78,177,254), rgb(80,107,255))
     &._115
+    &._favour
       bgg(90deg, rgb(252,132,79), rgb(255,74,92))
     &._k3
       bgg(90deg, rgb(50,217,106), rgb(8,192,160))

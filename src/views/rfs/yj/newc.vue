@@ -48,12 +48,12 @@ f7-page.new_contract
                 .wp_30.inlb.v_m.list.inline-picker.mg_0.r_5.input-outline
                   f7-list-item.hlh_25.bgc_239(title="分红比例" placeholder="..." smart-select :smart-select-params="{openIn: 'sheet'}" :ref=" 's' + i " )
                     select(:name="i" v-model=" x.bounsRate " @change=" updateM1M2(x, $event.target.value, i) ")
-                      option(v-for=" (y, j) in ruleCfg.filter(z => z.ruletype === x.ruletype) " :key=" (i + '-' + j) " :value="j" :disabled=" rs.filter(z => z.ruletype === x.ruletype && z.bounsRate === j && z !== x)[0] ") {{ y.bounsRate }}%
+                      option(v-for=" (y, j) in ruleCfg.filter(z => z.ruletype === x.ruletype) "  :value="j" :disabled=" rs.filter(z => z.ruletype === x.ruletype && z.bounsRate === j && z !== x)[0] ") {{ y.bounsRate }}%
 
                 //- span.pd_5 %
 
             
-            f7-icon.p_r.p_t_10(color="red" f7="delete_round_fill" @click.native=" rs.length > 0 && rs.splice(i, 1) ")
+            f7-icon.p_r.p_t_10(color="red" f7="delete_round_fill" @click.native=" rs.length > 0 && rs.splice(i, 1) && refreshrs() ")
 
     f7-button.mb_10.bgc_f.pd_10.h_60.lh_20(@click=" rs.push( Object.assign({}, r) ) ")
       f7-icon._icon._plus(f7="home" size="20")
@@ -162,6 +162,11 @@ export default {
         bonusRuleList: JSON.stringify(x)
       }).then(this.__back)
     },
+    refreshrs () {
+      const x = this.rs
+      this.rs = []
+      setTimeout(() => { this.rs = x }, 0)
+    }
   }
 }
 </script>

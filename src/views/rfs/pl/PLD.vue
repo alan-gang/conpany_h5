@@ -63,7 +63,7 @@ export default {
         {n: '游戏盈亏', nwc: true, key: 'gameProfit'},
         {n: this.v.id > 0 ? '返水' : '返点', key: 'point', show: x => Number(x.pointLevel)},
         {n: '活动', key: 'reward'},
-        {n: '日工资', key: 'salary', show: x => Number(x.salary)},
+        {n: '日工资', key: 'salary', show: x => x.salary && Number(x.salary.replace(',', ''))},
         {n: '总盈亏', key: 'totalProfit', nwc: true},
       ],
       v_: null

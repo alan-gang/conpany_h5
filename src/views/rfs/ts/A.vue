@@ -65,10 +65,10 @@ f7-page.rf_ts_1(:page-content="false")
             div {{ v.amount }}
           .a.t_c
             .pb_5 提款金额
-            div(v-nwc="i") {{ v.realmoney }}
+            div {{ v.realmoney }}
           .a.t_c
             .pb_5 充/提人数
-            div(v-nwc="i") {{ v.czpeople }}/{{ v.tkpeople }}
+            div {{ v.czpeople }}/{{ v.tkpeople }}
           .a
             f7-icon(f7="chevron_right" size="12px")
 

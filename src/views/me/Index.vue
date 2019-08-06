@@ -87,13 +87,13 @@
             f7-list-item.ft_14.bgc_f.mg_10(title="下级账变明细" link="/rfs/ac/")
               f7-icon.mr_5._icon._sub_game_record(slot="media" f7=" home ")
 
-            f7-list-item.ft_14.bgc_f.mg_10(title="日工资管理" link="/rfs/ds/")
+            f7-list-item.ft_14.bgc_f.mg_10(title="日工资管理" link="/rfs/ds/" v-if="user.displayPermission.showSalary")
               f7-icon.mr_5._icon._sub_game_record(slot="media" f7=" home ")
 
-            f7-list-item.ft_14.bgc_f.mg_10(title="彩票分红管理" link="/rfs/fh/")
+            f7-list-item.ft_14.bgc_f.mg_10(title="彩票分红管理" link="/rfs/fh/" v-if="user.displayPermission.showCpfh")
               f7-icon.mr_5._icon._sub_game_record(slot="media" f7=" home ")
 
-            f7-list-item.ft_14.bgc_f.mg_10(title="其它游戏分红管理" link="/rfs/yj/")
+            f7-list-item.ft_14.bgc_f.mg_10(title="其它游戏分红管理" link="/rfs/yj/" v-if="user.displayPermission.showSfyj")
               f7-icon.mr_5._icon._sub_fund_record(slot="media" f7=" home ")
 
           f7-list-button.bgc_f.mg_10(@click=" __setCall({fn: '__logout'}) ") 退出
