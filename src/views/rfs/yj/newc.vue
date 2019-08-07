@@ -158,7 +158,7 @@ export default {
         userId: this.v.userId,
         sendCycle: this.is[this.form.i].id,
         sendType: this.js[this.form.j].id,
-        cType: 0,
+        cType: 1,
         bonusRuleList: JSON.stringify(x)
       }).then(this.__back)
     },
