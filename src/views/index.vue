@@ -1,7 +1,7 @@
 <template lang="pug">
 
   f7-page(:page-content="false" )
-    //- f7-navbar
+    //- f7-navbar(:innerClass=" 'navbar_of_' + $options.name ")
     f7-toolbar(bottom tabbar labels)
       f7-link(tab-link href='/', route-tab-id='home')
         i.icon.home

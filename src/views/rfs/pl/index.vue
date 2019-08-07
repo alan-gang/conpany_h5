@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.profit_loss_report
-  f7-navbar(title="盈亏报表" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="盈亏报表" back-link)
   
   f7-card(v-for=" (v, i) in data " :key="i")
     f7-card-content

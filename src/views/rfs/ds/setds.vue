@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.set_daysalary
-  f7-navbar(title="设置日工资" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="设置日工资" back-link)
   .hlh_45.pl_10.pr_10.bgc_f.ft_18
     span 下级用户：
     span {{ v.userName }}

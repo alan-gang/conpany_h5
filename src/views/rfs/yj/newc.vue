@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.new_contract
-  f7-navbar(title="发起分红契约" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="发起分红契约" back-link)
   .hlh_45.pl_10.pr_10.bgc_f.ft_16
     span 下级用户名：
     span {{ v.userName }}

@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.notice(infinite :infinite-distance="50" :infinite-preloader="showPreloader" @infinite="loadMore" ptr :ptr-mousewheel="true" @ptr:refresh="refresh")
-  f7-navbar(back-link title="系统公告")
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link title="系统公告")
   
   f7-card(v-for=" (v, i) in data " :key=" i + Math.random() ")
     f7-card-header {{ v.subject }}

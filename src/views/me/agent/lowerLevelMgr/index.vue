@@ -1,6 +1,6 @@
 <template lang="pug">
   f7-page.lower-level-mgr(:page-content="false")
-    f7-navbar(title="下级管理" back-link top)
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="下级管理" back-link top)
     f7-row.breadcrumb-row.bgc_f.pl_15
       f7-col.breadcrumb-wp(width="85")
         span.ft_15.mr_2.breadcrumb-item(v-for="(u, i) in breadcrumb" @click="linkTo(u.userId)") 

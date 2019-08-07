@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
-  f7-navbar
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name ")
     f7-nav-left
       f7-link(popup-open="#login" text="登录" v-show=" user.login === false ")
     f7-nav-title(large) 信游娱乐
@@ -93,6 +93,7 @@ export default {
   name: 'home',
   props: [],
   data () {
+    console.log(this)
     return {
       banners: [],
       sysNoticesContent: '',

@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.bgc_f7
-  f7-navbar(title="功能介绍" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="功能介绍" back-link)
   f7-list.bgc_f7.mg_0.no_border(no-hairlines).p_list
     ul.z_9997
       f7-list-item.ft_16.bgc_f.mt_10(v-for=" t in tagList " :title=" t.tagname " @click=" __go('/me/help/detailpage/', {props: {id: t.id, title: t.tagname }}) ")

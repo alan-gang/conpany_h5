@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.team_hd_detail
-  f7-navbar(title=" 活动明细(团队) " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title=" 活动明细(团队) " back-link)
 
   f7-list.mg_0(simple-list)
     template(v-for=" (x, i) in dns ")

@@ -1,6 +1,6 @@
 <template lang="pug">
   f7-page.safecenter
-    f7-navbar(title='账户安全', back-link)
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title='账户安全', back-link)
     .bg-color-deeporange.pd_20.t_c
       f7-gauge(type="circle" size="150" :value-text=" user.accountPoint " value-text-color="#fff" :value="user.accountPoint/100" label-text="分" label-text-color="#fff" border-color="#fff" border-width="2" border-bg-color="rgba(255,255,255,0.2)")
       .pd_10.c_f.ft_12 当前登录地址：{{ user.location }}

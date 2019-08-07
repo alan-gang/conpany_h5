@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.team_ct_detali_list
-  f7-navbar(title=" 每日充提明细(团队) " back-link )
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title=" 每日充提明细(团队) " back-link )
 
   .bgc_f.smooth_scroll
 

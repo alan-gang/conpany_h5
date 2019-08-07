@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.xyb(:page-content="false")
-  f7-navbar(title="信游宝" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="信游宝" back-link)
   .pd_10.c_f.bg-color-deeporange
     .t_c
       .o_50.ft_12 年化收益率

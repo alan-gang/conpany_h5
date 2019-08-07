@@ -49,6 +49,10 @@ export default {
     }
   },
   computed: {
+    // id: '\d+:0'.*顺序不限
+    o () {
+      return !!JSON.stringify(this.mido).match(/id":"\d+:0".*顺序不限/)
+    },
     s () {
       return s[this.t][this.mid]() || []
     },

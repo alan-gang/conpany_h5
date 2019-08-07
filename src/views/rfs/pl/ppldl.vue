@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.profit_loss_detail_list
-  f7-navbar(:title=" v.n + '每日盈亏明细(个人)'  " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title=" v.n + '每日盈亏明细(个人)'  " back-link)
 
   .bgc_f.smooth_scroll
 

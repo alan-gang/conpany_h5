@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.aboutus
-  f7-navbar(back-link="设置" title="关于我们")
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link="设置" title="关于我们")
   f7-list.mt_0.ft_16
     
     .bg-color-white

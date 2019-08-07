@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.car
-  f7-navbar(:title=" n " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title=" n " back-link)
   f7-toolbar(top)
     f7-row.wp_100
       f7-col(width="33")

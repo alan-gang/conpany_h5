@@ -1,7 +1,7 @@
 <template lang="pug">
 f7-page.copyset-to-pg
-  f7-navbar(title="复制下级设置" back-link top v-if="showChoiceCpCtxPage")
-  f7-navbar(top v-else)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="复制下级设置" back-link top v-if="showChoiceCpCtxPage")
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " top v-else)
     f7-nav-left
       .link
         .icon.icon-back.color-theme-deeporange.choice-user-pg-nav(@click="showChoiceCpCtxPage = true")

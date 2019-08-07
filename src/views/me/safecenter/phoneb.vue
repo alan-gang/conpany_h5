@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page
-  f7-navbar(:title=" v.n.slice(0, 2) + v.txt " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title=" v.n.slice(0, 2) + v.txt " back-link)
   .t_c.pd_20
     f7-icon._icon.v_t(:class=" '_safeicon' + v._icon + '_big' " f7="home" size="80")
   f7-list.mg_0(form inline-labels no-hairlines-md ref="_form")

@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.settings
-  f7-navbar(back-link title="设置")
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link title="设置")
   f7-list.mt_0.ft_16
     //- f7-list-item(title="夜间模式")
       f7-toggle(slot='after' :checked=" cache.night " v-on:toggle:change=" __setCache({night: $event}) ")

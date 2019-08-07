@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.chase(:class=" 'tabIndex_' + tabIndex " :page-content="false")
-  f7-navbar(title=" 追号 " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title=" 追号 " back-link)
   f7-toolbar(top tabbar)
     f7-segmented.wp_100(raised tag="p")
       f7-button(outline v-for=" (v, i) in tabs " :key="i" @click=" tabIndex = i " :active=" tabIndex === i " v-if=" i || local.$car.length < 2 ") {{ v }}

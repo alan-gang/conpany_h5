@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.book_detail
-  f7-navbar(title="投注详情" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="投注详情" back-link)
   .pd_10
 
     .r_5.bg-color-white.pd_10.mb_10

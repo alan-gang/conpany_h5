@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.profit_loss_report_(:page-content="false")
-  f7-navbar(back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link)
     f7-nav-title(@click.native=" sm = !sm ")
       .ft_12 下级个人盈亏
       .ft_16 {{ ts[tsi].n }}盈亏

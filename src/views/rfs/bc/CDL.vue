@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page
-  f7-navbar(title="各期追号情况")
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="各期追号情况")
     f7-nav-right
       f7-link(icon-f7="close" icon-size="40px" popup-close=".cdl")
   .pd_10

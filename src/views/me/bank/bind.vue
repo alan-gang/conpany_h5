@@ -1,6 +1,6 @@
 <template lang="pug">
   f7-page.bank_bind
-    f7-navbar(title="绑定银行卡" back-link)
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="绑定银行卡" back-link)
 
     f7-list.mg_0(inline-labels no-hairlines ref="_form")
       f7-list-input(label="持卡人" placeholder="请输入持卡人姓名" clear-button @change=" form.n = $event.target.value " required validate)

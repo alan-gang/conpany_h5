@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page
-  f7-navbar(title="绑卡说明" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="绑卡说明" back-link)
   .bgc_f.pd_10.ft_12
     | 1. 银行卡绑定成功后，平台任何区域都
     span.c_orange  不会 

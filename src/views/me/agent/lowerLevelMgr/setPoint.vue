@@ -1,6 +1,6 @@
 <template lang="pug">
   f7-page.set-point-pg
-    f7-navbar(title="设置返点/返水" back-link top)
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="设置返点/返水" back-link top)
     f7-row.h_40.bgc_f.flex-ai-c.pl_25
       f7-col 下级用户名： {{name}}
     f7-list.rebate-ls.mt_10

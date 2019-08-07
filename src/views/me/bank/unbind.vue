@@ -1,6 +1,6 @@
 <template lang="pug">
   f7-page.bank_unbind
-    f7-navbar(title="解绑银行卡" back-link back-link-force)
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="解绑银行卡" back-link back-link-force)
     .t_c.pd_20
       f7-icon._icon._bankicon_unbind_card.h_50(f7="home" size="80")
 

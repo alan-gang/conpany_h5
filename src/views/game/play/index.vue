@@ -2,7 +2,7 @@
 
 .page.play(:class=" {sr: local.sr && rps[0] } ")
 
-  f7-navbar(back-link no-hairline inner-class="navbar_of_play")
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link no-hairline)
     
     f7-nav-title(@click.native=" sm = !sm ")
       .ft_12 {{ n }}

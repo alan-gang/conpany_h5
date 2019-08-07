@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.bgc_f.help
-  f7-navbar(title="帮助中心" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="帮助中心" back-link)
   f7-row.bgc_f.ft_23(top).bg-color-white(labels)
     f7-link._icon._play_intro.wp_50.c_3(icon-f7=" home " style="height: 130px;display: flex;flex-direction: column;" href="/me/help/howtoplay/") 玩法介绍
     f7-link._icon._function_intro._vip.wp_50.c_3(icon-f7=" home " style="height: 130px;display: flex;flex-direction: column;" href="/me/help/functionintro/") 功能介绍

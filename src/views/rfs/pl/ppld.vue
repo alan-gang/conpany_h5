@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.profit_loss_detail
-  f7-navbar(:title=" v.n + '盈亏明细(个人)' " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title=" v.n + '盈亏明细(个人)' " back-link)
 
   f7-list.mg_0(simple-list)
     template(v-for=" (x, i) in dns ")

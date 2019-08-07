@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page
-  f7-navbar(back-link :title=" n ")
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link :title=" n ")
   
 
 </template>

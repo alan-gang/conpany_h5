@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.transfer-to-pg
-  f7-navbar(title="给下级转账" back-link top)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="给下级转账" back-link top)
   .step-1(v-show="step == 1")
     f7-row.h_40.bgc_f.flex-ai-c.pl_25
       f7-col 转账给: {{name}}

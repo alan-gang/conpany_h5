@@ -1,6 +1,6 @@
 <template lang="pug">
   f7-page.bank
-    f7-navbar(title="银行卡" back-link)
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="银行卡" back-link)
       f7-nav-right
         .menu-item.menu-item-dropdown.icon-only.bgc_o
           .menu-item-content

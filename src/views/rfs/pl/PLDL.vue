@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.profit_loss_detail_list
-  f7-navbar(:title=" v.n + ((!v.title || v.id !== 999) && v.id > -1 ? '每日' : '') + '盈亏明细' + (v.title || v.id !== -1 ? '(' + (v.title || '个人') + ')' : '') " back-link :back-link-url=" bl " :back-link-force="force")
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title=" v.n + ((!v.title || v.id !== 999) && v.id > -1 ? '每日' : '') + '盈亏明细' + (v.title || v.id !== -1 ? '(' + (v.title || '个人') + ')' : '') " back-link :back-link-url=" bl " :back-link-force="force")
   //- u.userId && !v.key ? '/rfs/_pl/' : u.userId && v.title ? '/rfs/tpl/' : '' 
 
   .bgc_f.smooth_scroll

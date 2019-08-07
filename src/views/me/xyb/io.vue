@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.xyb_io
-  f7-navbar(:title=" !f ? '转入信游宝' : '转出信游宝' " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title=" !f ? '转入信游宝' : '转出信游宝' " back-link)
   template(v-if="!f")
     f7-list.mg_10
       f7-list-item(title="资金来源" smart-select='', :smart-select-params="{openIn: 'sheet'}" ref="f")

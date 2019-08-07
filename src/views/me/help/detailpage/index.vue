@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.bgc_f.help_de
-  f7-navbar(:title=" title " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title=" title " back-link)
   f7-list.bgc_f.mg_0.no_border(no-hairlines).p_list
     f7-block.c_3.ft_16.wp_100.bgc_f.de_title.z_9999(v-if=" contitle ") {{ contitle }}
     ul.z_9998.bgc_f.mt_10

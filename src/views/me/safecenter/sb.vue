@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.safecenter_sb
-  f7-navbar(:title=" v.n + v.txt " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title=" v.n + v.txt " back-link)
   .t_c.pd_20
     f7-icon._icon.v_t(:class=" '_safeicon' + v._icon + '_big' " f7="home" size="70")
 

@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.withdraw
-  f7-navbar(title="提现" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="提现" back-link)
     f7-nav-right
       f7-link(@click=" __go('/rfs/cr/', {props: {tabid: '#rf_cr_4'}}) ") 提现记录
 

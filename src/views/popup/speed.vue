@@ -1,7 +1,7 @@
 <template lang="pug">
     
 f7-page.speed.bg-color-deeporange
-  f7-navbar
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name ")
     f7-nav-left
       f7-link(text="取消" color="gray" popup-close="#speed")
     f7-nav-title 线路切换

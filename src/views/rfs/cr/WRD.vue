@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.withdraw_record_detail
-  f7-navbar(title="提现记录详情" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="提现记录详情" back-link)
   .timeline
     .timeline-item(v-for=" (x, i) in data " :key="i")
       //- .timeline-item-date

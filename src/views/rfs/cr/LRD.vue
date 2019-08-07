@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.load_record_detail
-  f7-navbar(title="充值记录详情" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="充值记录详情" back-link)
   .pt_30.t_c
     f7-icon(color="deeporange" f7="time_fill" size="80")
     .hlh_30.ft_20 待充值

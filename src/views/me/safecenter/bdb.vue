@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page
-  f7-navbar(:title=" v.n + v.txt " back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title=" v.n + v.txt " back-link)
   template(v-if=" !v.t && d ")
     .bg-color-deeporange.pd_20.t_c
       img(:src=" 'data:image/png;base64,' +  d.qrStr ")

@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.rf_ac_(:page-content="false")
-  f7-navbar(title="下级账变明细" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="下级账变明细" back-link)
     
   .p_a.wp_100.p_t_0.z_9503.ft_14
     .bgc_f7.t_c.hlh_44(v-show=" rns_ ")

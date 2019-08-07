@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.load
-  f7-navbar(title="充值" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="充值" back-link)
     f7-nav-right
       f7-link(@click=" __go('/rfs/cr/', {props: {tabid: '#rf_cr_2'}}) ") 充值记录
 
@@ -64,7 +64,7 @@ f7-page.load
     f7-block 一般情况下，充值到账时间为1-2分钟，有时会因为银行、第三支付、网络等原因延迟。如果超过5分钟没有到账，可到充值记录-充值详情中，提交“催到账”申请单，或直接联系客服。
 
   f7-popup.r_5.dialog-popup-auto-center.load_result_popup(style="width: 90%")
-    f7-navbar(title="充值详情")
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="充值详情")
       f7-nav-right
         f7-link(icon-f7="close" icon-size="40px" popup-close=".load_result_popup" @click="afterCommit")
     .pl_20.pr_20

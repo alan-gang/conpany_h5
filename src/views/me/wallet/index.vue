@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.wallet(:page-content="false")
-  f7-navbar(title="我的钱包" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="我的钱包" back-link)
   .p_a.t_c.c_f.bg-color-deeporange.z_9502
     h2.mg_10 {{ totalBalance._f3()._nwc() }}
     .mg_10  总余额（元）

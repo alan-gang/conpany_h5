@@ -1,6 +1,6 @@
 <template lang="pug">
   f7-page.bonus(:page-content="false")
-    f7-navbar(title="奖金详情" back-link)
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="奖金详情" back-link)
     .head.flex
       .a.w_80
         a._icon._bonusicon.link.color-black

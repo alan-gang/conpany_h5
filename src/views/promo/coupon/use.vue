@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.coupon_use
-  f7-navbar(title="使用优惠券" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="使用优惠券" back-link)
   f7-list
     f7-list-item(title="优惠券名称" :after=" v.goodsName ")
     f7-list-item(title="优惠说明" :after=" v.desc ")

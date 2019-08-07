@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.chase_detail
-  f7-navbar(title="追号详情" back-link)
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="追号详情" back-link)
   .pd_10
 
 

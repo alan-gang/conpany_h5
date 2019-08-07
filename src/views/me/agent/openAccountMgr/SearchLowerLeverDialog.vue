@@ -1,6 +1,6 @@
 <template lang="pug">
   f7-page(class="search-lower-level-pg" bg-color="white")
-    f7-navbar(title="复制已有下级的设置" text-color="white" color-theme="white" bg-color="orange")
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="复制已有下级的设置" text-color="white" color-theme="white" bg-color="orange")
       f7-nav-right
         f7-link(icon-f7="close" icon-size="40px" popup-close=".search-lower-level-dialog")
     //- f7-searchbar(placeholder="请输入下级的用户名")

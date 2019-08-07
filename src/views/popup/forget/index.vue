@@ -2,7 +2,7 @@
 
   f7-page(:page-content="false")
 
-    f7-navbar
+    f7-navbar(:innerClass=" 'navbar_of_' + $options.name ")
       f7-nav-left
         f7-link(icon-only icon-f7="chevron_left" popup-close="#forget")
       f7-nav-title 找回密码
