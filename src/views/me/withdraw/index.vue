@@ -18,7 +18,7 @@ f7-page.withdraw
 
   .h_100.bgc_f.t_c
     .pt_15 账户余额(元)
-    .ft_30.text-color-deeporange {{ user[key] }}
+    .ft_30.text-color-deeporange {{ user[key]._nwc() }}
 
   f7-list.mt_5.mb_5(v-if=" user.userBankCards[0] ")
     f7-list-item(title="选择银行" smart-select='', :smart-select-params="{openIn: 'sheet'}" ref="s")

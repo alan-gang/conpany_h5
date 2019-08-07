@@ -6,7 +6,7 @@
   template(v-if="s[0]")
     selectionrow(v-for=" (v, i) in s " :key="i" v-bind="{row: v, rowIndex: i}" v-on:row=" update ")
   template(v-else)
-    textarea.bg-color-white.pd_5(v-model=" value_ " placeholder="每一注号码之间请用一个 空格[ ]、逗号[,] 或者 分号[;] 隔开")
+    textarea.bg-color-white.pd_5(v-model=" value_ " pattern="[0-9]*" placeholder="每一注号码之间请用一个 空格[ ]、逗号[,] 或者 分号[;] 隔开")
     f7-button.o_50.mt_10(fill @click=" __randomValue(true) ") 机选
   
 </template>

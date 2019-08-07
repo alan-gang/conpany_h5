@@ -7,7 +7,7 @@ f7-page.load
 
   .h_100.bgc_f.t_c
     .pt_15 账户余额(元)
-    .ft_30.text-color-deeporange {{ user.availableBalance }}
+    .ft_30.text-color-deeporange {{ user.availableBalance._nwc() }}
     .text-color-gray {{ user.userName }}
 
   f7-row.pd_5(no-gap)

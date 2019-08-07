@@ -18,6 +18,9 @@ f7-page.gift(:page-content="false")
             f7-button.p_a.aa(fill :class=" {'color-gray': v.activityType === 3 && v.enable !== '1'} " @click=" v.activityType !== 3 ? getNow(v) : checkinNow(v) ") 
               span 立即领取
 
+        .pd_15.t_c.text-color-gray(v-if=" !enablePrize[0] ") 暂无未领取的礼品~
+
+
     f7-tab#gift_2.page-content
       f7-page(ptr :ptr-mousewheel="true" @ptr:refresh="refresh1")
         f7-card(v-for=" (v, i) in myPrize " :key="i")
@@ -27,7 +30,9 @@ f7-page.gift(:page-content="false")
             .text-color-gray.ft_12 {{ v.prizeDate }}
             f7-button.p_a.aa.color-gray(fill) 
               span 已领取
-
+        
+        .pd_15.t_c.text-color-gray(v-if=" !myPrize[0] ") 暂无未领取的礼品~
+        
 
 
 
