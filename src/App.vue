@@ -86,6 +86,7 @@ export default {
   created () {
     this.__login({isAuto: 1})
     this.getCfgInfo()
+    this.__getLotterys()
     // document.addEventListener('visibilitychange', function () {
     // })
   },
@@ -166,6 +167,17 @@ export default {
             x.hide = menuList.indexOf(x.mid) === -1
           })
         }
+      })
+    },
+    __getLotterys () {
+      this.$.get(api.getLotterys).then(({data: {lotteryList}}) => {
+        if (!lotteryList || !lotteryList[0]) return
+        g.forEach(y => {
+          g.forEach(x => {
+            x.hide = lotteryList.findIndex(y => y.lotteryId * 1 === x.id) === -1
+          })
+        })
+        if (g[0].hide) this.__go('/game/play/', {props: g.find(x => !x.hide), reloadCurrent: true, ignoreCache: true})
       })
     },
     __getcodeimg () {
