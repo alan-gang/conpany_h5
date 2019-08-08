@@ -273,7 +273,7 @@ export default {
   */
   '1126:1' () {
     return  [
-      getCommonRow({n: '四重号'}),
+      getCommonRow({n: '三重号'}),
       getCommonRow({n: '单号'}),
     ]
   },
