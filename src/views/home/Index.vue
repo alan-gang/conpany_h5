@@ -30,7 +30,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
       f7-icon._icon._hot(f7=" home " size="18px")
       span.pl_10.v_m 热门游戏
 
-    f7-swiper.b(:params="{slidesPerView: 4, spaceBetween: 15}")
+    f7-swiper.b(:params="{slidesPerView: 4, spaceBetween: 10}")
       f7-swiper-slide.ba.t_c(v-for=" (h, i) in hots " :key=" i + Math.random() ")
         f7-link._icon(:class=" '_gid' + h.id " icon-f7=" home " icon-size="72px" @click=" __go('/game/play/', {props: h}) ") 
         .c_333 {{ h.n }}
