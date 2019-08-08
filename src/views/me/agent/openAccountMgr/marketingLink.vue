@@ -65,7 +65,7 @@ export default {
         this.urls = data.url
         data.back = data.back.map((x, i) => {
           x.$ = ((x.backwater - x.value) * 1000).toFixed(1)
-          x.$s = x.backwater * 10000
+          x.$s = (x.backwater * 10000).toFixed(0) * 1
           x.rebateTypeTxt = '返水'
           x.unitTxt = '千分之'
           x.unitSymbal = '‰'

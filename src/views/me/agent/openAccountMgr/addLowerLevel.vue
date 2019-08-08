@@ -86,7 +86,7 @@ export default {
         data.back = data.back.map((x, i) => {
           x.$ = '0.0'
           x.$$ = (x.keepBack * 1000).toFixed(1)
-          x.$s = x.backwater * 10000
+          x.$s = (x.backwater * 10000).toFixed(0) * 1
           x.rebateTypeTxt = '返水'
           x.unitTxt = '千分之'
           x.unitSymbal = '‰'
