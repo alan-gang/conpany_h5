@@ -33,11 +33,12 @@ f7-page.car
         f7-button(fill @click=" checkntsf() && booking() ")   
           span 投注
   
-    .p_a.issue.bg-color-white.pl_15.pr_15.pt_10.pb_10
+    .p_a.issue.bg-color-white.pl_10.pr_5.pt_10.pb_10
       f7-checkbox(name=" $usexycoin " :checked=" local.$usexycoin " @change=" __setLocal({$usexycoin: $event.target.checked}) ")
-      span(@click=" __setLocal({$usexycoin: !local.$usexycoin}) ")  使用信游币
-
+      span(@click=" __setLocal({$usexycoin: !local.$usexycoin}) ")  
+        span 使用信游币
         span.c_orange.ft_12  {{ user.freeAvaiable }}
+
       template(v-if=" issueList ")
         f7-list.inline-picker.f_r.mg_0(no-hairlines)
           f7-list-item.hlh_25(title="期号" smart-select :smart-select-params="{openIn: 'sheet'}" ref="issuevm")
