@@ -93,7 +93,6 @@ export default {
   name: 'home',
   props: [],
   data () {
-    console.log(this)
     return {
       banners: [],
       sysNoticesContent: '',

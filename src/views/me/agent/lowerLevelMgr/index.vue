@@ -210,7 +210,7 @@ export default {
         id1: {type: 'setPoint', name: '设置返点 / 返水', show: false},
         id2: {type: 'setDaySalary', name: '设置日工资', show: false},
         id3: {type: 'fh', name: '发起分红契约 / 重新发起分红契约', show: false},
-        id4: {type: 'yj', name: '发起佣金契约 / 重新发起佣金契约', show: false},
+        id4: {type: 'yj', name: '发起其它分红契约 / 重新发起其它分红契约', show: false},
         id5: {type: 'cpSubSet', name: '复制下级设置', show: true}
       },
       isAddAccount: 0,
