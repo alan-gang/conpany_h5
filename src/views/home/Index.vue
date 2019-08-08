@@ -133,7 +133,7 @@ export default {
       })
     },
     sysNotices () {
-      this.$.get(api.sysNotices, {page: 1, pageSize: 1}).then(({data: {sysNotices}}) => {
+      this.$.get(api.sysNotices, {page: 1, pageSize: 1, isReleaseLine: 1}).then(({data: {sysNotices}}) => {
         this.sysNoticesContent = (sysNotices[0] || {}).content
       })
     },

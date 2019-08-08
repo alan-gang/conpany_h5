@@ -37,6 +37,7 @@ export default {
   methods: {
     list (option = {page: 1, pageSize: this.pageSize}, cb = () => { this.currentPage = 1 }) {
       this.$.get(api.sysNotices, Object.assign({
+        isReleaseLine: 1,
       }, option)).then(({data: {sysNotices, totalSize}}) => {
         this.data = [...(option.page > this.fpage ? this.data : []), ...sysNotices]
         this.total = totalSize
