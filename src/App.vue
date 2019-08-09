@@ -177,7 +177,7 @@ export default {
             x.hide = lotteryList.findIndex(y => y.lotteryId * 1 === x.id) === -1
           })
         })
-        if (g[0].hide) this.__go('/game/play/', {props: g.find(x => !x.hide), reloadCurrent: true, ignoreCache: true})
+        // if (g[0].hide) this.__go('/game/play/', {props: g.find(x => !x.hide), reloadCurrent: true, ignoreCache: true})
       })
     },
     __getcodeimg () {

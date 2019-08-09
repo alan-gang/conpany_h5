@@ -2,7 +2,7 @@
 
 .page
   .page-content.pt_0
-    iframe(:src=" user.vipChatUrl || chatUrl ")
+    iframe(:src=" user.vipChatUrl || user.chatUrl ")
 
 
 </template>

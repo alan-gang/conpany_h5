@@ -6,7 +6,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
       f7-link(popup-open="#login" text="登录" v-show=" user.login === false ")
     f7-nav-title(large) 信游娱乐
     f7-nav-right
-      f7-link.kf(icon-only @click=" __go('/frame/', {props: {title: (user.vipChatUrl ? 'VIP' : '') + '客服', url: user.vipChatUrl || chatUrl }}) " v-show=" user.vipChatUrl || chatUrl ")
+      f7-link.kf(icon-only @click=" __go('/frame/', {props: {title: (user.vipChatUrl ? 'VIP' : '') + '客服', url: user.vipChatUrl || user.chatUrl }}) " v-show=" user.vipChatUrl || user.chatUrl ")
 
   f7-swiper.a(:params="{speed:500, autoplay: true, slidesPerView: 1.2, spaceBetween: -15, centeredSlides: true, effect: 'coverflow'}")
     f7-swiper-slide.aa(v-for=" (b, i) in banners " :key="i")
@@ -104,7 +104,6 @@ export default {
         '/static/img/home/home_img_05.png',
         '/static/img/home/home_img_06.png',
       ],
-      chatUrl: '',
       ag: ag,
     }
   },
@@ -150,7 +149,7 @@ export default {
     },
     getChatUrl () {
       this.$.get(api.getChatUrl).then(({data: {chatUrl}}) => {
-        this.chatUrl = chatUrl
+        this.__setUser({chatUrl: chatUrl})
       })
     },
     refresh (evt, done) {

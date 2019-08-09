@@ -25,6 +25,7 @@ let defaultUser = {
   userLevel: '',
   userName: '',
   verifyType: '',
+  chatUrl: '',
   vipChatUrl: '',
   // __getBalance
   freeAvaiable: '',
