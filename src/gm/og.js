@@ -2,8 +2,9 @@ export default [
   // 棋牌
   {gn: '棋牌', n: '麻将', nid: '_mj', plat: '_ly', pid: 15},
   {gn: '棋牌', n: '斗地主', nid: '_ddz', plat: '_ky', pid: 7},
-  {gn: '棋牌', n: '德州扑克', nid: '_dz', plat: '_ly', pid: 15},
+  {gn: '棋牌', n: '德州扑克', nid: '_dz', plat: '_vg', pid: 27},
   {gn: '棋牌', n: '炸金花', nid: '_zjh', plat: '_xy', pid: 22},
+  {gn: '棋牌', n: '斗牛', nid: '_dn', plat: '_ds', pid: 28},
 
   // 微游
   {gn: '微游', n: '抢红包', nid: '_qhb', pid: 25},
@@ -12,6 +13,7 @@ export default [
   {gn: '真人', n: 'AG百家乐', nid: '_agbjl', plat: '_ag', pid: 4},
   {gn: '真人', n: 'BG百家乐', nid: '_bgbjl', plat: '_bg', pid: 2},
   {gn: '真人', n: 'PT百家乐', nid: '_ptbjl', plat: '_pt', pid: 5},
+  {gn: '真人', n: 'GD百家乐', nid: '_gdbjl', plat: '_gd', pid: 26},
 
   // 老虎机
   {gn: '老虎机', n: '野牛闪电', nid: '_ynsd', plat: '_pt', pid: 5},
@@ -49,7 +51,7 @@ export default [
   {gn: '电竞', n: '英雄联盟', nid: '_lol', plat: '_uw', pid: 17},
   {gn: '电竞', n: '王者荣耀', nid: '_wzry', plat: '_uw', pid: 17},
   {gn: '电竞', n: 'DOTA2', nid: '_dota2', plat: '_uw', pid: 17},
-  {gn: '电竞', n: 'CSGO', nid: '_csgo', plat: '_uw', pid: 17},
+  {gn: '电竞', n: 'CSGO', nid: '_csgo', plat: '_xa', pid: 29},
 
   // 体育
   {gn: '体育', n: '足球', nid: '_football', plat: '_sb', pid: 3, gid: 301},

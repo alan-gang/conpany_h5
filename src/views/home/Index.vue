@@ -49,7 +49,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
           span 喜中
           span.text-color-red {{ h.prize }}
           span 元
-          span.f_r.text-color-gray {{ (Date.now() - Number(h.timestamp))._toTimeGap('前') }}
+          span.f_r.text-color-gray {{ (      parseInt ( (Date.now() - h.timestamp * 1) / 1000 )     )._toTimeGap('前') }}
 
   .mb_5.pt_5.pb_5.bg-color-white
     .pt_5.pb_5.pl_10.pr_10 
