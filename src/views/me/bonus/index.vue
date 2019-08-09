@@ -9,10 +9,10 @@
         div
           span 账户：{{ n }}
         div
-          span 昵称：{{ nn }}
+          span 昵称：{{ nn || '--' }}
         div
-          span 返点：{{ userPoint }}
-        div
+          span 返点：{{ userPoint }}%
+        div(v-if=" salary ")
           span 日工资：{{ salary }}
         div
           span 高频彩奖金限额：{{ limitbonus }}
@@ -21,7 +21,7 @@
 
       .b.t_l.pl_10.pr_10
         div(v-for=" (x, i) in userBackWater ")
-          span {{ x.groupName }}返水：{{ x.backWater }}
+          span {{ x.groupName }}返水：{{ x.backWater || '--' }}
 
 
 
