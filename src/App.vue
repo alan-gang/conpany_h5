@@ -172,12 +172,9 @@ export default {
     __getLotterys () {
       this.$.get(api.getLotterys).then(({data: {lotteryList}}) => {
         if (!lotteryList || !lotteryList[0]) return
-        g.forEach(y => {
-          g.forEach(x => {
-            x.hide = lotteryList.findIndex(y => y.lotteryId * 1 === x.id) === -1
-          })
+        g.forEach(x => {
+          x.hide = x.id && lotteryList.findIndex(y => y.lotteryId * 1 === x.id) === -1
         })
-        // if (g[0].hide) this.__go('/game/play/', {props: g.find(x => !x.hide), reloadCurrent: true, ignoreCache: true})
       })
     },
     __getcodeimg () {
