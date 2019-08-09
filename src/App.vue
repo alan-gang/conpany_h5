@@ -164,7 +164,7 @@ export default {
       this.$.get(api.getUserPrefence).then(({data: {menuList}}) => {
         if (menuList[0]) {
           g.forEach(x => {
-            x.hide = menuList.indexOf(x.mid) === -1
+            x.hide = x.mid && menuList.indexOf(x.mid) === -1
           })
         }
       })

@@ -51,5 +51,5 @@ export default [
   {id: 27, gn: '其它', t_: 'kl8', mid: '92', n: '北京快乐8', dmid_: '3001:1'},
   {id: 45, gn: '其它', t_: 'pcdd', mid: '112', n: 'PC蛋蛋', dmid_: '8001:1'},
   {id: 28, gn: '其它', t_: 'hc6', mid: '95', n: '六合彩', dmid_: '7001:1', up: 1},
-  {nid: '_kg', gn: '其它', mid: '98', n: '基诺彩', pid: 18, gid: 203},
+  {nid: '_kg', gn: '其它', n: '基诺彩', pid: 18, gid: 203},
 ]
