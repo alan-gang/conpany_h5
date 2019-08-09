@@ -33,6 +33,7 @@ urls = {
     _gid158: '~src/assets/gameicon/game_icon_hn5fc',
     _gid163: '~src/assets/gameicon/game_icon_hn1fc',
     _gid164: '~src/assets/gameicon/game_icon_qqffc',
+    _gid157: '~src/assets/gameicon/game_icon_cqhjffc',
 
     _gid6: '~src/assets/gameicon/game_icon_11ydj',
     _gid11: '~src/assets/gameicon/game_icon_dj120',
@@ -66,6 +67,8 @@ urls = {
     _gid28: '~src/assets/gameicon/game_icon_lhc',
     _gid27: '~src/assets/gameicon/game_icon_bjkl8',
     _gid45: '~src/assets/gameicon/game_icon_pcdd',
+
+    _gid_kg: '~src/assets/gameicon/game_icon_jn',
 
     _gidzjh: '~src/assets/gameicon/game_icon_zjh',
     _gidjqw: '~src/assets/gameicon/game_icon_jqw',

@@ -37,7 +37,7 @@ export default {
       return p
     }, {})
     return {
-      g: g,
+      g: g.filter(x => x.id && !x.hide),
       gns: gns,
     }
   },

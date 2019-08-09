@@ -36,9 +36,9 @@ f7-page.game_all_1.text-color-white
     f7-card-content.ab.o_h(:class=" {'mh_0 pd_0': !i.show} ").text-color-black
       .c.inlb.t_c(v-for=" (v, i) in g.filter(x => x.gn === gn) ")
         f7-card.mg_5
-          .collect_action(@click=" local.cgs.indexOf( ',' + v.id + ',') === -1 ? __setLocal({cgs: ',' + v.id + ',' + local.cgs.replace(',' + v.id + ',', '')}) : __setLocal({cgs: local.cgs.replace(',' + v.id + ',', '')}) " :class=" {collected: local.cgs.indexOf(','+ v.id + ',') !== -1 }")
-          f7-card-content.ca.pl_0.pr_0.pt_0(@click.native=" __go('/game/play/', {props: v}) ")
-            f7-icon._icon(:class=" '_gid' + v.id " f7=" home " size="60px")
+          .collect_action(@click=" local.cgs.indexOf( ',' + (v.id || v.nid) + ',') === -1 ? __setLocal({cgs: ',' + (v.id || v.nid) + ',' + local.cgs.replace(',' + (v.id || v.nid) + ',', '')}) : __setLocal({cgs: local.cgs.replace(',' + (v.id || v.nid) + ',', '')}) " :class=" {collected: local.cgs.indexOf(','+ (v.id || v.nid) + ',') !== -1 }")
+          f7-card-content.ca.pl_0.pr_0.pt_0(@click.native=" v.id ? __go('/game/play/', {props: v}) : __go('/outer/', {props: v}) ")
+            f7-icon._icon(:class=" '_gid' + (v.id || v.nid) " f7=" home " size="60px")
             .ft_12 {{ v.n }}
       
 

@@ -3,6 +3,7 @@ export default [
   // SSC
   {id: 1, gn: '时时彩', t_: 'ssc', mid: '11', n: '重庆欢乐生肖', hot: true, dmid_: '16:1', kq: kq},
   {id: 155, gn: '时时彩', t_: 'ssc', mid: '116', n: '重庆怀旧时时彩', dmid_: '16:1'},
+  {id: 157, gn: '时时彩', t_: 'ssc', mid: '118', n: '重庆怀旧分分彩', dmid_: '16:1'},
   {id: 29, gn: '时时彩', t_: 'ssc', mid: '96', n: '腾讯分分彩', hot: true, dmid_: '16:1'},
   {id: 17, gn: '时时彩', t_: 'ssc', mid: '79', n: '欢乐分分彩', hot: true, dmid_: '16:1'},
   {id: 21, gn: '时时彩', t_: 'ssc', mid: '80', n: '幸福三分彩', dmid_: '16:1'},
@@ -50,4 +51,5 @@ export default [
   {id: 27, gn: '其它', t_: 'kl8', mid: '92', n: '北京快乐8', dmid_: '3001:1'},
   {id: 45, gn: '其它', t_: 'pcdd', mid: '112', n: 'PC蛋蛋', dmid_: '8001:1'},
   {id: 28, gn: '其它', t_: 'hc6', mid: '95', n: '六合彩', dmid_: '7001:1', up: 1},
+  {nid: '_kg', gn: '其它', mid: '98', n: '基诺彩', pid: 18, gid: 203},
 ]
