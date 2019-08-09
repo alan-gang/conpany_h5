@@ -32,7 +32,7 @@ export default {
       rebateRates: [],
       swiperParams: {
         speed: 500,
-        slidesPerView: 4,
+        slidesPerView: 3.5,
         spaceBetween: 2,
         allowSlidePrev: true,
         allowSlideNext: true,
