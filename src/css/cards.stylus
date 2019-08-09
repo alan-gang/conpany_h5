@@ -85,12 +85,12 @@ sizes = {
   width 28px
   height 29px
   z-index 1
-  bg('~src/assets/gameicon/cards/game_icon_uncollection2@2x.png', 100%)
+  bg('~src/assets/gameicon/cards/game_icon_uncollection1@2x.png', 100%)
   &:active
     opacity .8
 
 .collected.collect_action
-  bg('~src/assets/gameicon/cards/game_icon_uncollection1@2x.png', 100%)
+  bg('~src/assets/gameicon/cards/game_icon_collection@2x.png', 100%)
     
 ._bg
   &:active
