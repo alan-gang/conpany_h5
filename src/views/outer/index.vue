@@ -24,12 +24,17 @@ export default {
   },
   methods: {
     gameUrl () {
+      // setTimeout(() => {
+      //   return this.__go('/frame/', { reloadCurrent: true, ignoreCache: true, props: { title: this.n, url: 'https://www.51yzapp.com/gamehall/index.html?token=C0F43CD416E37DD2DA78EBF7511599EE' } })
+      // }, 1000)
       this.$.get(api.gameUrl, {
         platid: this.pid,
         gameid: this.gid,
       }).then(({data: {url, userName, password}}) => {
         // '?un=' + data.userName + '&pwd=' + data.password
-        this.__go('/frame/', { reloadCurrent: true, props: { title: this.n, url: url || 'http://www.baidu.com' } })
+        setTimeout(() => {
+          this.__go('/frame/', { reloadCurrent: true, ignoreCache: true, props: { title: this.n, url: url || 'http://www.baidu.com' } })
+        }, 500)
       })
     }
   }

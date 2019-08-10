@@ -195,7 +195,7 @@ export default {
       {n: 'LG账户', key: '$lg', pid: 21},
       {n: '幸运账户', key: '$xy', pid: 22},
       {n: 'GD账户', key: '$gd', pid: 26},
-      {n: 'VG账户', key: '$vg', pid: 27},
+      {n: '财神账户', key: '$vg', pid: 27},
       {n: '德胜账户', key: '$ds', pid: 28},
       {n: '小艾账户', key: '$xa', pid: 29},
     ],
