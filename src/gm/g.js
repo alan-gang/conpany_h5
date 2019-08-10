@@ -1,23 +1,23 @@
 let kq =  {active: false, dmid_: '1250:1', up_: 1}
-export default [
+let g = [
   // SSC
-  {id: 1, gn: '时时彩', t_: 'ssc', mid: '11', n: '重庆欢乐生肖', hot: true, dmid_: '16:1', kq: kq},
-  {id: 155, gn: '时时彩', t_: 'ssc', mid: '116', n: '重庆怀旧时时彩', dmid_: '16:1'},
-  {id: 157, gn: '时时彩', t_: 'ssc', mid: '118', n: '重庆怀旧分分彩', dmid_: '16:1'},
-  {id: 29, gn: '时时彩', t_: 'ssc', mid: '96', n: '腾讯分分彩', hot: true, dmid_: '16:1'},
-  {id: 17, gn: '时时彩', t_: 'ssc', mid: '79', n: '欢乐分分彩', hot: true, dmid_: '16:1'},
-  {id: 21, gn: '时时彩', t_: 'ssc', mid: '80', n: '幸福三分彩', dmid_: '16:1'},
-  {id: 150, gn: '时时彩', t_: 'ssc', mid: '75', n: '微博5分彩', hot: true, dmid_: '16:1'},
-  {id: 3, gn: '时时彩', t_: 'ssc', mid: '12', n: '新疆时时彩', hot: true, dmid_: '16:1'},
-  {id: 156, gn: '时时彩', t_: 'ssc', mid: '117', n: '新疆怀旧时时彩', dmid_: '16:1'},
-  {id: 4, gn: '时时彩', t_: 'ssc', mid: '9', n: '天津时时彩', dmid_: '16:1'},
-  {id: 35, gn: '时时彩', t_: 'ssc', mid: '101', n: '黑龙江时时彩', dmid_: '16:1'},
-  {id: 161, gn: '时时彩', t_: 'ssc', mid: '122', n: '阿里云分分彩', dmid_: '16:1'},
-  {id: 158, gn: '时时彩', t_: 'ssc', mid: '119', n: '河内5分彩', dmid_: '16:1'},
-  {id: 163, gn: '时时彩', t_: 'ssc', mid: '126', n: '河内1分彩', dmid_: '16:1'},
-  {id: 164, gn: '时时彩', t_: 'ssc', mid: '127', n: '奇趣分分彩', dmid_: '16:1'},
-  {id: 152, gn: '时时彩', t_: 'ssc', mid: '113', n: '腾讯2分彩', dmid_: '16:1'},
-  {id: 153, gn: '时时彩', t_: 'ssc', mid: '114', n: '腾讯2分彩', dmid_: '16:1'},
+  {id: 1, gn: '时时彩', t_: 'ssc', mid: '11', n: '重庆欢乐生肖', hot: true, dmid_: '16:1', kq: true},
+  {id: 155, gn: '时时彩', t_: 'ssc', mid: '116', n: '重庆怀旧时时彩', dmid_: '16:1', kq: true},
+  {id: 157, gn: '时时彩', t_: 'ssc', mid: '118', n: '重庆怀旧分分彩', dmid_: '16:1', kq: true},
+  {id: 29, gn: '时时彩', t_: 'ssc', mid: '96', n: '腾讯分分彩', hot: true, dmid_: '16:1', kq: true},
+  {id: 17, gn: '时时彩', t_: 'ssc', mid: '79', n: '欢乐分分彩', hot: true, dmid_: '16:1', kq: true},
+  {id: 21, gn: '时时彩', t_: 'ssc', mid: '80', n: '幸福三分彩', dmid_: '16:1', kq: true},
+  {id: 150, gn: '时时彩', t_: 'ssc', mid: '75', n: '微博5分彩', hot: true, dmid_: '16:1', kq: true},
+  {id: 3, gn: '时时彩', t_: 'ssc', mid: '12', n: '新疆时时彩', hot: true, dmid_: '16:1', kq: true},
+  {id: 156, gn: '时时彩', t_: 'ssc', mid: '117', n: '新疆怀旧时时彩', dmid_: '16:1', kq: true},
+  {id: 4, gn: '时时彩', t_: 'ssc', mid: '9', n: '天津时时彩', dmid_: '16:1', kq: true},
+  {id: 35, gn: '时时彩', t_: 'ssc', mid: '101', n: '黑龙江时时彩', dmid_: '16:1', kq: true},
+  {id: 161, gn: '时时彩', t_: 'ssc', mid: '122', n: '阿里云分分彩', dmid_: '16:1', kq: true},
+  {id: 158, gn: '时时彩', t_: 'ssc', mid: '119', n: '河内5分彩', dmid_: '16:1', kq: true},
+  {id: 163, gn: '时时彩', t_: 'ssc', mid: '126', n: '河内1分彩', dmid_: '16:1', kq: true},
+  {id: 164, gn: '时时彩', t_: 'ssc', mid: '127', n: '奇趣分分彩', dmid_: '16:1', kq: true},
+  {id: 152, gn: '时时彩', t_: 'ssc', mid: '113', n: '腾讯2分彩', dmid_: '16:1', kq: true},
+  {id: 153, gn: '时时彩', t_: 'ssc', mid: '114', n: '腾讯2分彩', dmid_: '16:1', kq: true},
   // 115
   {id: 6, gn: '11选5', t_: '115', mid: '16', n: '11运夺金', dmid_: '2001:1'},
   {id: 11, gn: '11选5', t_: '115', mid: '14', n: '夺金120秒', dmid_: '2001:1'},
@@ -53,3 +53,5 @@ export default [
   {id: 28, gn: '其它', t_: 'hc6', mid: '95', n: '六合彩', dmid_: '7001:1', up: 1},
   {nid: '_kg', gn: '其它', n: '基诺彩', pid: 18, gid: 203},
 ]
+g.forEach(x => x.kq = x.kq ? Object.assign({}, kq) : null)
+export default g
