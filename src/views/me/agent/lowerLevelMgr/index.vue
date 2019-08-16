@@ -191,7 +191,7 @@ export default {
       rns_: false,
       orderTypes: [{id: '2', name: '账户余额'}, {id: '3', name: '注册时间'}, {id: '4', name: '最后登录时间'}],
       curOrderObject: {id: '3', name: '注册时间'},
-      curOrderType: '',
+      curOrderType: '3',
       maxDaySalary: 0,
       name: '',
       userName: '',
