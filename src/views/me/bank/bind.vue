@@ -3,16 +3,16 @@
     f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="绑定银行卡" back-link)
 
     f7-list.mg_0(inline-labels no-hairlines ref="_form")
-      f7-list-input(label="持卡人" placeholder="请输入持卡人姓名" clear-button @change=" form.n = $event.target.value " required validate)
-      f7-list-input(type="text" required validate pattern="[0-9]*" label="银行卡号" placeholder="请输入银行卡号" clear-button @change=" form.cn = $event.target.value ")
+      f7-list-input(:value=" form.n " label="持卡人" placeholder="请输入持卡人姓名" clear-button @change=" form.n = $event.target.value " required validate)
+      f7-list-input(:value=" form.cn " type="text" required validate pattern="[0-9]*" label="银行卡号" placeholder="请输入银行卡号" clear-button @change=" form.cn = $event.target.value ")
       f7-list-item(title="银行名称" placeholder="请选择银行名称" smart-select='', :smart-select-params="{openIn: 'sheet'}" ref="t" clear-button)
         select(name="wallets" v-model=" form.i ")
           option(v-for=" (v, i) in cache.allBankData " :key="i" :value="i") {{ v.bankName }}
 
 
-      f7-list-input(label="开户省市" placeholder="请选择开户省市" id="pac" readonly @change=" form.pac = $event.target.value " required validate)
+      f7-list-input(:value=" form.pac " label="开户省市" placeholder="请选择开户省市" id="pac" readonly @change=" form.pac = $event.target.value " required validate)
 
-      f7-list-input(label="开户支行" placeholder="请输入开户支行" clear-button @change=" form.bn = $event.target.value " required validate)
+      f7-list-input(:value=" form.bn " label="开户支行" placeholder="请输入开户支行" clear-button @change=" form.bn = $event.target.value " required validate)
 
     .h_40
     f7-button.mg_10(fill large @click=" __validateform(bind) ") 确认

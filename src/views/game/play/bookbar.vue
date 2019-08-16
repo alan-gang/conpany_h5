@@ -48,7 +48,7 @@
           div 添加
 
       f7-col.pl_5(width="20")
-        f7-button.ft_18.action_button(fill :color=" n_ ? 'orange' : 'gray' " large @click=" n_ && allin ") 全押
+        f7-button.ft_18.action_button(fill :color=" n_ ? 'orange' : 'gray' " large @click=" n_ && allin() ") 全押
 
       f7-col.pl_5(width="50")
         f7-button.ft_18.action_button(fill :color=" n_ ? 'deeporange' : 'gray' " large)
