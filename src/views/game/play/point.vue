@@ -20,7 +20,7 @@ export default {
   computed: {
     bonus () {
       // return ((this.dp.maxprize - ((this.$p || this.local.$p) * this.scale)) * this.local.$)._f3() * 1
-      return (((this.dp.maxprize - ((this.$p || this.local.$p) * this.scale)) * this.local.$) * (this.$t || this.local.$t))._f3() * 1
+      return (((this.dp.maxprize - ((this.$p || this.local.$p) * this.scale * 100)) * this.local.$) * (this.$t || this.local.$t))._f3() * 1
     },
     // to 7.5
     pgap () {
