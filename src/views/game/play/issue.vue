@@ -32,9 +32,9 @@ export default {
       })
     },
     current () {
-      this.$.myget(api.current, {gameid: this.id}).then(({data: {issue, salestart, saleend}}) => {
+      this.$.myget(api.current, {gameid: this.id}).then(({data: {issue, salestart, current, saleend}}) => {
         this.issue = issue
-        this.timming = (saleend - salestart) / 1000
+        this.timming = (saleend - current) / 1000
         this.countDown()
         this.$emit('issue', issue)
         this.$refs.issuevm && this.$refs.issuevm.f7SmartSelect.setValue(this.issue)
@@ -45,7 +45,7 @@ export default {
         this.timming--
         this.tt = setTimeout(this.countDown, 1000)
       } else {
-        this.init()
+        setTimeout(this.init, 1000)
       }
     },
   }

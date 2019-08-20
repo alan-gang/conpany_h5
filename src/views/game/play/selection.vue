@@ -253,7 +253,7 @@ export default {
         gameid: this.id,
         issue: this.issue,
         totalnums: this.n,
-        totalmoney: this.m || this.__getTimesM(),
+        totalmoney: this.m_ || this.__getTimesM(),
         type: 1,
         isusefree: 0,
         isJoinPool: 0,
@@ -303,7 +303,7 @@ export default {
           lotteryId: this.id,
           issue: this.issue,
           totProjs: this.n,
-          totMoney: this.mido.extract ? this.__getFnumberM() : this.m || this.__getTimesM(),
+          totMoney: this.mido.extract ? this.__getFnumberM() : this.m_ || this.__getTimesM(),
           isusefree: 0,
           betList: this.__getKqItems(),
         })
