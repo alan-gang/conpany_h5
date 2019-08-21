@@ -9,17 +9,21 @@
       f7-col(width="15" @click="showSearchBar = true")
         .icon-search
     
-    f7-row.bgc_f7.pl_15.pr_15.search-condi-bar.c_6.z_9503.p_r
-      f7-col(@click="(filterType = 1) && (showFilter = !showFilter) && (rns_ = true)")
-        span(v-show="condiRegisterDate.indexOf('至') == -1") 注册时间：
-        span.pl_5 {{condiRegisterDate}}
-        span.inlb.icon-triangle-wp.p_r.p_t_-3
-          Triangle(:direction="filterType == 1 && showFilter ? 'up' : 'down'")
-      f7-col.t_r(@click="(filterType = 2) && (showFilter = !showFilter) && (rns_ = true)")
-        span 排序方式：
-        span.pl_5 {{ curOrderObject.name }}
-        span.inlb.icon-triangle-wp.p_r.p_t_-3
-          Triangle(:direction="filterType == 2 && showFilter ? 'up' : 'down'")
+
+    .flex.bgc_f7.pl_10.pr_10.search-condi-bar.c_6.z_9503.p_r.ft_12.h_44
+      .flex(@click="(filterType = 1) && (showFilter = !showFilter) && (rns_ = true)")
+        span 
+          span(v-show="condiRegisterDate.indexOf('至') == -1") 注册时间：
+          span.pl_5 {{condiRegisterDate}}
+          span.inlb.icon-triangle-wp.p_r.p_t_-3
+            Triangle(:direction="filterType == 1 && showFilter ? 'up' : 'down'")
+
+      .flex.t_r(@click="(filterType = 2) && (showFilter = !showFilter) && (rns_ = true)")
+        span
+          span 排序方式：
+          span.pl_5 {{ curOrderObject.name }}
+          span.inlb.icon-triangle-wp.p_r.p_t_-3
+            Triangle(:direction="filterType == 2 && showFilter ? 'up' : 'down'")
 
     //- 搜索框
     .p_a.wp_100.p_t_0.z_9503.ft_14.search-bar(v-show="showSearchBar")
@@ -462,7 +466,7 @@ export default {
     background url('../../../../assets/me/icon_screen@2x.png') no-repeat center
     background-size 15px
   .search-condi-bar
-    line-height 44px
+    // line-height 44px
   .ptr-content-wp
     flex 1
     position relative
