@@ -75,7 +75,7 @@
                 .v_odd.hlh_20 {{ v.odd }}
                 .v_t.pl_5.pr_5
                   f7-input.hlh_30.border-gray(validate require outline pattern="[0-9]*")
-                    input.hlh_30.t_c.text-color-deeporange(type="number" v-model=" v.t " style="padding: 0 5px" @change=" v.s = Number(v.t) && Number(v.t) > 0 ")
+                    input.hlh_30.t_c.text-color-deeporange(type="number" v-model=" v.t " style="padding: 0 5px" @change=" v.s = Number(v.t) && Number(v.t) > 0 " @click=" !v.t && toggle(v) ")
 
       //- 左右结构
       template(v-if=" row.struct === 'following' ")
@@ -93,7 +93,7 @@
                   f7-button.flex-shrink-2.hlh_40.pd_0(outline) 
                     .v_t.pl_5.pr_5
                       f7-input(validate require pattern="[0-9]*")
-                        input.h_40.lh_25.t_c.text-color-deeporange(type="number" v-model=" v.t " style="padding: 0 5px" @change=" v.s = Number(v.t) && Number(v.t) > 0 ")
+                        input.h_40.lh_25.t_c.text-color-deeporange(type="number" v-model=" v.t " style="padding: 0 5px" @change=" v.s = Number(v.t) && Number(v.t) > 0 " @click=" !v.t && toggle(v) ")
 
                   f7-button.hlh_40.pd_0(outline v-if="v.tails")
                     .hlh_40.pd_0.ball.inlb.pd_0.w_40(v-for=" (x, j) in v.tails " :key="j"  :class=" [ x._toC() ] ") {{ x }}
@@ -113,7 +113,7 @@
                   f7-button.flex-shrink-1.hlh_40.pd_0(outline) 
                     .v_t.pl_5.pr_5
                       f7-input(validate require pattern="[0-9]*")
-                        input.h_40.lh_25.t_c.text-color-deeporange(type="number" v-model=" v.t " style="padding: 0 5px" @change=" v.s = Number(v.t) && Number(v.t) > 0 ")
+                        input.h_40.lh_25.t_c.text-color-deeporange(type="number" v-model=" v.t " style="padding: 0 5px" @change=" v.s = Number(v.t) && Number(v.t) > 0 " @click=" !v.t && toggle(v) ")
 
                 .pd_5.t_l.tail(v-if="v.tails")
                   .hlh_40.pd_0.ball.inlb.pd_0.w_40.t_c(v-for=" (x, j) in v.tails " :key="j"  :class=" [ x._toC() ] ") {{ x }}

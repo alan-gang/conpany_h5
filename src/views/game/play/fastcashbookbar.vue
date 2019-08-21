@@ -12,7 +12,7 @@
         select(v-model=" local.$$ ")
           option(:value="v.v" v-for=" (v, i) in btns " :key="i") {{ v.n }}
   
-    f7-button.f_r.mt_5.w_100(fill @click="n_ && __setCall({ fn: '__booking', args: undefined })") 下注
+    f7-button.f_r.mt_5.w_100(fill :disabled=" !n_ " @click="n_ && __setCall({ fn: '__booking', args: undefined })") 下注
 
 </template>
 

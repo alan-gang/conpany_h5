@@ -33,6 +33,7 @@ let commonRow = {
 
 
 let getCommonRow = (args = {}) => {
+  args.vs && args.vs.forEach(x => (x.t = ''))
   return Object.assign({}, commonRow, args)
 }
 export default {
