@@ -1,6 +1,6 @@
 <template lang="pug">
 
-.page.play(:class=" {sr: local.sr && rps[0] } ")
+.page.play(:class=" [ {sr: local.sr && rps[0] }, 'play_id_' + id] ")
 
   f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link no-hairline)
     

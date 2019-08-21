@@ -8,9 +8,9 @@
     template(v-if=" row.t === 'number' ")
       //- 左右结构(默认)
       template(v-if=" !row.struct ")
-        f7-col.n.hlh_40.t_c.pr_5(width="15") 
+        f7-col.n.hlh_40.t_c.pr_5(width="15" :n="row.n") 
           span.text-color-white(:class=" {ft_12: row.n.length > 2} ") {{ row.n }}
-        f7-col.vs(width="85")
+        f7-col.vs(width="85" :class=" 'vs_l_' + vs.length ")
           f7-row(no-gap :class=" getRowClass() ")
             .pb_2(v-for=" (v, i) in vs " :key="i" @click=" toggle(v) " :class=" getBallWrapColClass(v) ")
               .v.t_c
@@ -393,4 +393,44 @@ urls = {
       border-top-left-radius 0
       border-top-right-radius 0
       border 1px solid #8e8e93
+</style>
+
+<!-- 欢乐生肖 -->
+<style lang="stylus">
+@import '~src/css/var.stylus'
+// mouse tiger rabbit
+ns = {
+  '万位': '~src/assets/play/play_id_1/game_btn_postion_wanwei',
+  '千位': '~src/assets/play/play_id_1/game_btn_postion_qianwei',
+  '百位': '~src/assets/play/play_id_1/game_btn_postion_baiwei',
+  '十位': '~src/assets/play/play_id_1/game_btn_postion_shiwei',
+  '个位': '~src/assets/play/play_id_1/game_btn_postion_gewei',
+}
+  
+.play_id_1
+  for k, v in  ns
+    .n[n={k}]
+      bg(v + '@2x-min.png')
+  
+  .vs_l_10
+    .ball
+      overflow visible
+      &:after
+        content ''
+        position absolute
+        right -3px
+        bottom 0
+        width 13px
+        height 13px
+    prefix = '~src/assets/play/play_id_1/text_'
+    .col-20
+      for v, k in  mouse tiger rabbit lonng snake horse sheep monkey chicken pig
+        &:nth-child({k + 1})
+          .ball
+            &:after
+              bg(prefix + v + '_normal@2x-min.png')
+            &:hover:after
+            &.selected:after
+              bg(prefix + v + '_press@2x-min.png')
+            
 </style>
