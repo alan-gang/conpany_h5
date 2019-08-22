@@ -6,7 +6,7 @@
       span 第
       span {{ luck.issue.slice(-6) }}
       span 期
-    lucknumbers(:luckn=" luckn " :class="t")
+    lucknumbers.opencode(:luckn=" luckn " :class="t")
     //- span
       span.ball.hlh_25.w_25.mg_2.rp_50.bg-color-deeporange.inlb.t_c.text-color-white(v-for=" (v, i) in luckn " :key="i") {{ v }}
 

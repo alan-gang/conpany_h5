@@ -65,7 +65,7 @@ export default {
 // 建议不添加scoped， 所有样式最多嵌套2层
 prefix = '~src/assets/play/play_id_1/icon_'
 prefixtext = '~src/assets/play/play_id_1/iconwithtext_'
-.play_id_1 .info_luck_numbers
+.play_id_1 .opencode
   .ball
     margin-left 18px
     z-index 1
