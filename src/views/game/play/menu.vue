@@ -52,13 +52,16 @@ export default {
   data () {
     return {
       slideDown: false,
-      m: m[this.t],
+      // m: m[this.t],
       cgn: '',
     }
   },
   created () {
   },
   computed: {
+    m () {
+      return m[this.t]
+    },
     // 当前游戏的所有玩法
     cps () {
       return this.m.filter(x => x.show)
