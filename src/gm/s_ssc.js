@@ -849,13 +849,15 @@ export default {
   C(n1, 1)+C(n2, 1)+C(n3, 1)+C(n4, 1)+C(n5, 1)
   */
   '1199:1' () {
-    return  [
+    let x = [
       getCommonRow({n: '万位'}),
       getCommonRow({n: '千位'}),
       getCommonRow({n: '百位'}),
       getCommonRow({n: '十位'}),
       getCommonRow({n: '个位'}),
     ]
+    x.fnbtns = true
+    return x
   },
 
   /* *************************************不定位*********************************** */

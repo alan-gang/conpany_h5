@@ -103,7 +103,7 @@ f7-page.copyset-to-pg
             .preloader
             .ptr-arrow
           f7-list.user-list-wp.ft_12
-            f7-list-item(v-for="(u, i) in userList")
+            f7-list-item(v-for="(u, i) in userList" v-show=" id * 1 !== u.userId * 1")
               span
                 f7-icon(f7="person" color="orange" size="large")
                 span.pl_5 {{u.userName}}
@@ -289,11 +289,12 @@ export default {
       let params = {
         userName: this.subName,
         pageSize: this.pageSize,
-        page: this.page
+        page: this.page,
       }
       Object.assign(params, p)
       // 搜索下级
       this.$.get(api.getUserList, params).then(({data: {subUserInfo, totalSize, currUserId, isAddAccount, uploadLevel, userPoint, userBreads}}) => {
+        subUserInfo = subUserInfo.filter(x => x.isSub)
         this.userList = params.page === 1 ? (subUserInfo || []) : this.userList.concat(subUserInfo || [])
         this.total = totalSize
         cb && cb(subUserInfo)

@@ -1,6 +1,10 @@
 <template lang="pug">
 
 .game_selection.pl_15.pr_15.pb_15
+  //- 功能按钮
+  template(v-if="s.fnbtns")
+    selectionfnbtns(:fnbtns=" s.fnbtns_ ")
+
   template(v-if="s.ps")
     selectionps(:dpss="s.pss" :ps="s.ps" :pi="s.pi" :min="s.min" :single="s.single" v-on:update:vc=" pvc = $event " v-on:update:vcl=" pvcl = $event ")
   template(v-if="s[0]")
@@ -16,6 +20,7 @@ import config from '@/config'
 import api from '@/api'
 import selectionrow from './selection_row'
 import selectionps from './selection_ps'
+import selectionfnbtns from './selection_fnbtns'
 import random from './random'
 import s from '@/gm/s'
 import n from '@/gm/n'
@@ -26,6 +31,7 @@ export default {
   components: {
     selectionrow,
     selectionps,
+    selectionfnbtns,
   },
   name: 'game_selection',
   props: ['id', 't', 'mid', 'mid_', 'issue', 'm_', 'dp', 'cpoints', 'mido', 'up_'],
@@ -168,11 +174,26 @@ export default {
         return this.no[1].join(this.rjr)
       }
     },
+    __validatebook () {
+      return new Promise((resolve, reject) => {
+        if (this.dp && this.dp.maxCount && this.n > this.dp.maxCount) {
+          this.__toast('该玩法一个文案最只能投注' + this.dp.maxCount + '注')
+          reject(new Error(0))
+        } else {
+          resolve(1)
+        }
+      })
+    },
     __beforeAddToCar () {
       if (this.__$car && this.__$car.length === 10) return this.__alert('单次最多只能投注10个方案') && false
       return true
     },
-    __addToCar () {
+    async __addToCar () {
+      try {
+        await this.__validatebook()
+      } catch (e) {
+        return false
+      }
       if (!this.__beforeAddToCar()) return false
       this.local.$car.push(Object.assign(this.__getNumberItems()[0], {
         // 更多信息
@@ -261,8 +282,15 @@ export default {
         items: JSON.stringify(this.__getItems()),
       }
     },
-    __booking () {
+    async __booking () {
       if (this.t === 'kq') return this.__kqbooking()
+      else {
+        try {
+          await this.__validatebook()
+        } catch (e) {
+          return false
+        }
+      }
       this.$.post(api.booking, this.__getBookingArgs())
     },
     __extract () {

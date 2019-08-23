@@ -168,7 +168,16 @@ export default {
   },
   watch: {
     n_ (n, o) {
-      if (!o && n) this.__setCall({fn: '__setSA', args: true})
+      this.__setCall({fn: '__setSA', args: n || this.__$car.length})
+    },
+    sr_ (n, o) {
+      this.addClsSR()
+    },
+    dp () {
+      // if point overflow reset to max
+      if (this.dp && this.dp.maxpoint && (this.local.$p * 1 > this.dp.maxpoint * 1)) {
+        this.__setLocal({$p: this.dp.maxpoint * 1})
+      }
     }
   },
   created () {

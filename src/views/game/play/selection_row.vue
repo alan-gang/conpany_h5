@@ -272,6 +272,12 @@ export default {
         this.row.lsv = n
       })
     },
+    __selectindexinrow (i) {
+      this.select(this.vs[i])
+    },
+    __unselectindexinrow (i) {
+      this.unSelect(this.vs[i])
+    },
     unSelect (n) {
       n.s = false
       // 输入倍数型
