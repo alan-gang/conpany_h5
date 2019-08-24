@@ -209,8 +209,9 @@ export default {
       if (this.id) this.__setCache({play: {id: this.id, n: this.n, t: this.t, kq: this.kq}})
     },
     myNewPoint () {
-      this.$.get(api.myNewPoint, {gameid: this.id}).then(({data: {items}}) => {
+      this.$.get(api.myNewPoint, {gameid: this.id}).then(({data: {items, dtMaxPrize, dzMaxPrize}}) => {
         this.points = items
+        this.__setCache({dtMaxPrize: dtMaxPrize * 1, dzMaxPrize: dzMaxPrize * 1})
         // 没有奖金信息则隐藏该玩法
         this.m.forEach(x => (x.show = !!items[x.id.split(':')[0]]))
         // 如果当前默认的玩法关闭了 重新选择一个默认的玩法

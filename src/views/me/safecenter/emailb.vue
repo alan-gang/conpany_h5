@@ -8,7 +8,7 @@ f7-page
       f7-list-item(title="邮箱" :after=" user[v.key] ")
     
     template(v-else)
-      f7-list-input(type="text" required validate validate-on-blur pattern="*@*.*"  label="邮箱" placeholder="请输入您的邮箱验地址" clear-button :value=" form.p " @input=" form.p = $event.target.value " ref="_form_p")
+      f7-list-input(type="email" required validate validate-on-blur label="邮箱" placeholder="请输入您的邮箱验地址" clear-button :value=" form.p " @input=" form.p = $event.target.value " ref="_form_p")
 
     li.item-content.item-input
       .item-inner

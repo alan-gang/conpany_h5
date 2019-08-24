@@ -76,17 +76,17 @@ export default {
   },
   '1257:1' () {
     return [
-      getCommonRow({n: '全五', nonasv: true, col: 'col-20', oddIndex: 0}),
+      getCommonRow({n: '前三', nonasv: true, col: 'col-20', oddIndex: 0}),
     ]
   },
   '1258:1' () {
     return [
-      getCommonRow({n: '全五', nonasv: true, col: 'col-20', oddIndex: 0}),
+      getCommonRow({n: '中三', nonasv: true, col: 'col-20', oddIndex: 0}),
     ]
   },
   '1259:1' () {
     return [
-      getCommonRow({n: '全五', nonasv: true, col: 'col-20', oddIndex: 0}),
+      getCommonRow({n: '后三', nonasv: true, col: 'col-20', oddIndex: 0}),
     ]
   },
   '1260:1' () {

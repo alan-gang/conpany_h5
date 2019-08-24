@@ -70,10 +70,11 @@
                     f7-button.w_80.c_p.btn-v-v-s(outline v-if=" d.teamCount > 1 && breadcrumb[breadcrumb.length - 1].userId !== d.userId " @click="viewSubLevel(d.userId)") 
                       | 查看下级
                       span
-                    f7-button.w_65.btn-l-red.ml_10(outline @click="operate(d)" v-if=" d.isSub ")
+                    f7-button.w_65.btn-l-red.ml_10(outline @click="operate(d)")
                       span 操作
                       span.inlb
                         Triangle(direction="down")
+
               f7-card-content.pt_0.pb_0
                 f7-row.pb_5.pt_10
                   f7-col(width="50")
@@ -158,7 +159,7 @@
 
     f7-actions(:opened="shwoActionSheet" @actions:closed="shwoActionSheet = false")
       f7-actions-group
-        f7-actions-button.c_0(v-for="(v, k, i) in actionButtons" v-show="v.show" @click="actionButtonHandler(v.type)") {{v.name}}
+        f7-actions-button.c_0(v-for="(v, k, i) in actionButtons" v-show=" v.show && (!v.hide || !v.hide()) " @click="actionButtonHandler(v.type)") {{v.name}}
 
       f7-actions-group
         f7-actions-button.c_0 取消
@@ -211,11 +212,11 @@ export default {
       breadcrumb: [{userId: '', userName: '我的下级'}],
       actionButtons: {
         id0: {type: 'transToSub', name: '给下级转账', show: true},
-        id1: {type: 'setPoint', name: '设置返点 / 返水', show: false},
-        id2: {type: 'setDaySalary', name: '设置日工资', show: false},
-        id3: {type: 'fh', name: '发起分红契约 / 重新发起分红契约', show: false},
-        id4: {type: 'yj', name: '发起其它分红契约 / 重新发起其它分红契约', show: false},
-        id5: {type: 'cpSubSet', name: '复制下级设置', show: true}
+        id1: {type: 'setPoint', name: '设置返点 / 返水', show: false, hide: () => !this.operCurUser.isSub},
+        id2: {type: 'setDaySalary', name: '设置日工资', show: false, hide: () => !this.operCurUser.isSub},
+        id3: {type: 'fh', name: '发起分红契约 / 重新发起分红契约', show: false, hide: () => !this.operCurUser.isSub},
+        id4: {type: 'yj', name: '发起其它分红契约 / 重新发起其它分红契约', show: false, hide: () => !this.operCurUser.isSub},
+        id5: {type: 'cpSubSet', name: '复制下级设置', show: true, hide: () => !this.operCurUser.isSub}
       },
       isAddAccount: 0,
       canTopUp: false,

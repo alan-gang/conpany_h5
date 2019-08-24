@@ -70,6 +70,8 @@ export default {
   },
   created () {
     this.init()
+    this.$emit('update:vc', this.vc)
+    this.$emit('update:vcl', this.vcl)
   },
   methods: {
     __initSelectionPS () {

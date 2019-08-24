@@ -13,7 +13,7 @@ f7-page.register.bg-color-white
     f7-list-input(required validate type="password", placeholder="密码", clear-button="" :value="form.pwd" @input='form.pwd = $event.target.value')
       f7-icon(f7="lock", slot="media")
 
-    f7-list-input(required validate :pattern=" form.pwd " error-message="2次密码输入不一至" type="password", placeholder="确认密码", clear-button="" :value="form.pwda" @input='form.pwda = $event.target.value')
+    f7-list-input(required validate :pattern=" form.pwd " error-message="2次密码输入不一致" type="password", placeholder="确认密码", clear-button="" :value="form.pwda" @input='form.pwda = $event.target.value')
       f7-icon(f7="lock_fill", slot="media")
 
     f7-list-input(required validate type="text", placeholder="邀请码", clear-button="" :value="form.tag" @input='form.tag = $event.target.value')

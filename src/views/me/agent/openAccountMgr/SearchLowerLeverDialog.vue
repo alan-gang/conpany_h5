@@ -6,9 +6,11 @@
     //- f7-searchbar(placeholder="请输入下级的用户名")
     .ipt-wp
       f7-input(type="text" placeholder="请输入下级的用户名" :value="userName" @input="userName = $event.target.value" :clear-button="true")
+
     f7-list(:simple-list="true")
       f7-list-item(v-for="(act, i) in accountsHistory" :title="act.userName" @click.native="getUserRebateDataById(act)")
     f7-button.mg_10(fill large @click="sure") 确定
+
 </template>
 
 <script>
@@ -37,7 +39,7 @@ export default {
         if (data.subUserInfo.length > 0) {
           this.saveUserToHistory(data.subUserInfo[0])
           this.$emit('info', data.subUserInfo[0])
-          this.getUserRebateDataById({userId: data.subUserInfo[0]})
+          this.getUserRebateDataById(data.subUserInfo[0])
         } else {
           this.__alert('您输入的下级用户名不存在')
         }

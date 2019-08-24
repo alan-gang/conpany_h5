@@ -15,17 +15,21 @@
       span  元
 
     span.f_r(@click=" (Number(dp.maxpoint) > Number(dp.minpoint)) ? __setCall({fn: '__openadjustpoints'}) : __toast('无法调节返点信息') ")
-      span(v-if=" dp ") 单注奖金 {{ bonusRange.join('-') }}
+      span(v-if=" dp ") 单注奖金 
+      span(:class=" { 'text-color-deeporange':  !isOverMax, 'text-color-red': isOverMax } ") {{ !isOverMax ? bonusRange.join('-') : '奖金受限' }}
       f7-icon(f7=" chevron_right " color="gray" size="16px")
 
     span.p_a.pack.h_20.w_50.z_1(@click=" sa = !sa " :class=" { up: sa } ")
   
-  .hlh_40.t_c.bgc_light_orange.text-color-gray.mb_10(v-show="n_ && dp")
-    span 最高可中奖
-    span.text-color-deeporange  {{ wnm_._f3() }} 
-    span 元，最高可赢利
-    span.text-color-deeporange  {{ wnp_._f3() }} 
-    span 元
+  .hlh_40.t_c.bgc_light_yellow.text-color-gray.mb_10(v-show="n_ && dp ")
+    template(v-if=" !isOverMax ")
+      span 最高可中奖
+      span.text-color-deeporange  {{ wnm_._f3() }} 
+      span 元，最高可赢利
+      span.text-color-deeporange  {{ wnp_._f3() }} 
+      span 元
+    template(v-else)
+      span.text-color-red {{ !isOverMax ? bonusRange.join('-') : '奖金受限' }}
 
   .pl_15.pr_15.pb_15
       .stepper.stepper-init.stepper-small.color-gray.v_m(data-wraps='true', data-autorepeat='true', data-autorepeat-dynamic='true', data-decimal-point='2', data-manual-input-mode='true')
@@ -86,10 +90,12 @@ export default {
     bonusRange () {
       return this.bonuses[1] ? [Math.min(...this.bonuses), Math.max(...this.bonuses)] : this.bonuses
     },
+    isOverMax () {
+      return (this.bonusRange[1] || this.bonusRange[0]) > this.cache.dzMaxPrize
+    },
     m_ () {
       return this.n_ * this.up_ * this.local.$t * this.local.$
     },
-
     wnm_ () {
       if (typeof this.wn_ === 'number') return this.bonuses[0] * this.wn_
       else if (typeof this.wn_ === 'object') {

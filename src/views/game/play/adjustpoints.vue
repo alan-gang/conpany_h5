@@ -6,7 +6,7 @@
     .pd_10
       .pb_10
         span 奖金: 
-        span.text-color-deeporange {{ bonusRangeR.join('-') }}
+        span(:class=" { 'text-color-deeporange':  !isOverMax, 'text-color-red': isOverMax } ") {{ !isOverMax ? bonusRangeR.join('-') : '奖金受限' }}
         span.pd_10
         span 返点: 
         span.text-color-deeporange {{ (v * 100)._f1() }}%
@@ -40,6 +40,9 @@ export default {
   computed: {
     bonusRangeR () {
       return this.bonusRange[1] ? [Math.min(...this.bonusRange), Math.max(...this.bonusRange)] : this.bonusRange
+    },
+    isOverMax () {
+      return (this.bonusRangeR[1] || this.bonusRangeR[0]) > this.cache.dzMaxPrize
     },
     np () {
       return Math.min((this.local.$p + 0.01) * 100, this.dp.maxpoint * 100)

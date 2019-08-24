@@ -8,8 +8,9 @@
     template(v-if=" row.t === 'number' ")
       //- 左右结构(默认)
       template(v-if=" !row.struct ")
-        f7-col.n.hlh_40.t_c.pr_5(width="15" :n="row.n") 
+        f7-col.n.h_40.t_c.flex.justify-content-center(width="15" :n="row.n") 
           span.text-color-white(:class=" {ft_12: row.n.length > 2} ") {{ row.n }}
+
         f7-col.vs(width="85" :class=" 'vs_l_' + vs.length ")
           f7-row(no-gap :class=" getRowClass() ")
             .pb_2(v-for=" (v, i) in vs " :key="i" @click=" toggle(v) " :class=" getBallWrapColClass(v) ")

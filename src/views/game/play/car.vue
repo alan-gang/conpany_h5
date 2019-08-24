@@ -56,7 +56,7 @@ f7-page.car
           
           f7-card-content
             p 
-              f7-button.t_l.pd_0(color="black") {{ v.codes }}
+              f7-button.t_l.pd_0(color="black") {{ v.nc || v.codes }}
             p 
               span {{ v.mido.gn + '_' + v.mido.n }} 
               span.text-color-orange {{ v.count }} 
@@ -64,7 +64,7 @@ f7-page.car
               span.text-color-orange {{ v.money._f3() }} 
               span 元
             div
-              f7-stepper.v_m(small autorepeat type="number" pattern="[0-9]*" color="gray" :value=" v.times " :min="1" :max="1000" :step="1" @stepper:change=" update((v.times = $event) ? v : v) ")
+              f7-stepper.v_m(small autorepeat type="number" pattern="[0-9]*" color="gray" :value=" v.times " :min="1" :max="10000" :step="1" @stepper:change=" update((v.times = $event) ? v : v) ")
               
               span.pd_5
               .list.inline-picker.border-gray
@@ -84,7 +84,7 @@ f7-page.car
                   f7-icon(f7=" chevron_down " color="gray" size="18px" style="opacity: .7")
 
                 
-                point(v-for=" (x, j) in v.cpoints " :key="j" v-bind=" {dp: x, i: j, mid: v.mid, $p: v.userpoint} " @update=" $set(v.bonuses, j, $event) ")
+                point(v-for=" (x, j) in v.cpoints " :key="j" v-bind=" {dp: x, i: j, mid: v.mid, $p: v.userpoint, $t: v.times, mode: v.mode} " @update=" $set(v.bonuses, j, $event) ")
       
       f7-swipeout-actions(right)
         f7-swipeout-button(delete) 删除
@@ -161,7 +161,7 @@ export default {
         isJoinPool: 0,
         trace: '',
         items: JSON.stringify(this.__$car.map(x => {
-          return Object.assign({}, x, {mido: undefined, dp: undefined, cpoints: undefined, bonuses: undefined, up_: undefined, id: undefined})
+          return Object.assign({}, x, {mido: undefined, dp: undefined, cpoints: undefined, bonuses: undefined, up_: undefined, id: undefined, nc: undefined})
         })),
       }
     },

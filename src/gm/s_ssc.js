@@ -1014,7 +1014,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 2) * N
   */
   '410:0' () {
-    return {ps:  [0, 4], min: 2, pi: 1}
+    return {ps:  [0, 4], min: 2, pi: 0}
   },
 
   /*
@@ -1035,7 +1035,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 2) * N
   */
   '412:0' () {
-    return {ps:  [0, 4], min: 2, pi: 1}
+    return {ps:  [0, 4], min: 2, pi: 0}
   },
 
   /* ..............任三............... */
@@ -1060,7 +1060,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 3) * N
   */
   '417:0' () {
-    return {ps:  [2, 3, 4], min: 3, pi: 1}
+    return {ps:  [2, 3, 4], min: 3, pi: 0}
   },
 
   /*
@@ -1082,7 +1082,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 3) * N
   */
   '418:0' () {
-    return {ps:  [2, 3, 4], min: 3, pi: 1}
+    return {ps:  [2, 3, 4], min: 3, pi: 0}
   },
 
   /*
@@ -1102,14 +1102,14 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 3) * N
   */
   '421:0' () {
-    return {ps:  [2, 3, 4], min: 3, pi: 1}
+    return {ps:  [2, 3, 4], min: 3, pi: 0}
   },
   /*
   混合组选
   N录入的号码个数，p位置选择的个数 C(p, 3) * N
   */
   '907:0' () {
-    return {ps:  [2, 3, 4], min: 3, pi: 1}
+    return {ps:  [2, 3, 4], min: 3, pi: 0}
   },
 
   /* ..............任四............... */
@@ -1134,7 +1134,7 @@ export default {
   N录入的号码个数，p位置选择的个数 C(p, 4) * N
   */
   '419:0' () {
-    return {ps:  [1, 2, 3, 4], min: 4, pi: 1}
+    return {ps:  [1, 2, 3, 4], min: 4, pi: 0}
   },
 
   /*

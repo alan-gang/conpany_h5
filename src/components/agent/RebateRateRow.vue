@@ -12,7 +12,9 @@
       slot(name="leftIcon")
         .left-r(@click="swiperLeft(i)")
       f7-swiper.rebate-swiper(:params="swiperParams" v-show="item.$s" ref="rebateSwiper")
-        f7-swiper-slide(v-for="(rate, j) in item.$s" :key="j" @click.native="rebateItemHandler(rate, i, j)" :class="{active: (rate * 0.1).toFixed(1) === item.$}") {{(rate * 0.1).toFixed(1)}}{{item.unitSymbal}}
+        f7-swiper-slide(@click.native="rebateItemHandler(0, i, 0)" :class="{active: 0 === item.$ * 1}") 0.0{{item.unitSymbal}}
+        f7-swiper-slide(v-for="(rate, j) in (user.roleId === 1 ? [item.$s] : item.$s)" :key="j" @click.native="rebateItemHandler(rate, i, j)" :class="{active: (rate * 0.1).toFixed(1) === item.$}") {{(rate * 0.1).toFixed(1)}}{{item.unitSymbal}}
+
       slot(name="rightIcon")
         .right-r(@click="swiperRight(i)")
       slot(name="right")

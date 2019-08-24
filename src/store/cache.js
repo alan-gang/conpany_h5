@@ -8,6 +8,8 @@ export default {
       dmid: '',
       kq: null,
     },
+    dzMaxPrize: 400000,
+    dtMaxPrize: 30000,
     // 缓存平台推荐 --》 游戏最新
     plats: [],
     // 夜间模式

@@ -10,6 +10,8 @@ f7-page
       f7-list-input(label="用户名" type="text" :placeholder=" d.userName " readonly)
       f7-list-input(label="平台名称" type="text" :placeholder=" d.plat " readonly)
       f7-list-input(label="密钥" type="text" :placeholder=" d.authKey " readonly)
+        f7-button.w_60(slot="content" round fill v-clipboard:success="onCopy" v-clipboard:copy=" d.authKey ") 复制
+
     f7-list-input(label="验证码" type="text" required validate clear-button placeholder="请输入博盾验证码" :value=" form.c " @input=" form.c = $event.target.value ")
 
   .h_40
@@ -54,6 +56,9 @@ export default {
     },
     switchGoogleAuth () {
       this.$.get(api.switchGoogleAuth + '&type=' + (this.v.t ? 0 : 1), { verifyCode: this.form.c })
+    },
+    onCopy (e) {
+      this.__alert('复制成功：' + e.text)
     },
   }
 }

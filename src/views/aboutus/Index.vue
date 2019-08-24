@@ -5,7 +5,7 @@ f7-page.aboutus
     
     .bg-color-white
       .blocklog
-      .pd_15.t_c 信游娱乐 v.2.0.3
+      .pd_15.t_c E彩娱乐
 
     f7-list-item(title="版本信息" link="#" @click=" __go('/frame/', {props: {title: '版本信息', url: '/xy_activity/androidVersion.html'}}) ")
 

@@ -11,16 +11,28 @@ export default {
   components: {
   },
   name: 'game_point',
-  props: ['dp', 'i', 'mid', '$p'],
+  props: ['dp', 'i', 'mid', '$p', '$t', 'mode'],
   inject: [],
   data () {
     return {
+      btns: [
+        {n: '元', v: 1},
+        {n: '角', v: 0.1},
+        {n: '分', v: 0.01},
+        {n: '厘', v: 0.001},
+      ],
     }
   },
   computed: {
+    $ () {
+      return this.mode ? this.btns[ this.mode - 1 ].v : this.local.$
+    },
+    $t_ () {
+      return this.$t || this.local.$t
+    },
     bonus () {
-      // return ((this.dp.maxprize - ((this.$p || this.local.$p) * this.scale)) * this.local.$)._f3() * 1
-      return (((this.dp.maxprize - ((this.$p || this.local.$p) * this.scale * 100)) * this.local.$) * (this.$t || this.local.$t))._f3() * 1
+      // if (x > this.cache.dzMaxPrize) x = '奖金受限'
+      return (((this.dp.maxprize - ((this.$p || this.local.$p) * this.scale * 100)) * this.$) * this.$t_)._f3() * 1
     },
     // to 7.5
     pgap () {

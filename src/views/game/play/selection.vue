@@ -136,6 +136,7 @@ export default {
       this.__setCall({fn: '__initSelectionRow'})
       this.__setCall({fn: '__initSelectionPS'})
       this.__clearSelection()
+      this.update()
     }
   },
   created () {
@@ -148,6 +149,7 @@ export default {
       return R.has
     },
     update () {
+      if (!this.s || !this.s[0]) return
       // 所选的号的值v集
       this.vc = this.s.map(n => {
         return (n = n.vc)
@@ -176,7 +178,10 @@ export default {
     },
     __validatebook () {
       return new Promise((resolve, reject) => {
-        if (this.dp && this.dp.maxCount && this.n > this.dp.maxCount) {
+        if (this.dp && this.dp.minCount && this.n < this.dp.minCount) {
+          this.__toast('该玩法一个方案投注量少于' + this.dp.maxCount + '注，视为单挑模式，奖金最高' + this.cache.dtMaxPrize + '元')
+          resolve(1)
+        } else if (this.dp && this.dp.maxCount && this.n > this.dp.maxCount) {
           this.__toast('该玩法一个文案最只能投注' + this.dp.maxCount + '注')
           reject(new Error(0))
         } else {
@@ -203,6 +208,7 @@ export default {
         cpoints: this.cpoints,
         bonuses: [],
         up_: this.up_,
+        nc: this.nc.join(this.rjr),
       }))
       // this.local.$car.push({
       //   methodid: this.mid_,

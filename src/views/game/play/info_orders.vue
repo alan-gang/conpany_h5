@@ -18,8 +18,10 @@
         tbody
           tr(v-for=" (v, i) in data " :key="i")
             td.o_h.wp_15.label-cell.t_c {{ v.issue.slice(-6) }}
-            td.o_h.wp_30.label-cell.t_c {{ v.methodName + v.code.slice(-6) }}
-            td.o_h.label-cell.t_c.text-color-red {{ v.totalPrice }}
+            td.o_h.wp_30.label-cell.t_c
+              .ellipsis {{ v.methodName + '-' + v.code }}
+            td.o_h.label-cell.t_c.text-color-red 
+              .ellipsis {{ v.totalPrice }}
             td.o_h.label-cell.t_c.text-color-green {{ v.bonus }}
             td.o_h.label-cell
               f7-button.pd_0.hlh_20(fill v-if=" v.canCancel " @click=" cancelOrder(v.projectId, v) ") 撤单

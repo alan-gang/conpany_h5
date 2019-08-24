@@ -217,7 +217,7 @@ let api = {
   '/dscagamesclient/person/accountSecur.do?method=changLoginPwd': {
     1: {
       msg: '登录密码修改成功，请重新登录',
-      fn: [{fn: '__acctSecureInfo'}],
+      fn: [{fn: '__logout'}],
     },
     fn: '__clearform',
   },

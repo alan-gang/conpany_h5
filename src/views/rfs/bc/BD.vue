@@ -35,6 +35,10 @@ f7-page.book_detail
         span.c_9.inlb 投注内容：
         f7-button.pd_0.c_0.mwp_70(popover-open=".oriCode") {{ v.oriCode }}
 
+      .hlh_30(v-if=" v.position ")
+        span.c_9 投注位置：
+        span.c_0 {{ v.position }}
+
 
       .hlh_30
         span.c_9 是否单挑：
