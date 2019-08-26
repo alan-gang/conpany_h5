@@ -10,8 +10,8 @@ f7-page.new_contract
       f7-list-input(required validate  ref="et" label='结束时间', type='datepicker', :placeholder=' form.et ',  :calendar-params="{openIn: 'customModal', header: true, footer: true, dateFormat: 'yyyy-mm-dd'}"  @change=" form.et = $event.target.value " clear-button)
 
     f7-list.mt_5.mb_5(inline-labels no-hairlines)
-      f7-list-item(title="分红周期")
-        f7-segmented.w_160(slot="after" )
+      f7-list-item(title="分红周期" after="每月")
+        //- f7-segmented.w_160(slot="after" )
           f7-button(round v-for=" (x, i) in is " :class=" {'color-black bgc_239': form.i !== i} " :active=" form.i === i " @click=" form.i = i ") {{ x.n }}
 
       f7-list-item(title="发放方式")
@@ -81,7 +81,7 @@ export default {
     let r = {ruletype: 1, sales: '', actUser: '', bounsRate: '', sales_: 0, actUser_: 0}
     return {
       is: [
-        {n: '每半月', id: 2},
+        // {n: '每半月', id: 2},
         {n: '每月', id: 1},
       ],
       js: [
