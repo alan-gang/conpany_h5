@@ -9,7 +9,7 @@ f7-page.car
           f7-icon(f7="add" style="display: inline-block" size="20px")
           span 手动投注 
       f7-col(width="33")
-        f7-button(fill @click=" __setCall({fn: '__random'}) ") 
+        f7-button(fill :disabled=" !!t " @click=" !t && (t = 1500) && window.setTimeout(() => (t = 0), t) && __setCall({fn: '__random'})  ") 
           f7-icon(f7="add" style="display: inline-block" size="20px")
           span 机选投注 
       f7-col(width="33")
@@ -119,6 +119,7 @@ export default {
       // show gamepoints
       dp: null,
       sap: false,
+      t: 0,
     }
   },
   computed: {

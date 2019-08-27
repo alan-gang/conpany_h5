@@ -87,8 +87,10 @@ export default {
     this.__login({isAuto: 1})
     this.getCfgInfo()
     this.__getLotterys()
-    // document.addEventListener('visibilitychange', function () {
-    // })
+    document.addEventListener('visibilitychange', () => {
+      // this.__toast('显示/隐藏')
+      this.__setCall({fn: '__pageactivated'})
+    })
   },
   mounted () {
     if (this.__query.tag) this.$f7.popup.open('#register') && this.__getcodeimg()

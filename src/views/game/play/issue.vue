@@ -21,7 +21,11 @@ export default {
     clearTimeout(this.tt)
   },
   methods: {
+    __pageactivated () {
+      this.init()
+    },
     init () {
+      if (this.tt) clearTimeout(this.tt)
       this.current()
       this.traceIssueList()
     },

@@ -146,7 +146,18 @@ export default {
   // '1尾'
   '7017:1' () {
     return [
-      getCommonRow({n: '1尾', min: 0, max: 9, oddIndex: 0})
+      getCommonRow({n: '1尾', vs: [
+        {s: false, n: 0, v: 0, oddIndex: 0},
+        {s: false, n: 1, v: 1, oddIndex: 1},
+        {s: false, n: 2, v: 2, oddIndex: 1},
+        {s: false, n: 3, v: 3, oddIndex: 1},
+        {s: false, n: 4, v: 4, oddIndex: 1},
+        {s: false, n: 5, v: 5, oddIndex: 1},
+        {s: false, n: 6, v: 6, oddIndex: 1},
+        {s: false, n: 7, v: 7, oddIndex: 1},
+        {s: false, n: 8, v: 8, oddIndex: 1},
+        {s: false, n: 9, v: 9, oddIndex: 1},
+      ]})
     ]
   }
 }

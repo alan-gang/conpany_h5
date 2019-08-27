@@ -67,7 +67,7 @@ export default {
       timming: 10e2,
       tt: 0,
       tabs: ['玩法说明', '近期开奖', '近期投注'],
-      ti: -1,
+      ti: 0,
     }
   },
   computed: {
@@ -97,7 +97,11 @@ export default {
     __openWinCode () {
       this.recentlyCode()
     },
+    __pageactivated () {
+      this.init()
+    },
     init () {
+      if (this.tt) clearTimeout(this.tt)
       this.recentlyCode()
       this.current()
     },

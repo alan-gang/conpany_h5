@@ -8,7 +8,8 @@
   template(v-if="s.ps")
     selectionps(:dpss="s.pss" :ps="s.ps" :pi="s.pi" :min="s.min" :single="s.single" v-on:update:vc=" pvc = $event " v-on:update:vcl=" pvcl = $event ")
   template(v-if="s[0]")
-    selectionrow(v-for=" (v, i) in s " :key="i" v-bind="{row: v, rowIndex: i}" v-on:row=" update ")
+    selectionrow(v-for=" (v, i) in s " :key="i" v-bind="{row: v, rowIndex: i}" v-on:row=" update " :singleRowMaxLen=" dp ? dp.singleRowMaxLen : 0 ")
+
   template(v-else)
     textarea.bg-color-white.pd_5(v-model=" value_ " pattern="[0-9]*" placeholder="每一注号码之间请用一个 空格[ ]、逗号[,] 或者 分号[;] 隔开")
     f7-button.o_50.mt_10(fill @click=" __randomValue(true) ") 机选
@@ -179,8 +180,7 @@ export default {
     __validatebook () {
       return new Promise((resolve, reject) => {
         if (this.dp && this.dp.minCount && this.n < this.dp.minCount) {
-          this.__toast('该玩法一个方案投注量少于' + this.dp.maxCount + '注，视为单挑模式，奖金最高' + this.cache.dtMaxPrize + '元')
-          resolve(1)
+          this.$f7.dialog.confirm('该玩法一个方案投注量少于' + this.dp.maxCount + '注，视为单挑模式，奖金最高' + this.cache.dtMaxPrize + '元', '', resolve, () => reject(new Error(0)))
         } else if (this.dp && this.dp.maxCount && this.n > this.dp.maxCount) {
           this.__toast('该玩法一个文案最只能投注' + this.dp.maxCount + '注')
           reject(new Error(0))

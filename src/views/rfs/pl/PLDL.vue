@@ -22,7 +22,7 @@ f7-page.profit_loss_detail_list
             th(v-for=" (y, i) in dns " :key=" i + Math.random() " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } " v-show=" y.show !== false ") {{ y.n }}
            
         tbody
-          tr(v-for=" (x, i) in data " :key=" i + Math.random() " :class=" (v.id < 0 || v.title) && x.userName !== '合计' ? 'will_active' : '' " @click=" (v.id < 0 || v.title) && x.userName !== '合计' && __go('/rfs/pl/pld/', {props: { v: {id: x.gameType, n: x.userName, title: v.title}, u: Object.assign({}, u, {userId: u.userId || user.userId}), stet_: stet, bl}}) ")
+          tr(v-for=" (x, i) in data " :key=" i + Math.random() " :class=" (v.id < 0 || v.title) && x.userName !== '合计' ? 'will_active' : '' " @click=" (v.id === 999 && v.title) && x.userName !== '合计' && __go('/rfs/pl/pld/', {props: { v: {id: x.gameType, n: x.userName, title: v.title}, u: Object.assign({}, x, {userId: u.userId || user.userId}), stet_: stet, bl}}) ")
             td(v-for=" (y, i) in dns " :key=" i + Math.random() " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } " v-show=" y.show !== false ")
               template(v-if=" !y.key ")
                 f7-icon(f7="chevron_right" size="12px")
@@ -33,6 +33,9 @@ f7-page.profit_loss_detail_list
 
               template(v-else) 
                 span(v-nwc=" y.nwc ") {{ y.v ? y.v(x) : x[y.key] }}
+    
+    .pd_15.t_c.text-color-gray(v-if="!data[0]") 暂无记录~
+
     template(v-if=" (v.title && v.id === 999) && __stetgap ")
       .h_5.bgc_pc
       f7-list.mg_0
@@ -64,14 +67,14 @@ export default {
       dns_: [
         // 三方盈亏
         {n: '游戏类别', key: 'userName', v: x => x.userName || this.config.agts[x.gameType]},
-        {n: '投注', key: 'buy'},
+        {n: '投注', key: 'buy', v: x => (Number(String(x.betAmount || '0.00').replace(/,/g, '')) || Number(String(x.buy || '0.00').replace(/,/g, '')) || Number(String(x.realBuy || '0.00').replace(/,/g, '')))._nwc()},
         {n: '游戏盈亏', nwc: true, key: this.v.title ? 'profit' : 'gameProfit'},
         {n: '总盈亏', nwc: true, key: this.v.title ? 'settle' : 'totalProfit'},
         {n: ''},
 
         // 个人盈亏每日盈亏明细（彩票 + 其它）团队盈亏每日盈亏明细（彩票 ）
         {n: '日期', key: 'date'},
-        {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
+        {n: '投注', key: 'betAmount', v: x => (Number(String(x.betAmount || '0.00').replace(/,/g, '')) || Number(String(x.buy || '0.00').replace(/,/g, '')) || Number(String(x.realBuy || '0.00').replace(/,/g, '')))._nwc()},
         {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: this.v.id === 0},
         {n: '游戏盈亏', nwc: true, key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.gameProfit || x.profit},
         {n: this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', v: x => x.pointAmount || x.point, show: false},
@@ -111,25 +114,30 @@ export default {
       // api.tpldreport 彩票 团队每日盈亏明细
       // api.toplreport 三方 团队盈亏明细
       // api.topldreport 1.电竞。2.电游; 3.真人;4. 棋牌;5.捕鱼;6.体育；7.其他彩票；8.微游 团队每日盈亏明细
-      this.$.get(
-        this.v.title
-          ? this.v.id === 999
-            ? api.toplreport
-            : api.topldreport
-          : this.v.title
-            ? api.tpldreport
-            : api.pldl,
-        {
-          userId: this.u.userId || this.user.userId,
-          gameType: this.v.id,
-          beginDate: this.stet[0]._toDayString(),
-          endDate: this.stet[1]._toDayString(),
-        }).then(({data: {items, pointLevel}}) => {
+      let url = ''
+      if (this.v.title) {
+        if (this.v.id === 999) {
+          url = api.toplreport
+        } else if (this.v.id === 0) {
+          url = api.tpldreport
+        } else {
+          url = api.topldreport
+        }
+      } else {
+        url = api.pldl
+      }
+      this.$.get(url, {
+        userId: this.u.userId || this.user.userId,
+        gameType: this.v.id,
+        beginDate: this.stet[0]._toDayString(),
+        endDate: this.stet[1]._toDayString(),
+      }).then(({data: {items, pointLevel}}) => {
         if (this.v.id !== 999 && this.v.id > -1 && this.v.title) {
           items = [...items.slice(0, -1).reverse(), ...items.slice(-1)]
         }
-        this.data = items
-        pointLevel && (this.dns_[9].show = true)
+        this.data = items;
+        // 有返水、返点 或者 团队
+        (pointLevel || this.v.title) && (this.dns_[9].show = true)
       })
     },
   }

@@ -123,7 +123,7 @@
                 
 
   f7-row.mt_5(no-gap v-if=" row.btns ")
-    f7-col.pr_2(v-for=" (v, i) in row.btns " :key="i")
+    f7-col.pr_2(v-for=" (v, i) in row.btns " :key="i" v-if=" v === '全' ? (!singleRowMaxLen || singleRowMaxLen >= vs.length) : true ")
       f7-button(color="gray" fill @click=" btnclick(v) ") {{ v }}
 
 
@@ -139,7 +139,7 @@ export default {
   components: {
   },
   name: 'game_selection_row',
-  props: ['row', 'rowIndex'],
+  props: ['row', 'rowIndex', 'singleRowMaxLen'],
   inject: ['t', 'getodds'],
   data () {
     return {

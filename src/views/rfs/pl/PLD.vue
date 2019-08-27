@@ -50,7 +50,7 @@ export default {
         {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
         {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: x => !(this.v.id > 0 && this.v.title === '团队')},
         {n: '游戏盈亏', nwc: true, key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.profit},
-        {n: this.v && this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number(x.pointAmount || x.point), v: x => x.pointAmount || x.point},
+        {n: this.v && this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number(x.pointAmount || x.point), v: x => x.pointAmount || x.getpoint || x.point},
         {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.rewards},
         {n: this.v && this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.platfee},
         {n: '总盈亏', key: 'settleAmount', nwc: true, v: x => x.settleAmount || x.settle},
