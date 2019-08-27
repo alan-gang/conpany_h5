@@ -22,7 +22,7 @@ f7-page.profit_loss_detail_list
             th(v-for=" (y, i) in dns " :key=" i + Math.random() " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } " v-show=" y.show !== false ") {{ y.n }}
            
         tbody
-          tr(v-for=" (x, i) in data " :key=" i + Math.random() " :class=" (v.id < 0 || v.title) && x.userName !== '合计' ? 'will_active' : '' " @click=" (v.id === 999 && v.title) && x.userName !== '合计' && __go('/rfs/pl/pld/', {props: { v: {id: x.gameType, n: x.userName, title: v.title}, u: Object.assign({}, x, {userId: u.userId || user.userId}), stet_: stet, bl}}) ")
+          tr(v-for=" (x, i) in data " :key=" i + Math.random() " :class=" (v.id < 0 || v.title) && x.userName !== '合计' ? 'will_active' : '' " @click=" ((v.id === 999 && v.title) || v.id === -2 || v.id === -1) && x.userName !== '合计' && __go('/rfs/pl/pld/', {props: { v: {id: x.gameType, n: x.userName, title: v.title}, u: Object.assign({}, x, {userId: u.userId || user.userId}), stet_: stet, bl}}) ")
             td(v-for=" (y, i) in dns " :key=" i + Math.random() " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } " v-show=" y.show !== false ")
               template(v-if=" !y.key ")
                 f7-icon(f7="chevron_right" size="12px")
