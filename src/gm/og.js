@@ -54,8 +54,8 @@ export default [
   {gn: '电竞', n: 'CSGO', nid: '_csgo', plat: '_xa', pid: 29},
 
   // 体育
-  {gn: '体育', n: '足球', nid: '_football', plat: '_sb', pid: 3, gid: 301},
-  {gn: '体育', n: '篮球', nid: '_basketball', plat: '_sb', pid: 3, gid: 301},
+  {gn: '体育', n: '足球', nid: '_football', plat: '_sb', pid: 9, gid: 301},
+  {gn: '体育', n: '篮球', nid: '_basketball', plat: '_sb', pid: 9, gid: 301},
   {gn: '体育', n: '网球', nid: '_tennisball', plat: '_pb', pid: 19, gid: 403},
   {gn: '体育', n: '其它', nid: '_otherball', plat: '_pb', pid: 19, gid: 403},
 

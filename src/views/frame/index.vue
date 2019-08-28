@@ -1,6 +1,6 @@
 <template lang="pug">
 
-f7-page(hide-navbar-on-scroll)
+f7-page
   f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link :title=" title ")
   iframe(:src=" url ")
 
