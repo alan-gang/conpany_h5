@@ -11,7 +11,7 @@ export default [
 
   // 真人
   {gn: '真人', n: 'AG百家乐', nid: '_agbjl', plat: '_ag', pid: 4},
-  {gn: '真人', n: 'BG百家乐', nid: '_bgbjl', plat: '_bg', pid: 2},
+  {gn: '真人', n: 'BG百家乐', nid: '_bgbjl', plat: '_bg', pid: 2, gid: 201},
   {gn: '真人', n: 'PT百家乐', nid: '_ptbjl', plat: '_pt', pid: 5},
   {gn: '真人', n: 'GD百家乐', nid: '_gdbjl', plat: '_gd', pid: 26},
 
