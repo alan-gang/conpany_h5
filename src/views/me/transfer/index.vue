@@ -94,7 +94,7 @@ export default {
       this.$.get(api.ato, {amount: this.form.m, platid: this.config.wallets[this.form.j].pid}).then(() => this.__setCall({fn: '__getMoreBalance', args: [this.config.wallets[this.form.j]]}))
     },
     sta () {
-      this.$.get(api.sto, {amount: this.form.m})
+      this.$.get(api.sta, {amount: this.form.m})
     },
     ota () {
       this.$.get(api.ota, {amount: this.form.m, platid: this.config.wallets[this.form.i].pid}).then(() => this.__setCall({fn: '__getMoreBalance', args: [this.config.wallets[this.form.i]]}))
