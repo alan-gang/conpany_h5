@@ -182,7 +182,7 @@ export default {
       {n: '主账户', key: 'availableBalance', pid: 0},
       {n: '特殊账户', key: 'specialBalance', pid: 1},
       {n: 'BG账户', key: '$bg', pid: 2},
-      {n: 'IBC账户', key: '$tcg', pid: 3},
+      // {n: 'IBC账户', key: '$tcg', pid: 3},
       {n: '棋牌账户', key: '$ky', pid: 7},
       {n: 'PT账户', key: '$pt', pid: 5},
       {n: 'AG账户', key: '$ag', pid: 4},
