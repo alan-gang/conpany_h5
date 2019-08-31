@@ -146,7 +146,7 @@ let api = {
   getBalanceByPID: '/ext/bg.do?method=getBalanceByPID',
 
   // 我的
-  getUserIdentity: 'home/userInfo.do?method=getUserIdentity',
+  getUserIdentity: '/home/userInfo.do?method=getUserIdentity',
   getLotteryPrinzeInfo: '/person/lotteryPrize.do?method=getLotteryPrinzeInfo',
   // xyb
   p2pBuyProduct: '/p2p/product.do?method=buyProduct',
