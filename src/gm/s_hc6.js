@@ -64,7 +64,7 @@ export default {
         {s: false, n: '猴', v: 9, tails: '猴'._AtoN()},
         {s: false, n: '鸡', v: 10, tails: '鸡'._AtoN()},
         {s: false, n: '狗', v: 11, tails: '狗'._AtoN()},
-        {s: false, n: '猪', v: 12, tails: '猪'._AtoN()},
+        {s: false, n: '猪', v: 12, tails: '猪'._AtoN(), oddIndex: 1},
       ]})
     ]
   },
@@ -72,7 +72,7 @@ export default {
   '7005:1' () {
     return [
       getCommonRow({col: 'col-100', oddIndex: 0, struct: 'following-br-tail', vs: [
-        {s: false, n: '红', v: 1, tails: 'red'._CtoN()},
+        {s: false, n: '红', v: 1, tails: 'red'._CtoN(), oddIndex: 1},
         {s: false, n: '蓝', v: 2, tails: 'blue'._CtoN()},
         {s: false, n: '绿', v: 3, tails: 'green'._CtoN()},
       ]})
@@ -93,7 +93,7 @@ export default {
         {s: false, n: '猴', v: 9, tails: '猴'._AtoN()},
         {s: false, n: '鸡', v: 10, tails: '鸡'._AtoN()},
         {s: false, n: '狗', v: 11, tails: '狗'._AtoN()},
-        {s: false, n: '猪', v: 12, tails: '猪'._AtoN()},
+        {s: false, n: '猪', v: 12, tails: '猪'._AtoN(), oddIndex: 1},
       ]})
     ]
   },
