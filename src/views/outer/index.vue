@@ -32,7 +32,7 @@ export default {
         }
         setTimeout(() => {
           this.__go('/frame/', { reloadCurrent: true, ignoreCache: true, props: { title: this.n, url: url || 'http://www.baidu.com' } })
-        }, 500)
+        }, 1000)
       })
     }
   }

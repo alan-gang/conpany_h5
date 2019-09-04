@@ -2,7 +2,7 @@
 
 f7-page
   f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link :title=" title ")
-  iframe(:src=" url ")
+  iframe(:src=" url " v-if=" url ")
 
 
 </template>
