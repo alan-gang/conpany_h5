@@ -6,7 +6,8 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
       f7-link(popup-open="#login" text="登录" v-show=" user.login === false ")
     f7-nav-title(large) 信游娱乐
     f7-nav-right
-      f7-link.kf(icon-only @click=" __go('/frame/', {props: {title: (user.vipChatUrl ? 'VIP' : '') + '客服', url: user.vipChatUrl || user.chatUrl }}) " v-show=" user.vipChatUrl || user.chatUrl ")
+      f7-link.go_speed(icon-only popup-open="#speed")
+      f7-link.kf(style="margin-left: 0" icon-only @click=" __go('/frame/', {props: {title: (user.vipChatUrl ? 'VIP' : '') + '客服', url: user.vipChatUrl || user.chatUrl }}) " v-show=" user.vipChatUrl || user.chatUrl ")
 
   f7-swiper.a(:params="{speed:500, autoplay: true, slidesPerView: 1.2, spaceBetween: -15, centeredSlides: true, effect: 'coverflow'}")
     f7-swiper-slide.aa(v-for=" (b, i) in banners " :key="i")
@@ -167,6 +168,9 @@ export default {
   .kf
     bg('~src/assets/home/home_icon_customservice.png', auto 60%)
   
+  .go_speed
+    bg('~src/assets/home/home_icon_speed@2x.png', auto 60%)
+    
   .a
     width 90%
     height 25%
