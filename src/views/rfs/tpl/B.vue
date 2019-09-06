@@ -39,7 +39,7 @@ f7-page.rf_tpl_2(:page-content="false")
       .preloader
       .ptr-arrow
     
-    f7-card(v-for=" (v, i) in data " :key="i" :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
+    f7-card(v-for=" (v, i) in data " :key=" Math.random() + i " :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
       f7-card-header(v-if="!i")
         .t_c.wp_100 团队合计
 
@@ -54,13 +54,14 @@ f7-page.rf_tpl_2(:page-content="false")
         .flex(@click=" (i === 1 ? __go('/rfs/pl/pld/pldl/', {props: { v: Object.assign({}, g, {id: -2}), u: v, stet_: stet, bl}}) : __go('/rfs/pl/pld/pldl/', {props: { v: Object.assign({}, g, {title: '团队'}), u: Object.assign({}, v, {userName: !i ? data[1].userName : v.userName}), stet_: stet, bl}}) )")
           .a.t_c
             .pb_5 投注
-            div {{ v.buy }}
+            div {{ v.realBuy }}
           .a.t_c
             .pb_5 游戏盈亏
             div(v-nwc="i") {{ v.profit }}
           .a.t_c
-            .pb_5 总结算
-            div(v-nwc="i") {{ v.settle }}
+            .pb_5 {{ __stetgap ? '总结算' : '总盈亏' }}
+            div(v-nwc="i") {{ __stetgap ? v.settle : v.totalProfit }}
+            
           .a
             f7-icon(f7="chevron_right" size="12px")
 
