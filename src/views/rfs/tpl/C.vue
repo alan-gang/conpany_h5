@@ -39,7 +39,7 @@ f7-page.rf_tpl_3(:page-content="false")
       .preloader
       .ptr-arrow
     
-    f7-card(v-for=" (v, i) in data " :key="i" :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
+    f7-card(v-for=" (v, i) in data " :key=" Math.random() + i " :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
       f7-card-header(v-if="!i")
         .t_c.wp_100 团队合计
 

@@ -4,7 +4,7 @@ f7-page.profit_loss_detail
 
   f7-list.mg_0(simple-list)
     template(v-for=" (x, i) in dns ")
-      f7-list-item(v-if=" x.key === '_date' ")
+      f7-list-item(v-if=" x.key === '_date' " :key=" Math.random() + i ")
         span {{ x.n }}
         template(v-if=" __stetgap ")
           f7-button(outline @click=" __go('/rfs/pl/pld/pldl/', {props: { v, stet_, u: u, bl }}) ") 
@@ -47,13 +47,14 @@ export default {
         {n: '游戏人数', key: 'gameUserCount', end: '人'},
         {n: '日均游戏人数', key: 'gameUserCount', end: '人'},
 
-        {n: '投注', key: 'betAmount', v: x => x.betAmount || x.buy},
+        {n: '投注', key: 'betAmount', v: x => x.betAmount || x.realBuy || x.buy},
         {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: x => !(this.v.id > 0 && this.v.title === '团队')},
         {n: '游戏盈亏', nwc: true, key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.profit},
-        {n: this.v && this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number(x.pointAmount || x.point), v: x => x.pointAmount || x.getpoint || x.point},
+        // {n: this.v && this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', show: x => Number((x.pointAmount + '').replace(/,/g, '') || x.point), v: x => x.pointAmount || x.point},
+        {n: this.v && this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', v: x => x.pointAmount || x.getpoint || x.point},
         {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.rewards},
         {n: this.v && this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.platfee},
-        {n: '总盈亏', key: 'settleAmount', nwc: true, v: x => x.settleAmount || x.settle},
+        {n: '总盈亏', key: 'settleAmount', nwc: true, v: x => x.settleAmount || x.settle || x.totalProfit},
 
         {n: '用户', v: x => this.n},
         {n: this.v && this.v.n + (this.v.id > 0 ? '返水' : '返点'), key: 'pointLevel', show: x => Number(String(x.pointLevel || '').replace(/,/g, '')), v: x => (!this.v || !this.v.id ? x.pointLevel * 100 : x.pointLevel * 1000).toFixed(1), end: !this.v || !this.v.id ? '%' : '‰'},
@@ -63,7 +64,7 @@ export default {
         {n: '游戏盈亏', nwc: true, key: 'gameProfit'},
         {n: this.v.id > 0 ? '返水' : '返点', key: 'point', show: x => Number(String(x.pointLevel || '').replace(/,/g, ''))},
         {n: '活动', key: 'reward'},
-        {n: '日工资', key: 'salary', show: x => x.salary && Number(x.salary.replace(',', ''))},
+        {n: '日工资', key: 'salary', show: x => x.salary && Number(x.salary.replace(/,/g, ''))},
         {n: '总盈亏', key: 'totalProfit', nwc: true},
       ],
       v_: null
@@ -95,6 +96,13 @@ export default {
           items[0].pointLevel = userBackWater / 1000
         }
         this.v_ = items[0] || null
+        if (this.u.totalProfit) {
+          let x = this.dns_
+          this.dns_ = []
+          setTimeout(() => {
+            this.dns_ = x
+          }, 0)
+        }
       })
     }
   }

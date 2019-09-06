@@ -22,7 +22,7 @@ f7-page.profit_loss_detail_list
             th(v-for=" (y, i) in dns " :key=" i + Math.random() " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } " v-show=" y.show !== false ") {{ y.n }}
            
         tbody
-          tr(v-for=" (x, i) in data " :key=" i + Math.random() " :class=" (v.id < 0 || v.title) && x.userName !== '合计' ? 'will_active' : '' " @click=" ((v.id === 999 && v.title) || v.id === -2 || v.id === -1) && x.userName !== '合计' && __go('/rfs/pl/pld/', {props: { v: {id: x.gameType, n: x.userName, title: v.title}, u: Object.assign({}, x, {userId: u.userId || user.userId}), stet_: stet, bl}}) ")
+          tr(v-for=" (x, i) in data " :key=" i + Math.random() " :class=" (v.id < 0 || v.title) && x.userName !== '合计' ? 'will_active' : '' " @click=" __stetgap && ((v.id === 999 && v.title) || v.id === -2 || v.id === -1) && x.userName !== '合计' && __go('/rfs/pl/pld/', {props: { v: {id: x.gameType, n: x.userName, title: v.title}, u: Object.assign({}, x, {userId: u.userId || user.userId}), stet_: stet, bl}}) ")
             td(v-for=" (y, i) in dns " :key=" i + Math.random() " :class=" {'label-cell': y.key === 'date', 'numeric-cell': y.key !== 'date' } " v-show=" y.show !== false ")
               template(v-if=" !y.key ")
                 f7-icon(f7="chevron_right" size="12px")
@@ -67,17 +67,17 @@ export default {
       dns_: [
         // 三方盈亏
         {n: '游戏类别', key: 'userName', v: x => x.userName || this.config.agts[x.gameType]},
-        {n: '投注', key: 'buy', v: x => (Number(String(x.betAmount || '0.00').replace(/,/g, '')) || Number(String(x.buy || '0.00').replace(/,/g, '')) || Number(String(x.realBuy || '0.00').replace(/,/g, '')))._nwc()},
+        {n: '投注', key: 'buy', v: x => (Number(String(x.betAmount || '0.00').replace(/,/g, '')) || Number(String(x.realBuy || '0.00').replace(/,/g, '')) || Number(String(x.buy || '0.00').replace(/,/g, '')))._nwc()},
         {n: '游戏盈亏', nwc: true, key: this.v.title ? 'profit' : 'gameProfit'},
         {n: '总盈亏', nwc: true, key: this.v.title ? 'settle' : 'totalProfit'},
-        {n: ''},
+        {n: '', show: true},
 
         // 个人盈亏每日盈亏明细（彩票 + 其它）团队盈亏每日盈亏明细（彩票 ）
         {n: '日期', key: 'date'},
-        {n: '投注', key: 'betAmount', v: x => (Number(String(x.betAmount || '0.00').replace(/,/g, '')) || Number(String(x.buy || '0.00').replace(/,/g, '')) || Number(String(x.realBuy || '0.00').replace(/,/g, '')))._nwc()},
+        {n: '投注', key: 'betAmount', v: x => (Number(String(x.betAmount || '0.00').replace(/,/g, '')) || Number(String(x.realBuy || '0.00').replace(/,/g, '')) || Number(String(x.buy || '0.00').replace(/,/g, '')))._nwc()},
         {n: '派奖', key: 'prizeAmount', v: x => x.prizeAmount || x.prize, show: this.v.id === 0},
         {n: '游戏盈亏', nwc: true, key: 'gameSettleAmount', v: x => x.gameSettleAmount || x.gameProfit || x.profit},
-        {n: this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', v: x => x.pointAmount || x.point, show: false},
+        {n: this.v.id > 0 ? '返水' : '返点', key: 'pointAmount', v: x => x.pointAmount || x.getpoint || x.point, show: false},
         {n: '活动', key: 'activityAmount', v: x => x.activityAmount || x.reward || x.rewards},
         {n: this.v.id > 0 ? '平台费' : '日工资', key: 'salaryAmount', v: x => x.salaryAmount || x.salary || x.platfee, show: !!(this.v.id <= 0 || this.v.title)},
         {n: '总盈亏', key: 'settleAmount', nwc: true, v: x => x.settleAmount || x.settle || x.totalProfit},
@@ -97,6 +97,7 @@ export default {
   created () {
     this.list()
     setTimeout(() => (this.force = (this.bl && (this.$f7router.previousRoute.path !== this.bl))), 0)
+    this.dns_[4].show = !!this.__stetgap
   },
   mounted () {
     this.horizonscroll()
