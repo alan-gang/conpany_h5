@@ -21,7 +21,7 @@
               span 投注记录
             a.j_c.menu-dropdown-link.menu-close(@click=" __go('/rfs/bc/', {props: {g: {id: id, n: n}, tabid: '#rf_bc_2'}}) " style='margin-left: 0px;')
               span 追号记录
-            //- a.j_c.menu-dropdown-link.menu-close(:href=" 'https://www.ds-graph.com:8000/xy/index.html#?gameid=' + id " v-show=" t !== 'kq' " style='margin-left: 0px;')
+            a.j_c.menu-dropdown-link.menu-close(:href=" 'https://www.ds-graph.com:8000/xy/index.html#?gameid=' + id " v-show=" t !== 'kq' " style='margin-left: 0px;')
               span 走势图
   
   f7-toolbar(top tabbar scrollable v-show=" local.sr && rps[0]  " style="transform: none")
