@@ -198,6 +198,7 @@ export default {
       {n: '财神账户', key: '$vg', pid: 27},
       {n: '德胜账户', key: '$ds', pid: 28},
       {n: '小艾账户', key: '$xa', pid: 29},
+      {n: 'SA账户', key: '$sa', pid: 31},
     ],
     agts: {
       0: '彩票',

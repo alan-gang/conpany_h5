@@ -218,6 +218,7 @@ export default {
       a.forEach(x => {
         this.$.myget(api.getBalanceByPID, {platId: x.pid}).then(({data: {bal}}) => {
           let b = {}
+          console.log(x.key, bal)
           b[x.key] = Number(bal)
           this.__setUser(b)
         })

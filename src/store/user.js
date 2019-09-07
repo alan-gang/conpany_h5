@@ -45,6 +45,12 @@ let defaultUser = {
   $lit: '',
   $pb: '',
   $lg: '',
+  $xy: '',
+  $gd: '',
+  $vg: '',
+  $ds: '',
+  $xa: '',
+  $sa: '',
   // vipinfo
   level: 0,
   levelName: '',
