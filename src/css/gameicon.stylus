@@ -34,6 +34,9 @@ urls = {
     _gid163: '~src/assets/gameicon/game_icon_hn1fc',
     _gid164: '~src/assets/gameicon/game_icon_qqffc',
     _gid157: '~src/assets/gameicon/game_icon_cqhjffc',
+    _gid18: '~src/assets/gameicon/game_icon_hg15fc',
+    _gid19: '~src/assets/gameicon/game_icon_dj15fc',
+    _gid34: '~src/assets/gameicon/game_icon_hlffc',
 
     _gid6: '~src/assets/gameicon/game_icon_11ydj',
     _gid11: '~src/assets/gameicon/game_icon_dj120',
