@@ -12,7 +12,7 @@ let api = {
   __getcodeimg: '/login/login.do?method=getVerifyImage',
   __login: '/login/login.do?method=validate',
   '/dscagamesclient/login/login.do?method=validate': {
-    0: {msg: '登录失败', fn: [{fn: '__setUser', args: {login: false}}]},
+    0: {msg: '登录失败', fn: [{fn: '__setUser', args: {login: false}}, {fn: '__getcodeimg'}]},
     1: {msg: '登录成功'},
     fn: '__clearform'
   },
