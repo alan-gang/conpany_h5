@@ -41,6 +41,14 @@ urls = {
   _zcm: '~src/assets/gameicon/cards/game_slots_zcm',
   _flbz: '~src/assets/gameicon/cards/game_slots_flbz',
 
+  // sa 电游
+  _jyw: '~src/assets/gameicon/cards/game_slots_jyw',
+  _lh: '~src/assets/gameicon/cards/game_slots_lh',
+  _mhns: '~src/assets/gameicon/cards/game_slots_mhns',
+  _sxbx: '~src/assets/gameicon/cards/game_slots_sxbx',
+  _yctz: '~src/assets/gameicon/cards/game_slots_yctz',
+  _zbz: '~src/assets/gameicon/cards/game_slots_zbz',
+
   
   _lol: '~src/assets/gameicon/cards/game_esport_lol',
   _wzry: '~src/assets/gameicon/cards/game_esport_pvp',
@@ -55,6 +63,7 @@ urls = {
   _agpy: '~src/assets/gameicon/cards/game_fish_01',
   _bgpy: '~src/assets/gameicon/cards/game_fish_02',
   _ptpy: '~src/assets/gameicon/cards/game_fish_03',
+  _sapy: '~src/assets/gameicon/cards/game_fish_04',
 
   _me_wallet: '~src/assets/me/profile_wallet_bg',
 

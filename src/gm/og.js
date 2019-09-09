@@ -48,6 +48,13 @@ export default [
   {gn: '老虎机', n: '招财猫', nid: '_zcm', plat: '_lg', pid: 21, gid: 24},
   {gn: '老虎机', n: '法老宝藏', nid: '_flbz', plat: '_lg', pid: 21, gid: 1},
 
+  {gn: '老虎机', n: '锦衣卫', nid: '_jyw', plat: '_sa', pid: 32},
+  {gn: '老虎机', n: '龙虎', nid: '_lh', plat: '_sa', pid: 32},
+  {gn: '老虎机', n: '梦幻女神', nid: '_mhns', plat: '_sa', pid: 32},
+  {gn: '老虎机', n: '三星报喜', nid: '_sxbx', plat: '_sa', pid: 32},
+  {gn: '老虎机', n: '运财童子', nid: '_yctz', plat: '_sa', pid: 32},
+  {gn: '老虎机', n: '张保仔', nid: '_zbz', plat: '_sa', pid: 32},
+
   // 电竞
   {gn: '电竞', n: '英雄联盟', nid: '_lol', plat: '_uw', pid: 17},
   {gn: '电竞', n: '王者荣耀', nid: '_wzry', plat: '_uw', pid: 17},
@@ -64,4 +71,5 @@ export default [
   {gn: '捕鱼', n: 'AG捕鱼', nid: '_agpy', plat: '_ag', pid: 4, gid: 6},
   {gn: '捕鱼', n: 'BG捕鱼', nid: '_bgpy', plat: '_bg', pid: 2, gid: 202},
   {gn: '捕鱼', n: 'PT捕鱼', nid: '_ptpy', plat: '_pt', pid: 5},
+  {gn: '捕鱼', n: 'SA捕鱼', nid: '_sapy', plat: '_sa', pid: 32, gid: 'EG-FISHING-001'},
 ]
