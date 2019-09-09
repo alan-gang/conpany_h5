@@ -25,6 +25,7 @@ export default {
       this.$.get(api.gameUrl, {
         platid: this.pid,
         gameid: this.gid,
+        isMobileUrl: 1,
       }).then(({data: {url, userName, password}}) => {
         if (userName && password) {
           // eg. /pt_egame/index.html?un=XYXYCLAIREBB&pwd=nedgjqpt
