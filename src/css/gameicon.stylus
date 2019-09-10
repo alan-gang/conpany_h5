@@ -37,6 +37,8 @@ urls = {
     _gid18: '~src/assets/gameicon/game_icon_hg15fc',
     _gid19: '~src/assets/gameicon/game_icon_dj15fc',
     _gid34: '~src/assets/gameicon/game_icon_jq30m',
+    _gid165: '~src/assets/gameicon/game_icon_qq5fc',
+    _gid166: '~src/assets/gameicon/game_icon_qq10fc',
 
     _gid6: '~src/assets/gameicon/game_icon_11ydj',
     _gid11: '~src/assets/gameicon/game_icon_dj120',
