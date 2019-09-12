@@ -52,7 +52,7 @@ export default {
 // 建议不添加scoped， 所有样式最多嵌套2层
 .game_collect
   ._notbg._bg
-    background-size auto 100%
-    background-position right
+    background-size 100% 100%
+    background-position center
 
 </style>
