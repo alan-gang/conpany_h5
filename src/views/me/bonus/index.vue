@@ -10,7 +10,7 @@
           span 账户：{{ n }}
         div
           span 昵称：{{ nn || '--' }}
-        div
+        div(v-if=" userPoint ")
           span 返点：{{ userPoint }}%
         div(v-if=" salary ")
           span 日工资：{{ salary }}

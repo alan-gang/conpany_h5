@@ -22,8 +22,10 @@
 </template>
 
 <script>
+import config from '@/config'
 export default {
   name: 'RebateRateRow',
+  mixins: [config],
   props: {
     show: Boolean,
     i: Number,
