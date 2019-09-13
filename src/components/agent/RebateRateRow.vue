@@ -1,5 +1,5 @@
 <template lang="pug">
-  f7-list-item.rebate-rate-row.bgc_f
+  f7-list-item.rebate-rate-row.bgc_f(v-show=" item.$s ")
     f7-row.rebate-type-row
       f7-col(width="20") 
         span(class="c_orange") {{item.name || item.groupName}} 
