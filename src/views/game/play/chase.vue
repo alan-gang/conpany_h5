@@ -141,7 +141,7 @@ export default {
     NA () {
       return this.__$car.reduce((p, x, i) => {
         p.n += x.count
-        p.a += (x.count * x.up_ * [1, 0.1, 0.01, 0.001][x.mode - 1])
+        p.a += (x.count * x.up_ * [1, 0.1, 0.01, 0.001, 0.5][x.mode - 1])
         p.b += this.getBonus(x, x.dp)
         return p
       }, {n: 0, a: 0, b: 0})
@@ -157,7 +157,7 @@ export default {
   },
   methods: {
     getBonus (v, dp) {
-      return (dp.maxprize - (v.userpoint * ((dp.maxprize - dp.minprize) / (dp.maxpoint - dp.minpoint) || 0))) * [1, 0.1, 0.01, 0.001][v.mode - 1]
+      return (dp.maxprize - (v.userpoint * ((dp.maxprize - dp.minprize) / (dp.maxpoint - dp.minpoint) || 0))) * [1, 0.1, 0.01, 0.001, 0.5][v.mode - 1]
     },
     getTimesForEachIssue (i) {
       return [this.timesArray[i] || 0, this.times, Math.pow(this.xtimes * 1, i)][this.tabIndex]

@@ -71,10 +71,11 @@ f7-page.car
                 ul(style="padding-left: 0")
                   f7-list-item.hlh_25(title="模式" smart-select :smart-select-params="{openIn: 'popover'}")
                     select(v-model=" v.mode " @change=" update(v) ")
-                      option(:value=1) 元
-                      option(:value=2) 角
-                      option(:value=3) 分
-                      option(:value=4) 厘
+                      option(:value=1) 2元
+                      option(:value=5) 1元
+                      option(:value=2) 2角
+                      option(:value=3) 2分
+                      option(:value=4) 2厘
 
               span.pd_5
               span.v_m(@click=" sap = dp = v" v-if=" v.dp && (Number(v.dp.maxpoint) > Number(v.dp.minpoint)) ")
