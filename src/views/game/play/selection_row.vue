@@ -25,7 +25,7 @@
 
               //- 冷热遗漏内容
               .t_c.ft_12.c_9.pt_2.lh_12(v-if=" clryl ")
-                .h_20(:class=" { c_e: clryl.miss[rowIndex][i] * 1 === Math.min.apply(null, clryl.miss[rowIndex]), 'text-color-blue': clryl.miss[rowIndex][i] * 1 === Math.max.apply(null, clryl.miss[rowIndex]) } ") 
+                .h_20(v-if=" local.$yl " :class=" { c_e: clryl.miss[rowIndex][i] * 1 === Math.min.apply(null, clryl.miss[rowIndex]), 'text-color-blue': clryl.miss[rowIndex][i] * 1 === Math.max.apply(null, clryl.miss[rowIndex]) } ") 
                   span.lryl_v.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl.miss[rowIndex][i] }}
                 .h_20(v-if=" local.$lr ")
                   span.lryl_v.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl[local.$lr + 'q'][rowIndex][i] }}
