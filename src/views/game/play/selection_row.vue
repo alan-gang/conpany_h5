@@ -28,7 +28,7 @@
                 .h_20(v-if=" local.$yl " :class=" { c_e: clryl.miss[rowIndex][i] * 1 === Math.min.apply(null, clryl.miss[rowIndex]), 'text-color-blue': clryl.miss[rowIndex][i] * 1 === Math.max.apply(null, clryl.miss[rowIndex]) } ") 
                   span.lryl_v.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl.miss[rowIndex][i] }}
                 .h_20(v-if=" local.$lr ")
-                  span.lryl_v.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl[local.$lr + 'q'][rowIndex][i] }}
+                  span.lryl_v.lryl_v_lr.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl[local.$lr + 'q'][rowIndex][i] }}
 
       //- 混合结构
       template(v-if=" row.struct === 'mixin' ")
@@ -467,7 +467,7 @@ ns = {
   border 1px solid currentColor
   border-radius 12px
 .lr_r 
-  .h_20:nth-child(2) .lryl_v
+  .lryl_v_lr
     color red 
   .ball:not(.s):not([class*="dice"])
     background-image url('~src/assets/play/lryl/ballbg_hot.gif')
@@ -475,7 +475,7 @@ ns = {
     color #fff
     
 .lr_l 
-  .h_20:nth-child(2) .lryl_v
+  .lryl_v_lr
     color #2196f3
   
   .ball:not(.s):not([class*="dice"])
