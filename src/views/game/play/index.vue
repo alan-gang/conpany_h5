@@ -172,7 +172,7 @@ export default {
     },
     // current lryl 当前玩法的冷热遗漏
     clryl () {
-      return this.lryl[this.mid_]
+      return this.mid.split(':')[1] !== '0' ? this.lryl[this.mid_] : null
     },
   },
   watch: {

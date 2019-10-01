@@ -482,7 +482,7 @@ ns = {
 .lr_r 
   .lryl_v_lr
     color red 
-  .ball:not(.s):not([class*="dice"])
+  .ball:not(.s):not([class*="dice"]):not(.w_90)
     background-image url('~src/assets/play/lryl/ballbg_hot.gif')
     background-size cover
     color #fff
@@ -491,7 +491,7 @@ ns = {
   .lryl_v_lr
     color #2196f3
   
-  .ball:not(.s):not([class*="dice"])
+  .ball:not(.s):not([class*="dice"]):not(.w_90)
     background-image url('~src/assets/play/lryl/ballbg_cold.gif')
     background-size cover
     color #fff
