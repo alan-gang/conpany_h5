@@ -118,7 +118,7 @@ for k, v in  colors
     background-color v
 
 // width %
-for x in 0 10 15 16 17 18 19 20 25 30 35 40 45 50 55 60 65 70 80 90 100 33
+for x in 0 10 15 16 17 18 19 20 25 30 35 40 45 50 55 60 65 70 80 90 100 120 150 33
   .wp_{x}
     width x + '%'
   .hp_{x}

@@ -12,7 +12,7 @@
           span.text-color-white(:class=" {ft_12: row.n.length > 2} ") {{ row.n }}
           
           //- 冷热遗漏标题
-          .p_a.p_t_40.c_6.ft_12.t_r(v-if=" clryl ")
+          .p_a.p_r_0.wp_120.p_t_40.c_6.ft_12.t_r(v-if=" clryl ")
             .hlh_20(v-show=" local.$yl ") 遗漏
             .hlh_20(v-show=" local.$lr ") 冷热{{ local.$lr }}期
 
@@ -38,7 +38,7 @@
               span.text-color-white(:class=" {ft_12: row.n.length > 2} ") {{ row.n }}
 
               //- 冷热遗漏标题
-              .p_a.p_t_40.c_6.ft_12.t_r(v-if=" clryl ")
+              .p_a.p_r_0.wp_120.p_t_40.c_6.ft_12.t_r(v-if=" clryl ")
                 .hlh_20(v-show=" local.$yl ") 遗漏
                 .hlh_20(v-show=" local.$lr ") 冷热{{ local.$lr }}期
 
