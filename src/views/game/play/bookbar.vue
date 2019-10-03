@@ -38,7 +38,7 @@
           input.inlb.v_m(type='number' pattern="[0-9]*" v-model=" local.$t " min='1', max='10000', step='1')
         .stepper-button-plus
       span.pd_5
-      f7-button.w_40.inlb.mr_2(fill :color=" v.v === local.$ ? 'deeporange' : 'gray'  " v-for=" (v, i) in btns " :key="i" :class=" {'text-color-white': v.v == local.$} " @click=" __setLocal({$: v.v}) ") {{ v.n }}
+      f7-button.inlb.mr_2.pd_0(fill :color=" v.v === local.$ ? 'deeporange' : 'gray'  " v-for=" (v, i) in btns " :key="i" :class=" {'text-color-white': v.v == local.$} " @click=" __setLocal({$: v.v}) ") {{ v.n }}
 
   .pl_15.pr_15.pb_10
     f7-row(no-gap)
@@ -78,10 +78,11 @@ export default {
     return {
       sa: false,
       btns: [
-        {n: '元', v: 1},
-        {n: '角', v: 0.1},
-        {n: '分', v: 0.01},
-        {n: '厘', v: 0.001},
+        {n: '2元', v: 1, mode: 1},
+        {n: '1元', v: 0.5, mode: 5},
+        {n: '2角', v: 0.1, mode: 2},
+        {n: '2分', v: 0.01, mode: 3},
+        {n: '2厘', v: 0.001, mode: 4},
       ],
       bonuses: [],
     }

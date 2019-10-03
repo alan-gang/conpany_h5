@@ -237,7 +237,7 @@ export default {
         count: this.n,
         times: this.local.$t * 1,
         money: this.m_,
-        mode: (String(this.local.$).split('.')[1] || '').length + 1,
+        mode: this.local.$ * 1 === 0.5 ? 5 : (String(this.local.$).split('.')[1] || '').length + 1,
         userpoint: this.userpoint.toFixed(3),
       }]
     },
