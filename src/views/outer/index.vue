@@ -12,7 +12,7 @@ export default {
   components: {
   },
   name: 'outer',
-  props: ['n', 'plat', 'pid', 'gid'],
+  props: ['n', 'plat', 'pid', 'gid', 'outer'],
   data () {
     return {
     }
@@ -32,6 +32,11 @@ export default {
           url = '/pt_egame/index.html' + '?un=' + userName + '&pwd=' + password
         }
         setTimeout(() => {
+          if (this.outer) {
+            this.$f7.dialog.confirm('前往' + this.n + '?', '', () => window.open(url))
+            this.__back()
+            return false
+          }
           this.__go('/frame/', { reloadCurrent: true, ignoreCache: true, props: { title: this.n, url: url || 'http://www.baidu.com' } })
         }, 1000)
       })

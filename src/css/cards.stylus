@@ -12,6 +12,7 @@ urls = {
   _ptbjl: '~src/assets/gameicon/cards/game_livecasino_pt',
   _gdbjl: '~src/assets/gameicon/cards/game_livecasino_gd',
   _sabjl: '~src/assets/gameicon/cards/game_livecasino_sa',
+  _ogbjl: '~src/assets/gameicon/cards/game_livecasino_og',
 
   _ynsd: '~src/assets/gameicon/cards/game_slots_ynsd',
   _shdyj: '~src/assets/gameicon/cards/game_slots_shdyj',
@@ -84,6 +85,7 @@ labels = {
   _xa: '~src/assets/gameicon/cards/game_lable_xa',
   _gd: '~src/assets/gameicon/cards/game_lable_gd',
   _sa: '~src/assets/gameicon/cards/game_lable_sa',
+  _og: '~src/assets/gameicon/cards/game_lable_og',
 }
 sizes = {
 }

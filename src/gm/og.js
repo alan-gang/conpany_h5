@@ -15,6 +15,7 @@ export default [
   {gn: '真人', n: 'PT百家乐', nid: '_ptbjl', plat: '_pt', pid: 5},
   {gn: '真人', n: 'GD百家乐', nid: '_gdbjl', plat: '_gd', pid: 26},
   {gn: '真人', n: 'SA百家乐', nid: '_sabjl', plat: '_sa', pid: 31, gid: 35},
+  {gn: '真人', n: 'OG百家乐', nid: '_ogbjl', plat: '_og', pid: 34, gid: 41, outer: true},
 
   // 老虎机
   {gn: '老虎机', n: '野牛闪电', nid: '_ynsd', plat: '_pt', pid: 5},
