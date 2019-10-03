@@ -127,6 +127,7 @@ export default {
       if (this.tt) clearTimeout(this.tt)
       this.recentlyCode()
       this.current()
+      this.__codeMissColdHeat()
     },
     recentlyCode () {
       this.$.myget(api.recentlyCode, {

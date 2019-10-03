@@ -240,6 +240,9 @@ export default {
     __openWinCode () {
       this.codeMissColdHeat()
     },
+    __codeMissColdHeat () {
+      this.codeMissColdHeat()
+    },
     codeMissColdHeat () {
       this.$.get(api.codeMissColdHeat, {lotteryId: this.id}).then(({ data }) => {
         for (const k in data) {
