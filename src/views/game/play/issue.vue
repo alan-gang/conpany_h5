@@ -28,6 +28,7 @@ export default {
       if (this.tt) clearTimeout(this.tt)
       this.current()
       this.traceIssueList()
+      this.__setCall({fn: '__codeMissColdHeat'})
     },
     traceIssueList () {
       this.$.myget(api.traceIssueList, {gameid: this.id}).then(({data: {items}}) => {

@@ -91,6 +91,7 @@ export default {
       getodds: () => this.odds,
       getodds_: () => this.odds_,
       getoddmin_max: () => this.oddmin_max,
+      getclryl: () => this.clryl,
     }
   },
   data () {
@@ -115,6 +116,8 @@ export default {
       t: this.t_,
       // m: m[this.t_],
       bonusRange: [],
+      // 冷热遗漏
+      lryl: {},
     }
   },
   computed: {
@@ -166,7 +169,11 @@ export default {
     // default point
     dp () {
       return this.cpoints[0]
-    }
+    },
+    // current lryl 当前玩法的冷热遗漏
+    clryl () {
+      return this.mid.split(':')[1] !== '0' ? this.lryl[this.mid_] : null
+    },
   },
   watch: {
     n_ (n, o) {
@@ -209,6 +216,7 @@ export default {
       this.mid = this.dmid || (this.rps[0] || {}).id || this.cps[0].id
       this.myNewPoint()
       if (this.id) this.__setCache({play: {id: this.id, n: this.n, t: this.t, kq: this.kq}})
+      this.codeMissColdHeat()
     },
     myNewPoint () {
       this.$.get(api.myNewPoint, {gameid: this.id}).then(({data: {items, dtMaxPrize, dzMaxPrize}}) => {
@@ -227,6 +235,24 @@ export default {
             }
           }
         })
+      })
+    },
+    __openWinCode () {
+      this.codeMissColdHeat()
+    },
+    __codeMissColdHeat () {
+      this.codeMissColdHeat()
+    },
+    codeMissColdHeat () {
+      this.$.get(api.codeMissColdHeat, {lotteryId: this.id}).then(({ data }) => {
+        for (const k in data) {
+          if (k.indexOf('|') !== -1) {
+            k.split('|').forEach(x => {
+              data[x] = data[k]
+            })
+          }
+        }
+        this.lryl = data
       })
     },
   }

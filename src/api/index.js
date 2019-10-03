@@ -104,6 +104,7 @@ let api = {
   gameTree: '/gameTree',
 
   // 游戏
+  codeMissColdHeat: '/codeMissColdHeat.do?method=queryColdHot',
   getLotterys: '/report/OrderReport.do?method=getLotterys',
   recentlyCode: '/issue.do?method=recentlyCode',
   // gameid

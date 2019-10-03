@@ -22,6 +22,18 @@
       span {{ v }}
       f7-icon(:class=" {rz_90: i !== ti, 'rz_-90 color-deeporange': i === ti} " f7="play_fill" size="12px" style="position: relative; top: -2px; left: 2px;")
 
+    template(v-if=" clryl ")
+      span.mr_10(@click=" __setLocal({$yl: !local.$yl}) " :class=" { 'text-color-deeporange': local.$yl } ")
+        span 遗漏
+        f7-icon(:class=" {rz_90: !local.$yl, 'rz_-90 color-deeporange': local.$yl} " f7="play_fill" size="12px" style="position: relative; top: -2px; left: 2px;")
+
+      f7-link.mr_10(color="black" popover-open=".lr-popover" :class=" { 'text-color-deeporange': local.$lr, o_70: !local.$lr} " )
+        span 冷热{{ local.$lr }}
+        f7-icon(:class=" {rz_90: !local.$lr, 'rz_-90 color-deeporange': local.$lr} " f7="play_fill" size="12px" style="position: relative; left: -2px;")
+
+        
+    
+
   .ft_12(v-show=" ti >= 0 ")
     .bg-color-white
       p.mg_0.pd_15.mh_45.o_y.t_s(v-show="ti === 0") {{ mido.d }}
@@ -30,6 +42,13 @@
       .p_r.inner-page( v-show=" ti === 2 " )
         orders(:id="id")
     .pb_15.bgc_pc
+  
+  f7-popover.lr-popover.w_150
+    f7-list
+      f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: 20 }) ") &nbsp;&nbsp;&nbsp;&nbsp;冷热20期
+      f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: 50 }) ") &nbsp;&nbsp;&nbsp;&nbsp;冷热50期
+      f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: 100 }) ") &nbsp;&nbsp;&nbsp;&nbsp;冷热100期
+      f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: '' }) ") &nbsp;&nbsp;&nbsp;&nbsp;收起
 
   
 
@@ -57,6 +76,7 @@ export default {
   },
   name: 'gameinfo',
   props: ['id', 't', 'mid'],
+  inject: ['getclryl'],
   data () {
     return {
       luck: {
@@ -71,6 +91,9 @@ export default {
     }
   },
   computed: {
+    clryl () {
+      return this.getclryl()
+    },
     mido () {
       return m[this.t].find(x => x.id === this.mid) || {}
     },
@@ -104,6 +127,7 @@ export default {
       if (this.tt) clearTimeout(this.tt)
       this.recentlyCode()
       this.current()
+      this.__setCall({fn: '__codeMissColdHeat'})
     },
     recentlyCode () {
       this.$.myget(api.recentlyCode, {

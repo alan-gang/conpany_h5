@@ -10,23 +10,49 @@
       template(v-if=" !row.struct ")
         f7-col.n.h_40.t_c.flex.justify-content-center(width="15" :n="row.n") 
           span.text-color-white(:class=" {ft_12: row.n.length > 2} ") {{ row.n }}
+          
+          //- 冷热遗漏标题
+          .p_a.p_r_0.wp_120.p_t_40.c_6.ft_12.t_r(v-if=" clryl ")
+            .hlh_20(v-show=" local.$yl ") 遗漏
+            .hlh_20(v-show=" local.$lr ") 冷热{{ local.$lr }}期
 
         f7-col.vs(width="85" :class=" 'vs_l_' + vs.length ")
           f7-row(no-gap :class=" getRowClass() ")
-            .pb_2(v-for=" (v, i) in vs " :key="i" @click=" toggle(v) " :class=" getBallWrapColClass(v) ")
+            .pb_2(v-for=" (v, i) in vs " :key="i" @click=" toggle(v) " :class=" getBallWrapColClass(v, i) ")
               .v.t_c
                 f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)") 
                   span {{ v.n }}
+
+              //- 冷热遗漏内容
+              .t_c.ft_12.c_9.pt_2.lh_12(v-if=" clryl ")
+                .h_20(v-if=" local.$yl " :class=" { c_e: clryl.miss[rowIndex][i] * 1 === Math.min.apply(null, clryl.miss[rowIndex]), 'text-color-blue': clryl.miss[rowIndex][i] * 1 === Math.max.apply(null, clryl.miss[rowIndex]) } ") 
+                  span.lryl_v.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl.miss[rowIndex][i] }}
+                .h_20(v-if=" local.$lr ")
+                  span.lryl_v.lryl_v_lr.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl[local.$lr + 'q'][rowIndex][i] }}
+
       //- 混合结构
       template(v-if=" row.struct === 'mixin' ")
         f7-col.vs(width="100")
           f7-row(no-gap :class=" getRowClass() ")
-            f7-col.n.hlh_40.t_c.pr_5(width="16") 
+            f7-col.n.hlh_40.t_c.pr_5.p_r(width="16") 
               span.text-color-white(:class=" {ft_12: row.n.length > 2} ") {{ row.n }}
-            .pb_2(v-for=" (v, i) in vs " :key="i" width="16" @click=" toggle(v) " :class=" getBallWrapColClass(v) ")
+
+              //- 冷热遗漏标题
+              .p_a.p_r_0.wp_120.p_t_40.c_6.ft_12.t_r(v-if=" clryl ")
+                .hlh_20(v-show=" local.$yl ") 遗漏
+                .hlh_20(v-show=" local.$lr ") 冷热{{ local.$lr }}期
+
+            .pb_2(v-for=" (v, i) in vs " :key="i" width="16" @click=" toggle(v) " :class=" getBallWrapColClass(v, i) ")
               .v.t_c
                 f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)") 
                   span {{ v.n }}
+
+              //- 冷热遗漏内容
+              .t_c.ft_12.c_9.pt_2.lh_12(v-if=" clryl ")
+                .h_20(v-if=" local.$yl " :class=" { c_e: clryl.miss[rowIndex][i] * 1 === Math.min.apply(null, clryl.miss[rowIndex]), 'text-color-blue': clryl.miss[rowIndex][i] * 1 === Math.max.apply(null, clryl.miss[rowIndex]) } ") 
+                  span.lryl_v.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl.miss[rowIndex][i] }}
+                .h_20(v-if=" local.$lr ")
+                  span.lryl_v.lryl_v_lr.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl[local.$lr + 'q'][rowIndex][i] }}
 
       //- 左右结构
       template(v-if=" row.struct === 'following' ")
@@ -140,13 +166,16 @@ export default {
   },
   name: 'game_selection_row',
   props: ['row', 'rowIndex', 'singleRowMaxLen'],
-  inject: ['t', 'getodds'],
+  inject: ['t', 'getodds', 'getclryl'],
   data () {
     return {
       vs: []
     }
   },
   computed: {
+    clryl () {
+      return this.getclryl()
+    },
     odds () {
       return this.getodds()
     },
@@ -222,17 +251,20 @@ export default {
     getRowClass () {
       return this.row.rcls || 'j_s'
     },
-    getBallWrapColClass (v) {
+    getBallWrapColClass (v, i) {
+      let cls = ''
       if (!this.row.struct) {
-        return v.col ? v.col : v.n.length >= 4 ? 'col-33' : 'col-20'
+        cls = v.col ? v.col : v.n.length >= 4 ? 'col-33' : 'col-20'
       } else if (this.row.struct === 'mixin') {
-        return v.col ? v.col : 'col-16'
+        cls = v.col ? v.col : 'col-16'
       }
-      // return {
-      //   'col-20': !this.row.struct && v.n.length < 4,
-      //   'col-33': !this.row.struct && v.n.length >= 4,
-      //   'col-16': this.row.struct === 'mixin' && v.n.length < 4,
-      // }
+      return [
+        cls,
+        {
+          lr_r: this.clryl && this.local.$lr && this.clryl[this.local.$lr + 'q'][this.rowIndex][i] * 1 === Math.max.apply(null, this.clryl[this.local.$lr + 'q'][this.rowIndex]),
+          lr_l: this.clryl && this.local.$lr && this.clryl[this.local.$lr + 'q'][this.rowIndex][i] * 1 === Math.min.apply(null, this.clryl[this.local.$lr + 'q'][this.rowIndex]),
+        },
+      ]
     },
     getFollowBallClass (v) {
       return [!v.tails && (v.n * 1 === v.v * 1) && v.v._toC(), {
@@ -440,4 +472,28 @@ ns = {
             &.selected:after
               bg(prefix + v + '_press@2x-min.png')
             
+</style>
+<style lang="stylus">
+@import '~src/css/var.stylus'
+// mouse tiger rabbit
+.lryl_v
+  border 1px solid currentColor
+  border-radius 12px
+.lr_r 
+  .lryl_v_lr
+    color red 
+  .ball:not(.s):not([class*="dice"]):not(.w_90)
+    background-image url('~src/assets/play/lryl/ballbg_hot.gif')
+    background-size cover
+    color #fff
+    
+.lr_l 
+  .lryl_v_lr
+    color #2196f3
+  
+  .ball:not(.s):not([class*="dice"]):not(.w_90)
+    background-image url('~src/assets/play/lryl/ballbg_cold.gif')
+    background-size cover
+    color #fff
+    
 </style>

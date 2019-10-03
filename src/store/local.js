@@ -27,7 +27,10 @@ export default {
     cgs: localStorage.getItem('cgs') || '',
     // loadway
     loadway: localStorage.getItem('loadway') || '',
-
+    // 遗漏
+    $yl: localStorage.getItem('$yl') === 'true',
+    // 冷热
+    $lr: localStorage.getItem('$lr'),
   },
   actions: {
     __setLocal (local = {}) {
