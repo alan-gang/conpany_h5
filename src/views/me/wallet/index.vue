@@ -11,7 +11,7 @@ f7-page.wallet(:page-content="false")
         f7-toolbar.ft_12.c_333.bg-color-white(labels)
           f7-link._icon._load(icon-f7=" home " href="/me/load/") 充值
           f7-link._icon._withdraw(icon-f7=" home " href="/me/withdraw/") 提现
-          f7-link._icon._transfer(icon-f7=" home " @click="") 一键转回
+          f7-link._icon._transfer(icon-f7=" home " @click="ata") 一键转回
 
   .page-content.ptr-content(ptr-mousewheel="true" @ptr:refresh=" refresh ")
     .ptr-preloader
@@ -48,6 +48,7 @@ f7-page.wallet(:page-content="false")
 <script>
 import config from '@/config'
 import page from '@/components/page'
+import api from '@/api'
 export default {
   mixins: [config, page],
   components: {
@@ -75,6 +76,9 @@ export default {
     refresh (evt, done = evt.detail) {
       this.init()
       setTimeout(done, 1000)
+    },
+    ata () {
+      this.$.get(api.ata)
     }
   }
 }
