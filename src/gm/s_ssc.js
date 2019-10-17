@@ -1274,7 +1274,7 @@ export default {
   */
   '1200:1' () {
     let x = [
-      getCommonRow({n: '龙虎和', sl: 1, btns: [], vs: [{s: false, n: '龙', v: '1'}, {s: false, n: '虎', v: '2'}, {s: false, n: '和', v: '3'}]}),
+      getCommonRow({n: '龙虎和', sl: 1, btns: [], vs: [{s: false, n: '龙', v: '1'}, {s: false, n: '和', v: '3'}, {s: false, n: '虎', v: '2'}]}),
     ]
     x.ps = [0]
     x.single = true

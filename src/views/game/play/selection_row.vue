@@ -18,7 +18,7 @@
 
         f7-col.vs(width="85" :class=" 'vs_l_' + vs.length ")
           f7-row(no-gap :class=" getRowClass() ")
-            .pb_2(v-for=" (v, i) in vs " :key="i" @click=" toggle(v) " :class=" getBallWrapColClass(v, i) ")
+            .pb_2(v-for=" (v, i) in vs " :key="i" @click=" toggle(v) " :class=" getBallWrapColClass(v, i) " :ball-n=" v.n " )
               .v.t_c
                 f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)") 
                   span {{ v.n }}
@@ -42,7 +42,7 @@
                 .hlh_20(v-show=" local.$yl ") 遗漏
                 .hlh_20(v-show=" local.$lr ") 冷热{{ local.$lr }}期
 
-            .pb_2(v-for=" (v, i) in vs " :key="i" width="16" @click=" toggle(v) " :class=" getBallWrapColClass(v, i) ")
+            .pb_2(v-for=" (v, i) in vs " :key="i" width="16" @click=" toggle(v) " :class=" getBallWrapColClass(v, i) " :ball-n=" v.n " )
               .v.t_c
                 f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)") 
                   span {{ v.n }}
@@ -261,6 +261,8 @@ export default {
       return [
         cls,
         {
+          // select
+          's': v.s,
           lr_r: this.clryl && this.local.$lr && this.clryl[this.local.$lr + 'q'][this.rowIndex][i] * 1 === Math.max.apply(null, this.clryl[this.local.$lr + 'q'][this.rowIndex]),
           lr_l: this.clryl && this.local.$lr && this.clryl[this.local.$lr + 'q'][this.rowIndex][i] * 1 === Math.min.apply(null, this.clryl[this.local.$lr + 'q'][this.rowIndex]),
         },
@@ -473,9 +475,9 @@ ns = {
               bg(prefix + v + '_press@2x-min.png')
             
 </style>
+<!-- 冷热遗漏 -->
 <style lang="stylus">
 @import '~src/css/var.stylus'
-// mouse tiger rabbit
 .lryl_v
   border 1px solid currentColor
   border-radius 12px
@@ -496,4 +498,24 @@ ns = {
     background-size cover
     color #fff
     
+</style>
+<!-- 龙虎和 -->
+<style lang="stylus">
+@import '~src/css/var.stylus'
+bns = {
+  '龙': '~src/assets/play/lhh/1',
+  '虎': '~src/assets/play/lhh/2',
+  '和': '~src/assets/play/lhh/0',
+}
+.game_selection_row
+  for k, v in bns
+    [ball-n={k}]
+      width 60px
+      height 60px
+      margin 0 15px
+      bg(v + '_1.png', 100% 100%) 
+      &.s
+        bg(v + '.png', 100% 100%)
+      .ball
+        opacity 0
 </style>
