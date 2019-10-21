@@ -7,8 +7,8 @@ span.info_luck_numbers(:class=" t ")
       span.ani_text
       span.ani_line
 
-    span.ball.hlh_25.w_25.mg_2.rp_50.bg-color-deeporange.inlb.t_c.text-color-white {{ v }}
-  
+    span.ball.hlh_25.w_25.mg_2.rp_50.bg-color-deeporange.inlb.t_c.text-color-white(v-bind:class="{'is-lh': isLh && !arrSection.includes(i + 1 + '')}") {{ v }}
+
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
   components: {
   },
   name: 'info_luck_numbers',
-  props: ['luckn'],
+  props: ['luckn', 'isLh', 'arrSection'],
   inject: ['t'],
   data () {
     return {
@@ -41,22 +41,26 @@ export default {
     height 20px
     width 20px
     line-height 20px
-  
+
   &.kl8
     display inline-block
     width 180px
     height 100%
     line-height 1
     vertical-align middle
-    
+
   &.kl8 .ball
     font-size 12px
     height 16px
     width 16px
     line-height 16px
     margin 1px
-    
-    
+  .is-lh
+    background #fff!important
+    color #333!important
+    border 1px solid #ff6b22
+    box-sizing border-box
+
 </style>
 
 <!-- 欢乐生肖 -->
@@ -70,13 +74,13 @@ prefixtext = '~src/assets/play/play_id_1/iconwithtext_'
     margin-left 18px
     z-index 1
     position relative
-    
+
   .ani_pic
     width 25px
     height 100%
     position absolute
     left 0
-  
+
   .ani_text
     width 15px
     height 15px
@@ -84,7 +88,7 @@ prefixtext = '~src/assets/play/play_id_1/iconwithtext_'
     right 20px
     bottom 5px
     z-index 2
-  
+
   .ani_line
     width 30px
     height 2px
@@ -92,20 +96,20 @@ prefixtext = '~src/assets/play/play_id_1/iconwithtext_'
     right 10px
     bottom 0
     z-index 2
-  
-  
 
-    
+
+
+
   for v, k in  mouse tiger rabbit lonng snake horse sheep monkey chicken pig
     .n_{k} .ani_pic
       bg(prefix + v + '@2x-min.png')
-    
+
     .n_{k} .ani_text
       bg(prefixtext + v + '@2x-min.png')
-  
+
   for v, k in  #d874c9 #d6b73d #67afd3 #d75e5e #75cd6e
     .i_{k} .ani_line
       background-color v
 
-      
+
 </style>

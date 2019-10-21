@@ -10,9 +10,9 @@
     .ludan-col(v-for="(c, i) in maxColumns" v-bind:key="i")
       template(v-for="(r, j) in maxRows")
         div.ludan-item(v-bind:key="j" v-if="j === maxRows.length - 1")
-          span(class="open-item text-align-center" v-bind:class="getCellStyle(ludanList, i, j, maxRows)") {{ getCellData(ludanList, i, j) | cellData }}
+          span(class="open-item text-align-center ball" v-bind:class="getCellStyle(ludanList, i, j, maxRows)") {{ getCellData(ludanList, i, j) | cellData }}
         div.ludan-item(v-bind:key="j" v-else)
-          span(class="open-item text-align-center" v-bind:class="getCellStyle(ludanList, i, j, maxRows)") {{ getCellData(ludanList, i, j, maxRows) === 'icon-cur' ? '' : (getCellData(ludanList, i, j, maxRows) || '.') }}
+          span(class="open-item text-align-center ball" v-bind:class="getCellStyle(ludanList, i, j, maxRows)") {{ getCellData(ludanList, i, j, maxRows) === 'icon-cur' ? '' : (getCellData(ludanList, i, j, maxRows) || '.') }}
 </template>
 
 <script>
@@ -51,9 +51,9 @@ export default {
   computed: {
     methodName () {
       let map = {
-        SSC: ['1v2', '1v3', '1v4', '1v5', '2v3', '2v3', '2v5', '3v4', '3v5', '4v5'],
+        SSC: ['1v2', '1v3', '1v4', '1v5', '2v3', '2v4', '2v5', '3v4', '3v5', '4v5'],
         PK10: ['1v10', '2v9', '3v8', '4v7', '5v6'],
-        '115': ['1v2', '1v3', '1v4', '1v5', '2v3', '2v3', '2v5', '3v4', '3v5', '4v5']
+        '115': ['1v2', '1v3', '1v4', '1v5', '2v3', '2v4', '2v5', '3v4', '3v5', '4v5']
       }
       if (map[this.gameType]) {
         return map[this.gameType][this.ludanIndex]
@@ -235,21 +235,21 @@ export default {
         case '总大':
         case '总单':
         case '和尾大':
-          return 'ball border-red'
+          return 'border-red'
         case '小':
         case '总小':
         case '双':
         case '总双':
         case '虎':
         case '和尾小':
-          return 'ball border-blue'
+          return 'border-blue'
         case '和':
         case '30':
         case '11':
-          return 'ball border-green'
+          return 'border-green'
         default:
-          if (/\d/.test(d)) return 'ball broder-yellow'
-          return ''
+          if (/\d/.test(d)) return 'broder-yellow'
+          return 'ball'
       }
     }
   }
@@ -303,11 +303,14 @@ export default {
             background-repeat no-repeat
             background-size contain
             background-position center
+            vertical-align middle
     .border-red
       background-image url('~@/assets/ludan/zh_ld_l@2x.png')
     .border-blue
       background-image url('~@/assets/ludan/zh_ld_h@2x.png')
     .border-green
       background-image url('~@/assets/ludan/zh_ld_he@2x.png')
+    .icon-cur
+      background-image url('~@/assets/ludan/zh_ld_w@2x.png')
 
 </style>
