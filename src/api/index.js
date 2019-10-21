@@ -145,6 +145,8 @@ let api = {
   },
   __getBalance: '/home/userInfo.do?method=getUserFund',
   getBalanceByPID: '/ext/bg.do?method=getBalanceByPID',
+  // 路单
+  ludan: '/issue.do?method=recentlyCode&v=1',
 
   // 我的
   getUserIdentity: '/home/userInfo.do?method=getUserIdentity',

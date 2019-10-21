@@ -27,6 +27,7 @@ Framework7.use(Framework7Vue)
 Vue.use(VueClipboard)
 
 Vue.prototype.$ = axios
+Vue.prototype.$bus = new Vue()
 // Vue.prototype.$Modal = Modal
 // Vue.prototype.$Message = Message
 Vue.config.productionTip = false

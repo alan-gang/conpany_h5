@@ -2,7 +2,7 @@
 .game_selection_ps.pb_10
   f7-row.j_s
     f7-col.pd_1(v-for=" (v, i) in pss " :key=" i + Math.random() " width="20")
-      f7-button.mt_5.pd_0(:class=" { 'bg-color-deeporange color-white': v.s, 'bg-color-white': !v.s } " @click=" toggle(v) ") {{ v.n[pi || 0] }}
+      f7-button.mt_5.pd_0(:class=" { 'bg-color-deeporange color-white': v.s, 'bg-color-white': !v.s } " @click=" toggle(v, i) ") {{ v.n[pi || 0] }}
 
 
 </template>
@@ -66,12 +66,20 @@ export default {
     },
     vc (n, o) {
       this.$emit('update:vc', n)
-    }
+      if (n === 'w,q') {
+        this.$bus.$emit('changeLhIndex', 0)
+      }
+    },
+
   },
   created () {
     this.init()
     this.$emit('update:vc', this.vc)
     this.$emit('update:vcl', this.vcl)
+    this.$bus.$on('ludanIndex', (ludanIndex) => {
+      if (this.single) this.clear()
+      this.pss[ludanIndex].s = true
+    })
   },
   methods: {
     __initSelectionPS () {
@@ -88,7 +96,8 @@ export default {
         x.s = false
       })
     },
-    toggle (v) {
+    toggle (v, i) {
+      this.$bus.$emit('changeLhIndex', i)
       if (this.single) this.clear()
       v.s = !v.s
     }
@@ -100,5 +109,5 @@ export default {
 @import '~src/css/var.stylus'
 // 建议不添加scoped， 所有样式最多嵌套2层
 // .game_selection_ps
-    
+
 </style>
