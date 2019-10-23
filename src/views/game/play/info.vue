@@ -50,15 +50,6 @@
       f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: 50 }) ") &nbsp;&nbsp;&nbsp;&nbsp;冷热50期
       f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: 100 }) ") &nbsp;&nbsp;&nbsp;&nbsp;冷热100期
       f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: '' }) ") &nbsp;&nbsp;&nbsp;&nbsp;收起
-
-
-
-
-
-
-
-
-
 </template>
 
 <script>
