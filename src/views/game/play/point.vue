@@ -33,7 +33,7 @@ export default {
     },
     bonus () {
       // if (x > this.cache.dzMaxPrize) x = '奖金受限'
-      return (((this.dp.maxprize - ((this.$p || this.local.$p) * this.scale * 100)) * this.$) * this.$t_)._f3() * 1
+      return (((this.dp.maxprize - ((this.$p !== undefined ? this.$p : this.local.$p) * this.scale * 100)) * this.$) * this.$t_)._f3() * 1
     },
     // to 7.5
     pgap () {

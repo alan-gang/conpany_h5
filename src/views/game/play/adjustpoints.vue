@@ -45,10 +45,10 @@ export default {
       return (this.bonusRangeR[1] || this.bonusRangeR[0]) > this.cache.dzMaxPrize
     },
     np () {
-      return Math.min((this.local.$p + 0.01) * 100, this.dp.maxpoint * 100)
+      return Math.min((this.v * 1 + 0.01) * 100, this.dp.maxpoint * 100)
     },
     pp () {
-      return Math.max((this.local.$p - 0.01) * 100, this.dp.minpoint * 100)
+      return Math.max((this.v * 1 - 0.01) * 100, this.dp.minpoint * 100)
     },
   },
   created () {

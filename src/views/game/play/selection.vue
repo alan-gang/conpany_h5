@@ -208,23 +208,9 @@ export default {
         cpoints: this.cpoints,
         bonuses: [],
         up_: this.up_,
-        nc: this.nc.join(this.rjr),
+        // 如果是单式，设置nc为空
+        nc: this.s && this.s[0] ? this.nc.join(this.rjr) : '',
       }))
-      // this.local.$car.push({
-      //   methodid: this.mid_,
-      //   type: this.mid.split(':')[1],
-      //   pos: this.pvc,
-      //   codes: this.__getCodes(),
-      //   count: this.n,
-      //   times: this.local.$t,
-      //   money: this.m_,
-      //   mode: (String(this.local.$).split('.')[1] || '').length + 1,
-      //   userpoint: this.userpoint.toFixed(3),
-      //   // 更多信息
-      //   mido: this.mido,
-      //   dp: this.dp,
-      //   up_: this.up_,
-      // })
       this.__setCall({fn: '__clearSelection'})
       this.__setLocal({rps: this.mid + ',' + this.local.rps.replace(this.mid + ',', '')})
     },
