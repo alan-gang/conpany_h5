@@ -10,7 +10,8 @@
     .ludan-col(v-for="(c, i) in maxColumns" v-bind:key="i")
       template(v-for="(r, j) in maxRows")
         div.ludan-item(v-bind:key="j")
-          span(class="open-item text-align-center ball" v-bind:class="getCellStyle(ludanList, i, j, maxRows)")
+          span(v-if="getCellStyle(ludanList, i, j, maxRows) === 'broder-yellow'" class="open-item text-align-center ball" v-bind:class="getCellStyle(ludanList, i, j, maxRows)") {{getCellData(ludanList, i, j, maxRows)}}
+          span(v-else class="open-item text-align-center ball" v-bind:class="getCellStyle(ludanList, i, j, maxRows)")
 </template>
 
 <script>
@@ -73,7 +74,9 @@ export default {
   },
   filters: {
     cellData (value) {
-      return ['icon-cur', 'icon-qs'].indexOf(value) !== -1 ? '' : value
+      let val = ['icon-cur', 'icon-qs'].indexOf(value) !== -1 ? '' : value
+      console.log(val)
+      return val
     }
   },
   watch: {
@@ -308,6 +311,9 @@ export default {
       background-image url('~@/assets/ludan/zh_ld_h@2x.png')
     .border-green
       background-image url('~@/assets/ludan/zh_ld_he@2x.png')
+    .broder-yellow
+      background #f67c21
+      color #fff!important
     .icon-cur
       background-image url('~@/assets/ludan/zh_ld_w@2x.png')
 
