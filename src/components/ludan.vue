@@ -9,10 +9,8 @@
   .ludan-row
     .ludan-col(v-for="(c, i) in maxColumns" v-bind:key="i")
       template(v-for="(r, j) in maxRows")
-        div.ludan-item(v-bind:key="j" v-if="j === maxRows.length - 1")
-          span(class="open-item text-align-center ball" v-bind:class="getCellStyle(ludanList, i, j, maxRows)") {{ getCellData(ludanList, i, j) | cellData }}
-        div.ludan-item(v-bind:key="j" v-else)
-          span(class="open-item text-align-center ball" v-bind:class="getCellStyle(ludanList, i, j, maxRows)") {{ getCellData(ludanList, i, j, maxRows) === 'icon-cur' ? '' : (getCellData(ludanList, i, j, maxRows) || '.') }}
+        div.ludan-item(v-bind:key="j")
+          span(class="open-item text-align-center ball" v-bind:class="getCellStyle(ludanList, i, j, maxRows)")
 </template>
 
 <script>
