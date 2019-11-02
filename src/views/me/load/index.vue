@@ -60,8 +60,16 @@ f7-page.load
 
     .h_25
     f7-button.mg_10(fill large @click=" __validateform( commitNew ) ") 去付款
-
-    f7-block 一般情况下，充值到账时间为1-2分钟，有时会因为银行、第三支付、网络等原因延迟。如果超过5分钟没有到账，可到充值记录-充值详情中，提交“催到账”申请单，或直接联系客服。
+    
+  f7-block.mb_0.mt_10
+    span 注意事项：
+    .pl_0 1.请切勿重复扫描收款二维码进行付款！
+    .pl_0 2.请确保发起充值申请金额和付款金额一致！不要修改付款金额！
+    .pl_0 3.请实时发起充值申请获取最新收款方信息！
+    .pl_0 4.网银转账渠道需要正确填写附言信息！
+    .pl_0 请你仔细阅读注意事项按照流程进行充值！如您重复扫码/修改充值金额/付款到过期收款方造成资金损失！平台不予处理！感谢您的配合和支持！
+  f7-block.mt_10
+    | 一般情况下，充值到账时间为1-2分钟，有时会因为银行、第三支付、网络等原因延迟。如果超过5分钟没有到账，可到充值记录-充值详情中，提交“催到账”申请单，或直接联系客服。
 
   f7-popup.r_5.dialog-popup-auto-center.load_result_popup(style="width: 90%")
     f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="充值详情")
@@ -186,7 +194,7 @@ export default {
       }).then(({data: {payUrl, href, data, billNo}}) => {
         this.billNo = billNo
         if (href) {
-          this.$f7.dialog.confirm('立即前往支付', '', () => {
+          this.$f7.dialog.confirm('我知道了,继续充值', '', () => {
             window.open(href)
             this.afterCommit()
           })
