@@ -201,6 +201,7 @@ export default {
       {n: 'SA真人', key: '$sa_zr', pid: 31},
       {n: 'SA电游', key: '$sa_dy', pid: 32},
       {n: 'OG账户', key: '$og', pid: 34},
+      {n: '欢乐账户', key: '$hl', pid: 44},
     ],
     agts: {
       0: '彩票',

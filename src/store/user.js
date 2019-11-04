@@ -50,6 +50,7 @@ let defaultUser = {
   $vg: '',
   $ds: '',
   $xa: '',
+  $hl: '',
   $sa_zr: '',
   $sa_dy: '',
   // vipinfo

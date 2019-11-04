@@ -5,6 +5,7 @@ export default [
   {gn: '棋牌', n: '德州扑克', nid: '_dz', plat: '_vg', pid: 27},
   {gn: '棋牌', n: '炸金花', nid: '_zjh', plat: '_xy', pid: 22},
   {gn: '棋牌', n: '斗牛', nid: '_dn', plat: '_ds', pid: 28},
+  {gn: '棋牌', n: '欢乐', nid: '_hlqp', plat: '_hl', pid: 44, gid: 69},
 
   // 微游
   {gn: '微游', n: '抢红包', nid: '_qhb', pid: 25},

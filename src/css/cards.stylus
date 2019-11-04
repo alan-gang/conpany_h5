@@ -4,6 +4,7 @@ urls = {
   _dz: '~src/assets/gameicon/cards/game_bg_dz',
   _zjh: '~src/assets/gameicon/cards/game_bg_zjh',
   _dn: '~src/assets/gameicon/cards/game_bg_nn',
+  _hlqp: '~src/assets/gameicon/cards/game_bg_dht',
 
   _qhb: '~src/assets/gameicon/cards/game_special_redenvelop',
 
@@ -86,6 +87,7 @@ labels = {
   _gd: '~src/assets/gameicon/cards/game_lable_gd',
   _sa: '~src/assets/gameicon/cards/game_lable_sa',
   _og: '~src/assets/gameicon/cards/game_lable_og',
+  _hl: '~src/assets/gameicon/cards/game_lable_hl',
 }
 sizes = {
 }
