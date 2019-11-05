@@ -39135,7 +39135,7 @@ const Swipeout = {
     });
     // eslint-disable-next-line
     // $el[0]._clientLeft = $el[0].clientLeft;
-    if (app.params.swipeout.removeElements) __WEBPACK_IMPORTED_MODULE_2__utils_utils__["a" /* default */].nextFrame(() => {
+    __WEBPACK_IMPORTED_MODULE_2__utils_utils__["a" /* default */].nextFrame(() => {
       $el
         .addClass('swipeout-deleting swipeout-transitioning')
         .css({ height: '0px' })
@@ -40437,6 +40437,7 @@ class ListIndex extends __WEBPACK_IMPORTED_MODULE_2__utils_class__["a" /* defaul
 const Tab = {
   show(...args) {
     const app = this;
+
     let tabEl;
     let tabLinkEl;
     let animate;
@@ -40471,6 +40472,7 @@ const Tab = {
 
     let $tabLinkEl;
     if (tabLinkEl) $tabLinkEl = Object(__WEBPACK_IMPORTED_MODULE_0_dom7__["a" /* default */])(tabLinkEl);
+
     const $tabsEl = $newTabEl.parent('.tabs');
     if ($tabsEl.length === 0) {
       return {
@@ -40619,19 +40621,6 @@ const Tab = {
           const $tabbarEl = $tabLinkEl.parents('.tabbar, .tabbar-labels');
           if ($tabbarEl.length > 0) {
             app.toolbar.setHighlight($tabbarEl);
-          }
-        }
-        if (app.theme === 'ios') {
-          const $tabbarElinner = $tabLinkEl.parents('.toolbar-inner')[0];
-          if (!$tabbarElinner) return
-
-          if ($tabbarElinner.scrollWidth > $tabbarElinner.offsetWidth) {
-            if (($tabLinkEl[0].offsetLeft + $tabLinkEl[0].offsetWidth) > $tabbarElinner.offsetWidth) {
-              $tabbarElinner.scrollLeft +=  $tabLinkEl[0].offsetWidth
-            }
-            if (($tabLinkEl[0].offsetLeft) < $tabbarElinner.scrollLeft) {
-              $tabbarElinner.scrollLeft -=  $tabLinkEl[0].offsetWidth
-            }
           }
         }
       }
@@ -72560,10 +72549,6 @@ const Plugin = {
       type: String,
       default: 'text'
     },
-    pattern: {
-      type: String,
-      default: '[0-9]*'
-    },
     inputReadonly: {
       type: Boolean,
       default: false
@@ -72630,11 +72615,11 @@ const Plugin = {
       max,
       step,
       id,
-      style,
-      pattern,
+      style
     } = props;
     let inputWrapEl;
     let valueEl;
+
     if (input && !buttonsOnly) {
       let inputEl;
       {
@@ -72649,10 +72634,9 @@ const Plugin = {
           },
           attrs: {
             type: inputType,
-            pattern: pattern,
             min: inputType === 'number' ? min : undefined,
             max: inputType === 'number' ? max : undefined,
-            step: inputType === 'number' ? step : undefined,
+            step: inputType === 'number' ? step : undefined
           }
         });
       }
