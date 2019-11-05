@@ -1,7 +1,7 @@
 <template lang="pug">
 
 
-.info_lucks
+.info_lucks(:class="t")
   .data-table.p_a.bg-color-white
     table
       thead
@@ -171,19 +171,23 @@ export default {
     colorOfV (v) {
       switch (v) {
         // 五星
+        case '龙':
+          return 'type-color-red'
+        case '虎':
+          return 'type-color-blue'
+        case '和':
+          return 'type-color-green'
         case '组选120':
         case '组选24':
         case '组六':
         case '顺子':
         case '大单':
-        case '龙':
           return 'type-color-1'
         case '组选60':
         case '组选12':
         case '组三':
         case '对子':
         case '大双':
-        case '虎':
         case '牛1':
         case '牛2':
         case '牛3':
@@ -194,7 +198,6 @@ export default {
         case '组选6':
         case '豹子':
         case '小单':
-        case '和':
         case '牛6':
         case '牛7':
         case '牛8':
@@ -238,6 +241,11 @@ export default {
     left 0
     right 0
     z-index 9000
+  &.pk10
+    td.wp_50
+      width 70%
+    td.wp_35
+      width 15%
 
   .type-color-1
     color #1f8eec
@@ -251,5 +259,11 @@ export default {
     color #f17d0b
   .type-color-6
     color #000
+  .type-color-red
+    color red
+  .type-color-blue
+    color blue
+  .type-color-green
+    color green
 
 </style>

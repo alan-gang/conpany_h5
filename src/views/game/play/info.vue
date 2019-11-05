@@ -16,7 +16,7 @@
       span {{ issue.slice(-6) }}
       span 期截止
     span.text-color-deeporange {{ timming._toHMS() }}
-    span.float-right.ludan-btn(v-show="ludanShow" @click="ludanFlagChange") {{ ludanFlag ? '收起路单' : '展开路单' }}
+    span.float-right.ludan-btn.ft_14(v-show="ludanShow" @click="ludanFlagChange") {{ ludanFlag ? '收起路单' : '展开路单' }}
 
   .hlh_30.pl_15.pr_15.ft_12.bgc_pc.c_6
     span.mr_10(v-for=" (v, i) in tabs " :key="i" @click=" ti = (ti === i ? -1 : i) " :class=" { 'text-color-deeporange': i === ti } ")

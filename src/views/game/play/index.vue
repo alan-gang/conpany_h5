@@ -181,7 +181,7 @@ export default {
     },
     // 控制路单是否展示
     ludanShow () {
-      return ['1200', '1202', '4011', '4012', '2035'].includes(this.mid_)
+      return ['1200', '1202', '4011', '2035'].includes(this.mid_)
     }
   },
   watch: {
