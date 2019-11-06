@@ -30,8 +30,9 @@ export default {
         if (userName && password) {
           url = '/pt_egame/index.html' + '?un=' + userName + '&pwd=' + password
         }
+        url = (url || '').trim()
         setTimeout(() => {
-          if (this.outer || !url.startsWith(window.location.protocol) || !url.startsWith('/')) {
+          if (this.outer || !(url.startsWith(window.location.protocol) || url.startsWith('/'))) {
             this.$f7.dialog.confirm('前往' + this.n + '?', '', () => window.open(url))
             this.__back()
             return false
