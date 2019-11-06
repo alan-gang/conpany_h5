@@ -128,6 +128,7 @@ export default {
         this.data = [...(option.page > this.fpage ? this.data : []), ...items]
         this.total = totalSize
         cb && cb(items)
+        this.__setCall({fn: '__openWinCode'})
       })
     },
     row_cs (row) {
