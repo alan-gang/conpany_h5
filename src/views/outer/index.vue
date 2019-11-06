@@ -28,11 +28,10 @@ export default {
         isMobileUrl: 1,
       }).then(({data: {url, userName, password}}) => {
         if (userName && password) {
-          // eg. /pt_egame/index.html?un=XYXYCLAIREBB&pwd=nedgjqpt
           url = '/pt_egame/index.html' + '?un=' + userName + '&pwd=' + password
         }
         setTimeout(() => {
-          if (this.outer) {
+          if (this.outer || !url.startsWith(window.location.protocol) || !url.startsWith('/')) {
             this.$f7.dialog.confirm('前往' + this.n + '?', '', () => window.open(url))
             this.__back()
             return false
