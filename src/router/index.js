@@ -65,6 +65,7 @@ import copySet from '@/views/me/agent/lowerLevelMgr/copySet'
 // 帮助中心
 import help from '@/views/me/help'
 import howtoplay from '@/views/me/help/howtoplay'
+import tabindex from '@/views/me/help/howtoplay/tabindex'
 import functionintro from '@/views/me/help/functionintro'
 import faq from '@/views/me/help/faq'
 import detailpage from '@/views/me/help/detailpage'
@@ -341,6 +342,11 @@ export default [
   {
     path: '/me/help/howtoplay/',
     component: howtoplay,
+    rl: true
+  },
+  {
+    path: '/me/help/howtoplay/tabindex/',
+    component: tabindex,
     rl: true
   },
   {
