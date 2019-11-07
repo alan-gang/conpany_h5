@@ -265,12 +265,27 @@ export default {
     left 0
     background: #fff
     .ludan-header
+      position relative
       display flex
       justify-content space-between
       color #f67c21
       line-height 30px
-      border-bottom 1px solid #e3e3e3
-      font-size 12px
+      font-size 14px
+      &:after
+        content ''
+        position absolute
+        background-color var(--f7-navbar-border-color,var(--f7-bars-border-color))
+        display block
+        z-index 15
+        top auto
+        right auto
+        bottom 2px
+        left 0
+        height 1px
+        width 100%
+        transform-origin 50% 100%
+        transform scaleY(calc(1 / var(--f7-device-pixel-ratio)))
+      // border-bottom 1px solid #e3e3e3
       .icon
         width 30px
         height 30px
@@ -286,6 +301,7 @@ export default {
           background-image url('~@/assets/ludan/zh_ld_Left@2x.png')
         &.right
           background-image url('~@/assets/ludan/zh_ld_right@2x.png')
+          
     .ludan-row
       display flex
       .ludan-col
@@ -294,11 +310,11 @@ export default {
           text-align center
           span
             display inline-block
-            width 16px
-            height 16px
-            line-height 16px
-            font-size 10px
-            color #666
+            width 20px
+            height 20px
+            line-height 20px
+            font-size 14px
+            color #fff
           .ball
             border-radius 50%
             background-repeat no-repeat
@@ -306,11 +322,20 @@ export default {
             background-position center
             vertical-align middle
     .border-red
-      background-image url('~@/assets/ludan/zh_ld_l@2x.png')
+      // background-image url('~@/assets/ludan/zh_ld_l@2x.png')
+      background-color red
+      &:after
+        content '龙'
     .border-blue
-      background-image url('~@/assets/ludan/zh_ld_h@2x.png')
+      // background-image url('~@/assets/ludan/zh_ld_h@2x.png')
+      background-color blue
+      &:after
+        content '虎'
     .border-green
-      background-image url('~@/assets/ludan/zh_ld_he@2x.png')
+      // background-image url('~@/assets/ludan/zh_ld_he@2x.png')
+      background-color green
+      &:after
+        content '和'
     .broder-yellow
       background #f67c21
       color #fff!important
