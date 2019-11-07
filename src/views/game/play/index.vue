@@ -3,11 +3,11 @@
 .page.play(:class=" [ {sr: local.sr && rps[0] }, 'play_id_' + id] ")
 
   f7-navbar(:innerClass=" 'navbar_of_' + $options.name " back-link no-hairline)
-    
+
     f7-nav-title(@click.native=" sm = !sm ")
       .ft_12 {{ n }}
       .ft_16 {{ mido.n }}
-        f7-icon(:class=" {rz_90: !sm, 'rz_-90': sm} " f7="play_fill" size="12px" style="width: 18px") 
+        f7-icon(:class=" {rz_90: !sm, 'rz_-90': sm} " f7="play_fill" size="12px" style="width: 18px")
 
     f7-nav-right
       f7-link(icon-f7="arrow_right_round_fill" style="opacity: .2" @click=" next ")
@@ -23,21 +23,22 @@
               span 追号记录
             a.j_c.menu-dropdown-link.menu-close(@click=" window.open('https://www.ds-graph.com:8000/xy/index.html#?gameid=' + id) " v-show=" t !== 'kq' " style='margin-left: 0px;')
               span 走势图
-  
+
   f7-toolbar(top tabbar scrollable v-show=" local.sr && rps[0]  " style="transform: none")
 
     f7-link(:key="i" v-for=" (v, i) in rps " :class=" {'active text-color-deeporange border-color-deeporange': v.id === mid} " @click=" mid = v.id ") {{ v.n }}
 
 
   gamemenu(v-if=" sm " :sm="sm" v-on:sm="sm = $event" :t="t" :id="id" :mid="mid" v-on:mid=" mid = $event ")
-  gameinfo.o_h(:id="id" :t="t" :mid="mid" @issue=" issue = $event ")
+  gameinfo.o_h(:id="id" :t="t" :mid="mid" @issue=" issue = $event " :ludanFlag="ludanFlag" :ludanShow="ludanShow")
 
   gamebookbar(v-if=" !mido.times " v-bind="{ n, t, id, mid, n_, wn_, up_, cpoints, dp }"  @m_=" m_ = $event " @bonusRange=" bonusRange = $event ")
   gamefastcashbookbar(v-else v-bind="{ n, t, id, mid, n_, wn_, up_, cpoints, dp }"  @m_=" m_ = $event ")
 
   .page-content
     gameselection(v-bind=" {id, t, mid, mid_, issue, m_, dp, cpoints, mido, up_} " @n_=" n_ = $event " @wn_=" wn_ = $event ")
-
+    transition(name="fade" enter-active-class="fadeInUp" leave-active-class="fadeOutDown")
+      ludan.animated(v-show="ludanFlag && ludanShow" :gameid="id" :gameType="t.toUpperCase()")
   adjustpoints(v-if=" sap && dp && (Number(dp.maxpoint) > Number(dp.minpoint)) " v-on:hideadjustpoints=" sap = $event " v-bind=" {dp: dp, v: local.$p, bonusRange} " v-on:adjust:point=" __setLocal({$p: $event}) " )
 
 </template>
@@ -51,6 +52,7 @@ import gamefastcashbookbar from './fastcashbookbar'
 import gameinfo from './info'
 import gameselection from './selection'
 import adjustpoints from './adjustpoints'
+import ludan from '@/components/ludan'
 import m from '@/gm/m'
 import { cache } from '@/store'
 export default {
@@ -62,6 +64,7 @@ export default {
     gameinfo,
     gameselection,
     adjustpoints,
+    ludan
   },
   name: 'play',
   props: {
@@ -118,6 +121,8 @@ export default {
       bonusRange: [],
       // 冷热遗漏
       lryl: {},
+      // 路单是否展开
+      ludanFlag: false
     }
   },
   computed: {
@@ -174,6 +179,10 @@ export default {
     clryl () {
       return this.mid.split(':')[1] !== '0' ? this.lryl[this.mid_] : null
     },
+    // 控制路单是否展示
+    ludanShow () {
+      return ['1200', '1202', '4011', '2035'].includes(this.mid_)
+    }
   },
   watch: {
     n_ (n, o) {
@@ -191,6 +200,10 @@ export default {
   },
   created () {
     this.swap(this.kq && this.kq.active)
+    // 监听展开路单
+    this.$bus.$on('ludanFlagChange', (flag) => {
+      this.ludanFlag = flag
+    })
   },
   methods: {
     swap (flag) {
@@ -255,6 +268,9 @@ export default {
         this.lryl = data
       })
     },
+    ludanChange (val) {
+      this.ludanFlag = val
+    }
   }
 }
 </script>
@@ -264,12 +280,12 @@ export default {
 // 建议不添加scoped， 所有样式最多嵌套2层
 .play
   .toolbar-inner .link.active
-    border-bottom 2px solid 
+    border-bottom 2px solid
   // 显示最近的玩法
   &.sr
     .gameinfo
       top calc(var(--f7-navbar-height) + var(--f7-toolbar-height))
-  
+
     &>.page-content
       --f7-page-toolbar-top-offset calc(var(--f7-toolbar-height) + 85px + 5px)
     .gameinfo.tab_0 ~ .page-content
@@ -278,7 +294,7 @@ export default {
     .gameinfo.tab_2
       & ~ .page-content
         --f7-page-toolbar-top-offset calc(var(--f7-toolbar-height) + 300px + 5px)
-        
+
   &:not(.sr)
     &>.page-content
       --f7-page-toolbar-top-offset calc(var(--f7-toolbar-height) + 43px + 5px)
@@ -288,5 +304,39 @@ export default {
     .gameinfo.tab_2
       & ~ .page-content
         --f7-page-toolbar-top-offset calc(var(--f7-toolbar-height) + 258px + 5px)
-    
+.animated {
+  animation-duration: .3s;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+.fadeOutDown {
+  animation-name: fadeOutDown;
+}
+
+
 </style>

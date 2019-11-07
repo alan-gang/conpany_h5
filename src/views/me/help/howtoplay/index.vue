@@ -4,7 +4,8 @@ f7-page.bgc_f7
   f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="玩法介绍" back-link)
   f7-list.bgc_f7.mg_0.no_border(no-hairlines).p_list
     ul.z_9997
-      f7-list-item.ft_16.bgc_f.mt_10(v-for=" t in tagList " :title=" t.tagname " :id=" t.id " @click=" __go('/me/help/detailpage/', {props: {id: t.id, title: t.tagname }}) ")
+      //- f7-list-item.ft_16.bgc_f.mt_10(v-for=" t in tagList " :title=" t.tagname " :id=" t.id " @click=" __go('/me/help/detailpage/', {props: {id: t.id, title: t.tagname }}) ")
+      f7-list-item.ft_16.bgc_f.mt_10(v-for=" t in tagList " :title=" t.tagname " :id=" t.id " @click=" __go('/me/help/howtoplay/tabindex/', {props: {id: t.id, title: t.tagname }}) ")
 
 </template>
 

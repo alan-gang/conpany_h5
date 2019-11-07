@@ -82,9 +82,19 @@ export default {
   '4014:0' () {},
   // title: '龙虎
   '4011:1' () {
-    return [
+    let x = [
       getCommonRow({n: '龙虎', exclu: true, btns: [], vs: [{s: false, n: '龙', v: 1}, {s: false, n: '虎', v: 1}]}),
     ]
+    x.ps = [0]
+    x.single = true
+    x.pss = [
+      {s: false, v: '0,9', n: ['一VS十']},
+      {s: false, v: '1,8', n: ['二VS九']},
+      {s: false, v: '2,7', n: ['三VS八']},
+      {s: false, v: '3,6', n: ['四VS七']},
+      {s: false, v: '4,5', n: ['五VS六']},
+    ]
+    return x
   },
   // title: '定位胆
   '4012:1' () {

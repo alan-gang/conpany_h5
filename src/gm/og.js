@@ -2,7 +2,7 @@ export default [
   // 棋牌
   {gn: '棋牌', n: '麻将', nid: '_mj', plat: '_ly', pid: 15},
   {gn: '棋牌', n: '斗地主', nid: '_ddz', plat: '_ky', pid: 7},
-  {gn: '棋牌', n: '德州扑克', nid: '_dz', plat: '_vg', pid: 27},
+  // {gn: '棋牌', n: '德州扑克', nid: '_dz', plat: '_vg', pid: 27},
   {gn: '棋牌', n: '炸金花', nid: '_zjh', plat: '_xy', pid: 22},
   {gn: '棋牌', n: '斗牛', nid: '_dn', plat: '_ds', pid: 28},
   {gn: '棋牌', n: '欢乐', nid: '_hlqp', plat: '_hl', pid: 44, gid: 69},

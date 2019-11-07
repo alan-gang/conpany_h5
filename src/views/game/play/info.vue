@@ -14,8 +14,9 @@
     span.text-color-gray
       span 距
       span {{ issue.slice(-6) }}
-      span 期截止 
+      span 期截止
     span.text-color-deeporange {{ timming._toHMS() }}
+    span.float-right.ludan-btn.ft_14(v-show="ludanShow" @click="ludanFlagChange") {{ ludanFlag ? '收起路单' : '展开路单' }}
 
   .hlh_30.pl_15.pr_15.ft_12.bgc_pc.c_6
     span.mr_10(v-for=" (v, i) in tabs " :key="i" @click=" ti = (ti === i ? -1 : i) " :class=" { 'text-color-deeporange': i === ti } ")
@@ -31,8 +32,8 @@
         span 冷热{{ local.$lr }}
         f7-icon(:class=" {rz_90: !local.$lr, 'rz_-90 color-deeporange': local.$lr} " f7="play_fill" size="12px" style="position: relative; left: -2px;")
 
-        
-    
+
+
 
   .ft_12(v-show=" ti >= 0 ")
     .bg-color-white
@@ -42,22 +43,13 @@
       .p_r.inner-page( v-show=" ti === 2 " )
         orders(:id="id")
     .pb_15.bgc_pc
-  
+
   f7-popover.lr-popover.w_150
     f7-list
       f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: 20 }) ") &nbsp;&nbsp;&nbsp;&nbsp;冷热20期
       f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: 50 }) ") &nbsp;&nbsp;&nbsp;&nbsp;冷热50期
       f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: 100 }) ") &nbsp;&nbsp;&nbsp;&nbsp;冷热100期
       f7-list-item(link no-chevron popover-close @click=" __setLocal({ $lr: '' }) ") &nbsp;&nbsp;&nbsp;&nbsp;收起
-
-  
-
-
-
-
-
-
-
 </template>
 
 <script>
@@ -75,7 +67,7 @@ export default {
     lucknumbers,
   },
   name: 'gameinfo',
-  props: ['id', 't', 'mid'],
+  props: ['id', 't', 'mid', 'ludanFlag', 'ludanShow'],
   inject: ['getclryl'],
   data () {
     return {
@@ -133,9 +125,12 @@ export default {
       this.$.myget(api.recentlyCode, {
         gameid: this.id,
         pageNum: 1,
-        size: 1,
+        size: 100,
       }).then(({data: {items}}) => {
         if (items[0]) this.luck = items[0]
+        this.$nextTick(() => {
+          this.$bus.$emit('resetLudan', items)
+        })
       })
     },
     current () {
@@ -154,6 +149,9 @@ export default {
         setTimeout(this.init, 1000)
       }
     },
+    ludanFlagChange () {
+      this.$bus.$emit('ludanFlagChange', !this.ludanFlag)
+    }
   }
 }
 </script>
@@ -169,8 +167,8 @@ export default {
   z-index 9000
   .inner-page
     height 200px
-    
-    
-    
-    
+  .ludan-btn
+    color #f67c21
+    cursor pointer
+    text-decoration underline
 </style>
