@@ -7,7 +7,7 @@
         .t_c.pb_20 链接{{i + 1}}
     .promotion-code.t_c.bgc_f 注册邀请码：&nbsp;&nbsp;{{promotionCode}}
     p.ml_20 推广链接设置 ：
-    RebateRate(:rebateRates="rebateRates" :show="true" @update="updateRebateRates")
+    RebateRate(:rebateRates="rebateRates" :show="true" @update="updateRebateRates" v-if="wait")
     f7-button.mg_10(fill large @click="save") 保存设置
     f7-actions(:opened="shwoActionSheet" @actions:closed="shwoActionSheet = false")
       f7-actions-group
@@ -46,7 +46,8 @@ export default {
       shwoActionSheet: false,
       copyButtonTxt: '链接',
       copyMsg: '',
-      curImg: ''
+      curImg: '',
+      wait: false,
     }
   },
   mounted () {
@@ -54,6 +55,9 @@ export default {
     this.getSpreadLinks()
   },
   methods: {
+    __init_rf_adduser_2 () {
+      this.wait = true
+    },
     getQrCodeImg () {
       this.$.get(api.createQr).then(({data: {qrStr}}) => {
         this.QRs = qrStr
