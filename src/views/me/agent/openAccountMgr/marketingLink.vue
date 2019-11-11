@@ -211,6 +211,7 @@ export default {
           })
         })
       }
+      this.$props.row && (params['entry'] = this.$props.row.entry) // edit
       this.$.get(api.setKeepPoint, params).then(this.__back)
     },
     copySuccess () {
