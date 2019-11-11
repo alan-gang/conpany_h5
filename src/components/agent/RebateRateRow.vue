@@ -28,12 +28,12 @@
       .pb_5.pt_15(v-if=" showRange ")
         f7-row(no-gap)
           f7-col(width="10")
-            .r_5.o_h.w_40.color-theme-gray(@click=" $f7.range.setValue('#point_range_adduser', pp) ")
+            .r_5.o_h.w_40.color-theme-gray(@click=" $f7.range.setValue('#'+slideId, pp) ")
              .stepper-button-minus.h_30
           f7-col.pl_15.pr_15(width="80")
-            f7-range#point_range_adduser(:label="true" :format-label="formatLabel" min="0" :max=' item.$s ' :step='0.1' :value='item.$ * 10' @range:change=" rebateItemHandler($event, i, 0) ")
+            f7-range(:id="slideId" :label="true" :format-label="formatLabel" min="0" :max=' item.$s ' :step='0.1' :value='item.$ * 10' @range:change=" rebateItemHandler($event, i, 0) ")
           f7-col(width="10")
-            .r_5.o_h.w_40.color-theme-gray(@click=" $f7.range.setValue('#point_range_adduser', np) ")
+            .r_5.o_h.w_40.color-theme-gray(@click=" $f7.range.setValue('#'+slideId, np) ")
               .stepper-button-plus.h_30
 
     template(else)
@@ -72,8 +72,9 @@ export default {
   },
   data () {
     return {
+      slideId: 'slideId' + new Date().getTime(),
       isHighestRate: false, // 是否启用最高比率显示，1.只显示最高比较文案，2.比率不可调整
-      showRange: false,
+      showRange: !this.item.groupId && !this.item.groupid && this.parentIfRange,
     }
   },
   computed: {
@@ -95,7 +96,7 @@ export default {
   },
   methods: {
     formatLabel (v) {
-      return (v / 10).toFixed(1)
+      return (v / 10).toFixed(1) * 20 + 1800
     },
     updateSwiperPosition () {
       this.$refs['rebateSwiper'] && this.$refs['rebateSwiper'].swiper.slideTo(this.item.$ / 0.1 - 1, 0)

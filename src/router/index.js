@@ -57,6 +57,7 @@ import unbind from '@/views/me/bank/unbind.vue'
 
 import bonus from '@/views/me/bonus'
 import openAccountMgr from '@/views/me/agent/openAccountMgr'
+import editlink from '@/views/me/agent/openAccountMgr/marketingLink'
 import lowerLevelMgr from '@/views/me/agent/lowerLevelMgr'
 import setPoint from '@/views/me/agent/lowerLevelMgr/setPoint'
 import transferTo from '@/views/me/agent/lowerLevelMgr/transferTo'
@@ -361,6 +362,11 @@ export default [
   {
     path: '/agent/openAccountMgr',
     component: openAccountMgr,
+    rl: true
+  },
+  {
+    path: '/agent/editlink',
+    component: editlink,
     rl: true
   },
   {
