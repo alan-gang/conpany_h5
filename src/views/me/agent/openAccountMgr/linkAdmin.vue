@@ -55,8 +55,8 @@ f7-page.linkadmin(:page-content="false")
 
   f7-actions(:opened="shwoActionSheet" @actions:closed="shwoActionSheet = false")
     f7-actions-group
-      f7-actions-button.c_0(v-if="row.lineStatus == 1") 保存二维码到手机
-      f7-actions-button.c_0(v-if="row.lineStatus == 1") 复制链接
+      f7-actions-button.c_0(v-if="row.lineStatus == 1" @click.native="doloadImg(row)") 保存二维码到手机
+      f7-actions-button.c_0(v-if="row.lineStatus == 1" v-clipboard:copy="row.line" v-clipboard:success="copySuccess" v-clipboard:error="copyError") 复制链接
       f7-actions-button.c_0(v-if="row.lineStatus == 1" @click="__go('/agent/editlink', {'props': { 'row': row}})") 修改
       f7-actions-button.c_0(v-if="row.lineStatus == 1" @click="status") 停用
       f7-actions-button.c_0(v-if="row.lineStatus == 2" @click="status") 删除
@@ -119,6 +119,31 @@ export default {
         cb && cb(list)
       })
     },
+    copySuccess () {
+      this.__toast('复制成功')
+    },
+    copyError () {
+      this.__toast('复制失败')
+    },
+    doloadImg (row) {
+      // let img = new Image()
+      // img.src = 'data:image/png;base64,' + row.base64Str
+      // console.log(img)
+      // //
+      // let imgCvs = document.createElement('canvas')
+      // imgCvs.width = img.width
+      // imgCvs.height = img.height
+      // let ctx = imgCvs.getContext('2d')
+      // ctx.drawImage(img, 0, 0)
+      // let imgData = imgCvs.toDataURL('png')
+      // imgData = imgData.replace('image/png', 'image/octet-stream')
+      let a = document.createElement('a')
+      a.href = 'data:image/octet-stream;base64,' + row.base64Str
+      a.download = `qr_code_${Date.now()}.png`
+      let evt = document.createEvent('MouseEvents')
+      evt.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null)
+      a.dispatchEvent(evt)
+    }
   }
 }
 </script>
