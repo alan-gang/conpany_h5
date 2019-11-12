@@ -9,10 +9,10 @@ f7-page.linkadmin(:page-content="false")
       f7-row.t_c
         f7-col.bgc_f7.pd_5
           f7-icon(f7="person" color="orange")
-          span 注册人数 11
+          span 注册人数 {{totalRegistNumber}}
         f7-col.bgc_f7.pd_5
           f7-icon(f7="hand_point_right_fill" color="orange")
-          span  点击次数 22
+          span  点击次数 {{totalOpenNumber}}
       f7-button.ft_16.mt_10(fill large @click=" __go('/agent/editlink', {}) ") +新增
 
   .page-content.ptr-content.infinite-scroll-content(ptr-mousewheel="true" @ptr:refresh=" refresh " @infinite="loadMore" :infinite-distance="50")
@@ -76,6 +76,8 @@ export default {
   name: 'linkAdmin',
   data () {
     return {
+      totalRegistNumber: 0, // 所有数据注册总人数
+      totalOpenNumber: 0, // 所有数据点击总次数
       row: {},
       shwoActionSheet: !1,
       data: [],
@@ -113,9 +115,11 @@ export default {
       })
     },
     list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
-      this.$.get(api.queryRegistLines, option).then(({data: {list, totalSize}}) => {
+      this.$.get(api.queryRegistLines, option).then(({data: {list, totalSize, totalRegistNumber, totalOpenNumber}}) => {
         this.data = list
         this.total = totalSize
+        this.totalRegistNumber = totalRegistNumber
+        this.totalOpenNumber = totalOpenNumber
         cb && cb(list)
       })
     },
