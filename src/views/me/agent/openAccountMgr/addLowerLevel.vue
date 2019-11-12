@@ -12,7 +12,7 @@
 
     .set-header.flex(v-show="isShowRebateLs")
       span 返点-返水设置：
-      f7-button.ft_12(fill large @click=" copyfromspread ") 复制推广链接设置
+      //- f7-button.ft_12(fill large @click=" copyfromspread ") 复制推广链接设置
       f7-button.ft_12(fill large @click="popupOpened = true") 使用已有下级设置
 
     RebateRate(:rebateRates="rebateRates" :show="isShowRebateLs" @update="updateRebateRates" :parentIfRange="true")

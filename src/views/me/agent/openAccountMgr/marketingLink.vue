@@ -34,12 +34,6 @@
     p.ml_20 推广链接设置 ：
     RebateRate(:rebateRates="rebateRates" :show="true" @update="updateRebateRates" :parentIfRange="true")
     f7-button.mg_10(fill large @click="save") 保存设置
-    //- f7-actions(:opened="shwoActionSheet" @actions:closed="shwoActionSheet = false")
-    //-   f7-actions-group
-    //-     f7-actions-button.c_0(v-clipboard:copy="copyMsg" v-clipboard:success="copySuccess" v-clipboard:error="copyError") 复制【{{copyButtonTxt}}】
-    //-     f7-actions-button.c_0(@click.native="saveToPhone") 将二维码保存到手机
-    //-   f7-actions-group
-    //-     f7-actions-button.c_0 取消
 </template>
 
 <script>

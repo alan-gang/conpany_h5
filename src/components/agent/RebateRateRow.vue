@@ -74,7 +74,7 @@ export default {
     return {
       slideId: 'slideId' + new Date().getTime(),
       isHighestRate: false, // 是否启用最高比率显示，1.只显示最高比较文案，2.比率不可调整
-      showRange: !this.item.groupId && !this.item.groupid && this.parentIfRange,
+      showRange: !1,
     }
   },
   computed: {
@@ -93,6 +93,7 @@ export default {
     this.$nextTick(() => {
       this.updateSwiperPosition()
     })
+    this.showRange = !this.item.groupId && !this.item.groupid && this.parentIfRange
   },
   methods: {
     formatLabel (v) {
