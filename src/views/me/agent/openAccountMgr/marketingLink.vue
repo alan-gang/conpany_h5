@@ -29,7 +29,7 @@
       f7-row
         f7-col(width="25") 备注：
         f7-col(width="75")
-          f7-input(type="text" maxlength="20" placeholder="最多输入十个文字，例：百度贴吧1900" :value="lineRemards" @input="lineRemards = $event.target.value")
+          f7-input(type="text" maxlength="10" placeholder="最多输入十个文字，例：百度贴吧1900" :value="lineRemards" @input="lineRemards = $event.target.value")
 
     p.ml_20 推广链接设置 ：
     RebateRate(:rebateRates="rebateRates" :show="true" @update="updateRebateRates" :parentIfRange="true")
