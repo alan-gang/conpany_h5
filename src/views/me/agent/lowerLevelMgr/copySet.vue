@@ -190,20 +190,20 @@ export default {
   },
   methods: {
     getUserAll (userId) {
-      return this.$.get(api.getUserAll, {subUserid: userId}).then(({data: {backMyArr, cpArr, myDayArr, yjArr, myPointArr, subPointArr}}) => {
-        backMyArr.forEach(b => {
+      return this.$.get(api.getUserAll, {subUserid: userId}).then(({data: {backArr, backMyArr, cpArr, myDayArr, yjArr, myPointArr, subPointArr}}) => {
+        backArr.forEach(b => {
           this.userInfo.rebates.push({show: true, userPoint: (b.backwater || 0) > 0 ? (this.mth.mul((b.backwater || 0), 1000) + '‰') : '--', name: b.groupname + '返水'})
         })
-        if (myPointArr.length > 0) {
-          this.userInfo.rebates.unshift({show: true, userPoint: myPointArr[0].userpoint > 0 ? (this.mth.mul((myPointArr[0].userpoint || 0), 100) + '%') : '--', name: '彩票返点'})
+        if (subPointArr && subPointArr.length > 0) {
+          this.userInfo.rebates.unshift({show: true, userPoint: subPointArr[0].userpoint > 0 ? (this.mth.mul((subPointArr[0].userpoint || 0), 100) + '%') : '--', name: '彩票返点'})
         }
-        if (cpArr.length > 0) {
+        if (cpArr && cpArr.length > 0) {
           this.userInfo.cp = cpArr[0]
         }
-        if (myDayArr.length > 0) {
+        if (myDayArr && myDayArr.length > 0) {
           this.userInfo.ds = myDayArr[0]
         }
-        if (yjArr.length > 0) {
+        if (yjArr && yjArr.length > 0) {
           this.userInfo.yj = yjArr[0]
         }
       })
