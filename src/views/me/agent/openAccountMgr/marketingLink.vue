@@ -4,15 +4,23 @@
     f7-navbar(:innerClass=" 'navbar_of_' + $options.name " :title="($props.row?'修改' : '添加')+'推广链接'" back-link top )
     .bgc_f.pd_10.pb_0
       p.mt_0.mb_5 请选择线路
-      f7-list.md.linkselect.mg_0
-        f7-list-item(v-for="(v,i) in urls")
+    .form-wp.bgc_f
+      f7-row.md.linkselect.mg_0(v-for="(v,i) in urls")
+        f7-col(width="25")
           .linenum
             f7-radio(name="url" :checked="url == v" :value="v" @change="url = $event.target.value") 
             span.ml_10 线路{{i+1}}:
+        f7-col(width="75")
           .ellipsis {{v}}
-          span.testsub.t_c(@click="CalculateLine(v, i)")
-            span 测速
-            span.linkms.ft_10(v-bind:class="{'fast':urlSpeed[i]<=30,'slow':urlSpeed[i]>30||urlSpeed[i]=='超时'}") {{urlSpeed[i]}}{{typeof(urlSpeed[i])=='number' ? 'ms' : '' }}
+      //- f7-list.md.linkselect.mg_0
+      //-   f7-list-item(v-for="(v,i) in urls")
+      //-     .linenum
+      //-       f7-radio(name="url" :checked="url == v" :value="v" @change="url = $event.target.value") 
+      //-       span.ml_10 线路{{i+1}}:
+      //-     .ellipsis {{v}}
+      //-     span.testsub.t_c(@click="CalculateLine(v, i)")
+      //-       span 测速
+      //-       span.linkms.ft_10(v-bind:class="{'fast':urlSpeed[i]<=30,'slow':urlSpeed[i]>30||urlSpeed[i]=='超时'}") {{urlSpeed[i]}}{{typeof(urlSpeed[i])=='number' ? 'ms' : '' }}
     .form-wp.bgc_f
       f7-row
         f7-col(width="25") QQ：
