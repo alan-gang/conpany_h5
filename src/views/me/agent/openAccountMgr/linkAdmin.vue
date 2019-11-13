@@ -28,7 +28,7 @@ f7-page.linkadmin(:page-content="false")
           div
             f7-button.inlb.mr_2(color="deeporange" outline small popover-open=".linkadmincdl" @click="row = x") 查看返水返点详情
             f7-button.inlb(color="deeporange" outline small @click="row = x, shwoActionSheet = !0 ") 操作...
-        f7-card-header.ft_14
+        f7-card-header.ft_14(v-clipboard:copy="x.line" v-clipboard:success="copySuccess" v-clipboard:error="copyError")
             div.ellipsis {{x.line}}
 
         f7-card-content.pt_0.pb_0
