@@ -19,6 +19,7 @@
   &.modal-out
     transform translate3d(0,200%,0)
 
+//.dialog-popup-auto-center.popup.full_width.modal-out
 .dialog-popup-auto-center.popup
   height auto
   width auto
@@ -27,6 +28,8 @@
   transform translate3d(-50%, -50%, 0)
   &.full_width
     width 100%
+  &.full_w80
+    width 80%
   &.modal-out
     transform translate3d(-50%, 500%, 0)
 

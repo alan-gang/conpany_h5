@@ -2,7 +2,7 @@
   .rebate-rate-view(v-if="show")
     f7-list.rebate-ls.mg_0
       slot(name="rebateRateRow")
-        RebateRateRow(v-for="(item, i) in rebateRates" :key="i" :item="item" :i="i" :swiperParams="swiperParams" @update="update")
+        RebateRateRow(v-for="(item, i) in rebateRates" :key="i" :item="item" :i="i" :swiperParams="swiperParams" @update="update" :parentIfRange="parentIfRange")
 </template>
 
 <script>
@@ -13,6 +13,7 @@ export default {
     RebateRateRow
   },
   props: {
+    parentIfRange: Boolean,
     show: Boolean,
     rebateRates: Array,
     swiperParams: {

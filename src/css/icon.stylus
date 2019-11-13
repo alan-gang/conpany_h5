@@ -139,6 +139,9 @@ urls = {
     _function_intro: '~src/assets/me/help_icon_function',
     _faq: '~src/assets/me/help_icon_faq',
 
+    // 开户管理
+    _adduser_switch: '~src/assets/adduser/switch',
+
   }
   sizes = {
     _vip: auto 60%,

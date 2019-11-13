@@ -1,5 +1,10 @@
 export default {
   state: {
+    lineStatus: {
+      '1': '使用中',
+      '2': '已停用',
+      '3': '已删除'
+    },
     stateClass: {
       '成功': 'c_s',
       '赢': 'c_s',
@@ -53,6 +58,7 @@ export default {
 
       '使用中': 'c_s',
       '已关闭': 'c_g',
+      '已停用': 'c_g',
     },
     stateColor: {
       0: 'orange',

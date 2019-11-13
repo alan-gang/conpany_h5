@@ -387,8 +387,17 @@ let api = {
   createQr: '/team/createAccount.do?method=createQr',
   // 生成推广链接地址
   showSpreadLinks: '/team/createAccount.do?method=showSpreadLinks',
+  // 打开推广链接2.0
+  showSpreadLinksNew: '/team/createAccount.do?method=showSpreadLinksNew',
+  getRegistLines: '/team/createAccount.do?method=getRegistLines',
   // 设置保留返点
   setKeepPoint: '/team/createAccount.do?method=setKeepPoint',
+  '/dscagamesclient/team/createAccount.do?method=setKeepPoint': {
+    1: {
+      msg: '保留返点设置成功！',
+      fn: [{fn: '__init_link_list'}],
+    },
+  },
   // 银行卡
   lockBankCard: '/person/bankcard.do?method=lockBankCard',
   '/dscagamesclient/person/bankcard.do?method=lockBankCard': {
@@ -466,6 +475,10 @@ let api = {
   getSalaryById: '/report/daySalaryRepor.do?method=getSalaryById',
   // 日工资设置
   mySubSalaryList: '/team/setDaySalary.do?method=mySubSalaryList',
+  // 查询推广链接
+  queryRegistLines: '/team/createAccount.do?method=queryRegistLines',
+  // 更新推广链接状态
+  updateRegistLinesStatus: '/team/createAccount.do?method=updateRegistLinesStatus',
   setSalary: '/team/setDaySalary.do?method=setSalary',
   '/dscagamesclient/team/setDaySalary.do?method=setSalary': {
     1: {

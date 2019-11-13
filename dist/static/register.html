@@ -60,7 +60,7 @@
     .got:after { content: ''; position: absolute; width: 100%; height: 1px; background-color: #fff; left: 0; top: 10px;  }
     .msg {  position: absolute; line-height: 30px; top: -50px; left: 0; right: 0; color: red; text-align: center; background-color: #efefef; border-radius: 5px;}
     .super { text-align: center }
-    .wechat, .qq, .phone { background-repeat: no-repeat; background-position: top center; padding-top: 38px; background-size: 36px; text-align: center; display: inline-block; margin: 10px; min-width: 40px; color: #fff;}
+    .wechat, .qq, .phone { background-repeat: no-repeat; background-position: top center; padding-top: 38px; background-size: 36px; text-align: center; display: inline-block; margin: 10px; min-width: 40px; color: #fff; max-width: 30%; word-break: break-all; vertical-align: top;}
   </style>
 </head>
 <body>
@@ -100,9 +100,9 @@
     <span onclick=" location.href = 'http://x.xybets.com' ">已有帐户，去登录</span>
   </div>
   <div class="super">
-    <div class="wechat"></div>
-    <div class="qq"></div>
-    <div class="phone"></div>
+    <div class="wechat" style="display: none"></div>
+    <div class="qq" style="display: none"></div>
+    <div class="phone" style="display: none"></div>
   </div>
 
 
@@ -166,9 +166,9 @@
         wechat_ele.innerHTML = rep.data.weChant
         qq_ele.innerHTML = rep.data.qq
         phone_ele.innerHTML = rep.data.phone
-        !rep.data.weChant && (wechat_ele.style.display = 'none')
-        !rep.data.qq && (qq_ele.style.display = 'none')
-        !rep.data.phone && (phone_ele.style.display = 'none')
+        rep.data.weChant && (wechat_ele.style.display = '')
+        rep.data.qq && (qq_ele.style.display = '')
+        rep.data.phone && (phone_ele.style.display = '')
       } else {
         promotionCode_ele.placeholder = '获取邀请码失败，请手动输入'
       }
