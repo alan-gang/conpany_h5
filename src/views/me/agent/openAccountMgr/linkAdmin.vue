@@ -31,6 +31,7 @@ f7-page.linkadmin(:page-content="false")
         f7-card-header.ft_14(v-clipboard:copy="x.line" v-clipboard:success="copySuccess" v-clipboard:error="copyError")
             div.ellipsis {{x.line}}
               .h_1.bgc_6.wp_100
+            span.c_9 点击复制
 
         f7-card-content.pt_0.pb_0
           .a.wp_33.inlb.v_t.mt_10.mb_10(v-for=" (y, j) in dns " :class=" { 't_r': j % 3 === 2, 't_c': j % 3 === 1 } ")
