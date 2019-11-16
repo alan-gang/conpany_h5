@@ -70,7 +70,7 @@ export default [
   {gn: '体育', n: '其它', nid: '_otherball', plat: '_pb', pid: 19, gid: 403},
 
   // 捕鱼
-  {gn: '捕鱼', n: 'AG捕鱼', nid: '_agpy', plat: '_ag', pid: 4, gid: 6},
+  // {gn: '捕鱼', n: 'AG捕鱼', nid: '_agpy', plat: '_ag', pid: 4, gid: 6},
   {gn: '捕鱼', n: 'BG捕鱼', nid: '_bgpy', plat: '_bg', pid: 2, gid: 202},
   {gn: '捕鱼', n: 'PT捕鱼', nid: '_ptpy', plat: '_pt', pid: 5},
   {gn: '捕鱼', n: 'SA捕鱼', nid: '_sapy', plat: '_sa', pid: 32, gid: 'EG-FISHING-001'},
