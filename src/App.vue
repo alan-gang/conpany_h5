@@ -110,6 +110,7 @@ export default {
         case 'openWinCode':
           break
         case 'prizeNotice':
+          if (!this.local.$winnotify) return
           content = msg.content.reduce((p, x, i) => {
             p += '<div style="text-align: left">恭喜您在<span>' + x.lottName + x.issue + '</span>期中奖了<span class="c_orange">' + x.amt + '</span>元</div>'
             return p

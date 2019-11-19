@@ -191,6 +191,8 @@ li
   position absolute
 .p_f
   position sticky
+.p_fix
+  position fixed
 .j_c
   justify-content center
 .j_s
