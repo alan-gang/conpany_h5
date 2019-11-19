@@ -20,7 +20,7 @@ f7-page.activity(:page-content="false")
 
     f7-tab#activity_2.page-content
       f7-page(ptr :ptr-mousewheel="true" @ptr:refresh="refresh")
-        f7-link.ml_10.mr_10.mt_5.mb_5(:key=" v.title " v-for=" v in activityList.filter(x => x.label === '限时活动') " @click=" __go('/frame/', {props: {title: v.title, url: v.mobilePageUrl}}) ")
+        f7-link.ml_10.mr_10.mt_5.mb_5(:key=" v.title " v-for=" v in activityList.filter(x => x.label === '限时活动') " @click=" __go('/frame/', {props: {title: v.title, url: '/xy_activity' + v.mobilePageUrl.split('xy_activity')[1] }}) " )
           img.wp_100.r_5(:src=" v.mobilePicPath ")
 
         .pd_15.t_c.text-color-gray(v-if=" !activityList.filter(x => x.label === '限时活动')[0] ") 暂无活动~
@@ -28,10 +28,10 @@ f7-page.activity(:page-content="false")
 
     f7-tab#activity_3.page-content
       f7-page(ptr :ptr-mousewheel="true" @ptr:refresh="refresh")
-        f7-link.ml_10.mr_10.mt_5.mb_5(:key=" v.title " v-for=" v in activityList.filter(x => x.label !== '限时活动') " @click=" __go('/frame/', {props: {title: v.title, url: v.mobilePageUrl}}) ")
+        f7-link.ml_10.mr_10.mt_5.mb_5(:key=" v.title " v-for=" v in activityList.filter(x => x.label !== '长期活动') " @click=" __go('/frame/', {props: {title: v.title, url: '/xy_activity' + v.mobilePageUrl.split('xy_activity')[1] }}) " )
           img.wp_100.r_5(:src=" v.mobilePicPath ") 
 
-        .pd_15.t_c.text-color-gray(v-if=" !activityList.filter(x => x.label !== '限时活动')[0] ") 暂无活动~
+        .pd_15.t_c.text-color-gray(v-if=" !activityList.filter(x => x.label !== '长期活动')[0] ") 暂无活动~
 
   
 
