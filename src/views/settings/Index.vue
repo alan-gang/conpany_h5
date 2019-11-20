@@ -8,6 +8,9 @@ f7-page.settings
     f7-list-item(title="线路测试" link="#" @click=" $f7.popup.open('#speed') ")
 
     f7-list-item(title="关于我们" link="/aboutus/")
+
+    f7-list-item(title="中奖信息" )
+      f7-toggle(:checked="local.$winnotify" v-on:toggle:change=" (f) => this.__setLocal({$winnotify: f}) ")
     
     f7-list-button.bgc_f(@click=" __setCall({fn: '__logout'}) ") 退出
 

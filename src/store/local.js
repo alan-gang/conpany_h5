@@ -31,6 +31,8 @@ export default {
     $yl: localStorage.getItem('$yl') === 'true',
     // 冷热
     $lr: localStorage.getItem('$lr'),
+    // 中奖信息？
+    $winnotify: localStorage.getItem('$winnotify') !== 'false',
   },
   actions: {
     __setLocal (local = {}) {

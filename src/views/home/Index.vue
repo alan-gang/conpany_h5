@@ -76,8 +76,11 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
     f7-photo-browser(:photos="usimgs" type="page" back-link-text="返回" navbar-of-text="/" ref="pageDark")
 
 
-  p.pb_15.ft_12.text-color-gray.t_c 信游娱乐持有菲律宾PAGCOR合法牌照，请放心购买
-  
+  p.pb_15.ft_12.text-color-gray.t_c YO88娱乐持有菲律宾PAGCOR合法牌照，请放心购买
+
+  .p_fix.p_b_150.p_r_10.z_1(v-if=" user.showDownload ")
+    f7-link.p_a.p_r_5.p_t_5.bgc_g.rp_50(icon-f7="close" color="white" icon-size="20px" @click=" __setUser({showDownload: !user.showDownload}) ")
+    img.w_120(src="/static/img/home/gotodownload.png" @click="window.open('http://x.xybets.com')")
 
 
 </template>

@@ -75,6 +75,9 @@ let defaultUser = {
   isSetSecurityPwd: '',
   isSetVerifytyp: '',
   myFavour: [],
+  salaryState: '',
+  subminpoint: 0,
+  showDownload: true,
 }
 export default {
   state: defaultUser,
