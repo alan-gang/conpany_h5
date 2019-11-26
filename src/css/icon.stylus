@@ -70,6 +70,7 @@ urls = {
     _load_zfb: '~src/assets/load/recharge_icon_zfb',
     _load_zfb2bank: '~src/assets/load/recharge_icon_zfb',
     _load_zfb_base: '~src/assets/load/recharge_icon_zfb',
+    _load_zfbquota: '~src/assets/load/recharge_icon_zfb',
     _load_jd: '~src/assets/load/recharge_icon_jdzf',
     _load_unionpay: '~src/assets/load/recharge_icon_ylzf',
     _load_bank: '~src/assets/load/recharge_icon_ylzf',
