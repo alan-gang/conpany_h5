@@ -34,6 +34,7 @@ f7-page.login.bg-color-white
   .t_c
     f7-button.inlb(color="gray" @click=" tryPlay = !tryPlay ") {{ tryPlay ? '我要登录' : '我要试玩' }}
     f7-button.inlb(color="gray" popup-open="#register") 邀请注册
+    f7-button.inlb(@click="window.open('http://x.xybets.com')") 下载APP
 
   f7-toolbar.t_c.ft_14(bottom bg-color="white" no-border)
     f7-link(text="" )

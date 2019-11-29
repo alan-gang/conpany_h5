@@ -108,6 +108,7 @@ export default {
       let content = ''
       switch (msg.type) {
         case 'openWinCode':
+          if (!this.local.$winnotify) return
           break
         case 'prizeNotice':
           if (!this.local.$winnotify) return
