@@ -24,9 +24,13 @@ export default {
    *直选复式
    **/
   '2001:1' ({ns}) {
+    // [..a, ..b, ..c]
     let n = 0
+    // ...a
     ns[0] && ns[0][0] && ns[0].forEach((f) => {
+      // ...b
       ns[1] && ns[1][0] && ns[1].forEach((s) => {
+        // ...c
         ns[2] && ns[2][0] && ns[2].forEach((t) => {
           if (f !== s && f !== t && s !== t) n++
         })
