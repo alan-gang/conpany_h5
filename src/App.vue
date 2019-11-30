@@ -21,7 +21,7 @@ f7-app(:params=" f7Params ")
   f7-popup#login(@popup:opened=" __getcodeimg() || __setCall({fn: '__initLoginPopup'}) ")
     f7-view(url="/login")
 
-  f7-popup#forget
+  //- f7-popup#forget
     f7-view(url="/forget")
 
   f7-popup#speed(@popup:opened=" __setCall({fn: '__getNewEnableLines'}) " @popup:closed=" __setGlobal({afterLoginRedirect: ''}) ")

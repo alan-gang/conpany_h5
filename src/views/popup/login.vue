@@ -24,7 +24,7 @@ f7-page.login.bg-color-white
     f7-checkbox(name=" remember " @change="  __setLocal({remember: $event.target.checked}) "  :checked=" local.remember " )
     span(@click=" __setLocal({remember: !local.remember}) ")  记住密码
 
-    f7-link.f_r(popup-open="#forget")
+    //- f7-link.f_r(popup-open="#forget")
       span.c_6 忘记密码
 
 
@@ -32,7 +32,7 @@ f7-page.login.bg-color-white
     f7-button(round fill large @click=" __setCall({fn: !tryPlay ? '__login' : '__tryLogin', args: {un: local.un, pwd: local.pwd, code: form.code, cb: __loginSuccess}}) ") 登录
 
   .t_c
-    f7-button.inlb(color="gray" @click=" tryPlay = !tryPlay ") {{ tryPlay ? '我要登录' : '我要试玩' }}
+    //- f7-button.inlb(color="gray" @click=" tryPlay = !tryPlay ") {{ tryPlay ? '我要登录' : '我要试玩' }}
     f7-button.inlb(color="gray" popup-open="#register") 邀请注册
     f7-button.inlb(@click="window.open('http://x.xybets.com')") 下载APP
 
