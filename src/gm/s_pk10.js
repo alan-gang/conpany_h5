@@ -133,8 +133,8 @@ export default {
 
   '4106:1' () {
     return  [
-      getCommonRow({n: '第九名'}),
-      getCommonRow({n: '第十名'}),
+      getCommonRow({n: '第三名'}),
+      getCommonRow({n: '第四名'}),
     ]
   },
   '4107:0' () {},

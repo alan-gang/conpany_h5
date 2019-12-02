@@ -84,7 +84,7 @@ export default {
     return this['4103:0']({value})
   },
   '4106:1' ({nsl, r}) {
-    return this['4102:0']({nsl, r})
+    return this['4102:1']({nsl, r})
   },
   '4107:0' ({value}) {
     return this['4103:0']({value})
@@ -95,8 +95,8 @@ export default {
   '4109:0' ({value}) {
     return this['4103:0']({value})
   },
-  '4110:1' ({nsl}) {
-    return this['4102:0']({nsl, r})
+  '4110:1' ({nsl, r}) {
+    return this['4102:1']({nsl, r})
   },
   '4111:0' ({value}) {
     return this['4103:0']({value})
@@ -181,7 +181,7 @@ export default {
   '4129:0' ({value}) {
     return this['4123:0']({value})
   },
-  '4130:1' ({nsl}) {
+  '4130:1' ({ns}) {
     // [..a, ..b, ..c, ..d, ..e]
     let n = 0
     let [a, b, c, d, e] = ns
@@ -208,7 +208,7 @@ export default {
   '4133:0' ({value}) {
     return this['4131:0']({value})
   },
-  '4134:1' ({nsl}) {
+  '4134:1' ({ns}) {
     return this['4130:1']({ns})
   },
   '4135:0' ({value}) {
@@ -252,7 +252,7 @@ export default {
     return C(nsl[0], 1)
   },
   '4147:1' ({nsl}) {
-    return P(nsl)
+    return A(nsl)
   },
   // title: '定位胆
   '4101:1' ({nsl}) {
