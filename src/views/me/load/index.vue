@@ -57,6 +57,13 @@ f7-page.load
       template(v-else)
         .pl_10.pr_10
           f7-button.mr_2.mb_2.w_60.inlb.color-orange(fill  v-for=" (v, i) in  way.range[form.i].range " @click=" form.m = v ") {{ v }}
+      template(v-if="way.saveWay=='offline'")
+        .text-color-gray.pl_10
+          span 温馨提示：
+          .pl_0 1.专员代充方式支持银行卡转账、支付宝转银行卡、微信转银行卡。
+          .pl_0 2.充值填写的姓名和转账银行卡/支付宝/微信的姓名必须一致，否则不能到账。
+          .pl_0 3.请每次充值时以专员新发银行卡进行充值，不允许私自保留账号进行转账，私自保留账号进行转账造成的损失平台不予负责。
+          .pl_0 4.线下支付有一定延时，请耐心等待，如果超过 10 分钟还没有到帐，请与客服联系。
 
     .h_25
     f7-button.mg_10(fill large @click=" __validateform( commitNew ) ") 去付款
@@ -134,7 +141,7 @@ export default {
       return this.form.m * (100 - this.way.range[this.form.i].fee || 0) * 0.01
     },
     rn () {
-      return this.way.saveWay === 'zfb2bank'
+      return ['zfb2bank', 'offline'].includes(this.way.saveWay)
     },
   },
   watch: {
