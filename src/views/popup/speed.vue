@@ -50,16 +50,16 @@ export default {
     },
     getSpeed (s) {
       this.sites.forEach((s, i) => {
-        let n = document.createElement('script')
+        let n = document.createElement('img')
         let t = Date.now()
-        n.setAttribute('src', s.url + '/dscagamesclient/login/lineTest.do?method=lineTest')
+        n.setAttribute('src', s.url + '/static/favicon.png')
         n.onload = () => {
           s.speed = Date.now() - t
           s.squares = this.getSquares(s.speed)
         }
         n.onerror = () => {
-          // s.speed = 10000
-          // s.squares = this.getSquares(s.speed)
+          s.speed = 10000
+          s.squares = this.getSquares(s.speed)
         }
         this.$el.appendChild(n)
       })
