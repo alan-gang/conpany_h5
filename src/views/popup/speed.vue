@@ -58,8 +58,8 @@ export default {
           s.squares = this.getSquares(s.speed)
         }
         n.onerror = () => {
-          s.speed = 10000
-          s.squares = this.getSquares(s.speed)
+          // s.speed = 10000
+          // s.squares = this.getSquares(s.speed)
         }
         this.$el.appendChild(n)
       })
