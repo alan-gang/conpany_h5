@@ -143,6 +143,10 @@ urls = {
     // 开户管理
     _adduser_switch: '~src/assets/adduser/switch',
 
+    // 签到
+    _sign_close: '~src/assets/signin/close',
+    _sign_square: '~src/assets/signin/19',
+
   }
   sizes = {
     _vip: auto 60%,

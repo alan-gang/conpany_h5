@@ -33,6 +33,9 @@ f7-app(:params=" f7Params ")
   f7-popup#guide
     f7-view(url="/guide")
 
+  //- global 签到
+  f7-popup#signin.r_5.dialog-popup-auto-center.o_v.bgc_o.full_width
+    signin
 
 </template>
 
@@ -43,9 +46,11 @@ import api from '@/api'
 import oi from '@/components/oi'
 import Socket from './socket'
 import g from '@/gm/g'
+import signin from '@/views/popup/signin'
 export default {
   mixins: [config, oi],
   components: {
+    signin
   },
   name: 'app',
   data () {

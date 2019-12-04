@@ -16,7 +16,8 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
   .mt_10.pt_5.pb_5.bg-color-white
     f7-toolbar.ft_12.c_333.bg-color-white(labels)
       f7-link._icon._vip(color="black" icon-f7=" home " @click=" __go('/frame/', {props: {title: '贵族Club', url: '/xy_activity/wap/vipClub.html'}}) ") 贵族Club
-      f7-link._icon._sign(icon-f7=" home " @click=" getCheckToday ") 签到
+      //- f7-link._icon._sign(icon-f7=" home " @click=" getCheckToday ") 签到
+      f7-link._icon._sign(icon-f7=" home " popup-open="#signin") 签到
       f7-link._icon._load(icon-f7=" home " href="/me/load/") 充值
       f7-link._icon._withdraw(icon-f7=" home " href="/me/withdraw/") 提现
       f7-link._icon._transfer(icon-f7=" home " href="/me/transfer/") 转账
