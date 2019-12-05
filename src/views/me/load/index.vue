@@ -45,7 +45,7 @@ f7-page.load
           span.text-color-gray 实际到账：
           span.text-color-deeporange {{ g._f3() }}
 
-    template(v-if=" way.range[form.i]")
+    template(v-if=" way && way.range[form.i]")
 
       template(v-if=" !Number(way.range[form.i].range[0]) ")
         .text-color-gray.pl_10
@@ -57,7 +57,7 @@ f7-page.load
       template(v-else)
         .pl_10.pr_10
           f7-button.mr_2.mb_2.w_60.inlb.color-orange(fill  v-for=" (v, i) in  way.range[form.i].range " @click=" form.m = v ") {{ v }}
-      template(v-if="way.saveWay=='offline'")
+      template(v-if="way && way.saveWay=='offline'")
         .text-color-gray.pl_10
           span 温馨提示：
           .pl_0 1.专员代充方式支持银行卡转账、支付宝转银行卡、微信转银行卡。
@@ -68,7 +68,7 @@ f7-page.load
     .h_25
     f7-button.mg_10(fill large @click=" __validateform( commitNew ) ") 去付款
     
-  template(v-if="way.saveWay!='offline'")
+  template(v-if="way && way.saveWay!='offline'")
     f7-block.mb_0.mt_10
       span 注意事项：
       .pl_0 1.请切勿重复扫描收款二维码进行付款！
