@@ -198,7 +198,7 @@ export default {
         bankCode: this.way.range[this.form.i].bankCode,
         amount: this.form.m,
         saveWay: this.way.saveWay,
-        cardName: ''
+        cardName: this.form.n
       }).then(({data: {payUrl, href, data, billNo}}) => {
         this.billNo = billNo
         if (href) {
