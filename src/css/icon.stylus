@@ -1,11 +1,12 @@
 /*overwrite f7-icons*/
 @import './gameicon.stylus'
 urls = {
-    _vip: '~src/assets/home/home_icon_noble',
-    _sign: '~src/assets/home/home_icon_checkin',
-    _load: '~src/assets/home/home_icon_recharge',
-    _withdraw: '~src/assets/home/home_icon_withdraw',
-    _transfer: '~src/assets/home/home_icon_transfer',
+    // 首页快捷按钮(贵族、签到、充值、提现、转账)
+    _vip: '~src/assets/signin/1',
+    _sign: '~src/assets/signin/2',
+    _load: '~src/assets/signin/3',
+    _withdraw: '~src/assets/signin/4',
+    _transfer: '~src/assets/signin/5',
     _hot: '~src/assets/home/home_icon_title',
 
     _trash: '~src/assets/play/game_icon_delete',
@@ -149,7 +150,12 @@ urls = {
 
   }
   sizes = {
-    _vip: auto 60%,
+     _vip: auto 80%,
+    _sign: auto 80%,
+    _load: auto 80%,
+    _withdraw: auto 80%,
+    _transfer: auto 80%,
+
     _trash: auto 60%,
     _bookcar: auto 60%,
     _bookcar_a: auto 60%,

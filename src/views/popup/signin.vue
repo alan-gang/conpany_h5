@@ -9,6 +9,8 @@
     span.c_ccc 3月您已经累计签到：
     span.c_grass_green 2 天
 
+  .thisweek
+
 
 
 
@@ -35,6 +37,13 @@ export default {
   computed: {
   },
   created () {
+  },
+  mounted () {
+    this.$f7.calendar.create({
+      containerEl: '.thisweek',
+      monthSelector: false,
+      yearSelector: false,
+    })
   },
   methods: {
   },
