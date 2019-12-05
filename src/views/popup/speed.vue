@@ -52,7 +52,7 @@ export default {
       this.sites.forEach((s, i) => {
         let n = document.createElement('img')
         let t = Date.now()
-        n.setAttribute('src', s.url + '/static/favicon.png')
+        n.setAttribute('src', s.url + '/static/favicon.png?time=' + new Date().getTime())
         n.onload = () => {
           s.speed = Date.now() - t
           s.squares = this.getSquares(s.speed)
