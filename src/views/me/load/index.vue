@@ -193,7 +193,7 @@ export default {
       })
     },
     commitNew () {
-      this.$.get(api.commitNew, {
+      this.$.post(api.commitNew, {
         chanType: this.local.pf,
         bankCode: this.way.range[this.form.i].bankCode,
         amount: this.form.m,
