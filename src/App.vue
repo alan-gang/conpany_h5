@@ -34,7 +34,7 @@ f7-app(:params=" f7Params ")
     f7-view(url="/guide")
 
   //- global 签到
-  f7-popup#signin.r_5.dialog-popup-auto-center.o_v.bgc_o.full_width
+  f7-popup#signin.r_5.dialog-popup-auto-center.o_v.bgc_o.full_width(@popup:open=" __setCall({fn: '__initSigninPopup'}) ")
     signin
 
 </template>
