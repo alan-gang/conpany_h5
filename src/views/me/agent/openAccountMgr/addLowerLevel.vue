@@ -12,6 +12,7 @@
 
     .set-header.flex(v-show="isShowRebateLs")
       span 返点-返水设置：
+      f7-button.inlb.mr_2(color="deeporange" outline small popover-open=".addlowerlevelcdl") 查看返水返点详情
       //- f7-button.ft_12(fill large @click=" copyfromspread ") 复制推广链接设置
       f7-button.ft_12(fill large @click="popupOpened = true") 使用已有下级设置
 
@@ -20,7 +21,16 @@
 
     f7-popup.search-lower-level-dialog.dialog-popup(:opened="popupOpened" @popup:closed="popupOpened = false")
       SearchLowerLeverDialog(@rebate-data="rebateDataCB")
-
+    //-开户详情
+    f7-popup.addlowerlevelcdl.r_5.dialog-popup-auto-center.popup.full_w80.modal-out
+      f7-navbar(title="确认信息")
+        f7-nav-right
+        f7-link(icon-f7="close" icon-size="40px" popup-close=".addlowerlevelcdl")
+      .pd_10
+        span(v-html="dataCopyHtml") 
+      f7-list.mg_0(simple)
+        f7-button.ft_16.mg_10(fill large popup-close=".addlowerlevelcdl") 确定
+        f7-button.ft_16.mg_10(fill large popup-close=".addlowerlevelcdl") 确定
 </template>
 
 <script>
@@ -56,6 +66,23 @@ export default {
   },
   mounted () {
     this.getShowRegistUser()
+  },
+  computed: {
+    dataCopyHtml () {
+      return this.dataCopy.replace(/\n/g, '<br>')
+    },
+    dataCopy () {
+      let r = `用户名:${this.userName}
+登录密码:${this.password || this.defaultPwd}
+`
+      this.data.back.forEach(v => {
+        if (v.$ * 1) {
+          r += `${v.name}${v.rebateTypeTxt}:${v.$}%
+`
+        }
+      })
+      return r
+    },
   },
   methods: {
     openAccount () {
