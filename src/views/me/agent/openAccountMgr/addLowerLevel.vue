@@ -85,7 +85,7 @@ export default {
       this.rebateRates.forEach(v => {
         if (v.$ * 1) {
           if (v.groupid) {
-            r += `${v.groupName}${v.rebateTypeTxt}:${v.$}%
+            r += `${v.groupName}${v.rebateTypeTxt}:${v.$}‰
 `
           } else {
             r += `${v.name}${v.rebateTypeTxt}:${v.$}%
