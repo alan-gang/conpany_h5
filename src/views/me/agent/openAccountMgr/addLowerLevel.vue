@@ -12,7 +12,6 @@
 
     .set-header.flex(v-show="isShowRebateLs")
       span 返点-返水设置：
-      f7-button.inlb.mr_2(color="deeporange" outline small popover-open=".addlowerlevelcdl") 查看返水返点详情
       //- f7-button.ft_12(fill large @click=" copyfromspread ") 复制推广链接设置
       f7-button.ft_12(fill large @click="popupOpened = true") 使用已有下级设置
 
@@ -22,15 +21,22 @@
     f7-popup.search-lower-level-dialog.dialog-popup(:opened="popupOpened" @popup:closed="popupOpened = false")
       SearchLowerLeverDialog(@rebate-data="rebateDataCB")
     //-开户详情
-    f7-popup.addlowerlevelcdl.r_5.dialog-popup-auto-center.popup.full_w80.modal-out
+    f7-popup.addlowerlevelcdl.r_5.dialog-popup-auto-center.popup.full_w80.modal-out(:opened="popupOpenedinfo" @popup:closed="popupOpenedinfo = false")
       f7-navbar(title="确认信息")
         f7-nav-right
         f7-link(icon-f7="close" icon-size="40px" popup-close=".addlowerlevelcdl")
       .pd_10
         span(v-html="dataCopyHtml") 
-      f7-list.mg_0(simple)
-        f7-button.ft_16.mg_10(fill large popup-close=".addlowerlevelcdl") 确定
-        f7-button.ft_16.mg_10(fill large popup-close=".addlowerlevelcdl") 确定
+      f7-row
+        f7-col(width="50")
+          f7-button.ft_16.mg_10(
+            v-clipboard:copy="dataCopy"
+            v-clipboard:success="copySuccess"
+            outline
+            large
+          ) 一键复制
+        f7-col(width="50")
+          f7-button.ft_16.mg_10(fill large popup-close=".addlowerlevelcdl") 确定
 </template>
 
 <script>
@@ -61,6 +67,7 @@ export default {
         allowSlideNext: true
       },
       popupOpened: false,
+      popupOpenedinfo: !1, // 开户详情
       data: null,
     }
   },
@@ -75,16 +82,24 @@ export default {
       let r = `用户名:${this.userName}
 登录密码:${this.password || this.defaultPwd}
 `
-      this.data.back.forEach(v => {
+      this.rebateRates.forEach(v => {
         if (v.$ * 1) {
-          r += `${v.name}${v.rebateTypeTxt}:${v.$}%
+          if (v.groupid) {
+            r += `${v.groupName}${v.rebateTypeTxt}:${v.$}%
 `
+          } else {
+            r += `${v.name}${v.rebateTypeTxt}:${v.$}%
+`
+          }
         }
       })
       return r
     },
   },
   methods: {
+    copySuccess () {
+      this.__toast('已复制至剪贴板')
+    },
     openAccount () {
       let params = {
         userName: this.userName,
@@ -103,7 +118,9 @@ export default {
         type: 1
       }
       this.$.post(api.registUser, params).then(({success, msg}) => {
-        this.__alert(msg || `下级（${this.userName}）开户成功！`)
+        // this.__alert(msg || `下级（${this.userName}）开户成功！`)
+        this.__toast(msg || `下级（${this.userName}）开户成功！`)
+        this.popupOpenedinfo = !0
       }).catch(e => {})
     },
     getShowRegistUser () {
