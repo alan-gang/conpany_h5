@@ -12,9 +12,13 @@
   .thisweek.t_c.pt_5.ml_2.mr_2.c_9
     f7-row(no-gap)
       f7-col(width="25" v-for=" (x, i) in weekTitle ")
-        .hlh_25.bgc_f7(:class=" {'week_title_lst cli_a': i === weekTitle.length -1 } ") {{ x }}
+        template(v-if=" i < weekTitle.length -1 ")
+          .hlh_25.bgc_f7(:class=" {'week_title_lst cli_a': i === weekTitle.length -1 } " ) {{ x }}
+        template(v-else)
+          f7-button.hlh_25.bgc_f7.week_title_lst.cli_a(panel-open=".signmonth")
+
         .h_5
-        .lh_44.h_55.w_44.mg_0a.c_f.ft_b(v-if=" i < 7 " :class=" weekCls[i] " ) {{ i + 1 }}
+        .lh_44.h_55.w_44.mg_0a.c_f.ft_b(v-if=" i < 7 " :class=" weekCls[i] " @click="signin") {{ i + 1 }}
 
   .more-info.h_25.mt_20
   
@@ -71,6 +75,12 @@ export default {
   methods: {
     __initSigninPopup () {
       this.init = true
+    },
+    signin () {
+      this.$f7.popup.close('#signin')
+      setTimeout(() => {
+        this.$f7.popup.open('#signinsuccess')
+      }, 1000)
     }
   },
 }
