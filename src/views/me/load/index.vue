@@ -28,22 +28,21 @@ f7-page.load
         select(name="banks" v-model=" form.i ")
           option(v-for=" (v, i) in way.range " :key="i" :value="i") {{ v.bankName }}({{ v.range.join('-') }})
 
-    f7-list.mt_5.mb_5(inline-labels v-if=" rn ")
-      f7-list-input(placeholder="真实姓名" required validate type='text' :value=" form.n " @input=" form.n = $event.target.value ")
-        f7-icon(f7="person" slot="media" style="color: var(--f7-theme-color)")
-
-
-    f7-list.mt_5.mb_5(ref="_form")
-      li.item-content.item-input
-        .item-media
-          f7-icon._icon._load_amount(f7="home")
-        .item-inner
-          .item-input-wrap
-            input(required validate pattern="[0-9]*" type='number' :max=" way.range[form.i].range.slice(-1)[0].split('~')[1] " v-model="form.m" :placeholder=" readonly ? '点击按钮选择可充值金额' : '请输入充值金额' " :readonly=" readonly ")
-            span.input-clear-button
-        .item-after.pr_10
-          span.text-color-gray 实际到账：
-          span.text-color-deeporange {{ g._f3() }}
+    div(ref="_form")
+      f7-list.mt_5.mb_5(inline-labels v-if=" rn ")
+        f7-list-input(placeholder="真实姓名" required validate type='text' :value=" form.n " @input=" form.n = $event.target.value ")
+          f7-icon(f7="person" slot="media" style="color: var(--f7-theme-color)")
+      f7-list.mt_5.mb_5
+        li.item-content.item-input
+          .item-media
+            f7-icon._icon._load_amount(f7="home")
+          .item-inner
+            .item-input-wrap
+              input(required validate pattern="[0-9]*" type='number' :max=" way.range[form.i].range.slice(-1)[0].split('~')[1] " v-model="form.m" :placeholder=" readonly ? '点击按钮选择可充值金额' : '请输入充值金额' " :readonly=" readonly ")
+              span.input-clear-button
+          .item-after.pr_10
+            span.text-color-gray 实际到账：
+            span.text-color-deeporange {{ g._f3() }}
 
     template(v-if=" way && way.range[form.i]")
 
