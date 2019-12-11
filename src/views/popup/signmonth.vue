@@ -17,14 +17,13 @@ export default {
   mixins: [config, signincommon],
   name: 'signmonth',
   mounted () {
-    console.log('signmonth mounted')
     this.getCheckInfo(() => {
       this.initData()
     })
   },
   methods: {
     checkInHandler (date) {
-      // if (date !== this.date.getDate()) return
+      if (date !== this.date.getDate()) return
       this.checkIn()
       this.close()
     },

@@ -57,7 +57,7 @@ export default {
       this.init = true
     },
     signin (date) {
-      // if (date !== this.date.getDate()) return
+      if (date !== this.date.getDate()) return
       this.checkIn()
     },
     genWeekDays () {

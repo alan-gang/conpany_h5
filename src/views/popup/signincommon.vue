@@ -36,8 +36,8 @@ export default {
           this.checkinCount = data.data.length
           let checkinDateList = data.data.map((d) => new Date(parseInt(d, 10)).getDate())
           this.___setGlobal({checkinDateList})
-          cb && cb(data)
         }
+        cb && cb(data)
       })
     },
     checkIn () {
