@@ -11,8 +11,9 @@ f7-app(:params=" f7Params ")
     f7-view
 
   // Right Panel with "reveal" effect
-  f7-panel.signmonth.z_99999.wp_100(right cover)
-    f7-view(url="/signmonth")
+  f7-panel.signmonth.z_99999.wp_100(right cover )
+    //- f7-view(url="/signmonth")
+    signmonth
 
   // Main view
   //- f7-view(url="/" :main="true" :push-state="true")
@@ -53,11 +54,13 @@ import oi from '@/components/oi'
 import Socket from './socket'
 import g from '@/gm/g'
 import signin from '@/views/popup/signin'
+import signmonth from '@/views/popup/signmonth'
 import signinsuccess from '@/views/popup/signinsuccess'
 export default {
   mixins: [config, oi],
   components: {
     signin,
+    signmonth,
     signinsuccess,
   },
   name: 'app',

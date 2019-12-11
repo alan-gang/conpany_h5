@@ -16,18 +16,18 @@
 import config from '@/config'
 export default {
   mixins: [config],
-  components: {
-  },
   name: 'signinsuccess',
-  props: [],
   data () {
     return {
-      data: ['2元礼金已发放', '刮刮卡10张已发放'],
+      data: [],
     }
   },
   created () {
   },
   methods: {
+    __setPrizes (d) {
+      this.data = d
+    }
   }
 }
 </script>

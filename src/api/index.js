@@ -502,6 +502,10 @@ let api = {
   // 活动
   hd: '/report/otherReport.do?method=activitList',
   hdd: '/report/otherReport.do?method=activitDetail',
+  // 签到信息
+  getCheckInfo: '/activity.do?method=getCheckInfo',
+  // 签到
+  checkIn: '/activity.do?method=checkin'
 }
 
 Object.keys(api).forEach((key) => {
