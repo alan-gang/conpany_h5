@@ -1,6 +1,7 @@
 <script>
 import api from '@/api'
 import { getFirstDayOfMonth, getDaysOfMonth } from '@/util/Date'
+import { global } from '@/store'
 export default {
   data () {
     return {
@@ -10,8 +11,13 @@ export default {
       daysOfMonth: 0,
       firstDay: 0,
       curDay: 0,
-      checkinDateList: [],
+      // checkinDateList: [],
       curMonth: 0
+    }
+  },
+  computed: {
+    checkinDateList () {
+      return global.state.checkinDateList
     }
   },
   created () {
@@ -28,7 +34,8 @@ export default {
       this.$.myget(api.getCheckInfo).then(({data}) => {
         if (data.data.length > 0) {
           this.checkinCount = data.data.length
-          this.checkinDateList = data.data.map((d) => new Date(parseInt(d, 10)).getDate())
+          let checkinDateList = data.data.map((d) => new Date(parseInt(d, 10)).getDate())
+          this.___setGlobal({checkinDateList})
           cb && cb(data)
         }
       })
@@ -49,7 +56,8 @@ export default {
       } else {
         return ''
       }
-    }
+    },
+    ___setGlobal: global.actions.__setGlobal
   }
 }
 </script>

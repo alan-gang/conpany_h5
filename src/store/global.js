@@ -9,6 +9,7 @@ export default {
     sw: 0,
     afterLoginRedirect: '',
     afterLoginAction: '',
+    checkinDateList: []
   },
   actions: {
     __setGlobal (global) {
