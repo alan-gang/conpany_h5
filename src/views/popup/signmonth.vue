@@ -1,6 +1,6 @@
 <template lang="pug">
 f7-page.checkin-calendar-view
-  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="每日签到" back-link @back-click="close")
+  f7-navbar(:innerClass=" 'navbar_of_' + $options.name " title="每日签到" back-link @back-click="closePanel")
   .calendar-header.flex.flex-ai-c
     .week(v-for="w in weeks") {{w}}
   .calendar-days.flex.ft18
@@ -16,19 +16,15 @@ import signincommon from './signincommon'
 export default {
   mixins: [config, signincommon],
   name: 'signmonth',
-  mounted () {
-    this.getCheckInfo(() => {
-      this.initData()
-    })
-  },
   methods: {
     checkInHandler (date) {
       if (date !== this.date.getDate()) return
       this.checkIn()
-      this.close()
+      this.closePanel()
     },
-    close () {
-      this.$f7.panel.close()
+    __initSignMonth () {
+      this.initData()
+      this.getCheckInfo()
     }
   }
 }

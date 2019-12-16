@@ -504,6 +504,11 @@ let api = {
   hdd: '/report/otherReport.do?method=activitDetail',
   // 签到信息
   getCheckInfo: '/activity.do?method=getCheckInfo',
+  '/dscagamesclient/activity.do?method=getCheckInfo': {
+    '-1': {
+      fn: [{fn: '__getCheckInfoFaild'}]
+    }
+  },
   // 签到
   checkIn: '/activity.do?method=checkin'
 }

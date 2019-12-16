@@ -11,7 +11,7 @@ f7-app(:params=" f7Params ")
     f7-view
 
   // Right Panel with "reveal" effect
-  f7-panel.signmonth.z_99999.wp_100(right cover )
+  f7-panel.signmonth.z_99999.wp_100(right cover @panel:open="__setCall({fn: '__initSignMonth'}) ")
     //- f7-view(url="/signmonth")
     signmonth
 

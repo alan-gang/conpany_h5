@@ -57,6 +57,16 @@ export default {
         return ''
       }
     },
+    closePanel () {
+      this.$f7.panel && this.$f7.panel.close()
+    },
+    closePopup () {
+      this.$f7.popup && this.$f7.popup.close('#signin')
+    },
+    __getCheckInfoFaild () {
+      this.closePanel()
+      this.closePopup()
+    },
     ___setGlobal: global.actions.__setGlobal
   }
 }

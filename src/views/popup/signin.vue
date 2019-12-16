@@ -19,9 +19,9 @@
         .h_5
         .lh_44.h_55.w_44.mg_0a.c_f.ft_b(v-if=" i < 7 " :class="[getCls(curWeekDays[i])]" @click="signin(curWeekDays[i])") {{curWeekDays[i]}}
       f7-col(width="25")
-        f7-button.hlh_25.bgc_f7.week_title_lst.cli_a(panel-open=".signmonth")
+        f7-button.hlh_25.bgc_f7.week_title_lst.cli_a(panel-open=".signmonth" )
   .more-info.h_25.mt_20
-  
+
   f7-swiper.b.h_70(:params="{slidesPerView: 3, spaceBetween: 0}" pagination v-if="init")
     f7-swiper-slide.gift.gift_0.h_40
     f7-swiper-slide.gift.gift_1.h_40
@@ -46,15 +46,14 @@ export default {
     }
   },
   mounted () {
-    this.getCheckInfo(() => {
-      this.initData()
-      this.curWeekDay = getDayOfWeek(this.date, this.curDay)
-      this.genWeekDays()
-    })
   },
   methods: {
     __initSigninPopup () {
       this.init = true
+      this.initData()
+      this.curWeekDay = getDayOfWeek(this.date, this.curDay)
+      this.genWeekDays()
+      this.getCheckInfo()
     },
     signin (date) {
       if (date !== this.date.getDate()) return
