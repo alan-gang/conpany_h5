@@ -41,7 +41,8 @@ export default {
       return this.$f7.views.main.router.navigate.bind(this.$f7.views.main.router)
     },
     __back () {
-      return this.$root.$children[0].$children[0].$children[0].$f7router.back.bind(this.$root.$children[0].$children[0].$children[0].$f7router)
+      return this.$f7.views.main.router.back.bind(this.$f7.views.main.router)
+      // return this.$root.$children[0].$children[0].$children[0].$f7router.back.bind(this.$root.$children[0].$children[0].$children[0].$f7router)
     },
     __toast (args) {
       return (args) => {
