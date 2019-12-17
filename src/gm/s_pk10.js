@@ -255,32 +255,32 @@ export default {
   },
   '4137:0' () {},
 
-  '4140:0' () {
+  '4140:1' () {
     return [
       getCommonRow({n: '前三'}),
     ]
   },
-  '4141:0' () {
+  '4141:1' () {
     return [
       getCommonRow({n: '后三'}),
     ]
   },
-  '4142:0' () {
+  '4142:1' () {
     return [
       getCommonRow({n: '前四'}),
     ]
   },
-  '4143:0' () {
+  '4143:1' () {
     return [
       getCommonRow({n: '后四'}),
     ]
   },
-  '4144:0' () {
+  '4144:1' () {
     return [
       getCommonRow({n: '前五'}),
     ]
   },
-  '4145:0' () {
+  '4145:1' () {
     return [
       getCommonRow({n: '后五'}),
     ]

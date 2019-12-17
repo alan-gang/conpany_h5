@@ -220,23 +220,23 @@ export default {
   '4137:0' ({value}) {
     return this['4131:0']({value})
   },
-  '4140:0' ({nsl}) {
-    return C(nsl[0], 3)
+  '4140:1' ({nsl}) {
+    return C(nsl[0], 1)
   },
-  '4141:0' ({nsl}) {
-    return C(nsl[0], 3)
+  '4141:1' ({nsl}) {
+    return C(nsl[0], 1)
   },
-  '4142:0' ({nsl}) {
-    return C(nsl[0], 4)
+  '4142:1' ({nsl}) {
+    return C(nsl[0], 1)
   },
-  '4143:0' ({nsl}) {
-    return C(nsl[0], 4)
+  '4143:1' ({nsl}) {
+    return C(nsl[0], 1)
   },
-  '4144:0' ({nsl}) {
-    return C(nsl[0], 5)
+  '4144:1' ({nsl}) {
+    return C(nsl[0], 1)
   },
-  '4145:0' ({nsl}) {
-    return C(nsl[0], 5)
+  '4145:1' ({nsl}) {
+    return C(nsl[0], 1)
   },
   '4138:1' ({ns}) {
     let NS = [2, 2, 4, 4, 6, 6, 8, 8, 10, 8, 8, 6, 6, 4, 4, 2, 2]
@@ -248,7 +248,7 @@ export default {
     return C(nsl[0], 1)
   },
   // title: '龙虎
-  '4046:1' ({nsl}) {
+  '4146:1' ({nsl}) {
     return C(nsl[0], 1)
   },
   '4147:1' ({nsl}) {

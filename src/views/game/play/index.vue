@@ -244,7 +244,7 @@ export default {
             if (!this.cps[0]) {
               // back
             } else {
-              this.mid = this.cps[0].id
+              this.mid = this.m.filter(x => x.show)[0].id
             }
           }
         })
