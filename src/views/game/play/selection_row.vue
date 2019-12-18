@@ -149,8 +149,8 @@
                 
 
   f7-row.mt_5(no-gap v-if=" row.btns ")
-    f7-col.pr_2(v-for=" (v, i) in row.btns " :key="i" v-if=" v === '全' ? (!singleRowMaxLen || singleRowMaxLen >= vs.length) : true ")
-      f7-button(color="gray" fill @click=" btnclick(v) ") {{ v }}
+    f7-col.pr_2(v-for=" (v, i) in row.btns " :key="i" )
+      f7-button(color="gray" fill @click=" btnclick(v) " :disabled=" !(v === '全' ? (!singleRowMaxLen || singleRowMaxLen >= vs.length) : true) ") {{ v }}
 
 
 
@@ -331,7 +331,7 @@ export default {
     },
     // select length limit check
     slCheck (n) {
-      if (this.row.sl && this.vc.length > this.row.sl) this.row.lsv && this.unSelect(this.row.lsv)
+      if (this.singleRowMaxLen && this.vc.length > this.singleRowMaxLen) this.row.lsv && this.unSelect(this.row.lsv)
     },
     btnclick (btn) {
       switch (btn.split(':')[0]) {

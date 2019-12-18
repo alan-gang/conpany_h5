@@ -141,6 +141,7 @@ export default {
     }
   },
   created () {
+    this.update()
   },
   methods: {
     removeRepeat () {
