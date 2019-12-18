@@ -34,7 +34,6 @@
 <script>
 import config from '@/config'
 import signincommon from './signincommon'
-import { getDayOfWeek } from '@/util/Date'
 let now = new Date()
 // 星期天视为7
 let weekdayToday = now.getDay() ? now.getDay() : 7
@@ -45,7 +44,6 @@ export default {
   data () {
     return {
       init: false,
-      curWeekDay: 0,
       curWeekDays: thisweek,
       weekTitle: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
     }
@@ -56,7 +54,6 @@ export default {
     __initSigninPopup () {
       this.init = true
       this.initData()
-      this.curWeekDay = getDayOfWeek(this.date, this.curDay)
       this.getCheckInfo()
     },
     signin (date) {

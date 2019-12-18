@@ -36,7 +36,8 @@ export default {
         if (data.data.length > 0) {
           this.checkinCount = data.data.length
           this.checkinList = data.data.map(x => new Date(x)._toDayString())
-          let checkinDateList = data.data.map((d) => new Date(parseInt(d, 10)).getDate())
+          // filter过滤出当月的签到日期
+          let checkinDateList = data.data.fliter(x => new Date(x).getMonth() === (this.curMonth - 1)).map((d) => new Date(parseInt(d, 10)).getDate())
           this.___setGlobal({checkinDateList})
         }
         cb && cb(data)
