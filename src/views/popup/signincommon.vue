@@ -12,7 +12,8 @@ export default {
       firstDay: 0,
       curDay: 0,
       // checkinDateList: [],
-      curMonth: 0
+      curMonth: 0,
+      checkinList: [],
     }
   },
   computed: {
@@ -34,6 +35,7 @@ export default {
       this.$.myget(api.getCheckInfo).then(({data}) => {
         if (data.data.length > 0) {
           this.checkinCount = data.data.length
+          this.checkinList = data.data.map(x => new Date(x)._toDayString())
           let checkinDateList = data.data.map((d) => new Date(parseInt(d, 10)).getDate())
           this.___setGlobal({checkinDateList})
         }

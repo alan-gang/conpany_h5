@@ -11,13 +11,13 @@
 
   .thisweek.t_c.pt_5.ml_2.mr_2.c_9
     f7-row(no-gap)
-      f7-col(width="25" v-for=" (x, i) in weeks ")
+      f7-col(width="25" v-for=" (x, i) in weekTitle ")
         template(v-if=" i < weeks.length")
           .hlh_25.bgc_f7(:class=" {'week_title_lst cli_a': i === weeks.length } " ) {{ x }}
         template(v-else)
           f7-button.hlh_25.bgc_f7.week_title_lst.cli_a(panel-open=".signmonth")
         .h_5
-        .lh_44.h_55.w_44.mg_0a.c_f.ft_b(v-if=" i < 7 " :class="[getCls(curWeekDays[i])]" @click="signin(curWeekDays[i])") {{curWeekDays[i]}}
+        .lh_44.h_55.w_44.mg_0a.c_f.ft_b(v-if=" i < 7 " :class="[getCls(curWeekDays[i])]" @click="signin( curWeekDays[i] )") {{ curWeekDays[i].getDate() }}
       f7-col(width="25")
         f7-button.hlh_25.bgc_f7.week_title_lst.cli_a(panel-open=".signmonth" )
   .more-info.h_25.mt_20
@@ -35,6 +35,10 @@
 import config from '@/config'
 import signincommon from './signincommon'
 import { getDayOfWeek } from '@/util/Date'
+let now = new Date()
+// 星期天视为7
+let weekdayToday = now.getDay() ? now.getDay() : 7
+let thisweek = [now._bf(1 - weekdayToday), now._bf(2 - weekdayToday), now._bf(3 - weekdayToday), now._bf(4 - weekdayToday), now._bf(5 - weekdayToday), now._bf(6 - weekdayToday), now._bf(7 - weekdayToday)]
 export default {
   mixins: [config, signincommon],
   name: 'signin',
@@ -42,7 +46,8 @@ export default {
     return {
       init: false,
       curWeekDay: 0,
-      curWeekDays: []
+      curWeekDays: thisweek,
+      weekTitle: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
     }
   },
   mounted () {
@@ -52,21 +57,24 @@ export default {
       this.init = true
       this.initData()
       this.curWeekDay = getDayOfWeek(this.date, this.curDay)
-      this.genWeekDays()
       this.getCheckInfo()
     },
     signin (date) {
-      if (date !== this.date.getDate()) return
+      if (date._toDayString() !== now._toDayString()) return
       this.checkIn()
     },
-    genWeekDays () {
-      let firstDayOfWeek = this.curDay - this.curWeekDay
-      let endDayOfWeek = this.curDay + (this.weeks.length - this.curWeekDay - 1)
-      this.curWeekDays = []
-      for (let i = firstDayOfWeek; i <= endDayOfWeek; i++) {
-        this.curWeekDays.push(i)
+    getCls (date) {
+      let daystring = date._toDayString()
+      if (this.checkinList.includes(daystring)) {
+        return 'signed'
+      } else if (daystring === now._toDayString()) {
+        return 'today'
+      } else if (date.getTime() < now.getTime()) {
+        return 'miss'
+      } else {
+        return ''
       }
-    }
+    },
   }
 }
 </script>

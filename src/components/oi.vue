@@ -29,6 +29,9 @@ export default {
         case 'goEgame':
           this.$router.push('/egame/' + args)
           break
+        case 'goSignIn':
+          this.$f7.popup && this.$f7.popup.open('#signin')
+          break
       }
     }
   }
