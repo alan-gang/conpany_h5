@@ -2,11 +2,17 @@
 @import './gameicon.stylus'
 urls = {
     // 首页快捷按钮(贵族、签到、充值、提现、转账)
-    _vip: '~src/assets/signin/1',
-    _sign: '~src/assets/signin/2',
-    _load: '~src/assets/signin/3',
-    _withdraw: '~src/assets/signin/4',
-    _transfer: '~src/assets/signin/5',
+    _signin_vip: '~src/assets/signin/1',
+    _signin_sign: '~src/assets/signin/2',
+    _signin_load: '~src/assets/signin/3',
+    _signin_withdraw: '~src/assets/signin/4',
+    _signin_transfer: '~src/assets/signin/5',
+
+     _vip: '~src/assets/home/home_icon_noble',
+    _sign: '~src/assets/home/home_icon_checkin',
+    _load: '~src/assets/home/home_icon_recharge',
+    _withdraw: '~src/assets/home/home_icon_withdraw',
+    _transfer: '~src/assets/home/home_icon_transfer',
     _hot: '~src/assets/home/home_icon_title',
 
     _trash: '~src/assets/play/game_icon_delete',
@@ -150,11 +156,11 @@ urls = {
 
   }
   sizes = {
-     _vip: auto 80%,
-    _sign: auto 80%,
-    _load: auto 80%,
-    _withdraw: auto 80%,
-    _transfer: auto 80%,
+    _signin_vip: auto 80%,
+    _signin_sign: auto 80%,
+    _signin_load: auto 80%,
+    _signin_withdraw: auto 80%,
+    _signin_transfer: auto 80%,
 
     _trash: auto 60%,
     _bookcar: auto 60%,

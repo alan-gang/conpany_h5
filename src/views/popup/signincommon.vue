@@ -35,7 +35,7 @@ export default {
       this.$.myget(api.getCheckInfo).then(({data}) => {
         if (data.data.length > 0) {
           // return ['2019-02-08', '今天'], 上月最后7天加当月数据
-          this.checkinList = data.data.map(x => new Date(x * 1)._toDayString())
+          this.checkinList = (data.lstmonth || []).concat(data.data).map(x => new Date(x * 1)._toDayString())
           // filter过滤出当月的签到日期
           let checkinDateList = data.data.filter(x => new Date(x * 1).getMonth() === (this.curMonth - 1)).map((d) => new Date(parseInt(d, 10)).getDate())
           this.checkinCount = checkinDateList.length

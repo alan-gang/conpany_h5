@@ -16,20 +16,19 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
   .mt_10.pt_5.pb_5.bg-color-white
     f7-swiper.b(:params="{slidesPerView: 5, spaceBetween: 10}")
       f7-swiper-slide.ba.t_c
-        f7-link._icon._vip(color="black" icon-size="50px" icon-f7=" home " @click=" __go('/frame/', {props: {title: '贵族Club', url: '/xy_activity/wap/vipClub.html'}}) ")
+        f7-link._icon._signin_vip(color="black" icon-size="50px" icon-f7=" home " @click=" __go('/frame/', {props: {title: '贵族Club', url: '/xy_activity/wap/vipClub.html'}}) ")
         .c_6 贵族Club
-        //- f7-link._icon._sign(icon-size="50px" icon-f7=" home " @click=" getCheckToday ") 签到
       f7-swiper-slide.ba.t_c
-        f7-link._icon._sign(icon-size="50px" icon-f7=" home " popup-open="#signin") 
+        f7-link._icon._signin_sign(icon-size="50px" icon-f7=" home " popup-open="#signin") 
         .c_6 签到
       f7-swiper-slide.ba.t_c
-        f7-link._icon._load(icon-size="50px" icon-f7=" home " href="/me/load/")
+        f7-link._icon._signin_load(icon-size="50px" icon-f7=" home " href="/me/load/")
         .c_6 充值
       f7-swiper-slide.ba.t_c
-        f7-link._icon._withdraw(icon-size="50px" icon-f7=" home " href="/me/withdraw/")
+        f7-link._icon._signin_withdraw(icon-size="50px" icon-f7=" home " href="/me/withdraw/")
         .c_6 提现
       f7-swiper-slide.ba.t_c
-        f7-link._icon._transfer(icon-size="50px" icon-f7=" home " href="/me/transfer/")
+        f7-link._icon._signin_transfer(icon-size="50px" icon-f7=" home " href="/me/transfer/")
         .c_6 转账
 
   
