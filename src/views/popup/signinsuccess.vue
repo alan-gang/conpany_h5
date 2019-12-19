@@ -7,7 +7,8 @@
 
   f7-list
     f7-list-item(v-for=" (x, i) in data " :key="i" :title="x")
-      f7-button(slot="after" popup-close="#signinsuccess" @click=" __go('/promo/', {props: {tabid: i === 0 ? '#gift' : '#coupon'}} ) ") 查看{{i === 0 ? '礼品箱' : '优惠券'}}
+      f7-button(v-if=" x.indexOf('优惠券') !== -1 " slot="after" popup-close="#signinsuccess" @click=" __go('/promo/', {props: {tabid: '#coupon'}} ) ") 查看优惠券
+      f7-button(v-else slot="after" popup-close="#signinsuccess" @click=" __go('/promo/', {props: {tabid: '#gift'}} ) ") 查看礼品箱
 
 </template>
 
