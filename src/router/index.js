@@ -113,6 +113,8 @@ import _pl from '@/views/rfs/_pl'
 // 团队统计
 import tpl from '@/views/rfs/tpl'
 
+import signmonth from '@/views/popup/signmonth'
+
 let async = url => {
   return (routeTo, routeFrom, resolve, reject) => {
     // dynamic import component; returns promise
@@ -606,4 +608,8 @@ export default [
     path: '/rfs/ac/',
     component: _ac
   },
+  {
+    path: '/signmonth',
+    component: signmonth
+  }
 ]

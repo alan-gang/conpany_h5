@@ -67,3 +67,23 @@ window.String.prototype.__toDayString = window.Date.prototype.__toDayString = fu
     return x
   }
 }
+
+export function getFirstDayOfMonth (date) {
+  return getDayOfWeek(date, 1)
+}
+
+export function getDayOfWeek(date, d) {
+  const temp = new Date(date.getTime())
+  temp.setDate(d)
+  return temp.getDay()
+}
+
+export function getDaysOfMonth (year, month) {
+  if ([3, 5, 8, 10].includes(month)) {
+    return 30
+  }
+  if (month === 1) {
+    return ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) ? 29 : 28
+  }
+  return 31
+}
