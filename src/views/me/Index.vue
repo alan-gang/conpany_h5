@@ -5,7 +5,7 @@
     f7-list.mg_0(no-hairlines)
 
       f7-list-item.bgc_f
-        f7-icon._icon(:class=" '_level_' + (user.level + 1) " slot="media" f7=" home " size="80px" style="height: 100%; width: 80px")
+        f7-link._icon(:class=" '_level_' + (user.level + 1) "  icon-f7=" home " icon-size="80px" style="height: 100%; width: 80px")
         .ft_14.minw_160
           .mg_5 {{ user.userName }}
           .mg_5
@@ -142,7 +142,7 @@ export default {
 
   .list .item-media+.item-inner
     margin-left 0
-  
+
   .button.wp_50
     padding 0
     &:nth-child(1)
@@ -156,7 +156,7 @@ export default {
         width 20px
       &:after
         height 100%
-        border-bottom-left-radius 20px 40px 
+        border-bottom-left-radius 20px 40px
         background-color var(--f7-page-bg-color)
       &:before
         z-index 1
@@ -164,8 +164,8 @@ export default {
         height 20px
         width 40px
         background radial-gradient(circle at 0% 180%, transparent, transparent 70%, var(--f7-page-bg-color) 70%)
-        
-      
+
+
     &:nth-child(2)
       border-top-right-radius 10px
       &:before
@@ -177,7 +177,7 @@ export default {
         width 20px
       &:after
         height 100%
-        border-bottom-right-radius 20px 40px 
+        border-bottom-right-radius 20px 40px
         background-color var(--f7-page-bg-color)
       &:before
         z-index 1
@@ -186,5 +186,5 @@ export default {
         width 40px
         background radial-gradient(circle at 100% 180%, transparent, transparent 70%, var(--f7-page-bg-color) 70%)
 
-  
+
 </style>
