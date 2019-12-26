@@ -17,6 +17,9 @@ export default {
         case 'goToList':
           this.__setCall({fn: '__reloadPromo'})
           break
+        case 'goToCoupon':
+          this.__go('/promo/', {props: {tabid: '#coupon'}}) // 优惠券
+          break
         case 'goPromo':
           this.$router.push('/user')
           break
