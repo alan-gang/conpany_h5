@@ -111,6 +111,7 @@ colors = {
   'ccc': #ccc,
   'f7': #f7f7f7,
   'grass_green': rgb(114,214,12),
+  red: red,
 }
 for k, v in  colors
   .c_{k}
