@@ -26,7 +26,7 @@
               span(v-if="titleName" v-bind:class=" colorOfV(longhuVal(row_ccs(r).data)) ") {{ longhuVal(row_ccs(r).data) }}
               pre.mg_0.cac.inlb(v-if=" !titleName && codeStyle && row_ccs(r) ")
                 span(v-if=" row_ccs(r) && !row_ccs(r).value.join ") {{ Object.prototype.toString.call(row_ccs(r).value) === '[object Object]' ? Object.values(row_ccs(r).value).join('') : '--' }}
-                span(v-if=" row_ccs(r) && row_ccs(r).value.join " v-for=" (v, i) in  row_ccs(r).value" v-bind:class=" colorOfV(v) ") {{ v }}
+                span(v-if=" row_ccs(r) && row_ccs(r).value.join " v-for=" (v, i) in  row_ccs(r).value" v-bind:class=" colorOfV(v) ") {{ Object.prototype.toString.call(v) === '[object Object]' ? Object.values(v).join('') : v }}
 </template>
 
 <script>
