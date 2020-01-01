@@ -47,7 +47,7 @@
     f7-tabs(animated swipeable)
       f7-tab#bonus_SSC(tab-active)
         f7-page
-          f7-card(v-for=" (x, j) in lotteryPrizeInfo.SSL " :key="j")
+          f7-card(v-for=" (x, j) in lotteryPrizeInfo['SSC'] " :key="j")
             f7-card-content
               .stripe_gray_white_30.pl_15.pr_15
                 template(v-for=" (y, k) in dns ")
@@ -68,7 +68,7 @@
 
       f7-tab#bonus_LHC
         f7-page
-          f7-card(v-for=" (x, j) in lotteryPrizeInfo.SSL " :key="j")
+          f7-card(v-for=" (x, j) in lotteryPrizeInfo['LHC'] " :key="j")
             f7-card-content
               .stripe_gray_white_30.pl_15.pr_15
                 template(v-for=" (y, k) in dns ")
@@ -89,7 +89,7 @@
 
       f7-tab#bonus_KS
         f7-page
-          f7-card(v-for=" (x, j) in lotteryPrizeInfo.SSL " :key="j")
+          f7-card(v-for=" (x, j) in lotteryPrizeInfo['KS'] " :key="j")
             f7-card-content
               .stripe_gray_white_30.pl_15.pr_15
                 template(v-for=" (y, k) in dns ")
@@ -110,7 +110,7 @@
 
       f7-tab#bonus_11X5
         f7-page
-          f7-card(v-for=" (x, j) in lotteryPrizeInfo.SSL " :key="j")
+          f7-card(v-for=" (x, j) in lotteryPrizeInfo['11X5'] " :key="j")
             f7-card-content
               .stripe_gray_white_30.pl_15.pr_15
                 template(v-for=" (y, k) in dns ")
@@ -131,7 +131,7 @@
 
       f7-tab#bonus_BJPK10
         f7-page
-          f7-card(v-for=" (x, j) in lotteryPrizeInfo.SSL " :key="j")
+          f7-card(v-for=" (x, j) in lotteryPrizeInfo['BJPK10'] " :key="j")
             f7-card-content
               .stripe_gray_white_30.pl_15.pr_15
                 template(v-for=" (y, k) in dns ")
@@ -152,7 +152,7 @@
 
       f7-tab#bonus_BJKL8
         f7-page
-          f7-card(v-for=" (x, j) in lotteryPrizeInfo.SSL " :key="j")
+          f7-card(v-for=" (x, j) in lotteryPrizeInfo['BJKL8'] " :key="j")
             f7-card-content
               .stripe_gray_white_30.pl_15.pr_15
                 template(v-for=" (y, k) in dns ")
@@ -173,7 +173,7 @@
 
       f7-tab#bonus_SSL
         f7-page
-          f7-card(v-for=" (x, j) in lotteryPrizeInfo.SSL " :key="j")
+          f7-card(v-for=" (x, j) in lotteryPrizeInfo['SSL'] " :key="j")
             f7-card-content
               .stripe_gray_white_30.pl_15.pr_15
                 template(v-for=" (y, k) in dns ")
