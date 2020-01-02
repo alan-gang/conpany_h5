@@ -324,7 +324,7 @@ export default {
           lotteryId: this.id,
           issue: this.issue,
           totProjs: this.n,
-          totMoney: this.mido.extract ? this.__getFnumberM() : this.m_ || this.__getTimesM(),
+          totMoney: this.mido.extract ? this.__getFnumberM() : this.__getTimesM() || this.m_,
           isusefree: 0,
           betList: this.__getKqItems(),
         })
