@@ -149,7 +149,7 @@ export default {
       return !this.ntsf
     },
     update (v) {
-      v.money = (v.count * v.up_ * v.times * [1, 0.1, 0.01, 0.001][v.mode - 1])._f3()
+      v.money = (v.count * v.up_ * v.times * [1, 0.1, 0.01, 0.001, 0.5][v.mode - 1])._f3()
     },
     __getBookingArgs () {
       return {
