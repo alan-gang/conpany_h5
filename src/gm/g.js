@@ -23,6 +23,8 @@ let g = [
   {id: 34, gn: '时时彩', t_: 'ssc', mid: '130', n: '激情30秒', dmid_: '16:1', kq: true},
   {id: 165, gn: '时时彩', t_: 'ssc', mid: '132', n: '奇趣腾讯5分彩', dmid_: '16:1', kq: true},
   {id: 166, gn: '时时彩', t_: 'ssc', mid: '133', n: '奇趣腾讯10分彩', dmid_: '16:1', kq: true},
+  {id: 201, gn: '时时彩', t_: 'ssc', mid: '141', n: '奥地利50秒', dmid_: '16:1', kq: false},
+  {id: 202, gn: '时时彩', t_: 'ssc', mid: '142', n: '奥地利100秒', dmid_: '16:1', kq: false},
   // PK10
   {id: 39, gn: 'PK10', t_: 'pk10', mid: '105', n: '幸运飞艇', hot: true, dmid_: '4001:1'},
   {id: 13, gn: 'PK10', t_: 'pk10', mid: '18', n: '北京PK10', hot: true, dmid_: '4001:1'},

@@ -12,7 +12,7 @@ f7-page.bgc_f7
         f7-card(v-for=" (x, i) in cpt_all " :key="i")
           f7-card-header {{ x.n }}
           f7-card-content
-            .pt_5.pb_5 
+            .pt_5.pb_5
               span 开奖频率：
               span.text-color-deeporange {{ x.frequency }}
 
@@ -27,8 +27,8 @@ f7-page.bgc_f7
             .pt_5.pb_5(v-if="x.all")
               span 开奖时间：
               span.text-color-deeporange {{ x.all }}
-  
-      
+
+
     f7-tab#howtoplay_tabindex_2(@tab:show=" __tabShow ")
       methodsIntro(:id="id" :title="title")
 
@@ -65,6 +65,8 @@ export default {
         {n: '新疆怀旧时时彩', gn: '时时彩', frequency: '每天1440期，1分钟1期', fst: '', scd: '', all: '0：00：57 - 23：59：57'},
         {n: '阿里云分分彩', gn: '时时彩', frequency: '每天1440期，1分钟1期', fst: '', scd: '', all: '0：00：57 - 23：59：57'},
         {n: '奇趣腾讯分分彩', gn: '时时彩', frequency: '每天1440期，1分钟1期', fst: '', scd: '', all: '0：00：57 - 23：59：57'},
+        {n: '奥地利50秒', gn: '时时彩', frequency: '每天1728期，50秒1期', fst: '', scd: '', all: '0：00：57 - 23：59：57'},
+        {n: '奥地利100秒', gn: '时时彩', frequency: '每天864期，100秒1期', fst: '', scd: '', all: '0：00：57 - 23：59：57'},
         // 11选五
         {n: '11运夺金', gn: '十一选五', frequency: '每天43期，20分钟1期', fst: '', scd: '', all: '08：59：30 - 22：59：30'},
         {n: '江苏11选5', gn: '十一选五', frequency: '每天41期，20分钟1期', fst: '', scd: '', all: '08:43:00 - 22:03:00'},
@@ -112,5 +114,5 @@ export default {
     display none
   .page-content
     padding-top 0
-  
+
 </style>
