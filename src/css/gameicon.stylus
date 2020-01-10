@@ -39,6 +39,8 @@ urls = {
     _gid34: '~src/assets/gameicon/game_icon_jq30m',
     _gid165: '~src/assets/gameicon/game_icon_qq5fc',
     _gid166: '~src/assets/gameicon/game_icon_qq10fc',
+    _gid201: '~src/assets/gameicon/game_icon_adl50m',
+    _gid202: '~src/assets/gameicon/game_icon_adl100m',
 
     _gid6: '~src/assets/gameicon/game_icon_11ydj',
     _gid11: '~src/assets/gameicon/game_icon_dj120',
@@ -94,7 +96,7 @@ urls = {
   }
   sizes = {
   }
-    
+
 ._icon
   .icon
     color rgba(0,0,0,0)
@@ -108,4 +110,4 @@ urls = {
   for k, v in  urls
     &.{k}
       bg(v+'@2x.png', sizes[k] || (auto 80%))
-  
+
