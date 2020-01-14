@@ -53,16 +53,16 @@ for x in  -100 -80 -50  -44 -40 -30 -20 -10 -5  -3 -2 0 1 2 3 4 5 8 10 15 20 25 
     padding-left x * 1px
   .pr_{x}
     padding-right x * 1px
-  
+
   .p_l_{x}
     left x * 1px
-    
+
   .p_r_{x}
     right x * 1px
-  
+
   .p_t_{x}
     top x * 1px
-    
+
   .p_b_{x}
     bottom x * 1px
 
@@ -85,7 +85,7 @@ for x in  0 1 2 5 10 12 15 20 25 28 30 32 33 34 35 40 44 45 50 55 60 65 70 80 90
     min-width x * 1px
   .minh_{x}
     min-height x * 1px
-  
+
 .h_100p
   height 100%
 
@@ -103,6 +103,7 @@ colors = {
   '9': #999,
   '239': rgb(239, 239, 239),
   'f': #fff,
+  't':transparent,
   // 'light_orange': #fffde8,
   'light_orange': rgb(255,246,209),
   'orange': rgb(255,84,41),
@@ -131,10 +132,10 @@ for x in 0 10 15 16 17 18 19 20 25 30 35 40 45 50 55 60 65 70 80 90 100 120 150 
     height x * 1vh
   .mvh_{x}
     max-height x * 1vh
-  
+
   .minvh_{x}
     min-height x * 1vh
-  
+
   .mwp_{x}
     max-width x + '%'
 
@@ -253,6 +254,3 @@ li
 
 .twinkle.c_e
   animation Fade 2s infinite
-
-
-

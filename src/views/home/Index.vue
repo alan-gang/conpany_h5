@@ -1,6 +1,6 @@
 <template lang="pug">
 
-f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
+f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh" :style="{'backgroundSize':`100% ${this.bgHeight}px`}")
   f7-navbar(:innerClass=" 'navbar_of_' + $options.name ")
     f7-nav-left
       f7-link(popup-open="#login" text="登录" v-show=" user.login === false ")
@@ -19,7 +19,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
         f7-link._icon._signin_vip(color="black" icon-size="50px" icon-f7=" home " @click=" __go('/frame/', {props: {title: '贵族Club', url: '/xy_activity/wap/vipClub.html'}}) ")
         .c_6 贵族Club
       f7-swiper-slide.ba.t_c
-        f7-link._icon._signin_sign(icon-size="50px" icon-f7=" home " popup-open="#signin") 
+        f7-link._icon._signin_sign(icon-size="50px" icon-f7=" home " popup-open="#signin")
         .c_6 签到
       f7-swiper-slide.ba.t_c
         f7-link._icon._signin_load(icon-size="50px" icon-f7=" home " href="/me/load/")
@@ -31,23 +31,23 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
         f7-link._icon._signin_transfer(icon-size="50px" icon-f7=" home " href="/me/transfer/")
         .c_6 转账
 
-  
+
   f7-list.mt_5.mb_5.ft_12(text-color="gray")
     f7-list-item.hlh_30(:title=" sysNoticesContent " link='/notice/')
       f7-icon(slot='media' f7='volume_fill' text-color="deeporange" size="18px")
 
-  .mb_5.pt_5.pb_5.bg-color-white
-    .pt_5.pb_5.pl_10.pr_10 
+  .mb_5.pt_5.pb_5.bg-color-white(ref="normal")
+    .pt_5.pb_5.pl_10.pr_10
       f7-icon._icon._hot(f7=" home " size="18px")
       span.pl_10.v_m 热门游戏
 
     f7-swiper.b(:params="{slidesPerView: 4, spaceBetween: 10}")
       f7-swiper-slide.ba.t_c(v-for=" (h, i) in hots " :key=" i + Math.random() ")
-        f7-link._icon(:class=" '_gid' + h.id " icon-f7=" home " icon-size="72px" @click=" __go('/game/play/', {props: h}) ") 
+        f7-link._icon(:class=" '_gid' + h.id " icon-f7=" home " icon-size="72px" @click=" __go('/game/play/', {props: h}) ")
         .c_333 {{ h.n }}
 
   .mb_5.pt_5.pb_5.bg-color-white
-    .pt_5.pb_5.pl_10.pr_10 
+    .pt_5.pb_5.pl_10.pr_10
       f7-icon._icon._hot(f7=" home " size="18px")
       span.pl_10.v_m 中奖喜报
 
@@ -63,7 +63,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
           span.f_r.text-color-gray {{ (      parseInt ( (Date.now() - h.timestamp * 1) / 1000 )     )._toTimeGap('前') }}
 
   .mb_5.pt_5.pb_5.bg-color-white
-    .pt_5.pb_5.pl_10.pr_10 
+    .pt_5.pb_5.pl_10.pr_10
       f7-icon._icon._hot(f7=" home " size="18px")
       span.pl_10.v_m 平台推荐
 
@@ -75,7 +75,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh")
         .c_333 {{ h.title }}
 
   .mb_5.pt_5.pb_5.bg-color-white
-    .pt_5.pb_5.pl_10.pr_10 
+    .pt_5.pb_5.pl_10.pr_10
       f7-icon._icon._hot(f7=" home " size="18px")
       span.pl_10.v_m 关于我们
 
@@ -102,14 +102,14 @@ import g from '@/gm/g'
 import ag from '@/gm/ag'
 export default {
   mixins: [config],
-  components: {
-  },
+  components: {},
   name: 'home',
   props: [],
   data () {
     return {
       banners: [],
       sysNoticesContent: '',
+      bgHeight: 0,
       news: [],
       // plats: [],
       usimgs: [
@@ -134,36 +134,38 @@ export default {
     this.getChatUrl()
   },
   mounted () {
+    this.$nextTick(() => {
+      this.bgHeight = this.$refs.normal.offsetTop
+    })
   },
   methods: {
     getActivityBanner () {
-      this.$.get(api.getActivityBanner).then(({data: {mobileBanner}}) => {
+      this.$.get(api.getActivityBanner).then(({ data: { mobileBanner } }) => {
         this.banners = mobileBanner
       })
     },
     getCheckToday () {
-      this.$.get(api.getCheckToday).then(({data}) => {
-      })
+      this.$.get(api.getCheckToday).then(({ data }) => {})
     },
     sysNotices () {
-      this.$.get(api.sysNotices, {page: 1, pageSize: 1, isReleaseLine: 1}).then(({data: {sysNotices}}) => {
+      this.$.get(api.sysNotices, { page: 1, pageSize: 1, isReleaseLine: 1 }).then(({ data: { sysNotices } }) => {
         this.sysNoticesContent = (sysNotices[0] || {}).content
       })
     },
     rewardInfo () {
-      this.$.get(api.rewardInfo).then(({data: {winners}}) => {
+      this.$.get(api.rewardInfo).then(({ data: { winners } }) => {
         this.news = winners
       })
     },
     recomPlats () {
-      this.$.get(api.recomPlats, {chanType: '1,2'}).then(({data: {data}}) => {
-        this.__setCache({plats: data})
+      this.$.get(api.recomPlats, { chanType: '1,2' }).then(({ data: { data } }) => {
+        this.__setCache({ plats: data })
         // this.plats = data
       })
     },
     getChatUrl () {
-      this.$.get(api.getChatUrl).then(({data: {chatUrl}}) => {
-        this.__setUser({chatUrl: chatUrl})
+      this.$.get(api.getChatUrl).then(({ data: { chatUrl } }) => {
+        this.__setUser({ chatUrl: chatUrl })
       })
     },
     refresh (evt, done) {
@@ -178,12 +180,14 @@ export default {
 @import '~src/css/var.stylus'
 // 建议不添加scoped， 所有样式最多嵌套2层
 .home
+  bg('~src/assets/newyear/bg@2x.png')
+  background-position unset
   .kf
     bg('~src/assets/home/home_icon_customservice.png', auto 60%)
-  
+
   .go_speed
     bg('~src/assets/home/home_icon_speed@2x.png', auto 60%)
-    
+
   .a
     width 90%
     height 25%
@@ -198,12 +202,12 @@ export default {
   .caaa
     left 15px
     top -17px
-  
+
   .da
   .ea
     img
       border-radius 5px
       width 100%
       height 100px
-    
+
 </style>
