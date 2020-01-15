@@ -47,29 +47,33 @@
 <style lang="stylus" scoped>
   @import '~src/css/var.stylus'
   urls = {
-    'home': '~src/assets/index/tab_home_',
-    'promo': '~src/assets/index/tab_gift_',
-    'game': '~src/assets/index/tab_games_',
-    'mess': '~src/assets/index/tab_chat_',
-    'me': '~src/assets/index/tab_profile_'
+    // 'home': '~src/assets/index/tab_home_',
+    'home': '~src/assets/newyear/tab_home_',
+    // 'promo': '~src/assets/index/tab_gift_',
+    'promo': '~src/assets/newyear/tab_gift_',
+    // 'game': '~src/assets/index/tab_games_',
+    'game': '~src/assets/newyear/tab_games_',
+    // 'mess': '~src/assets/index/tab_chat_',
+    'mess': '~src/assets/newyear/tab_chat_',
+    'me': '~src/assets/newyear/tab_profile_'
   }
   sizes = {
     'promo': auto 80%
   }
-    
+
   .icon
     for k, v in  urls
       &.{k}
         bg(v+'nor@2x.png', sizes[k] || (auto 100%))
 
-  
+
   .tab-link-active
     .icon
       for k, v in  urls
         &.{k}
           bg(v+'pre@2x.png', sizes[k] || (auto 100%))
-  
+
     .tabbar-label
       color rgb(255,84,41)
-      
+
 </style>

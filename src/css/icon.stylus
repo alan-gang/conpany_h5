@@ -2,11 +2,16 @@
 @import './gameicon.stylus'
 urls = {
     // 首页快捷按钮(贵族、签到、充值、提现、转账)
-    _signin_vip: '~src/assets/signin/1',
-    _signin_sign: '~src/assets/signin/2',
-    _signin_load: '~src/assets/signin/3',
-    _signin_withdraw: '~src/assets/signin/4',
-    _signin_transfer: '~src/assets/signin/5',
+    // _signin_vip: '~src/assets/signin/1',
+    _signin_vip: '~src/assets/newyear/sy_quan',
+    // _signin_sign: '~src/assets/signin/2',
+    _signin_sign: '~src/assets/newyear/sy_qian',
+    // _signin_load: '~src/assets/signin/3',
+    _signin_load: '~src/assets/newyear/sy_min',
+    // _signin_withdraw: '~src/assets/signin/4',
+    _signin_withdraw: '~src/assets/newyear/sy_qian1',
+    // _signin_transfer: '~src/assets/signin/5',
+    _signin_transfer: '~src/assets/newyear/sy_dao',
 
      _vip: '~src/assets/home/home_icon_noble',
     _sign: '~src/assets/home/home_icon_checkin',
@@ -58,7 +63,7 @@ urls = {
     _safeicon_nn: '~src/assets/me/safecenter/security_icon_nickname',
     _safeicon_sb: '~src/assets/me/safecenter/security_icon_verify',
     _safeicon_birthday: '~src/assets/me/safecenter/security_icon_sr',
-    
+
     _safeicon_email_big: '~src/assets/me/safecenter/securityset_icon_mail',
     _safeicon_sb_big: '~src/assets/me/safecenter/securityset_icon_verify',
     _safeicon_pwd_big: '~src/assets/me/safecenter/securityset_icon_pin',
@@ -193,4 +198,3 @@ urls = {
   for k, v in  urls
     &.{k}
       bg(v+'@2x.png', sizes[k] || (auto 80%))
-
