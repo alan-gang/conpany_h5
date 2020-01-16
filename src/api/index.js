@@ -450,6 +450,7 @@ let api = {
   mySubContractMobile: '/team/contractBonus.do?method=mySubContractMobile',
   getSysContractRange: '/team/contractBonus.do?method=getSysContractRange',
   rconfig: '/team/contractBonus.do?method=myRule',
+  qryContractStat: '/team/contractBonus.do?method=qryContractStat', // 登录契约提醒
   // 创建一个契约
   // http://192.168.169.44:9901/cagamesclient/team/contractBonus.do?method=createContract
   createContract: '/team/contractBonus.do?method=createContract',
