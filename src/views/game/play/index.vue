@@ -215,14 +215,14 @@ export default {
   methods: {
     checkIsShowDialog () {
       let matchArr = [1, 3, 4, 35, 6, 7, 8, 36, 38, 46, 13, 24, 23, 25, 159, 160, 9, 5, 10]
-      let sDate = new Date('2020-01-22').getTime()
-      let eDate = new Date('2020-01-31').getTime()
-      let currentDate = new Date().getTime()
-      if (currentDate > sDate && currentDate < eDate) {
-        if (matchArr.includes(this.id)) {
-          this.isShowMasker = true
-        }
+      // let sDate = new Date('2020-01-22').getTime()
+      // let eDate = new Date('2020-01-31').getTime()
+      // let currentDate = new Date().getTime()
+      // if (currentDate > sDate && currentDate < eDate) {
+      if (matchArr.includes(this.id)) {
+        this.isShowMasker = true
       }
+      // }
     },
     swap (flag) {
       this.t = flag ? 'kq' : this.t_
