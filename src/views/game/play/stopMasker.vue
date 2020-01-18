@@ -14,7 +14,7 @@
           span 戏
         .recomment-right
       .recomment-list-wrapper
-        .recomment-list(v-for="item in lotteryList" :key="item.id" @click="change") {{item.n}}
+        .recomment-list(v-for="item in lotteryList" :key="item.id" @click="change(item)") {{item.n}}
 
 </template>
 
@@ -34,15 +34,11 @@ export default {
     }
   },
   methods: {
-    change () {
+    change (props) {
       this.$f7router.navigate('/game/play/', {
         reloadCurrent: true,
-        props: {
-          foo: 'bar',
-          bar: true,
-        }
+        props
       })
-      // this.__go('/game/play/', { props: 123 })
     }
   }
 }
