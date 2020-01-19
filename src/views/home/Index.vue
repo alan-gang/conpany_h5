@@ -92,7 +92,7 @@ f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh" :style="{'backgr
   .p_fix.p_b_150.p_r_10.z_1(v-if=" user.showDownload ")
     f7-link.p_a.p_r_5.p_t_5.bgc_g.rp_50(icon-f7="close" color="white" icon-size="20px" @click=" __setUser({showDownload: !user.showDownload}) ")
     //- img.w_120(src="/static/img/home/gotodownload.png" @click="window.open('http://x.xybets.com')")
-    img.w_120(src="/static/img/home/gotodownload.png" @click="window.open('http://x.xybets.com')")
+    img.w_120(src="/static/img/home/HomeThis-icon-xzapp@2x.png" @click="window.open('http://x.xybets.com')")
 
 
 </template>
