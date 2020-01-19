@@ -204,7 +204,6 @@ export default {
     }
   },
   created () {
-    console.log(this.$f7route.props)
     this.checkIsShowDialog()
     this.swap(this.kq && this.kq.active)
     // 监听展开路单
