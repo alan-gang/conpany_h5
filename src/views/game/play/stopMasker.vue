@@ -1,5 +1,5 @@
 <template lang="pug">
-  .masker-container
+  .masker-container.p_fix.wp_100.hp_100.p_l_0.bgc_o5.z_9999
     .masker-content
       .masker-title
       .masker-renew-time   恢复时间:2020年2月1日(正月初八) 00:00:00
@@ -14,7 +14,7 @@
           span 戏
         .recomment-right
       .recomment-list-wrapper
-        .recomment-list(v-for="item in lotteryList" :key="item.id" @click="change") {{item.n}}
+        .recomment-list(v-for="item in lotteryList" :key="item.id" @click="change(item)") {{item.n}}
 
 </template>
 
@@ -34,15 +34,11 @@ export default {
     }
   },
   methods: {
-    change () {
+    change (props) {
       this.$f7router.navigate('/game/play/', {
         reloadCurrent: true,
-        props: {
-          foo: 'bar',
-          bar: true,
-        }
+        props
       })
-      // this.__go('/game/play/', { props: 123 })
     }
   }
 }
@@ -50,13 +46,8 @@ export default {
 
 <style scoped lang="stylus">
 @import '~src/css/var.stylus'
+@import '~src/css/common.stylus'
 .masker-container {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
   .masker-content {
     bg('~src/assets/stopmasker/masker_bg@2x.png', 100% 100%);
     width: 92.4316vw;
@@ -84,10 +75,8 @@ export default {
       margin: 0 auto 5.8776vw;
     }
     .masker-recomment-game {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 67.7134vw;
+      flex()
+      width: 77.7134vw;
       margin: 0 auto;
       .recomment-right {
         width: 7.4879vw;
@@ -95,8 +84,7 @@ export default {
         bg('~src/assets/stopmasker/right@2x.png', 100% 100%);
       }
       .recomment-main {
-        display: flex;
-        align-items: center;
+        flex(start)
         span {
           width: 8.2931vw;
           height: 8.2126vw;
@@ -116,12 +104,9 @@ export default {
       }
     }
     .recomment-list-wrapper {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
+      flex(,,wrap);
       width: 79.1465vw;
       margin: 5.2335vw auto 0;
-      justify-content: space-between;
       .recomment-list {
         width: 23.6715vw;
         height: 7.3269vw;
