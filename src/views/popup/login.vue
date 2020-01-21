@@ -1,12 +1,12 @@
 <template lang="pug">
 
 f7-page.login.bg-color-white
-  
+
   f7-link.pd_15(popup-close="#login")
     span.ft_16.c_9 取消
-  
+
   .blocklog
-  
+
   f7-list.pr_15.mb_5(no-hairlines)
     f7-list-input(v-show=" !tryPlay " required validate type='text', floating-label label="用户名" placeholder='用户名', clear-button :value='local.un', @input='local.un = $event.target.value')
     f7-list-input(v-show=" !tryPlay " required validate type='password',  floating-label label="密码" placeholder='密码', clear-button :value='local.pwd', @input='local.pwd = $event.target.value')
@@ -36,7 +36,8 @@ f7-page.login.bg-color-white
     f7-button.inlb(color="gray" popup-open="#register") 邀请注册
     f7-button.inlb(@click="window.open('http://x.xybets.com')") 下载APP
 
-  f7-toolbar.t_c.ft_14(bottom bg-color="white" no-border)
+  //- bg-color="white"
+  f7-toolbar.bgc_t.t_c.ft_14(bottom  no-border)
     f7-link(text="" )
     f7-link(text="线路切换" popup-open="#speed")
     f7-link(text="" )
@@ -49,8 +50,7 @@ f7-page.login.bg-color-white
 import config from '@/config'
 export default {
   mixins: [config],
-  components: {
-  },
+  components: {},
   name: 'login',
   props: [],
   data () {
@@ -62,8 +62,7 @@ export default {
       tryPlay: false
     }
   },
-  created () {
-  },
+  created () {},
   methods: {
     __initLoginPopup () {
       this.tryPlay = false
@@ -91,15 +90,16 @@ export default {
 @import '~src/css/var.stylus'
 // 建议不添加scoped， 所有样式最多嵌套2层
 .login
+  bg('~src/assets/newyear/bg.png', auto 100%)
   .blocklog
     height 100px
     bg('~src/assets/index/tab_games_nor@2x.png', auto 100%)
-    
+
   .code
     position absolute
     right 20px
     top 0
     bottom 0
     width 80px
-    
+
 </style>
