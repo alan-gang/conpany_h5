@@ -30,6 +30,7 @@
 
 
   gamemenu(v-if=" sm " :sm="sm" v-on:sm="sm = $event" :t="t" :id="id" :mid="mid" v-on:mid=" mid = $event ")
+  stopMasker(v-if="isShowMasker")
   gameinfo.o_h(:id="id" :t="t" :mid="mid" @issue=" issue = $event " :ludanFlag="ludanFlag" :ludanShow="ludanShow")
 
   gamebookbar(v-if=" !mido.times " v-bind="{ n, t, id, mid, n_, wn_, up_, cpoints, dp }"  @m_=" m_ = $event " @bonusRange=" bonusRange = $event ")
@@ -44,6 +45,7 @@
 </template>
 
 <script>
+import stopMasker from './stopMasker'
 import config from '@/config'
 import api from '@/api'
 import gamemenu from './menu'
@@ -58,6 +60,7 @@ import { cache } from '@/store'
 export default {
   mixins: [config],
   components: {
+    stopMasker,
     gamemenu,
     gamebookbar,
     gamefastcashbookbar,
@@ -99,6 +102,8 @@ export default {
   },
   data () {
     return {
+      // 是否显示休市遮罩
+      isShowMasker: false,
       // show menu
       sm: false,
       // 当前玩法id
@@ -186,7 +191,7 @@ export default {
   },
   watch: {
     n_ (n, o) {
-      this.__setCall({fn: '__setSA', args: n || this.__$car.length})
+      this.__setCall({ fn: '__setSA', args: n || this.__$car.length })
     },
     sr_ (n, o) {
       this.addClsSR()
@@ -194,11 +199,12 @@ export default {
     dp () {
       // if point overflow reset to max
       if (this.dp && this.dp.maxpoint && (this.local.$p * 1 > this.dp.maxpoint * 1)) {
-        this.__setLocal({$p: this.dp.maxpoint * 1})
+        this.__setLocal({ $p: this.dp.maxpoint * 1 })
       }
     }
   },
   created () {
+    this.checkIsShowDialog()
     this.swap(this.kq && this.kq.active)
     // 监听展开路单
     this.$bus.$on('ludanFlagChange', (flag) => {
@@ -206,6 +212,17 @@ export default {
     })
   },
   methods: {
+    checkIsShowDialog () {
+      let matchArr = [1, 3, 4, 35, 6, 7, 8, 36, 38, 46, 13, 24, 23, 25, 159, 160, 9, 5, 10]
+      let sDate = new Date('2020-01-22').getTime()
+      let eDate = new Date('2020-01-31').getTime()
+      let currentDate = new Date().getTime()
+      if (currentDate > sDate && currentDate < eDate) {
+        if (matchArr.includes(this.id)) {
+          this.isShowMasker = true
+        }
+      }
+    },
     swap (flag) {
       this.t = flag ? 'kq' : this.t_
       this.init()
@@ -228,18 +245,18 @@ export default {
     init () {
       this.mid = this.dmid || (this.rps[0] || {}).id || this.cps[0].id
       this.myNewPoint()
-      if (this.id) this.__setCache({play: {id: this.id, n: this.n, t: this.t, kq: this.kq}})
+      if (this.id) this.__setCache({ play: { id: this.id, n: this.n, t: this.t, kq: this.kq } })
       this.codeMissColdHeat()
     },
     myNewPoint () {
-      this.$.get(api.myNewPoint, {gameid: this.id}).then(({data: {items, dtMaxPrize, dzMaxPrize}}) => {
+      this.$.get(api.myNewPoint, { gameid: this.id }).then(({ data: { items, dtMaxPrize, dzMaxPrize } }) => {
         this.points = items
-        this.__setCache({dtMaxPrize: dtMaxPrize * 1, dzMaxPrize: dzMaxPrize * 1})
+        this.__setCache({ dtMaxPrize: dtMaxPrize * 1, dzMaxPrize: dzMaxPrize * 1 })
         // 没有奖金信息则隐藏该玩法
         this.m.forEach(x => (x.show = !!items[x.id.split(':')[0]]))
         // 如果当前默认的玩法关闭了 重新选择一个默认的玩法
         this.$nextTick(() => {
-          this.__setCall({fn: '__generateOdd'})
+          this.__setCall({ fn: '__generateOdd' })
           if (!this.mido || !this.mido.show) {
             if (!this.cps[0]) {
               // back
@@ -257,7 +274,7 @@ export default {
       this.codeMissColdHeat()
     },
     codeMissColdHeat () {
-      this.$.get(api.codeMissColdHeat, {lotteryId: this.id}).then(({ data }) => {
+      this.$.get(api.codeMissColdHeat, { lotteryId: this.id }).then(({ data }) => {
         for (const k in data) {
           if (k.indexOf('|') !== -1) {
             k.split('|').forEach(x => {
@@ -337,6 +354,4 @@ export default {
 .fadeOutDown {
   animation-name: fadeOutDown;
 }
-
-
 </style>

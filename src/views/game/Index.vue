@@ -25,32 +25,32 @@ f7-page.game(:page-content="false")
 </template>
 
 <script>
-  // 游戏
+// 游戏
 import gameall from '@/views/game/all'
 import gamebest from '@/views/game/best'
 import gamenew from '@/views/game/new'
 import gamecollect from '@/views/game/collect'
 import config from '@/config'
 export default {
-    mixins: [config],
-    components: {
-      gameall,
-      gamebest,
-      gamenew,
-      gamecollect,
-    },
-    name: 'game',
-    props: [],
-    data () {
-      return {}
-    },
-    created () {
-    },
-    methods: {
-      tabShow (evt) {
-        this.__setCall({fn: '__init_' + evt.target.id})
-      }
+  mixins: [config],
+  components: {
+    gameall,
+    gamebest,
+    gamenew,
+    gamecollect,
+  },
+  name: 'game',
+  props: [],
+  data () {
+    return {}
+  },
+  created () {
+  },
+  methods: {
+    tabShow (evt) {
+      this.__setCall({ fn: '__init_' + evt.target.id })
     }
+  }
 }
 </script>
 
@@ -72,5 +72,5 @@ urls = {
     z-index -1
     bg(urls._n + '@2x.png', 100% auto)
     transform scaleX(-1)
-  
+
 </style>

@@ -9,8 +9,12 @@ export default {
       // else this.$router.push(this.$route.path + '?steambind=1')
       else this.__setCall({fn: '__GetSteamInfo'})
     }
-    window.closeIFrame = ({action, args}) => {
+    window.closeIFrame = ({action, args, h}) => {
       switch (action) {
+        case 'setHeight':
+          let iframeEl = window.document.querySelector('iframe')
+          iframeEl.style.height = h + 'px'
+          break
         case 'goToLoad':
           this.__setCall({fn: '__setDpageId', args: 'Load'})
           break
@@ -40,4 +44,3 @@ export default {
   }
 }
 </script>
-
