@@ -26,7 +26,7 @@ window.Number.prototype._toHMS = function () {
   if (hour < 10) {
     hour = '0' + hour
   }
-  let min = Math.floor(this % 3600 / 60 ) 
+  let min = Math.floor(this % 3600 / 60 )
   if (min < 10) {
     min = '0' + min
   }
@@ -59,9 +59,20 @@ let x = [
   [5, 17, 29, 41], // 羊
   [4, 16, 28, 40], // 猴
   [3, 15, 27, 39], // 鸡
-  [2, 14, 26, 38], // 狗 
+  [2, 14, 26, 38], // 狗
   [1, 13, 25, 37, 49], // 猪
 ]
+
+let last = x.pop()
+x.unshift(last)
+console.log(x)
+
+if (new Date().getTime() >= 1579785959000) {
+
+
+}
+
+
 let y = [
   ['鼠', '水'],
   ['牛', '土'],
