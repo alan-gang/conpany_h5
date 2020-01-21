@@ -63,13 +63,11 @@ let x = [
   [1, 13, 25, 37, 49], // 猪
 ]
 
-let last = x.pop()
-x.unshift(last)
-console.log(x)
+
 
 if (new Date().getTime() >= 1579785959000) {
-
-
+  let last = x.pop()
+  x.unshift(last)
 }
 
 
