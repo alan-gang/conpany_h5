@@ -115,6 +115,9 @@ import tpl from '@/views/rfs/tpl'
 
 import signmonth from '@/views/popup/signmonth'
 
+// 查看分红契约邀请详情
+import deedlistinfo from '@/views//popup/deed_listinfo'
+
 let async = url => {
   return (routeTo, routeFrom, resolve, reject) => {
     // dynamic import component; returns promise
@@ -611,5 +614,12 @@ export default [
   {
     path: '/signmonth',
     component: signmonth
-  }
+  },
+  // 查看分红契约邀请详情
+  {
+    path: '/popup/deed_listinfo',
+    component: deedlistinfo,
+    beforeEnter: checkAuth,
+    rl: true
+  },
 ]

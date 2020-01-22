@@ -42,6 +42,9 @@ f7-app(:params=" f7Params ")
   f7-popup#signinsuccess.r_5.dialog-popup-auto-center.o_v.bgc_o.full_w80
     signinsuccess
 
+  //- global 分红契约提醒
+  f7-popup#deed.r_5.dialog-popup-auto-center.o_v.bgc_o.full_width(:opened="show_deed")
+    deed
 
 
 </template>
@@ -56,9 +59,11 @@ import g from '@/gm/g'
 import signin from '@/views/popup/signin'
 import signmonth from '@/views/popup/signmonth'
 import signinsuccess from '@/views/popup/signinsuccess'
+import deed from '@/views/popup/deed' // 分红契约提醒
 export default {
   mixins: [config, oi],
   components: {
+    deed,
     signin,
     signmonth,
     signinsuccess,
@@ -66,6 +71,7 @@ export default {
   name: 'app',
   data () {
     return {
+      show_deed: !1,
       f7Params: {
         picker: {
           toolbarCloseText: '完成',
@@ -113,6 +119,13 @@ export default {
     if (this.__query.popup) this.$f7.popup.open('#' + this.__query.popup) && this.__getcodeimg()
   },
   methods: {
+    // 登录契约提醒
+    get_qryContractStat () {
+      // console.log('get_qryContractStat')
+      this.$.get(api.qryContractStat).then(({data}) => {
+        this.show_deed = data.notice === '1' // 是否提示 1提示 0不提示
+      })
+    },
     message (msg) {
       if (!msg || !msg.type) return
       let titles = {
@@ -207,6 +220,7 @@ export default {
         this.__setUser(Object.assign(data, {login: true}))
         this.__getBalance()
         this.__acctSecureInfo()
+        this.get_qryContractStat()
         cb && cb()
         if (!this.user.hasLogPwd || !this.user.hasSecurityPwd) this.$f7.popup.open('#guide')
         else if (!this.user.hasBankCard) this.__go('/me/bank/bind/')
