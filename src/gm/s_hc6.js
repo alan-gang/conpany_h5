@@ -53,7 +53,7 @@ export default {
   '7007:1' () {
     return [
       getCommonRow({col: 'col-100', oddIndex: 0, vs: [
-        {s: false, n: '鼠', v: 1, tails: '鼠'._AtoN()},
+        { s: false, n: '鼠', v: 1, tails: '鼠'._AtoN(), oddIndex: 1},
         {s: false, n: '牛', v: 2, tails: '牛'._AtoN()},
         {s: false, n: '虎', v: 3, tails: '虎'._AtoN()},
         {s: false, n: '兔', v: 4, tails: '兔'._AtoN()},
@@ -64,7 +64,7 @@ export default {
         {s: false, n: '猴', v: 9, tails: '猴'._AtoN()},
         {s: false, n: '鸡', v: 10, tails: '鸡'._AtoN()},
         {s: false, n: '狗', v: 11, tails: '狗'._AtoN()},
-        {s: false, n: '猪', v: 12, tails: '猪'._AtoN(), oddIndex: 1},
+        {s: false, n: '猪', v: 12, tails: '猪'._AtoN()},
       ]})
     ]
   },
@@ -82,7 +82,7 @@ export default {
   '7008:1' () {
     return [
       getCommonRow({col: 'col-100', oddIndex: 0, t: 'number', vs: [
-        {s: false, n: '鼠', v: 1, tails: '鼠'._AtoN()},
+        { s: false, n: '鼠', v: 1, tails: '鼠'._AtoN(), oddIndex: 1},
         {s: false, n: '牛', v: 2, tails: '牛'._AtoN()},
         {s: false, n: '虎', v: 3, tails: '虎'._AtoN()},
         {s: false, n: '兔', v: 4, tails: '兔'._AtoN()},
@@ -93,7 +93,7 @@ export default {
         {s: false, n: '猴', v: 9, tails: '猴'._AtoN()},
         {s: false, n: '鸡', v: 10, tails: '鸡'._AtoN()},
         {s: false, n: '狗', v: 11, tails: '狗'._AtoN()},
-        {s: false, n: '猪', v: 12, tails: '猪'._AtoN(), oddIndex: 1},
+        {s: false, n: '猪', v: 12, tails: '猪'._AtoN()},
       ]})
     ]
   },

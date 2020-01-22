@@ -3,14 +3,14 @@
 .game_selection_row.mb_5
 
   f7-row(no-gap)
-    
+
     //- 选号模式
     template(v-if=" row.t === 'number' ")
       //- 左右结构(默认)
       template(v-if=" !row.struct ")
-        f7-col.n.h_40.t_c.flex.justify-content-center(width="15" :n="row.n") 
+        f7-col.n.h_40.t_c.flex.justify-content-center(width="15" :n="row.n")
           span.text-color-white(:class=" {ft_12: row.n.length > 2} ") {{ row.n }}
-          
+
           //- 冷热遗漏标题
           .p_a.p_r_0.wp_120.p_t_40.c_6.ft_12.t_r(v-if=" clryl ")
             .hlh_20(v-show=" local.$yl ") 遗漏
@@ -20,12 +20,12 @@
           f7-row(no-gap :class=" getRowClass() ")
             .pb_2(v-for=" (v, i) in vs " :key="i" @click=" toggle(v) " :class=" getBallWrapColClass(v, i) " :ball-n=" v.n " )
               .v.t_c
-                f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)") 
+                f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)")
                   span {{ v.n }}
 
               //- 冷热遗漏内容
               .t_c.ft_12.c_9.pt_2.lh_12(v-if=" clryl ")
-                .h_20(v-if=" local.$yl " :class=" { c_e: clryl.miss[rowIndex][i] * 1 === Math.min.apply(null, clryl.miss[rowIndex]), 'text-color-blue': clryl.miss[rowIndex][i] * 1 === Math.max.apply(null, clryl.miss[rowIndex]) } ") 
+                .h_20(v-if=" local.$yl " :class=" { c_e: clryl.miss[rowIndex][i] * 1 === Math.min.apply(null, clryl.miss[rowIndex]), 'text-color-blue': clryl.miss[rowIndex][i] * 1 === Math.max.apply(null, clryl.miss[rowIndex]) } ")
                   span.lryl_v.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl.miss[rowIndex][i] }}
                 .h_20(v-if=" local.$lr ")
                   span.lryl_v.lryl_v_lr.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl[local.$lr + 'q'][rowIndex][i] }}
@@ -34,7 +34,7 @@
       template(v-if=" row.struct === 'mixin' ")
         f7-col.vs(width="100")
           f7-row(no-gap :class=" getRowClass() ")
-            f7-col.n.hlh_40.t_c.pr_5.p_r(width="16") 
+            f7-col.n.hlh_40.t_c.pr_5.p_r(width="16")
               span.text-color-white(:class=" {ft_12: row.n.length > 2} ") {{ row.n }}
 
               //- 冷热遗漏标题
@@ -44,12 +44,12 @@
 
             .pb_2(v-for=" (v, i) in vs " :key="i" width="16" @click=" toggle(v) " :class=" getBallWrapColClass(v, i) " :ball-n=" v.n " )
               .v.t_c
-                f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)") 
+                f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)")
                   span {{ v.n }}
 
               //- 冷热遗漏内容
               .t_c.ft_12.c_9.pt_2.lh_12(v-if=" clryl ")
-                .h_20(v-if=" local.$yl " :class=" { c_e: clryl.miss[rowIndex][i] * 1 === Math.min.apply(null, clryl.miss[rowIndex]), 'text-color-blue': clryl.miss[rowIndex][i] * 1 === Math.max.apply(null, clryl.miss[rowIndex]) } ") 
+                .h_20(v-if=" local.$yl " :class=" { c_e: clryl.miss[rowIndex][i] * 1 === Math.min.apply(null, clryl.miss[rowIndex]), 'text-color-blue': clryl.miss[rowIndex][i] * 1 === Math.max.apply(null, clryl.miss[rowIndex]) } ")
                   span.lryl_v.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl.miss[rowIndex][i] }}
                 .h_20(v-if=" local.$lr ")
                   span.lryl_v.lryl_v_lr.inlb.minw_15.pl_2.pr_2.mt_3 {{ clryl[local.$lr + 'q'][rowIndex][i] }}
@@ -62,11 +62,11 @@
             .pb_2(v-for=" (v, i) in vs " :key="i"  :class=" v.col || row.col || 'col-45' ")
               .v.t_c.color-theme-gray
                 f7-segmented(round)
-                  f7-button.flex-shrink-2.hlh_40.pd_0.ball.inlb.pd_0(outline @click=" toggle(v) " :class=" getFollowBallClass(v) ") 
+                  f7-button.flex-shrink-2.hlh_40.pd_0.ball.inlb.pd_0(outline @click=" toggle(v) " :class=" getFollowBallClass(v) ")
                     span {{ v.n }}
-                  f7-button.flex-shrink-2.hlh_40.pd_0(outline) 
+                  f7-button.flex-shrink-2.hlh_40.pd_0(outline)
                     .v_odd {{ v.odd }}
-                  f7-button.flex-shrink-2.hlh_40.pd_0(outline @click=" toggle(v) ") 
+                  f7-button.flex-shrink-2.hlh_40.pd_0(outline @click=" toggle(v) ")
                     .v_t.pl_5.pr_5.color-theme-deeporange
                       f7-checkbox(:checked=" v.s " )
 
@@ -83,7 +83,7 @@
           f7-row(no-gap :class=" getRowClass() ")
             .pb_2(v-for=" (v, i) in vs " :key="i" width="20" @click=" toggle(v) " :class=" getBallWrapColClass(v) ")
               .v.t_c
-                f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)") 
+                f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)")
                   span {{ v.n }}
 
 
@@ -97,7 +97,7 @@
 
             .pb_2(v-for=" (v, i) in vs " :key="i"  :class=" v.col || row.col || 'col-16' ")
               .v.t_c
-                f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)" @click=" toggle(v) ") 
+                f7-button.ball.hlh_40.inlb.pd_0(:class="getBallClass(v)" @click=" toggle(v) ")
                   span {{ v.n }}
                 .v_odd.hlh_20 {{ v.odd }}
                 .v_t.pl_5.pr_5
@@ -113,11 +113,11 @@
             .pb_2(v-for=" (v, i) in vs " :key="i"  :class=" v.col || row.col || 'col-45' ")
               .v.t_c.color-theme-gray
                 f7-segmented(round)
-                  f7-button.flex-shrink-2.hlh_40.pd_0.ball.inlb.pd_0(outline @click=" toggle(v) " :class=" getFollowBallClass(v) ") 
+                  f7-button.flex-shrink-2.hlh_40.pd_0.ball.inlb.pd_0(outline @click=" toggle(v) " :class=" getFollowBallClass(v) ")
                     span {{ v.n }}
-                  f7-button.flex-shrink-2.hlh_40.pd_0(outline) 
+                  f7-button.flex-shrink-2.hlh_40.pd_0(outline)
                     .v_odd {{ v.odd }}
-                  f7-button.flex-shrink-2.hlh_40.pd_0(outline) 
+                  f7-button.flex-shrink-2.hlh_40.pd_0(outline)
                     .v_t.pl_5.pr_5
                       f7-input(validate require pattern="[0-9]*")
                         input.h_40.lh_25.t_c.text-color-deeporange(type="number" v-model=" v.t " style="padding: 0 5px" @change=" v.s = Number(v.t) && Number(v.t) > 0 " @click=" !v.t && toggle(v) ")
@@ -133,11 +133,11 @@
             .pb_2.mb_10(v-for=" (v, i) in vs " :key="i"  :class=" v.col || row.col || 'col-45' ")
               .v.t_c.color-theme-gray
                 f7-segmented.following-br-tail(round)
-                  f7-button.flex-shrink-2.hlh_40.pd_0.ball.inlb.pd_0(outline @click=" toggle(v) " :class=" getFollowBallClass(v) ") 
+                  f7-button.flex-shrink-2.hlh_40.pd_0.ball.inlb.pd_0(outline @click=" toggle(v) " :class=" getFollowBallClass(v) ")
                     span {{ v.n }}
-                  f7-button.flex-shrink-2.hlh_40.pd_0(outline) 
+                  f7-button.flex-shrink-2.hlh_40.pd_0(outline)
                     .v_odd {{ v.odd }}
-                  f7-button.flex-shrink-1.hlh_40.pd_0(outline) 
+                  f7-button.flex-shrink-1.hlh_40.pd_0(outline)
                     .v_t.pl_5.pr_5
                       f7-input(validate require pattern="[0-9]*")
                         input.h_40.lh_25.t_c.text-color-deeporange(type="number" v-model=" v.t " style="padding: 0 5px" @change=" v.s = Number(v.t) && Number(v.t) > 0 " @click=" !v.t && toggle(v) ")
@@ -146,7 +146,7 @@
                   .hlh_40.pd_0.ball.inlb.pd_0.w_40.t_c(v-for=" (x, j) in v.tails " :key="j"  :class=" [ x._toC() ] ") {{ x }}
 
 
-                
+
 
   f7-row.mt_5(no-gap v-if=" row.btns ")
     f7-col.pr_2(v-for=" (v, i) in row.btns " :key="i" )
@@ -410,11 +410,11 @@ urls = {
   .ball
     &.border
       border 1px solid #dfdfdf
-      
+
     &:active
       opacity .6
-    
-      
+
+
   .button.color-gray
     background-color #e8e8e8
     color #333
@@ -447,12 +447,12 @@ ns = {
   '十位': '~src/assets/play/play_id_1/game_btn_postion_shiwei',
   '个位': '~src/assets/play/play_id_1/game_btn_postion_gewei',
 }
-  
+
 .play_id_1
   for k, v in  ns
     .n[n={k}]
       bg(v + '@2x-min.png')
-  
+
   .vs_l_10
     .ball
       overflow visible
@@ -473,7 +473,7 @@ ns = {
             &:hover:after
             &.selected:after
               bg(prefix + v + '_press@2x-min.png')
-            
+
 </style>
 <!-- 冷热遗漏 -->
 <style lang="stylus">
@@ -481,23 +481,23 @@ ns = {
 .lryl_v
   border 1px solid currentColor
   border-radius 12px
-.lr_r 
+.lr_r
   .lryl_v_lr
-    color red 
+    color red
   .ball:not(.s):not([class*="dice"]):not(.w_90)
     background-image url('~src/assets/play/lryl/ballbg_hot.gif')
     background-size cover
     color #fff
-    
-.lr_l 
+
+.lr_l
   .lryl_v_lr
     color #2196f3
-  
+
   .ball:not(.s):not([class*="dice"]):not(.w_90)
     background-image url('~src/assets/play/lryl/ballbg_cold.gif')
     background-size cover
     color #fff
-    
+
 </style>
 <!-- 龙虎和 -->
 <style lang="stylus">
@@ -513,7 +513,7 @@ bns = {
       width 60px
       height 60px
       margin 0 15px
-      bg(v + '_1.png', 100% 100%) 
+      bg(v + '_1.png', 100% 100%)
       &.s
         bg(v + '.png', 100% 100%)
       .ball

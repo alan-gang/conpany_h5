@@ -49,6 +49,7 @@ window.Number.prototype._f3 = window.String.prototype._f3 = function () {
 
 // need change every year
 let x = [
+  [1, 13, 25, 37, 49], // 猪
   [12, 24, 36, 48], // 鼠
   [11, 23, 35, 47], // 牛
   [10, 22, 34, 46], // 虎
@@ -60,15 +61,14 @@ let x = [
   [4, 16, 28, 40], // 猴
   [3, 15, 27, 39], // 鸡
   [2, 14, 26, 38], // 狗
-  [1, 13, 25, 37, 49], // 猪
 ]
 
 
 
-if (new Date().getTime() >= 1579785959000) {
-  let last = x.pop()
-  x.unshift(last)
-}
+// if (new Date().getTime() >= 1579785959000) {
+//   let last = x.pop()
+//   x.unshift(last)
+// }
 
 
 let y = [
