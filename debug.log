@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [1224/162053.606:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ï¿½Üµï¿½ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ï¿½ (0x6D)
 [0119/155543.251:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ï¿½Üµï¿½ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ï¿½ (0x6D)
 [0121/161903.307:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ï¿½Üµï¿½ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ï¿½ (0x6D)
@@ -8,3 +9,9 @@
 [0117/154941.505:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ï¿½Üµï¿½ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ï¿½ (0x6D)
 [0117/163740.818:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ï¿½Üµï¿½ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ï¿½ (0x6D)
 [0119/095506.063:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ï¿½Üµï¿½ï¿½Ñ½ï¿½ï¿½ï¿½ï¿½ï¿½ (0x6D)
+=======
+[1224/162053.606:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ¹ÜµÀÒÑ½áÊø¡£ (0x6D)
+[0119/155543.251:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ¹ÜµÀÒÑ½áÊø¡£ (0x6D)
+[0121/114842.016:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ¹ÜµÀÒÑ½áÊø¡£ (0x6D)
+[0122/183617.171:ERROR:registration_protocol_win.cc(84)] TransactNamedPipe: ¹ÜµÀÒÑ½áÊø¡£ (0x6D)
+>>>>>>> release/animal
