@@ -11,11 +11,11 @@ f7-page.load
     .text-color-gray {{ user.userName }}
 
   f7-row.pd_5(no-gap)
-    f7-col.pd_5(width="50" v-for=" (v, i) in data " :key=" i + Math.random() "  @click=" __setLocal({loadway: v.saveWay}) ") 
+    f7-col.pd_5(width="50" v-for=" (v, i) in data " :key=" i + Math.random() "  @click=" __setLocal({loadway: v.saveWay}) ")
       .bgc_f.r_10(:class=" {active: local.loadway === v.saveWay} ")
         .flex.h_70
           .a
-            .pl_10.pr_10.v_m.inlb 
+            .pl_10.pr_10.v_m.inlb
               f7-icon._icon(f7="home" :class=" '_load_' + v.saveWay " size="50")
           span {{ v.saveWayName }}
 
@@ -48,10 +48,10 @@ f7-page.load
 
       template(v-if=" !Number(way.range[form.i].range[0]) ")
         .text-color-gray.pl_10
-          span 充值范围 
+          span 充值范围
           span.text-color-deeporange {{ way.range[form.i].range.join('-') }}
           span.pd_5
-          span  手续费 
+          span  手续费
           span.text-color-deeporange {{ way.range[form.i].fee + '%' }}
       template(v-else)
         .pl_10.pr_10
@@ -66,7 +66,7 @@ f7-page.load
 
     .h_25
     f7-button.mg_10(fill large @click=" __validateform( commitNew ) ") 去付款
-    
+
   template(v-if="way && way.saveWay!='offline'")
     f7-block.mb_0.mt_10
       span 温馨提示：
