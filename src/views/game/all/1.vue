@@ -1,10 +1,8 @@
 <template lang="pug">
 
 f7-page.game_all_1.text-color-white
-
-
   f7-card.a.r_8()
-    f7-card-header.no-border.bgg.r_8._ssc( valign='middle')
+    f7-card-header.no-border.bgg.r_8._ssc( valign='middle' @click.native="__go('/game/lotteryCenter/list')")
       .card-header.no-border.aa.pd_0()
         f7-link._icon._lottery_center( icon-f7=" home " icon-size="60px")
         .aaa.pl_10

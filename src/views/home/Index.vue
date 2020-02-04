@@ -1,7 +1,7 @@
 <template lang="pug">
 
 f7-page.home(ptr :ptr-mousewheel="true" @ptr:refresh=" refresh" :style="{'backgroundSize':`100% ${this.bgHeight}px`}")
-  f7-navbar.tempary-bg(:innerClass=" 'navbar_of_' + $options.name ")
+  f7-navbar.tempary-bg(:innerClass=" 'navbar_of_' + $options.name " )
     f7-nav-left
       f7-link.c_f(popup-open="#login"   v-show=" user.login === false ")
         span.c_f 登录

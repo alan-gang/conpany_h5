@@ -30,6 +30,9 @@ import chase from '@/views/game/play/chase'
 // outer
 import outer from '@/views/outer'
 
+/* 开奖中心 */
+import lotteryCenterList from '@/views/game/lotteryCenter/lotteryList'
+
 // 我的 me
 import load from '@/views/me/load'
 import withdraw from '@/views/me/withdraw'
@@ -479,6 +482,21 @@ export default [
         component: chase,
       },
     ]
+  },
+  {
+    path: '/game/lotteryCenter/list',
+    component: lotteryCenterList,
+    master: true,
+    // detailRoutes: [
+    //   {
+    //     path: '/game/car/',
+    //     component: car,
+    //   },
+    //   {
+    //     path: '/game/chase/',
+    //     component: chase,
+    //   },
+    // ]
   },
   // game
 

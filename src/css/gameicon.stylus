@@ -17,6 +17,7 @@ urls = {
     _ssl3d: '~src/assets/gameicon/game_lottery_ot',
     _ssl: '~src/assets/gameicon/game_lottery_ot',
     _hc6: '~src/assets/gameicon/game_icon_lhc',
+    _lottery_classify:'~src/assets/gameicon/kjzx_icon_czxs',
 
     _gid1: '~src/assets/gameicon/game_icon_hlsx',
     _gid155: '~src/assets/gameicon/game_icon_cqhjc',
