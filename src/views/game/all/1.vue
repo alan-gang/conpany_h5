@@ -3,6 +3,15 @@
 f7-page.game_all_1.text-color-white
 
 
+  f7-card.a.r_8()
+    f7-card-header.no-border.bgg.r_8._ssc( valign='middle')
+      .card-header.no-border.aa.pd_0()
+        f7-link._icon._lottery_center( icon-f7=" home " icon-size="60px")
+        .aaa.pl_10
+          p  开奖中心
+          p.ft_14 开奖记录  开奖结果  快速投注
+      f7-icon.f_r.rz_0(f7="play_fill" size="16px" :class=" {open: true} ")
+
   template(v-if=" user.myFavour && user.myFavour[0] ")
     f7-card.a.r_8
       f7-card-header.no-border.bgg.r_8._favour(valign='middle' @click.native=" fs = !fs ")
@@ -11,7 +20,7 @@ f7-page.game_all_1.text-color-white
           .aaa.pl_10
             p 最近常玩
             p.ft_14 {{ get3thNamesOfFavour().join('...') }}
-        f7-link.f_r(f7="play_fill" size="16px" :class=" {open: fs} ")
+        f7-icon.f_r(f7="play_fill" size="16px" :class=" {open:  fs} ")
 
 
       f7-card-content.ab.o_h(:class=" {'mh_0 pd_0': !fs} ").text-color-black
@@ -30,7 +39,7 @@ f7-page.game_all_1.text-color-white
         .aaa.pl_10
           p {{ gn }}
           p.ft_14 {{ get3thNames(gn).join('...') }}
-      f7-link.f_r(f7="play_fill" size="16px" :class=" {open: i.show} ")
+      f7-icon.f_r(f7="play_fill" size="16px" :class=" {open:  i.show} ")
 
 
     f7-card-content.ab.o_h(:class=" {'mh_0 pd_0': !i.show} ").text-color-black
@@ -40,11 +49,6 @@ f7-page.game_all_1.text-color-white
           f7-card-content.ca.pl_0.pr_0.pt_0(@click.native=" v.id ? __go('/game/play/', {props: v}) : __go('/outer/', {props: v}) ")
             f7-link._icon(:class=" '_gid' + (v.id || v.nid) " icon-f7=" home " icon-size="60px")
             .ft_12 {{ v.n }}
-
-
-
-
-
 
 
 
