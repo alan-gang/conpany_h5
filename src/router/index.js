@@ -32,6 +32,7 @@ import outer from '@/views/outer'
 
 /* 开奖中心 */
 import lotteryCenterList from '@/views/game/lotteryCenter/lotteryList'
+import lotteryClassify from '@/views/game/lotteryCenter/lotteryClassify'
 
 // 我的 me
 import load from '@/views/me/load'
@@ -157,7 +158,7 @@ let checkAuth = (to, from, resolve, reject) => {
       if (!user.state.login) {
         reject()
         axios.$root.$f7.popup.open('#login')
-        axios.$root.$children[0].__setGlobal({afterLoginRedirect: to.path})
+        axios.$root.$children[0].__setGlobal({ afterLoginRedirect: to.path })
       } else resolve()
     }, user.state.login === '' ? 500 : 0)
   } else resolve()
@@ -487,16 +488,11 @@ export default [
     path: '/game/lotteryCenter/list',
     component: lotteryCenterList,
     master: true,
-    // detailRoutes: [
-    //   {
-    //     path: '/game/car/',
-    //     component: car,
-    //   },
-    //   {
-    //     path: '/game/chase/',
-    //     component: chase,
-    //   },
-    // ]
+  },
+  {
+    path: '/game/lotteryCenter/classify',
+    component: lotteryClassify,
+    master: true,
   },
   // game
 

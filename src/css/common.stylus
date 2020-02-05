@@ -283,7 +283,7 @@ li {
 }
 flex(level_style = space-between, vertical_style = center, iswrap = no-wrap) {
   display: flex;
-  align-items: center;
+  align-items: vertical_style;
   justify-content: level_style;
   flex-wrap: iswrap;
 }

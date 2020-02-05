@@ -107,6 +107,10 @@ let api = {
   codeMissColdHeat: '/codeMissColdHeat.do?method=queryColdHot',
   getLotterys: '/report/OrderReport.do?method=getLotterys',
   recentlyCode: '/issue.do?method=recentlyCode',
+
+  // 开奖中心列表
+  getLotteryList: '/issue.do?method=getAllLastLottery',
+
   // gameid
   current: '/issue.do?method=current',
   traceIssueList: '/issue.do?method=traceIssueList',

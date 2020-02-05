@@ -60,5 +60,7 @@ let g = [
   { id: 28, gn: '其它', t_: 'hc6', mid: '95', n: '六合彩', dmid_: '7001:1', up: 1 },
   { nid: '_kg', gn: '其它', n: '基诺彩', pid: 18, gid: 203 },
 ]
+
 g.forEach(x => x.kq = x.kq ? Object.assign({}, kq) : null)
+
 export default g
