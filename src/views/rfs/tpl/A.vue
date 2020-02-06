@@ -3,42 +3,42 @@
 f7-page.rf_tpl_1(:page-content="false")
 
   .p_a.wp_100.p_t_0.z_9503.ft_14.bgc_pc
-    
+
     template(v-if=" !rns_ ")
       .flex.pl_10.pr_10.h_44
         .a
-          f7-button.inlb.pd_0(v-for=" (x, i) in userBreads " :color=" !userBreads[i + 1] ? 'gray' : 'deeporange' " @click=" n = x.userName ") 
+          f7-button.inlb.pd_0(v-for=" (x, i) in userBreads " :color=" !userBreads[i + 1] ? 'gray' : 'deeporange' " @click=" n = x.userName ")
             span {{ (!x.userName || x.userId === user.userId ? '我' : x.userName)  }}的团队
             span.pd_2(v-if=" userBreads[i + 1] ") >
 
         f7-icon(f7="search" size="20px" @click.native=" rns_ = true ")
 
-    
+
     template(v-else)
       f7-searchbar(ref="s" disable-button-text="取消" placeholder="请输入团队名" :clear-button="true" @searchbar:disable=" rns_ = false " @change=" (rns_ = false) || (n = $event.target.value) " :value=" n " @input=" (rns_ = true) && (n_ = $event.target.value)" @focus=" rns_ = true ")
       template(v-if="rns_")
         .searchbar-backdrop.h_0(@click=" rns_ = false ")
         f7-list.mh_0.mg_0.o_h.page_content_like.z_500(simple-list )
-          f7-list-item 
+          f7-list-item
             f7-button.wp_100.t_c.bg-color-white.pd_0(@click=" rns[0] && __setLocal({rns: ''}) ") {{ rns[0] ? '清空搜索记录' : '无搜索记录' }}
           f7-list-item(v-for=" (x, i) in rns " :key="i" v-if=" x ")
             f7-button.wp_100.t_l.bg-color-white.pd_0(color="black" @click=" (n = x) && (rns_ = false) ") {{ x }}
 
   f7-toolbar.z_9502.ft_14(top)
 
-    f7-link(color="gray" @click=" sd === 1 ? __setCall({fn: '__closeSD'}) : sd = 1 ") 
-      span {{ z.n }}
-      f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 1 } ") 
-  
-    f7-link(color="gray" @click=" sd === 2 ? __setCall({fn: '__closeSD'}) : sd = 2 ") 
+    f7-link(color="gray" @click=" sd === 1 ? __setCall({fn: '__closeSD'}) : sd = 1 ")
+      span {{ z.n  }}
+      f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 1 } ")
+
+    f7-link(color="gray" @click=" sd === 2 ? __setCall({fn: '__closeSD'}) : sd = 2 ")
       span {{ __stetn.join(' 至 ') }}
 
       f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 2 } ")
 
 
-    f7-link(color="gray" @click=" sd === 3 ? __setCall({fn: '__closeSD'}) : sd = 3 ") 
-      span {{ s.n }}
-      f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 3 } ") 
+    f7-link(color="gray" @click=" sd === 3 ? __setCall({fn: '__closeSD'}) : sd = 3 ")
+      span {{ s.n  }}
+      f7-icon.rz_90(f7="play_fill" size="10px" :class=" { 'rz_-90 color-deeporange': sd === 3 } ")
 
   filters(v-if=" sd " @sd=" sd = $event ")
     TZP(v-if=" sd === 1 " @s=" z = $event " @done=" __setCall({fn: '__closeSD'}) ")
@@ -50,7 +50,7 @@ f7-page.rf_tpl_1(:page-content="false")
     .ptr-preloader
       .preloader
       .ptr-arrow
-    
+
     f7-card(v-for=" (v, i) in data " :key="i + Math.random()" :class=" !i ? 'bg-color-deeporange text-color-white' : '' ")
       f7-card-header(v-if="!i")
         .t_c.wp_100 团队合计
@@ -76,7 +76,7 @@ f7-page.rf_tpl_1(:page-content="false")
           .a
             f7-icon(f7="chevron_right" size="12px")
 
-           
+
 
     .preloader.infinite-scroll-preloader(v-if="showPreloader")
 
@@ -109,14 +109,14 @@ export default {
       rns_: false,
       sd: false,
       // stet: [new Date()._bf(-1)._setHMS(), new Date()._bf(-1)._setHMS('23:59:59')],
-      s: {n: '投注从高到低', id: 'buy'},
-      z: {n: '仅投注用户', id: 0},
+      s: { n: '投注从高到低', id: 'buy' },
+      z: { n: '仅投注用户', id: 0 },
       n: '',
       n_: '',
       data: [],
       userBreads: [{}],
       bonusReleaseCycle: 1,
-      g: {id: 0, n: '彩票', key: 'ltrsettle'},
+      g: { id: 0, n: '彩票', key: 'ltrsettle' },
       bl: '/rfs/tpl/',
     }
   },
@@ -135,7 +135,7 @@ export default {
     },
     n (n) {
       this.init()
-      if (this.n) this.__setLocal({rns: this.n + ',' + this.local.rns.replace(this.n + ',', '')})
+      if (this.n) this.__setLocal({ rns: this.n + ',' + this.local.rns.replace(this.n + ',', '') })
     },
   },
   created () {
@@ -151,17 +151,17 @@ export default {
       this.$el && this.$f7.ptr.refresh(this.$el.querySelector('.ptr-content'))
       this.list()
     },
-    list (option = {pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize}, cb = this.defaultListCb) {
+    list (option = { pageNum: 1, page: 1, pageSize: this.pageSize, size: this.pageSize }, cb = this.defaultListCb) {
       this.$.get(api.tplreport, Object.assign(option, {
         beginDate: this.stet[0]._toDayString(),
         endDate: this.stet[1]._toDayString(),
         listAll: this.z.id,
         // 可选范围：”activityAmount”,”betAmount”,”pointAmount”,”prizeAmount”,”salaryAmount”,”settleAmount”,”userName”,”vrBetAmount”,”vrPointAmount”,”vrPrizeAmount”
-        orderBy: ({buy: 'betAmount', gameProfit: 'gameSettleAmount', totalProfit: 'settleAmount'})[this.s.id],
+        orderBy: ({ buy: 'betAmount', gameProfit: 'gameSettleAmount', totalProfit: 'settleAmount' })[this.s.id],
         userId: this.user.userId,
         username: this.n,
         ascOrDesc: 1,
-      })).then(({data: {items, totalSize, userBreads, bonusReleaseCycle}}) => {
+      })).then(({ data: { items, totalSize, userBreads, bonusReleaseCycle } }) => {
         if (items[0]) {
           items = [...(items.splice(-1, 1)), ...items]
         }
@@ -191,7 +191,7 @@ export default {
     display none
   .s_d
     top var(--f7-toolbar-height)
-  .toolbar 
+  .toolbar
     top var(--f7-toolbar-height)
   .searchbar-backdrop
     pointer-events auto
@@ -202,15 +202,15 @@ export default {
     // margin-top 44px
     max-height 50vh
     overflow-y auto
-    
+
   & > .page-content
     padding-top calc(var(--f7-toolbar-height) + var(--f7-toolbar-height))
-    
+
 .navbar-hidden ~ .page
   .rf_tpl_1
     .toolbar.toolbar-top
       top calc(var(--f7-toolbar-height) + var(--f7-toolbar-height))
     & > .page-content
       padding-top calc(var(--f7-toolbar-height) + var(--f7-toolbar-height))
-  
+
 </style>

@@ -110,6 +110,7 @@ let api = {
 
   // 开奖中心列表
   getLotteryList: '/issue.do?method=getAllLastLottery',
+  recentlyIssueList: '/issue.do?method=recentlyIssueList',
 
   // gameid
   current: '/issue.do?method=current',

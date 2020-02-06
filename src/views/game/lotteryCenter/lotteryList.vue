@@ -6,8 +6,8 @@ f7-page.lottery-list()
     f7-nav-right
       f7-link._icon._lottery_classify( icon-f7=" home " icon-size="23px" @click=" __go('/game/lotteryCenter/classify', {props: {list}}) "  )
 
-  f7-card.item.wp_100.ml_0(v-for="item in list" :key="item.id")
-    .list-left
+  f7-card.item.wp_100.ml_0(v-for="item in l" :key="item.id")
+    .list-left(@click="__go('/game/lotteryCenter/history',{props:{currentLottery:item}})")
       f7-link._icon(:class="`_gid${(item.id || item.nid)}`" icon-f7=" home " icon-size="60px")
       div
         .title-container.mb_6
@@ -15,8 +15,7 @@ f7-page.lottery-list()
           f7-icon.mt_5.ml_5.f_r.text-color-orange(f7="play_fill" size="2.3349vw")
         .number 第{{item.issue}}期
         .number-list.mt_5
-          .orange.mr_3.mb_3.t_c( :class="{normal:item.gn !== '快三' && item.id !== 28, [`three_${list}`]:item.gn === '快三', [sixStyle[index]]:item.id === 28 }"
-v-for="(list,index) in item.code.split(',')" :key="index") {{item.gn !== '快三' ? list : ''}}
+         .orange.mr_3.mb_3.t_c( :class="{normal:item.gn !== '快三' && item.id !== 28, [`three_${list}`]:item.gn === '快三', [sixStyle[index]]:item.id === 28 }" v-for="(list,index) in item.code.split(',')" :key="index") {{item.gn !== '快三' ? list : ''}}
     .bet.ml_5 投注
 
 </template>
@@ -34,11 +33,11 @@ export default {
   props: {
   },
   created () {
-    this.getLotteryList()
+    this.__getLotteryList()
   },
   data () {
     return {
-      l: [],
+      list: [],
       resultList: [],
       sixStyle: {
         0: 'red',
@@ -52,13 +51,15 @@ export default {
     }
   },
   methods: {
-    async  getLotteryList () {
-      this.l = (await this.$.get(api.getLotteryList)).data.items
-      this.resultList = this.l.concat(g)
-      this.l.forEach(item => {
+    async  __getLotteryList () {
+      let lotteryList = localStorage.lotteryList && JSON.parse(localStorage.lotteryList)
+      if (lotteryList) {
+        this.resultList = lotteryList
+      }
+      this.list = (await this.$.get(api.getLotteryList)).data.items
+      this.list.forEach(item => {
         this.concatList(item)
       })
-      this.resultList = this.l
     },
     concatList (o) {
       g.forEach(item => {
@@ -69,10 +70,15 @@ export default {
     }
   },
   computed: {
-    list () {
-      return this.resultList.filter(x => {
+    l () {
+      this.list = this.list.filter(x => {
         return !x.hide && (x.code && x.id)
       })
+      if (this.resultList) {
+        return this.resultList
+      } else {
+        return this.list
+      }
     }
   }
 }

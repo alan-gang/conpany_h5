@@ -33,6 +33,7 @@ import outer from '@/views/outer'
 /* 开奖中心 */
 import lotteryCenterList from '@/views/game/lotteryCenter/lotteryList'
 import lotteryClassify from '@/views/game/lotteryCenter/lotteryClassify'
+import lotteryHistory from '@/views/game/lotteryCenter/lotteryHistory'
 
 // 我的 me
 import load from '@/views/me/load'
@@ -492,6 +493,11 @@ export default [
   {
     path: '/game/lotteryCenter/classify',
     component: lotteryClassify,
+    master: true,
+  },
+  {
+    path: '/game/lotteryCenter/history',
+    component: lotteryHistory,
     master: true,
   },
   // game

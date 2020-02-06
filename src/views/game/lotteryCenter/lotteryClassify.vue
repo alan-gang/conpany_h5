@@ -13,12 +13,11 @@ f7-page.lottery-classify()
     f7-button.same.check-all(fill color="orange" @click.native="checkAll") 全选
     f7-button.same.invert-check(fill color="orange" @click.native="invertClick ") 反选
     span.pd_40
-    f7-button.same.confirm(fill @click=" __go('/me/xyb/io/') ") 确定
+    f7-button.same.confirm(fill :disabled="useButton" @click="saveLottery") 确定
 </template>
 
 <script>
 import config from '@/config'
-// import g from '@/gm/g'
 export default {
   mixins: [config],
   components: {
@@ -28,10 +27,12 @@ export default {
     list: Array
   },
   created () {
+    this.formamtList()
   },
   data () {
     return {
       saveArr: [],
+      resultList: [],
     }
   },
   methods: {
@@ -61,27 +62,42 @@ export default {
           innerItem.isChecked && this.saveArr.push(innerItem)
         })
       })
+    },
+    formamtList () {
+      let obj = {}
+      let localList = localStorage.lotteryList && JSON.parse(localStorage.lotteryList)
+
+      this.list.forEach(item => {
+        !obj[item.gn] && (obj[item.gn] = item.gn)
+      })
+      Object.keys(obj).forEach(key => {
+        this.resultList.push({ title: key, list: [] })
+      })
+
+      this.list.forEach(o => {
+        o.isChecked = false
+        if (localList) {
+          localList.forEach(item => {
+            if (item.id === o.id) {
+              o.isChecked = true
+              this.saveArr.push(o)
+            }
+          })
+        }
+        this.resultList.forEach(item => {
+          (item.title === o.gn) && item.list.push(o)
+        })
+      })
+    },
+    saveLottery () {
+      localStorage.lotteryList = JSON.stringify(this.saveArr)
+      this.__setCall({fn: '__getLotteryList'})
+      this.__back('/game/lotteryCenter/list')
     }
   },
   computed: {
-    resultList: {
-      get () {
-        let arr = []
-        let obj = {}
-        this.list.forEach(item => {
-          !obj[item.gn] && (obj[item.gn] = item.gn)
-        })
-        Object.keys(obj).forEach(key => {
-          arr.push({ title: key, list: [] })
-        })
-        this.list.forEach(o => {
-          o.isChecked = false
-          arr.forEach(item => {
-            (item.title === o.gn) && item.list.push(o)
-          })
-        })
-        return arr
-      },
+    useButton () {
+      return !this.saveArr.length
     }
   }
 }

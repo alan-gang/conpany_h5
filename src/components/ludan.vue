@@ -75,7 +75,6 @@ export default {
   filters: {
     cellData (value) {
       let val = ['icon-cur', 'icon-qs'].indexOf(value) !== -1 ? '' : value
-      console.log(val)
       return val
     }
   },
@@ -301,7 +300,7 @@ export default {
           background-image url('~@/assets/ludan/zh_ld_Left@2x.png')
         &.right
           background-image url('~@/assets/ludan/zh_ld_right@2x.png')
-          
+
     .ludan-row
       display flex
       .ludan-col

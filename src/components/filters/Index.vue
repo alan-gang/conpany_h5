@@ -52,10 +52,10 @@ export default {
   .popup-backdrop
     opacity 0
     transition all ease-in-out .2s
-    
+
   .backdrop-in
     opacity 1
-    
+
   .sd_content
     padding-top 44px
     top -20%
@@ -69,5 +69,5 @@ export default {
       opacity 1
       top 0
       max-height 60vh
-      
+
 </style>
