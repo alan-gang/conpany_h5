@@ -48,6 +48,8 @@ for x in  -100 -80 -50  -44 -40 -30 -20 -10 -5  -3 -2 0 1 2 3 4 5 6 8 10 12 15 2
 
   .pt_{x}
     padding-top x * 1px
+  .ptv_{x} 
+    padding-top x* 1vw
   .pb_{x}
     padding-bottom x * 1px
   .pl_{x}
@@ -93,6 +95,7 @@ for x in  0 1 2 5 10 12 15 20 25 28 30 32 33 34 35 40 44 45 50 55 60 65 70 80 90
 // colors
 colors = {
   '0': #000,
+  '2': #222,
   '3': #333,
   '6': #666,
   '9': #999,
@@ -125,6 +128,8 @@ for x in 0 10 15 16 17 18 19 20 25 30 35 40 45 50 55 60 65 70 80 90 100 120 150 
     opacity x * 0.01
   .hvh_{x}
     height x * 1vh
+  .hvw_{x}
+    width x * 1vw
   .mvh_{x}
     max-height x * 1vh
 

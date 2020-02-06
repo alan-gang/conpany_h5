@@ -11,11 +11,11 @@ f7-page.lottery-list()
       f7-link._icon(:class="`_gid${(item.id || item.nid)}`" icon-f7=" home " icon-size="60px")
       div
         .title-container.mb_6
-          span.title {{item.n}}
+          span.title.c_2 {{item.n}}
           f7-icon.mt_5.ml_5.f_r.text-color-orange(f7="play_fill" size="2.3349vw")
         .number 第{{item.issue}}期
         .number-list.mt_5
-         .orange.mr_3.mb_3.t_c( :class="{normal:item.gn !== '快三' && item.id !== 28, [`three_${list}`]:item.gn === '快三', [sixStyle[index]]:item.id === 28 }" v-for="(list,index) in item.code.split(',')" :key="index") {{item.gn !== '快三' ? list : ''}}
+          <div class="orange mr_3 mg_3 t_c" :class="{normal:item.gn !== '快三' && item.id !== 28, [`three_${list}`]:item.gn === '快三', [sixStyle[index]]:item.id === 28 }" v-for="(list,index) in item.code.split(',')" :key="index"> {{item.gn !== '快三' ? list : ''}} </div>
     .bet.ml_5 投注
 
 </template>
@@ -74,7 +74,7 @@ export default {
       this.list = this.list.filter(x => {
         return !x.hide && (x.code && x.id)
       })
-      if (this.resultList) {
+      if (this.resultList.length) {
         return this.resultList
       } else {
         return this.list
@@ -107,7 +107,6 @@ export default {
             height: 3.2206vw;
             font-weight bold
             font-size: 3.3816vw;
-            color: #222222;
         .number
           font-size 2.8986vw
           color #999

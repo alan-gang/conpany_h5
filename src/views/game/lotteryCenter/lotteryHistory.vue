@@ -23,10 +23,9 @@ f7-page.lottery-history()
     f7-card.item.wp_100.ml_0.mb_0.mt_0(:class="{bgc_f7:index%2 ===0}" v-for="(item,index) in lotteryHistoryList" :key="item.issue")
       .number-list-left {{item.issue}}
       .title-list-right
-        .orange.mr_3.mb_3.t_c( :class="{normal:currentLottery.gn !== '快三' && currentLottery.id !== 28, [`three_${list}`]:currentLottery.gn === '快三', [sixStyle[index]]:currentLottery.id === 28 }" v-for="(list,index) in item.code.split(',')" :key="index") {{currentLottery.gn !== '快三' ? list : ''}}
-
+        <div class="orange mr_3 mb_3 t_c" :class="{normal:currentLottery.gn !== '快三' && currentLottery.id !== 28, [`three_${list}`]:currentLottery.gn === '快三', [sixStyle[index]]:currentLottery.id === 28 }" v-for="(list,index) in item.code.split(',')" :key="index">{{currentLottery.gn !== '快三' ? list : ''}}</div>
+        //- .orange.mr_3.mb_3.t_c( :class="{normal:currentLottery.gn !== '快三' && currentLottery.id !== 28, [`three_${list}`]:currentLottery.gn === '快三', [sixStyle[index]]:currentLottery.id === 28 }" v-for="(list,index) in item.code.split(',')" :key="index") {{currentLottery.gn !== '快三' ? list : ''}}
   .orange-btn() 立即投注
-
 
 </template>
 
